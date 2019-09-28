@@ -1,0 +1,289 @@
+@font-face {
+  font-family: 'Alegreya';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Alegreya Regular'), local('Alegreya-Regular'), url(http://fonts.gstatic.com/s/alegreya/v13/4UaBrEBBsBhlBjvfkSLhx60.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Nunito Regular'), local('Nunito-Regular'), url(http://fonts.gstatic.com/s/nunito/v11/XRXV3I6Li01BKofINeaE.ttf) format('truetype');
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+html,
+body {
+  font-family: 'Roboto', sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Indie Flower', cursive;
+}
+h1 {
+  font-size: 4rem;
+}
+h2 {
+  font-size: 3.2rem;
+  padding-bottom: 10px;
+}
+h4 {
+  font-size: 2.5rem;
+  padding-bottom: 10px;
+}
+p {
+  line-height: 1.5;
+  font-size: 1.6rem;
+  padding-bottom: 10px;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.container {
+  width: 100%;
+  margin: auto;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 99.9%;
+  background-color: #4d4d4d;
+}
+.main .navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-items: left;
+  align-items: left;
+  align-content: left;
+  position: fixed;
+  width: 100%;
+  box-shadow: 0.5px 2px 7px #282c34;
+  background-color: white;
+  border-top: 1px solid #4d4d4d;
+  margin-top: 0;
+}
+.main .navbar .navImg {
+  display: flex;
+  flex-direction: column;
+  justify-self: flex-start;
+  justify-content: flex-start;
+  width: 7.5%;
+  margin-left: 1%;
+  margin-bottom: 0.5%;
+  margin-top: 0.5%;
+  align-self: left;
+  align-items: center;
+  align-content: center;
+  padding-right: 1%;
+  border-right: 2px solid #546E7A;
+  cursor: pointer;
+}
+.main .navbar .navImg:hover {
+  opacity: 0.5;
+}
+.main .navbar .links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 90%;
+  margin-right: 1%;
+  font-size: 9.5pt;
+  text-align: center;
+  align-content: center;
+  align-items: center;
+  font-weight: 900;
+}
+.main .navbar .links a {
+  font-family: 'Nunito', 'serif';
+  font-weight: 1200;
+  text-decoration: none;
+  align-self: center;
+  color: #546e7a;
+  padding-top: 10px;
+  height: 115%;
+  width: 19%;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  border-top: 3px solid #4d4d4d;
+  margin-top: 0;
+  font-style: 'bold';
+  text-transform: uppercase;
+}
+.main .navbar .links a:hover {
+  font-weight: 1200;
+  color: white;
+  background-color: #00abb4;
+  border-top: 3px solid #00abb4;
+}
+.main .navbar .links a:active {
+  font-size: 8pt;
+}
+.main .navbar .links a:focus {
+  font-weight: 1200;
+  color: white;
+  background-color: #00abb4;
+  border-top: 3px solid #00abb4;
+}
+.main .navbar .links .signbutton {
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: white;
+  font-size: 9pt;
+  transition: all 0.5s ease;
+  -webkit-appearance: none;
+  font-family: 'Nunito', 'serif';
+  width: 19%;
+  height: 115%;
+  margin-left: 2%;
+  border-top: 7px solid #00abb4;
+  background: #FF3366;
+  border: 0;
+  overflow: hidden;
+  cursor: pointer;
+}
+.main .navbar .links .signbutton:hover,
+.main .navbar .links .signbutton:focus {
+  color: white;
+  background: #3f535c;
+  border: #3f535c;
+}
+.main .navbar .links .signbutton:active {
+  font-size: 7pt;
+}
+.main .navbar .search {
+  float: left;
+  width: 38%;
+  display: flex;
+  margin-top: 0.2%;
+  margin-right: 10%;
+  margin-left: 0;
+  align-self: left;
+}
+.main .navbar .search .searchTerm {
+  width: 120%;
+  border-right: none;
+  padding: 5px;
+  height: 95%;
+  border: 0;
+  outline: none;
+  color: #546E7A;
+  margin-left: 1%;
+}
+.main .navbar .search .searchTerm::placeholder {
+  color: #546E7A;
+  font-weight: 400;
+  font-size: 12pt;
+  font-family: 'Nunito', 'serif';
+}
+.main .navbar .search .searchTerm:focus {
+  color: #546E7A;
+  border: 1.5px solid #546E7A;
+  border-radius: 9px;
+  -moz-box-shadow: inset 0 0 3px gray;
+  -webkit-box-shadow: inset 0 0 3px gray;
+  box-shadow: inset 0 0 3px gray;
+}
+.main .navbar .search .searchButton {
+  width: 40px;
+  height: 30px;
+  border: 0;
+  background: white;
+  border-radius: 0 9px 9px 0;
+  text-align: center;
+  color: #546E7A;
+  cursor: pointer;
+  font-size: 22px;
+  margin-top: 0;
+}
+.cta-container {
+  margin-top: 0.5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-self: center;
+  width: 96%;
+  font-family: 'Nunito' 'serif';
+  padding: 4%;
+}
+.cta-container .cta-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 48%;
+}
+.cta-container .cta-text h1 {
+  font-family: 'Nunito', 'serif';
+  text-transform: uppercase;
+  color: #00abb4;
+}
+.cta-container .cta-text p {
+  font-family: 'Nunito', 'serif';
+  text-transform: uppercase;
+  color: aliceblue;
+}
+.cta-container .cta-text .cta-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 60%;
+}
+.cta-container .cta-text .cta-buttons .gs-button {
+  width: 45%;
+  border: 0;
+  height: 4rem;
+  margin: 5rem 0 2.2rem;
+  color: rgba(255, 255, 255, 0.8);
+  background: #00abb4;
+  font-size: 1.5rem;
+  border-radius: 3rem;
+  cursor: pointer;
+  overflow: hidden;
+  font-family: 'Nunito', 'serif';
+  font-weight: 900;
+  transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
+}
+.cta-container .cta-text .cta-buttons .gs-button:hover {
+  background-color: #4d4d4d;
+  border: 1px solid #00abb4;
+}
+.cta-container .cta-text .cta-buttons .gs-button:active {
+  font-size: 1.4rem;
+}
+.cta-container .cta-text .cta-buttons .faq-button {
+  width: 45%;
+  height: 4rem;
+  margin: 5rem 0 2.2rem;
+  color: rgba(255, 255, 255, 0.8);
+  background: #FF3366;
+  font-size: 1.5rem;
+  border-radius: 3rem;
+  cursor: pointer;
+  overflow: hidden;
+  border: 0;
+  font-family: 'Nunito', 'serif';
+  font-weight: 900;
+  transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
+}
+.cta-container .cta-text .cta-buttons .faq-button:hover {
+  background-color: #4d4d4d;
+  border: 1px solid #FF3366;
+}
+.cta-container .cta-text .cta-buttons .faq-button:active {
+  font-size: 1.4rem;
+}
+.cta-container img {
+  display: flex;
+  width: 50%;
+  margin-top: 2.7%;
+  opacity: 0.7;
+}
