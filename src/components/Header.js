@@ -4,43 +4,105 @@ import '../css/index.css';
 import '../css/global.css';
 import { FaSearch } from 'react-icons/fa';
 import logo from '../assets/logo.png';
+import {
+  UserSession,
+  AppConfig,
+  Person
+} from 'blockstack';
 
-const Header = props => (
-  <div>
-    <nav className='navbar'>
-      <NavLink key={'000'} to={'/'} className='navImg'>
-        <img src={logo} alt='logo'></img>
-      </NavLink>
+const appConfig = new AppConfig()
+const userSession = new UserSession({ appConfig: appConfig })
+const avatarFallbackImage = 'https://s3.amazonaws.com/onename/avatar-placeholder.png';
 
-      <div className='links'>
-      <div className='search'>
-        <button className='searchButton'>
-          <FaSearch />
-        </button>
-        <input className='searchTerm' type='text' placeholder='Search.....'>
-        </input>
+export default class Header extends React.Component {
+  constructor(props) {
+  	super(props);
+
+  	this.state = {
+  	  person: {
+  	  	name() {
+          return 'Anonymous';
+        },
+  	  	avatarUrl() {
+  	  	  return avatarFallbackImage;
+  	  	},
+  	  },
+  	};
+  }
+
+  componentDidMount() {
+    if (userSession.isSignInPending()) {
+      userSession.handlePendingSignIn().then((userData) => {
+        window.history.replaceState({}, document.title, "/")
+        this.setState({ userData: userData})
+      });
+    }
+    debugger
+    console.log(this.state);
+  }
+
+  componentWillMount() {
+    this.setState({
+      person: new Person(userSession.loadUserData().profile),
+    });
+  }
+
+  handleSignIn(e) {
+    e.preventDefault();
+    userSession.redirectToSignIn();
+  }
+
+  handleSignOut(e) {
+    e.preventDefault();
+    userSession.signUserOut(window.location.origin);
+  }
+
+  render(){
+    const { person } = this.state;
+
+    return(
+      <div>
+        <nav className='navbar'>
+          <NavLink key={'000'} to={'/'} className='navImg'>
+            <img src={logo} alt='logo'></img>
+          </NavLink>
+
+          <div className='links'>
+          <div className='search'>
+            <button className='searchButton'>
+              <FaSearch />
+            </button>
+            <input className='searchTerm' type='text' placeholder='Search.....'>
+            </input>
+          </div>
+          <NavLink className="link" key={'001'} to={'/freelancers'}>
+            freelancers
+          </NavLink>
+          <NavLink className="link" key={'002'} to={'/projects'}>
+            projects
+          </NavLink>
+          <NavLink className="link" key={'003'} to={'/collaborate'}>
+            collaborate
+          </NavLink>
+          <NavLink className="link" key={'004'} to={'/board'}>
+            board
+          </NavLink>
+          <NavLink className="link" key={'005'} to={'/escrow'}>
+            escrow
+          </NavLink>
+          {
+            !userSession.isUserSignedIn() ?
+              <button 
+              className='signbutton'
+              onClick={ this.handleSignIn.bind(this) }
+              > Get Started </button> : 
+              <button 
+              className='signbutton'
+              onClick={ this.handleSignOut.bind(this) }
+              > {person.name()}</button>
+          }
+          </div>
+        </nav>
       </div>
-      <NavLink className="link" key={'001'} to={'/freelancers'}>
-        freelancers
-      </NavLink>
-      <NavLink className="link" key={'002'} to={'/projects'}>
-        projects
-      </NavLink>
-      <NavLink className="link" key={'003'} to={'/collaborate'}>
-        collaborate
-      </NavLink>
-      <NavLink className="link" key={'004'} to={'/board'}>
-        board
-      </NavLink>
-      <NavLink className="link" key={'005'} to={'/escrow'}>
-        escrow
-      </NavLink>
-      <button className='signbutton'>
-        Get Started
-      </button>
-      </div>
-    </nav>
-  </div>
-);
-
-export default Header;
+    );}
+}
