@@ -8,7 +8,9 @@ import logo from '../assets/logo.png';
 const Header = props => (
   <div>
     <nav className='navbar'>
-      <img src={logo} alt='logo' className='navImg'></img>
+      <NavLink key={'000'} to={'/'} className='navImg'>
+        <img src={logo} alt='logo'></img>
+      </NavLink>
 
       <div className='links'>
       <div className='search'>
