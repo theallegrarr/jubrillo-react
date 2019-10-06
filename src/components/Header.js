@@ -10,7 +10,7 @@ import {
   Person
 } from 'blockstack';
 
-const appConfig = new AppConfig()
+const appConfig = new AppConfig(['store_write', 'publish_data'])
 const userSession = new UserSession({ appConfig: appConfig })
 const avatarFallbackImage = 'https://s3.amazonaws.com/onename/avatar-placeholder.png';
 
@@ -21,7 +21,7 @@ export default class Header extends React.Component {
   	this.state = {
   	  person: {
   	  	name() {
-          return 'Anonymous';
+          return 'Welcome';
         },
   	  	avatarUrl() {
   	  	  return avatarFallbackImage;
@@ -37,14 +37,15 @@ export default class Header extends React.Component {
         this.setState({ userData: userData})
       });
     }
-    debugger
     console.log(this.state);
   }
 
   componentWillMount() {
-    this.setState({
-      person: new Person(userSession.loadUserData().profile),
-    });
+    if(userSession.isUserSignedIn()){
+      this.setState({
+        person: new Person(userSession.loadUserData().profile),
+      });
+    }
   }
 
   handleSignIn(e) {
