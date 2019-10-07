@@ -84,7 +84,7 @@ img {
   align-items: center;
   align-content: center;
   padding-right: 1%;
-  border-right: 2px solid #546E7A;
+  border-right: 1.5px solid #546E7A;
   cursor: pointer;
 }
 .main .navbar .navImg:hover {
@@ -185,11 +185,7 @@ img {
 }
 .main .navbar .search .searchTerm:focus {
   color: #546E7A;
-  border: 1.5px solid #546E7A;
-  border-radius: 9px;
-  -moz-box-shadow: inset 0 0 3px gray;
-  -webkit-box-shadow: inset 0 0 3px gray;
-  box-shadow: inset 0 0 3px gray;
+  border-bottom: 1px solid #546E7A;
 }
 .main .navbar .search .searchButton {
   width: 40px;
