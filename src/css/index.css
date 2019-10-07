@@ -136,15 +136,13 @@ img {
 .main .navbar .links .signbutton {
   font-weight: 900;
   letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: white;
   font-size: 9pt;
   transition: all 0.5s ease;
   -webkit-appearance: none;
   font-family: 'Nunito', 'serif';
-  width: 22%;
+  width: 27%;
   height: 115%;
-  margin-left: 1%;
   border-top: 7px solid #00abb4;
   background: #FF3366;
   border: 0;
@@ -165,7 +163,7 @@ img {
   width: 38%;
   display: flex;
   margin-top: 0.2%;
-  margin-right: 10%;
+  margin-right: 2%;
   margin-left: 0;
   align-self: left;
 }

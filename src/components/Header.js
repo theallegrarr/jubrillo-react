@@ -44,6 +44,7 @@ export default class Header extends React.Component {
     if(userSession.isUserSignedIn()){
       this.setState({
         person: new Person(userSession.loadUserData().profile),
+        username: userSession.loadUserData().username,
       });
     }
   }
@@ -96,11 +97,11 @@ export default class Header extends React.Component {
               <button 
               className='signbutton'
               onClick={ this.handleSignIn.bind(this) }
-              > Get Started </button> : 
+              > GET STARTED </button> : 
               <button 
               className='signbutton'
               onClick={ this.handleSignOut.bind(this) }
-              > {person.name()}</button>
+              > {this.state.username}</button>
           }
           </div>
         </nav>
