@@ -35,9 +35,10 @@ export default class Header extends React.Component {
       userSession.handlePendingSignIn().then((userData) => {
         window.history.replaceState({}, document.title, "/")
         this.setState({ userData: userData})
+        this.props.updateUser({ userData: userData});
       });
     }
-    console.log(this.state);
+    //console.log(this.state);
   }
 
   componentWillMount() {
