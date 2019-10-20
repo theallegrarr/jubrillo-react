@@ -1,4 +1,131 @@
 .profile-form {
   display: flex;
-  margin-top: 200px;
+  flex-direction: column;
+  margin-top: 30px;
+  background-color: white;
+  font-family: @primary-font, 'serif';
+  
+  .profile-info {
+    display: flex;
+    flex-direction: row;
+    justify-items: space-between;
+    justify-content: space-between;
+    margin-bottom: 2%;
+    background-color: @jubrillo-gray;
+    width: 100%;
+    padding: 2%;
+    box-shadow: 0.9px 4px 9px #282c34;
+
+    .profile-others {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      justify-items: space-between;
+      align-self: flex-start;
+      justify-self: flex-start;
+      margin-left: 2%;
+      width: 50%;
+
+      h3 {
+        margin: 1%;
+        font-size: 15pt;
+        font-family: @primary-font, 'serif';
+      }
+
+      h2 {
+        margin-top: 3%;
+        margin-bottom: 1%;
+        font-size: 19pt;
+        font-family: @primary-font, 'serif';
+      }
+
+      .ratings {
+        display: flex;
+        flex-direction: row;
+        justify-items: space-between;
+        justify-content: space-between;
+        background-color: white;
+        border-radius: 10px;
+        padding-bottom: 0.1%;
+        padding-top: 2%;
+        padding-left: 3%;
+        padding-right: 5%;
+        box-shadow: 0.9px 2px 7px #282c34;
+        width: 45%;
+        p {
+          display: flex;
+          flex-direction: row;
+          font-size: 18pt;
+          margin: 1%;
+          justify-items: space-between;
+          justify-content: space-between;
+          font-family: @primary-font, 'serif';
+        }
+      }
+    }
+
+    img {
+      display: flex;
+      justify-content: center;
+      justify-self: center;
+      width: 12%;
+      align-self: center;
+      border: 2px solid @jubrillo-gray;
+      border-radius: 230px;
+      box-shadow: 0.9px 2px 7px #282c34;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    justify-items: space-evenly;
+    justify-content: space-evenly;
+    justify-self: flex-end;
+    align-self: space-evenly;
+    width: 15%;
+
+    .msg-button, .edit-button, .hire-button {
+      margin: 4%;
+      border-radius: 10px;
+      box-shadow: 0.9px 2px 7px #282c34;
+      font-family: @primary-font, 'serif';
+      font-size: 12pt;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 18px;
+      cursor: pointer;
+      font-weight: 700;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      justify-items: space-between;
+      justify-self: center;
+      align-content: space-between;
+      align-items: space-between;
+      text-align: center;
+    }
+    .msg-button {
+      background-color: @jubrillo-green; /* Green */
+      &:hover {
+        background-color: darken(@jubrillo-green,5);
+      }
+    }
+    .hire-button {
+      background-color: @jubrillo-pink; /* Green */
+      &:hover {
+        background-color: darken(@jubrillo-pink,5);
+      }
+    }
+    .edit-button {
+      background-color: @jubrillo-yellow; /* Green */
+      &:hover {
+        background-color: darken(@jubrillo-yellow,5);
+      }
+    }
+  }
 }
