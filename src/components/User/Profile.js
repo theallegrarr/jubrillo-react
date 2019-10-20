@@ -3,7 +3,7 @@ import { Formik, Form, Field } from 'formik';
 import { MultiSelectComponent } from '@syncfusion/ej2-react-dropdowns';
 import { withStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
+import StarBorderIcon from '@material-ui/icons/Star';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -48,17 +48,17 @@ export default function Profile(props) {
     <div className='profile-info'>
       <img src={person._profile.image["0"].contentUrl} alt='profile'/>
         <div className='profile-others'>
-          <h2>{person._profile.name}</h2>
-          <h3>{props.userDetails.username}</h3>
+          <h2 className='name'>{person._profile.name}</h2>
+          <h3 className='username'>{props.userDetails.username}</h3>
           <div className='ratings' ><p>Ratings:   <br/><StyledRating
             name="customized-color"
             value={5}
             // getLabelText={getLabelText}
             precision={0.5}
-            icon={<FavoriteIcon fontSize="inherit" />}
+            icon={<StarBorderIcon fontSize="inherit" />}
             readOnly
           /></p></div>
-          <h3>Skills: </h3>
+          
         </div>
         <div className='buttons'>
           <button className='edit-button'>

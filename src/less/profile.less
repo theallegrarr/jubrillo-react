@@ -19,22 +19,35 @@
     .profile-others {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      justify-items: space-between;
-      align-self: flex-start;
+      justify-content: space-evenly;
+      justify-items: space-evenly;
+      align-self: center;
       justify-self: flex-start;
-      margin-left: 2%;
-      width: 50%;
+      margin-left: 1%;
+      width: 70%;
+      align-content: space-between;
+      align-items: space-between;
+
+      .name {
+        font-family: @secondary-font;
+        font-size: 35pt;
+        font-style: 'bold';     
+      }
+      .username {
+        color: @logo-color;
+        font-family: @secondary-font;
+        font-weight: 900;
+      }
 
       h3 {
-        margin: 1%;
+        margin: 0.1%;
         font-size: 15pt;
         font-family: @primary-font, 'serif';
       }
 
       h2 {
-        margin-top: 3%;
-        margin-bottom: 1%;
+        margin-top: 2%;
+        margin-bottom: 0;
         font-size: 19pt;
         font-family: @primary-font, 'serif';
       }
@@ -47,15 +60,17 @@
         background-color: white;
         border-radius: 10px;
         padding-bottom: 0.1%;
-        padding-top: 2%;
-        padding-left: 3%;
-        padding-right: 5%;
+        padding-top: 1%;
+        padding-left: 2%;
+        padding-right: 3%;
         box-shadow: 0.9px 2px 7px #282c34;
-        width: 45%;
+        width: 30%;
+        margin-top: 2%;
+        
         p {
           display: flex;
           flex-direction: row;
-          font-size: 18pt;
+          font-size: 19pt;
           margin: 1%;
           justify-items: space-between;
           justify-content: space-between;
@@ -116,9 +131,9 @@
       }
     }
     .hire-button {
-      background-color: @jubrillo-pink; /* Green */
+      background-color: @jubrillo-green; /* Green */
       &:hover {
-        background-color: darken(@jubrillo-pink,5);
+        background-color: darken(@jubrillo-green,5);
       }
     }
     .edit-button {

@@ -10,6 +10,12 @@
   font-weight: 400;
   src: local('Nunito Regular'), local('Nunito-Regular'), url(http://fonts.gstatic.com/s/nunito/v11/XRXV3I6Li01BKofINeaE.ttf) format('truetype');
 }
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: local('IBM Plex Mono'), local('IBMPlexMono'), url(http://fonts.gstatic.com/s/ibmplexmono/v5/-F63fjptAgt5VM-kVkqdyU8n1i8q0g.ttf) format('truetype');
+}
 * {
   box-sizing: border-box;
 }
@@ -307,21 +313,33 @@ img {
 .profile-form .profile-info .profile-others {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  justify-items: space-between;
-  align-self: flex-start;
+  justify-content: space-evenly;
+  justify-items: space-evenly;
+  align-self: center;
   justify-self: flex-start;
-  margin-left: 2%;
-  width: 50%;
+  margin-left: 1%;
+  width: 70%;
+  align-content: space-between;
+  align-items: space-between;
+}
+.profile-form .profile-info .profile-others .name {
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-size: 35pt;
+  font-style: 'bold';
+}
+.profile-form .profile-info .profile-others .username {
+  color: #00abb4;
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-weight: 900;
 }
 .profile-form .profile-info .profile-others h3 {
-  margin: 1%;
+  margin: 0.1%;
   font-size: 15pt;
   font-family: 'Nunito', 'serif';
 }
 .profile-form .profile-info .profile-others h2 {
-  margin-top: 3%;
-  margin-bottom: 1%;
+  margin-top: 2%;
+  margin-bottom: 0;
   font-size: 19pt;
   font-family: 'Nunito', 'serif';
 }
@@ -333,16 +351,17 @@ img {
   background-color: white;
   border-radius: 10px;
   padding-bottom: 0.1%;
-  padding-top: 2%;
-  padding-left: 3%;
-  padding-right: 5%;
+  padding-top: 1%;
+  padding-left: 2%;
+  padding-right: 3%;
   box-shadow: 0.9px 2px 7px #282c34;
-  width: 45%;
+  width: 30%;
+  margin-top: 2%;
 }
 .profile-form .profile-info .profile-others .ratings p {
   display: flex;
   flex-direction: row;
-  font-size: 18pt;
+  font-size: 19pt;
   margin: 1%;
   justify-items: space-between;
   justify-content: space-between;
@@ -400,11 +419,11 @@ img {
   background-color: #449d48;
 }
 .profile-form .buttons .hire-button {
-  background-color: #FF3366;
+  background-color: #4CAF50;
   /* Green */
 }
 .profile-form .buttons .hire-button:hover {
-  background-color: #ff1953;
+  background-color: #449d48;
 }
 .profile-form .buttons .edit-button {
   background-color: #999917;
