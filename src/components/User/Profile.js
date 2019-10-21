@@ -1,10 +1,10 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
-import { MultiSelectComponent } from '@syncfusion/ej2-react-dropdowns';
+// import { MultiSelectComponent } from '@syncfusion/ej2-react-dropdowns';
 import { withStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
 import StarBorderIcon from '@material-ui/icons/Star';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+// import FavoriteIcon from '@material-ui/icons/Favorite';
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { FaCommentAlt, FaUserEdit, FaBriefcase } from 'react-icons/fa';

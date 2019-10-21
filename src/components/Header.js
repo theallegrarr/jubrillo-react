@@ -9,10 +9,17 @@ import {
   AppConfig,
   Person
 } from 'blockstack';
+import { User, configure } from 'radiks';
+import createUser from '../model/createUser';
 
 const appConfig = new AppConfig(['store_write', 'publish_data'])
 const userSession = new UserSession({ appConfig: appConfig })
 const avatarFallbackImage = 'https://s3.amazonaws.com/onename/avatar-placeholder.png';
+
+configure({
+  apiServer: 'http://localhost:1260',
+  userSession,
+});
 
 export default class Header extends React.Component {
   constructor(props) {
@@ -36,19 +43,31 @@ export default class Header extends React.Component {
         window.history.replaceState({}, document.title, "/")
         this.setState({ userData: userData})
         this.props.updateUser({ userData: userData});
-      });
-    }
-    //console.log(this.state);
-  }
 
-  componentWillMount() {
+        User.createWithCurrentUser().then(res => {
+          console.log(res)
+          createUser(userSession.loadUserData());
+        })
+        .catch(err => console.log(err))
+        
+      });
+      
+    }
+    //console.log(this.state)
     if(userSession.isUserSignedIn()){
       this.setState({
         person: new Person(userSession.loadUserData().profile),
         username: userSession.loadUserData().username,
       });
+      User.createWithCurrentUser().then(res => {
+        console.log(res)
+        createUser(res);
+      })
+      .catch(err => console.log(err))
+      
     }
   }
+
 
   handleSignIn(e) {
     e.preventDefault();
@@ -61,7 +80,7 @@ export default class Header extends React.Component {
   }
 
   render(){
-    const { person } = this.state;
+    // const { person } = this.state;
 
     return(
       <div>
