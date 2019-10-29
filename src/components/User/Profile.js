@@ -1,29 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { MultiSelectComponent } from '@syncfusion/ej2-react-dropdowns';
 import { withStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
 import StarBorderIcon from '@material-ui/icons/Star';
-// import FavoriteIcon from '@material-ui/icons/Favorite';
+import CKEditor from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { FaCommentAlt, FaUserEdit, FaBriefcase } from 'react-icons/fa';
-import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
+import { Multiselect } from 'react-widgets';
 import * as data from './skillsData.json';
+
 // Summary, ratings, skills, rate, Role, Image, Name, Location
 let person={};
-let rteObject={};
+const skillsData = [
+  "JavaScript",
+  "C++",
+  "C#",
+  "Python",
+  "Ruby",
+  "PHP",
+  "OpenCart",
+  "Magento",
+  "Wordpress",
+  "Software Development",
+  "Creative Writing",
+  "Game Development",
+  "Web Development",
+  "Data Analyst",
+  "Quantitative Analyst",
+  "React.js",
+  "Node.js",
+  "Java",
+  "Vue.js","Angular.js","Django","MQL4","MQL5","cAlgo",
+];
 
 export default function Profile(props) {
-  const onLogin = ({ username, password }) => {
-    return props.onLogin({ username, password });
-  };
-  //if(props.userDetails.person)console.log(props.userDetails.person);
+
   const localData=JSON.parse(localStorage.getItem('blockstack-session'));
-  console.log(localData)
   person=localData.userData.profile;
   
-  console.log(props)
   const useStyles = makeStyles(theme => ({
     progress: {
       margin: theme.spacing(2),
@@ -102,6 +119,8 @@ export default function Profile(props) {
 
 const fields = { text: 'Name', value: 'Code' };
 function ProfileForm(){
+  const multiSelect = useRef();
+  const [picked, setPicks] = useState({});
 
   return (
     <Formik 
@@ -110,18 +129,36 @@ function ProfileForm(){
       render={() => (
         <Form className='edit-profile'>
           <Field className='profile-input' name='email' type="text" placeholder='Enter your email....' />
-          <MultiSelectComponent className="control-styles" id="defaultelement" dataSource={data['skills']} mode="Default" fields={fields} placeholder="Your Skills"/>
-          <div className='control-pane'>
-            <div className='control-section' id="rte">
-              <div className='rte-control-section'>
-                <RichTextEditorComponent id="defaultRTE" ref={(richtexteditor) => { rteObject = richtexteditor; }}>
-                  
-                  <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar]}/>
-                </RichTextEditorComponent>
-              </div>
-            </div>
+          {/* <MultiSelectComponent 
+          className="control-styles" 
+          id="defaultelement" 
+          dataSource={data['skills']} 
+          mode="Default" fields={fields} 
+          placeholder='Your Skills'
+          ref={multiSelect}
+          change={(e) => {
+            setPicks(e.value)
+            }}
+          selectAll={"C++", "Code": "C++" }}
+          created={(e) => { 
+            e = {value: ["C#"]}
+            console.log(e)
+          }}
+          /> */}
+          <div className='multiselect'>
+            <Multiselect
+              data={skillsData}
+              defaultValue={''}
+              textField='name'
+              caseSensitive={false}
+              minLength={3}
+              filter='contains'
+              onChange={(e) => setPicks(e)}
+            />
           </div>
-
+          <div>
+            <ClassicEditorFunction />
+          </div>
           <div className='buttons'>
             <button className='submit'>SAVE</button>
             <button className='cancel'>CANCEL</button>
@@ -129,5 +166,31 @@ function ProfileForm(){
         </Form>
       )}
     />
+  );
+}
+
+function ClassicEditorFunction(){
+
+  return(
+    <div className="App">
+      <CKEditor
+          editor={ ClassicEditor }
+          data="<p>Tell Us About You!</p>"
+          onInit={ editor => {
+              // You can store the "editor" and use when it is needed.
+              console.log( 'Editor is ready to use!', editor );
+          } }
+          onChange={ ( event, editor ) => {
+              const data = editor.getData();
+              console.log( { event, editor, data } );
+          } }
+          onBlur={ ( event, editor ) => {
+              console.log( 'Blur.', editor );
+          } }
+          onFocus={ ( event, editor ) => {
+              console.log( 'Focus.', editor );
+          } }
+      />
+  </div>
   );
 }

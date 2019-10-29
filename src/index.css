@@ -28,3 +28,35 @@ code {
     monospace;
 }
 
+.rw-i.rw-loading {
+  display: block;
+  background: url('../node_modules/react-widgets/lib/img/loading.gif') no-repeat center;
+  min-width: 16px;
+  width: 1.9em;
+  height: 16px;
+}
+
+@font-face {
+  font-family: 'RwWidgets';
+  font-weight: normal;
+  font-style: normal;
+  src: url('../node_modules/react-widgets/lib/fonts/rw-widgets.eot?v=4.1.0');
+  src: url('../node_modules/react-widgets/lib/fonts/rw-widgets.eot?#iefix&v=4.1.0') format('embedded-opentype'), url('../node_modules/react-widgets/lib/fonts/rw-widgets.woff?v=4.1.0') format('woff'), url('../node_modules/react-widgets/lib/fonts/rw-widgets.ttf?v=4.1.0') format('truetype'), url('../node_modules/react-widgets/lib/fonts/rw-widgets.svg?v=4.1.0#fontawesomeregular') format('svg');
+}
+
+.rw-multiselect {
+  height: 30px;
+  margin-top: 1%;
+  margin-bottom: 2%;
+  padding: 0;
+  border-top: none;
+}
+
+.rw-multiselect-tag {
+  font-size: 12pt;
+  margin-bottom: 5px;
+}
+
+.rw-input-reset {
+  font-size: 12pt;
+}
