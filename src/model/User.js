@@ -8,6 +8,9 @@ export default class Person extends Model {
     username: String,
     email: String,
     rating: Number,
+    rank: Number,
+    summary: String,
+    skills: Array,
     isFreelancer: {
       type: Boolean,
       decrypted: true

@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Formik, Form, Field } from 'formik';
-// import { MultiSelectComponent } from '@syncfusion/ej2-react-dropdowns';
+import { MultiSelectComponent } from '@syncfusion/ej2-react-dropdowns';
 import { withStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
 import StarBorderIcon from '@material-ui/icons/Star';
@@ -8,18 +8,22 @@ import StarBorderIcon from '@material-ui/icons/Star';
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { FaCommentAlt, FaUserEdit, FaBriefcase } from 'react-icons/fa';
-
+import { HtmlEditor, Image, Inject, Link, QuickToolbar, RichTextEditorComponent, Toolbar } from '@syncfusion/ej2-react-richtexteditor';
+import * as data from './skillsData.json';
 // Summary, ratings, skills, rate, Role, Image, Name, Location
 let person={};
+let rteObject={};
+
 export default function Profile(props) {
   const onLogin = ({ username, password }) => {
     return props.onLogin({ username, password });
   };
-  if(props.userDetails.person)console.log(props.userDetails.person);
-  if(props.userDetails.person){
-    person=props.userDetails.person;
-  }
-
+  //if(props.userDetails.person)console.log(props.userDetails.person);
+  const localData=JSON.parse(localStorage.getItem('blockstack-session'));
+  console.log(localData)
+  person=localData.userData.profile;
+  
+  console.log(props)
   const useStyles = makeStyles(theme => ({
     progress: {
       margin: theme.spacing(2),
@@ -40,15 +44,17 @@ export default function Profile(props) {
     },
   })(Rating);
 
+  const [editing, setEdit] = useState(true);
+
   return (
     <div className='profile-form'>
-    {!person._profile &&  (<CircularProgress className={classes.progress} />)}
-    {person._profile && (
+    {!person.image["0"].contentUrl && (<CircularProgress className={classes.progress} />)}
+    {person && (
     <>
     <div className='profile-info'>
-      <img src={person._profile.image["0"].contentUrl} alt='profile'/>
+      <img src={person.image["0"].contentUrl} alt='profile'/>
         <div className='profile-others'>
-          <h2 className='name'>{person._profile.name}</h2>
+          <h2 className='name'>{person.name}</h2>
           <h3 className='username'>{props.userDetails.username}</h3>
           <div className='ratings' ><p>Ratings:   <br/><StyledRating
             name="customized-color"
@@ -61,7 +67,7 @@ export default function Profile(props) {
           
         </div>
         <div className='buttons'>
-          <button className='edit-button'>
+          <button className='edit-button' onClick={() => setEdit(true)}>
             <FaUserEdit/>
             EDIT
           </button>
@@ -75,19 +81,53 @@ export default function Profile(props) {
           </button>
         </div>
     </div>
-    <Formik
-      
-      initialValues={{ username: '', password: '' }}
-      onSubmit={onLogin}
+    {/*  */}
+
+    </>)}
+      <div className='profile-details'>
+        <div className='skills'>
+          
+        </div>
+        <div className='summary'>
+
+        </div>
+        <div className='projects'>
+
+        </div>
+      </div>
+      {editing && ProfileForm()}
+    </div>
+  );
+}
+
+const fields = { text: 'Name', value: 'Code' };
+function ProfileForm(){
+
+  return (
+    <Formik 
+      initialValues={{ email: '', summary: '' }}
+      //onSubmit={}
       render={() => (
-        <Form className='login'>
-          <Field name='username' type="text" placeholder='username' />
-          <Field name='password' type="text" placeholder='password' />
-          <input type='submit' />
+        <Form className='edit-profile'>
+          <Field className='profile-input' name='email' type="text" placeholder='Enter your email....' />
+          <MultiSelectComponent className="control-styles" id="defaultelement" dataSource={data['skills']} mode="Default" fields={fields} placeholder="Your Skills"/>
+          <div className='control-pane'>
+            <div className='control-section' id="rte">
+              <div className='rte-control-section'>
+                <RichTextEditorComponent id="defaultRTE" ref={(richtexteditor) => { rteObject = richtexteditor; }}>
+                  
+                  <Inject services={[HtmlEditor, Toolbar, Image, Link, QuickToolbar]}/>
+                </RichTextEditorComponent>
+              </div>
+            </div>
+          </div>
+
+          <div className='buttons'>
+            <button className='submit'>SAVE</button>
+            <button className='cancel'>CANCEL</button>
+          </div>
         </Form>
       )}
     />
-    </>)}
-    </div>
   );
 }

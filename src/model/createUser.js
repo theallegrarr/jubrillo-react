@@ -5,6 +5,7 @@ export default function createUser (person) {
   const newUser = new Person({
     name: person.attrs.profile.name,
     username: person.attrs.username,
+    rating: 5,
   });
   //console.log(newUser)
   newUser.save().then((res) => {

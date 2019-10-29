@@ -11,6 +11,7 @@
     "@material-ui/icons": "^4.5.1",
     "@material-ui/lab": "^4.0.0-alpha.29",
     "@syncfusion/ej2-react-dropdowns": "^17.3.17",
+    "@syncfusion/ej2-react-richtexteditor": "^17.3.19",
     "blockstack": "^19.3.0",
     "dotenv": "^8.1.0",
     "formik": "^1.5.8",

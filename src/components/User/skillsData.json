@@ -1,0 +1,28 @@
+{
+  "skills":[
+      { "Name": "JavaScript", "Code": "JS" },
+      { "Name": "C++", "Code": "C++" },
+      { "Name": "C#", "Code": "C#" },
+      { "Name": "Python", "Code": "Python" },
+      { "Name": "Ruby", "Code": "Ruby" },
+      { "Name": "PHP", "Code": "PHP" },
+      { "Name": "OpenCart", "Code": "OpenCart" },
+      { "Name": "Magento", "Code": "Magento" },
+      { "Name": "Wordpress", "Code": "WordPress" },
+      { "Name": "Software Development", "Code": "Software Development" },
+      { "Name": "Creative Writing", "Code": "Writing" },
+      { "Name": "Game Development", "Code": "Game Dev" },
+      { "Name": "Web Development", "Code": "Web Dev" },
+      { "Name": "Data Analyst", "Code": "Data Analyst" },
+      { "Name": "Quantitative Analyst", "Code": "Quantitative Analyst" },
+      { "Name": "React.js", "Code": "React" },
+      { "Name": "Node.js", "Code": "Node" },
+      { "Name": "Java", "Code": "Java" },
+      { "Name": "Vue.js", "Code": "Vue" },
+      { "Name": "Angular.js", "Code": "Angular" },
+      { "Name": "Django", "Code": "Django" },
+      { "Name": "MQL4", "Code": "MQL4" },
+      { "Name": "MQL5", "Code": "MQL5" },
+      { "Name": "cAlgo", "Code": "cAlgo" }
+  ]
+}

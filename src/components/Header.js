@@ -46,7 +46,7 @@ export default class Header extends React.Component {
 
         User.createWithCurrentUser().then(res => {
           console.log(res)
-          createUser(userSession.loadUserData());
+          createUser(res);
         })
         .catch(err => console.log(err))
         
