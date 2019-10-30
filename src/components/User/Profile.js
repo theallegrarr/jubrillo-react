@@ -14,27 +14,27 @@ import * as data from './skillsData.json';
 
 // Summary, ratings, skills, rate, Role, Image, Name, Location
 let person={};
-const skillsData = [
-  "JavaScript",
-  "C++",
-  "C#",
-  "Python",
-  "Ruby",
-  "PHP",
-  "OpenCart",
-  "Magento",
-  "Wordpress",
-  "Software Development",
-  "Creative Writing",
-  "Game Development",
-  "Web Development",
-  "Data Analyst",
-  "Quantitative Analyst",
-  "React.js",
-  "Node.js",
-  "Java",
-  "Vue.js","Angular.js","Django","MQL4","MQL5","cAlgo",
-];
+// const skillsData = [
+//   "JavaScript",
+//   "C++",
+//   "C#",
+//   "Python",
+//   "Ruby",
+//   "PHP",
+//   "OpenCart",
+//   "Magento",
+//   "Wordpress",
+//   "Software Development",
+//   "Creative Writing",
+//   "Game Development",
+//   "Web Development",
+//   "Data Analyst",
+//   "Quantitative Analyst",
+//   "React.js",
+//   "Node.js",
+//   "Java",
+//   "Vue.js","Angular.js","Django","MQL4","MQL5","cAlgo",
+// ];
 
 export default function Profile(props) {
 
@@ -121,6 +121,7 @@ const fields = { text: 'Name', value: 'Code' };
 function ProfileForm(){
   const multiSelect = useRef();
   const [picked, setPicks] = useState({});
+  let preselectValues  = ['Ruby'];
 
   return (
     <Formik 
@@ -129,23 +130,23 @@ function ProfileForm(){
       render={() => (
         <Form className='edit-profile'>
           <Field className='profile-input' name='email' type="text" placeholder='Enter your email....' />
-          {/* <MultiSelectComponent 
-          className="control-styles" 
-          id="defaultelement" 
-          dataSource={data['skills']} 
-          mode="Default" fields={fields} 
-          placeholder='Your Skills'
-          ref={multiSelect}
-          change={(e) => {
-            setPicks(e.value)
-            }}
-          selectAll={"C++", "Code": "C++" }}
-          created={(e) => { 
-            e = {value: ["C#"]}
-            console.log(e)
-          }}
-          /> */}
-          <div className='multiselect'>
+          <div className='control-pane'>
+          <div className='control-section'>
+              <div id='multidefault' className="control-styles">
+                <MultiSelectComponent 
+                id="customelement" 
+                dataSource={data.skills} 
+                fields={fields} mode="Box"
+                value={preselectValues}
+                placeholder="Your Skills" 
+                change={(e) => console.log(e.value)}
+                />
+              </div>
+          </div>
+          
+        </div>
+
+          {/* <div className='multiselect'>
             <Multiselect
               data={skillsData}
               defaultValue={''}
@@ -155,7 +156,7 @@ function ProfileForm(){
               filter='contains'
               onChange={(e) => setPicks(e)}
             />
-          </div>
+          </div> */}
           <div>
             <ClassicEditorFunction />
           </div>
