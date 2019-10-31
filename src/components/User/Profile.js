@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { FaCommentAlt, FaUserEdit, FaBriefcase } from 'react-icons/fa';
 import { Multiselect } from 'react-widgets';
+import updateProfile from '../../model/updateProfile';
 import * as data from './skillsData.json';
 
 // Summary, ratings, skills, rate, Role, Image, Name, Location
@@ -119,7 +120,6 @@ export default function Profile(props) {
 
 const fields = { text: 'Name', value: 'Code' };
 function ProfileForm(){
-  const multiSelect = useRef();
   const [picked, setPicks] = useState({});
   let preselectValues  = ['Ruby'];
 
@@ -139,7 +139,7 @@ function ProfileForm(){
                 fields={fields} mode="Box"
                 value={preselectValues}
                 placeholder="Your Skills" 
-                change={(e) => console.log(e.value)}
+                change={(e) => setPicks(e.value)}
                 />
               </div>
           </div>
