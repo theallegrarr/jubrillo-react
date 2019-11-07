@@ -8,6 +8,7 @@ import {
 import Header from '../src/components/Header';
 import Cta from '../src/components/Cta';
 import Profile from '../src/components/User/Profile';
+import Freelancers from '../src/components/Freelancers/Freelancers';
 import './App.css';
 import '../src/css/index.css';
 import '../src/css/global.css';
@@ -41,6 +42,15 @@ function App() {
           render={props => {
               if (user) {
                 return (<Profile {...props} userDetails={user} />)
+              }
+            return <Redirect to='/' />
+          }} />
+
+      <Route 
+          path='/freelancers'
+          render={props => {
+              if (user) {
+                return (<Freelancers {...props}/>)
               }
             return <Redirect to='/' />
           }} />

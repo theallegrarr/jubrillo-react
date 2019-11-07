@@ -9,6 +9,6 @@ export default function createUser (person) {
   });
   //console.log(newUser)
   newUser.save().then((res) => {
-    console.log(res);
+    console.log('user details updated');
   }).catch(err => console.log(err));
 }

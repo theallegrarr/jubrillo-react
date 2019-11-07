@@ -42,10 +42,10 @@ export default class Header extends React.Component {
       userSession.handlePendingSignIn().then((userData) => {
         window.history.replaceState({}, document.title, "/")
         this.setState({ userData: userData})
-        this.props.updateUser({ userData: userData});
+        //this.props.updateUser({ userData: userData});
 
         User.createWithCurrentUser().then(res => {
-          console.log(res)
+          // console.log(res)
           createUser(res);
         })
         .catch(err => console.log(err))
@@ -60,7 +60,7 @@ export default class Header extends React.Component {
         username: userSession.loadUserData().username,
       });
       User.createWithCurrentUser().then(res => {
-        console.log(res)
+        // console.log(res)
         createUser(res);
       })
       .catch(err => console.log(err))

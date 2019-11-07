@@ -5,12 +5,30 @@ export default class Profile extends Model {
 
   static schema = {
     name: String,
-    username: String,
-    email: String,
-    rating: Number,
-    rank: Number,
-    summary: String,
-    skills: Array,
+    username: {
+      type: String,
+      decrypted: true
+    },
+    email: {
+      type: String,
+      decrypted: true
+    },
+    rating: {
+      type: Number,
+      decrypted: true
+    },
+    rank: {
+      type: Number,
+      decrypted: true
+    },
+    summary: {
+      type: String,
+      decrypted: true
+    },
+    skills: {
+      type: Array,
+      decrypted: true
+    },
     isFreelancer: {
       type: Boolean,
       decrypted: true
@@ -22,6 +40,10 @@ export default class Profile extends Model {
     jobsCreated: {
       type: Number,
       decrypted: true
+    },
+    image: {
+      type: String,
+      decrypted: true
     }
   }
 
@@ -29,6 +51,7 @@ export default class Profile extends Model {
     isFreelancer: false,
     jobsDone: 0,
     jobsCreated: 0,
+    rating: 5,
   }
 }
 

@@ -5,13 +5,21 @@ export default function updateProfile (info) {
   const newData = new Profile({
     name: info.name,
     username: info.username,
-    rating: info.ratings,
+    // rating: info.ratings,
     summary: info.summary,
     skills: info.skills,
     isFreelancer: info.isFreelancer,
+    email: info.email,
+    image: info.image
   });
   //console.log(newUser)
-  newData.save().then((res) => {
-    console.log(res);
+  Profile.fetchList({
+    "username": info.username
+  }).then(res => {
+    res[0].destroy().then(() => {
+    newData.save().then((res) => {
+      console.log(res);
+    }).catch(err => console.log(err));
+    }).catch(err => console.log(err));
   }).catch(err => console.log(err));
 }

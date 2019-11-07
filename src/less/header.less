@@ -1,8 +1,8 @@
 .main {
     display: flex;
     flex-direction: column;
-    width: 99.9%;
     background-color: @jubrillo-gray;
+    
     //background-image: linear-gradient(90deg, #ED4264, #FFEDBC);
 
     .navbar {
@@ -18,13 +18,17 @@
         background-color: white;
         border-top: 1px solid @jubrillo-gray;
         margin-top:  0;
+        align-self: center;
+        padding-left: 15px;
+        padding-right: 15px;
 
         .navImg {
             display: flex;
             flex-direction: column;
             justify-self: flex-start;
             justify-content: flex-start;
-            width: 7.5%;
+            width: 100px;
+            max-height: 100px;
             margin-left: 1%;
             margin-bottom: 0.5%;
             margin-top: 0.5%;
@@ -60,7 +64,7 @@
                 text-decoration: none;
                 align-self: center;
                 color: @primary-color-dark;
-                padding-top: 10px;
+                padding-top: 12px;
                 height: 115%;
                 width: 19%;
                 letter-spacing: .1em;

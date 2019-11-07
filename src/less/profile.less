@@ -209,5 +209,53 @@
         border-bottom: 2px solid @jubrillo-pink;
       }
     }
+
+    .switch-button {
+      margin-bottom: 30px;
+      font-size: 16pt;
+    }
+  }
+
+  .profile-show {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    
+    .profile-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      justify-items: flex-start;
+      //border: 1px solid red;
+      background: white;
+      box-shadow: 0.9px 2px 7px #282c34;
+      width: 1200px;
+      max-width: 90%;
+      margin-top: 10px;
+      padding: 5px;
+      text-align: center;
+      text-justify: center;
+
+      h3 {
+        width: 20%;
+        font-size: 16pt;
+        font-family: @secondary-font, 'serif';
+      }
+
+      h2 {
+        width: 80%;
+        font-size: 16pt;
+        text-align: left;
+        font-family: @secondary-font, 'serif';
+      }
+
+      .summary-view {
+        display: flex;
+        align-self: center;
+        width: 80%;
+        font-family: @secondary-font, 'serif';
+      } 
+    }
   }
 }
