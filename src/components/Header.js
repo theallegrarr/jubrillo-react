@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import '../css/index.css';
 import '../css/global.css';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch, FaAlignJustify, FaIdCard, FaListAlt, FaSignOutAlt, FaList } from 'react-icons/fa';
 import logo from '../assets/logo.png';
 import {
   UserSession,
@@ -117,12 +117,25 @@ export default class Header extends React.Component {
               <button 
               className='signbutton'
               onClick={ this.handleSignIn.bind(this) }
-              > GET STARTED </button> : 
-              <button 
-              className='signbutton'
-              onClick={ this.handleSignOut.bind(this) }
-              > {this.state.username}</button>
+              > GET STARTED </button> 
+              : 
+              (
+              <>
+              <div class="dropdown">
+                <button class="dropbtn"><FaAlignJustify />{this.state.username}</button>
+                <div class="dropdown-content">
+                  <a href="/profile" className='drop-link'><FaIdCard />Profile</a>
+                  <a href="/messages" className='drop-link'><FaListAlt />Messages</a>
+                  <a href="/"
+                  onClick={ this.handleSignOut.bind(this) }
+                  className='drop-link'><FaSignOutAlt />Sign Out</a>
+                </div>
+              </div>
+              
+              </>
+              )              
           }
+
           </div>
         </nav>
       </div>
