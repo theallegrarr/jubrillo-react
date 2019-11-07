@@ -3,6 +3,7 @@ import { MultiSelectComponent } from '@syncfusion/ej2-react-dropdowns';
 import Profile from '../../model/Profile';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
+import * as data from '../User/skillsData.json';
 
 export default function Freelancers(props) {
   const [freelancers, setFreelancers] = useState([]);
@@ -29,13 +30,14 @@ export default function Freelancers(props) {
           rating: value.attrs.rating,
           username: value.attrs.username,
           _id: value.attrs._id,
-          email: value.attrs.email
+          email: value.attrs.email,
+          image: value.attrs.image
         };
 
         newList=newList.concat(newfreelancer);
         setFreelancers(freelancers.push(newfreelancer));
         setFreelancers(freelancers);
-        console.log(freelancers);
+        //console.log(freelancers);
       })
     }).catch(err => console.log(err))
 
@@ -53,13 +55,24 @@ export default function Freelancers(props) {
   )
 }
 
+//const fields = { text: 'Name', value: 'Code' };
 const FreelancersList = (props) => {
   let cards=[];
+  let skills=[];
   for (var i = 0; i < props.freelancers.length; i++) {
-    console.log(props.freelancers);
+    //console.log(props.freelancers);
+    skills=[];
+    if(props.freelancers[i].skills.length>0)
+    skills.push(props.freelancers[i].skills);
     cards.push(
       <span className='indent' key={i}>
-        <h1> {props.freelancers[i].name} </h1>
+        <h1>{props.freelancers[i].name} </h1>
+        <h3>{props.freelancers[i].jobsDone}</h3>
+        
+        <div>
+          {skills}
+        </div>
+
       </span>
     );
   }

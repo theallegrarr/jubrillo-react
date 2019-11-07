@@ -121,9 +121,9 @@ export default class Header extends React.Component {
               : 
               (
               <>
-              <div class="dropdown">
-                <button class="dropbtn"><FaAlignJustify />{this.state.username}</button>
-                <div class="dropdown-content">
+              <div className="dropdown">
+                <button className="dropbtn"><FaAlignJustify />{this.state.username}</button>
+                <div className="dropdown-content">
                   <a href="/profile" className='drop-link'><FaIdCard />Profile</a>
                   <a href="/messages" className='drop-link'><FaListAlt />Messages</a>
                   <a href="/"
