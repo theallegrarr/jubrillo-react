@@ -279,20 +279,20 @@ function ProfileDetails(email, freelancer, skills, summary){
         <h3>Skills: </h3> 
       <h2>
       <div className='control-pane'>
-          <div className='control-section'>
-              <div id='multidefault' className="control-styles">
-                <MultiSelectComponent 
-                id="customelement" 
-                dataSource={data.skills} 
-                fields={fields} mode="Box"
-                value={skills}
-                placeholder="Your Skills" 
-                readonly={true}
-                />
-              </div>
-          </div>
+        <div className='control-section'>
+            <div id='multidefault' className="control-styles">
+              <MultiSelectComponent 
+              id="customelement" 
+              dataSource={data.skills} 
+              fields={fields} mode="Box"
+              value={skills}
+              placeholder="Your Skills" 
+              readonly={true}
+              />
+            </div>
         </div>
-        </h2>
+      </div>
+      </h2>
 
       </div>
       <div className="profile-row">
