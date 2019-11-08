@@ -252,7 +252,7 @@ img {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #546E7A;
+  background-color: #00abb4;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   width: 280px;
@@ -288,7 +288,7 @@ img {
 }
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-  background-color: #546E7A;
+  background-color: #00abb4;
 }
 .cta-container {
   margin-top: 0.5%;
