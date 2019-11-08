@@ -58,10 +58,12 @@ export default function UserProfile(props) {
     }).then(res => {
       console.log(res)
       //res[0].destroy()
-      setSummary(res[0].attrs.summary);
-      setSkills(res[0].attrs.skills);
-      setFreelancer(res[0].attrs.isFreelancer);
-      setEmail(res[0].attrs.email);
+      if(res.length>0){
+        setSummary(res[0].attrs.summary);
+        setSkills(res[0].attrs.skills);
+        setFreelancer(res[0].attrs.isFreelancer);
+        setEmail(res[0].attrs.email);
+      }
     })
   }, [])
 

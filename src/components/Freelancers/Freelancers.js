@@ -20,25 +20,25 @@ export default function Freelancers(props) {
       "isFreelancer": true
     }).then(res => {
       console.log(res)
-      res.forEach(value => {
+      
         
-        const newfreelancer = {
-          isFreelancer: value.attrs.isFreelancer,
-          name: value.attrs.name,
-          skills: value.attrs.skills,
-          jobsDone: value.attrs.jobsDone,
-          rating: value.attrs.rating,
-          username: value.attrs.username,
-          _id: value.attrs._id,
-          email: value.attrs.email,
-          image: value.attrs.image
-        };
+        // const newfreelancer = {
+        //   isFreelancer: value.attrs.isFreelancer,
+        //   name: value.attrs.name,
+        //   skills: value.attrs.skills,
+        //   jobsDone: value.attrs.jobsDone,
+        //   rating: value.attrs.rating,
+        //   username: value.attrs.username,
+        //   _id: value.attrs._id,
+        //   email: value.attrs.email,
+        //   image: value.attrs.image
+        // };
 
-        newList=newList.concat(newfreelancer);
-        setFreelancers(freelancers.push(newfreelancer));
-        setFreelancers(freelancers);
+        // newList=newList.concat(newfreelancer);
+        // setFreelancers(freelancers.push(newfreelancer));
+        setFreelancers(freelancers.concat(res));
         //console.log(freelancers);
-      })
+
     }).catch(err => console.log(err))
 
   }, [])
@@ -47,7 +47,7 @@ export default function Freelancers(props) {
     <div className='freelancers-container'>
       {
         freelancers.length > 0 ? 
-        (<FreelancersList freelancers={freelancers}/>)
+        (<FreelancersList freelancers={freelancers} key='311' />)
         :
         (<CircularProgress className={classes.progress} />)
       }
@@ -57,25 +57,17 @@ export default function Freelancers(props) {
 
 //const fields = { text: 'Name', value: 'Code' };
 const FreelancersList = (props) => {
-  let cards=[];
-  let skills=[];
-  for (var i = 0; i < props.freelancers.length; i++) {
-    //console.log(props.freelancers);
-    skills=[];
-    if(props.freelancers[i].skills.length>0)
-    skills.push(props.freelancers[i].skills);
-    cards.push(
-      <span className='indent' key={i}>
-        <h1>{props.freelancers[i].name} </h1>
-        <h3>{props.freelancers[i].jobsDone}</h3>
-        
-        <div>
-          {skills}
-        </div>
-
-      </span>
-    );
-  }
-
-  return cards;
+  
+  return (
+    <div key="312">
+      {
+        props.freelancers.map(freelancer => (
+          <div key={freelancer.attrs._id}>>
+            <h2>{freelancer.attrs.name}</h2>
+            <p>{freelancer.attrs.skills}</p>
+          </div>
+          ))
+      }
+    </div>
+  );
 }

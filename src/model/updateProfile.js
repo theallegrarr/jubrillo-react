@@ -16,10 +16,11 @@ export default function updateProfile (info) {
   Profile.fetchList({
     "username": info.username
   }).then(res => {
-    res[0].destroy().then(() => {
+    if(res.length>0){
+      res[0].destroy().then(res => console.log('entry destroyed')).catch(err => console.log('no entry'));
+    }
     newData.save().then((res) => {
       console.log(res);
     }).catch(err => console.log(err));
     }).catch(err => console.log(err));
-  }).catch(err => console.log(err));
 }
