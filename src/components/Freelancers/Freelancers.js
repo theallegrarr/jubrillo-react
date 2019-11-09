@@ -91,7 +91,15 @@ export default function Freelancers(props) {
             />
         <div className='sort-actions'>
           <button className='sort-apply'>Apply</button>
-          <button className='sort-apply reset'>Reset</button>
+          <button 
+          className='sort-apply reset'
+          onClick={() => {
+            setSkills([])
+            setCompleted(0)
+            setRate(0)
+          }}>
+            Reset
+          </button>
         </div>
       </div>
       <div className='freelancers-container'>
