@@ -63,6 +63,7 @@ export default function Freelancers(props) {
             fields={fields} mode="Box"
             placeholder="Select Skills" 
             value={skills}
+            style={{ "borderBottom": "none" }}
             onchange={(e) => setSkills(e.value)}
             />
           </div>
@@ -142,7 +143,11 @@ const FreelancersList = (props) => {
             src={freelancer.attrs.image} 
             alt='headshot'/>
             <div className='other-fdetails'>
-            <h2>{freelancer.attrs.name}</h2>
+            <a 
+            className='name-link'
+            href={`/freelancers/${freelancer.attrs.username}`}>
+            {freelancer.attrs.name}
+            </a>
             <div className='ratings' >
               <p>Rating:   
               <StyledRating

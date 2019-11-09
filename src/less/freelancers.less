@@ -17,7 +17,7 @@
       margin: 5px;
       cursor: pointer;
       transition: 2s background-color;
-      max-width: 700px;
+      max-width: 40%;
 
       &:hover {
         background-color: lighten(@jubrillo-gray,50);
@@ -58,7 +58,11 @@
   padding-left: 20px;
   padding-right: 10px;
   box-shadow: 0.9px 2px 7px #282c34;
-
+  max-width: 17%;
+  .control-styles {
+    border-bottom: none;
+  }
+  
   .completed-input {
     width: 100%;
     border-right: none;
@@ -143,4 +147,12 @@
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+}
+
+.name-link {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }

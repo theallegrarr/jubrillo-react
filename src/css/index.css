@@ -632,7 +632,7 @@ img {
   margin: 5px;
   cursor: pointer;
   transition: 2s background-color;
-  max-width: 700px;
+  max-width: 40%;
 }
 .freelancers-container .freelancers-list .freelancer-card:hover {
   background-color: #cdcdcd;
@@ -669,6 +669,10 @@ img {
   padding-left: 20px;
   padding-right: 10px;
   box-shadow: 0.9px 2px 7px #282c34;
+  max-width: 17%;
+}
+.sidenav .control-styles {
+  border-bottom: none;
 }
 .sidenav .completed-input {
   width: 100%;
@@ -740,4 +744,10 @@ img {
   .sidenav a {
     font-size: 18px;
   }
+}
+.name-link {
+  text-decoration: none;
+}
+.name-link:hover {
+  text-decoration: underline;
 }

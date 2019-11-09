@@ -9,6 +9,8 @@ import Header from '../src/components/Header';
 import Cta from '../src/components/Cta';
 import Profile from '../src/components/User/Profile';
 import Freelancers from '../src/components/Freelancers/Freelancers';
+import Projects from '../src/components/Projects/Projects';
+import ViewFreelancer from '../src/components/Freelancers/ViewFreelancer';
 import './App.css';
 import '../src/css/index.css';
 import '../src/css/global.css';
@@ -38,7 +40,7 @@ function App() {
         <Route exact path='/' component={Cta} />
         
         <Route 
-          path='/profile'
+          exact path='/profile'
           render={props => {
               if (user) {
                 return (<Profile {...props} userDetails={user} />)
@@ -46,13 +48,31 @@ function App() {
             return <Redirect to='/' />
           }} />
 
-      <Route 
-          path='/freelancers'
+        {/* <Route 
+          exact path='/myprojects'
           render={props => {
               if (user) {
-                return (<Freelancers {...props}/>)
+                return (<Profile {...props} userDetails={user} />)
               }
             return <Redirect to='/' />
+          }} /> */}
+
+      <Route 
+          exact path='/freelancers'
+          render={props => {
+              return (<Freelancers {...props}/>)
+          }} />
+
+      <Route 
+          path='/freelancers/:username'
+          render={props => {
+              return (<ViewFreelancer {...props}/>)
+          }} />
+      
+      <Route 
+          exact path='/projects'
+          render={props => {
+              return (<Projects {...props}/>)
           }} />
       </div>
     </div>

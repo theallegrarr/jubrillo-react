@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import '../css/index.css';
 import '../css/global.css';
-import { FaSearch, FaAlignJustify, FaIdCard, FaListAlt, FaSignOutAlt, FaList } from 'react-icons/fa';
+import { FaSearch, FaAlignJustify, FaIdCard, FaListAlt, FaSignOutAlt, FaBriefcase, FaRegMoneyBillAlt } from 'react-icons/fa';
 import logo from '../assets/logo.png';
 import {
   UserSession,
@@ -125,7 +125,9 @@ export default class Header extends React.Component {
                 <button className="dropbtn"><FaAlignJustify />{this.state.username}</button>
                 <div className="dropdown-content">
                   <a href="/profile" className='drop-link'><FaIdCard />Profile</a>
+                  <a href="/myprojects" className='drop-link'><FaBriefcase />Projects</a>
                   <a href="/messages" className='drop-link'><FaListAlt />Messages</a>
+                  <a href="/transactions" className='drop-link'><FaRegMoneyBillAlt />Transactions</a>
                   <a href="/"
                   onClick={ this.handleSignOut.bind(this) }
                   className='drop-link'><FaSignOutAlt />Sign Out</a>

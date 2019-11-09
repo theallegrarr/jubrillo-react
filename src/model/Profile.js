@@ -4,7 +4,10 @@ export default class Profile extends Model {
   static className = 'UserProfile';
 
   static schema = {
-    name: String,
+    name: {
+      type: String,
+      decrypted: true
+    },
     username: {
       type: String,
       decrypted: true

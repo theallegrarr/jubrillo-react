@@ -8,7 +8,7 @@ import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { FaCommentAlt, FaUserEdit, FaBriefcase } from 'react-icons/fa';
+import { FaUserEdit } from 'react-icons/fa';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -129,16 +129,6 @@ export default function UserProfile(props) {
             <FaUserEdit/>
             EDIT
           </button>
-        {/* {!()
-          (<button className='hire-button'>
-          <FaBriefcase />
-          HIRE
-          </button>
-          <button className='msg-button'>
-          <FaCommentAlt />
-          MESSAGE
-          </button>)
-        } */}
         </div>
     </div>
     {/*  */}
@@ -225,7 +215,7 @@ function ProfileForm(email, setEmail, setSummary, skills, setSkills, freelancer,
             <button className='submit' onClick={uploadForm}>SAVE</button>
             <button className='cancel' onClick={() => {
               setEdit(false)
-            }}>CANCEL</button>
+            }}>DONE</button>
           </div>
         </Form>
       )}
