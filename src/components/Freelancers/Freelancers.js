@@ -13,7 +13,11 @@ const fields = { text: 'Name', value: 'Code' };
 export default function Freelancers(props) {
   
   const [rateSort, setRate] = useState(0);
+  const [skills, setSkills] = useState([]);
+  const [completedJobs, setCompleted] = useState();
   const [freelancers, setFreelancers] = useState([]);
+
+
   const useStyles = makeStyles(theme => ({
     progress: {
       margin: theme.spacing(2),
@@ -58,6 +62,8 @@ export default function Freelancers(props) {
             dataSource={data.skills} 
             fields={fields} mode="Box"
             placeholder="Select Skills" 
+            value={skills}
+            onchange={(e) => setSkills(e.value)}
             />
           </div>
         </div>
@@ -65,7 +71,11 @@ export default function Freelancers(props) {
         <input 
         type='text' 
         className='completed-input'
-        placeholder='Enter a value'
+        placeholder='Enter a number'
+        value={completedJobs}
+        onChange={(e) => {
+          setCompleted(e.target.value);
+        }}
         ></input>
         <p>Min Rating: </p>
         <StyledRating
@@ -81,7 +91,7 @@ export default function Freelancers(props) {
             />
         <div className='sort-actions'>
           <button className='sort-apply'>Apply</button>
-          <button className='sort-apply'>Reset</button>
+          <button className='sort-apply reset'>Reset</button>
         </div>
       </div>
       <div className='freelancers-container'>

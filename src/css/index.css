@@ -658,7 +658,7 @@ img {
 }
 .sidenav {
   height: 100%;
-  width: 300px;
+  width: 325px;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -709,6 +709,9 @@ img {
 }
 .sidenav .sort-apply:hover {
   box-shadow: none;
+}
+.sidenav .sort-apply.reset {
+  background-color: #999917;
 }
 .sidenav .sort-actions {
   display: flex;
