@@ -202,6 +202,7 @@ img {
   outline: none;
   color: #546E7A;
   margin-left: 1%;
+  transition: 0.5s border-bottom;
 }
 .main .navbar .search .searchTerm::placeholder {
   color: #546E7A;
@@ -211,7 +212,7 @@ img {
 }
 .main .navbar .search .searchTerm:focus {
   color: #546E7A;
-  border-bottom: 1px solid #546E7A;
+  border-bottom: 2px solid #FF3366;
 }
 .main .navbar .search .searchButton {
   width: 40px;
@@ -670,20 +671,25 @@ img {
   box-shadow: 0.9px 2px 7px #282c34;
 }
 .sidenav .completed-input {
-  border: none;
+  width: 100%;
+  border-right: none;
+  padding: 5px;
+  border: 0;
+  outline: none;
   background-color: #00abb4;
   border-bottom: 1px solid #4d4d4d;
-  width: 100%;
+  color: #546E7A;
+  transition: 0.5s border-bottom;
 }
-.sidenav .completed-input:active {
-  border: none;
-  background-color: #00abb4;
-  border-bottom: 1.5px solid #4d4d4d;
+.sidenav .completed-input::placeholder {
+  color: #546E7A;
+  font-weight: 400;
+  font-size: 12pt;
+  font-family: 'Nunito', 'serif';
 }
 .sidenav .completed-input:focus {
-  border: none;
-  background-color: #00abb4;
-  border-bottom: 1.5px solid #4d4d4d;
+  color: #546E7A;
+  border-bottom: 2px solid #FF3366;
 }
 .sidenav p {
   font-family: 'IBM Plex Mono', Arial, sans-serif;

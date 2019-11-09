@@ -63,7 +63,7 @@ export default function Freelancers(props) {
         </div>
         <p>Min Jobs Completed: </p>
         <input 
-        type='input' 
+        type='text' 
         className='completed-input'
         placeholder='Enter a value'
         ></input>
