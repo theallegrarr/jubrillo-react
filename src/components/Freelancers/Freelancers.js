@@ -12,7 +12,7 @@ const fields = { text: 'Name', value: 'Code' };
 
 export default function Freelancers(props) {
   
-
+  const [rateSort, setRate] = useState(0);
   const [freelancers, setFreelancers] = useState([]);
   const useStyles = makeStyles(theme => ({
     progress: {
@@ -33,21 +33,67 @@ export default function Freelancers(props) {
 
   }, [])
 
+  const StyledRating = withStyles({
+    iconFilled: {
+      display: 'flex',
+      color: '#FF3366',
+      fontSize: '15pt',
+      alignSelf: 'center',
+    },
+    iconHover: {
+      color: '#ff3d47',
+    },
+  })(Rating);
+
   return(
     <>
       <div className="sidenav">
-        <p>Sort By Skills: </p>
+        <p>Select Skills: </p>
+        <div className='control-section'>
+          <div 
+            id='multidefault' 
+            className="control-styles">
+            <MultiSelectComponent 
+            id="customelement" 
+            dataSource={data.skills} 
+            fields={fields} mode="Box"
+            placeholder="Select Skills" 
+            />
+          </div>
+        </div>
+        <p>Min Jobs Completed: </p>
+        <input 
+        type='input' 
+        className='completed-input'
+        placeholder='Enter a value'
+        ></input>
+        <p>Min Rating: </p>
+        <StyledRating
+              name="customized-color"
+              value={rateSort}
+              // getLabelText={getLabelText}
+              precision={0.5}
+              onChange={(event, newValue) => {
+                setRate(newValue);
+              }}
+              icon={<StarBorderIcon 
+                fontSize="large" />}
+            />
+        <div className='sort-actions'>
+          <button className='sort-apply'>Apply</button>
+          <button className='sort-apply'>Reset</button>
+        </div>
       </div>
-    <div className='freelancers-container'>
-      
-      {
-        freelancers.length > 0 ? 
-        (<FreelancersList freelancers={freelancers} key='311' />)
-        //(<CircularProgress className={classes.progress} />)
-        :
-        (<CircularProgress className={classes.progress} />)
-      }
-    </div>
+      <div className='freelancers-container'>
+        
+        {
+          freelancers.length > 0 ? 
+          (<FreelancersList freelancers={freelancers} key='311' />)
+          //(<CircularProgress className={classes.progress} />)
+          :
+          (<CircularProgress className={classes.progress} />)
+        }
+      </div>
     </>
   )
 }
@@ -79,7 +125,9 @@ const FreelancersList = (props) => {
             alt='headshot'/>
             <div className='other-fdetails'>
             <h2>{freelancer.attrs.name}</h2>
-            <div className='ratings' ><p>Rating:   <StyledRating
+            <div className='ratings' >
+              <p>Rating:   
+              <StyledRating
               name="customized-color"
               value={freelancer.attrs.rating}
               // getLabelText={getLabelText}
