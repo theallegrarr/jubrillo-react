@@ -13,7 +13,7 @@ export default class Project extends Model {
       decrypted: true
     },
     applicants: {
-      type: Array,
+      type: Number,
       decrypted: true
     },
     developer_id: {
