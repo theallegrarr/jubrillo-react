@@ -22,7 +22,6 @@ export default function NewProjectForm(props) {
     Profile.fetchList({ username: person.username })
       .then(res => {
         setRating(res[0].attrs.rating);
-        console.log(res[0].attrs.rating)
       }).catch(err => console.log(err));
   }, [])
 

@@ -101,7 +101,7 @@ export default function Project(props) {
           </button>
         </div>
       </div>
-      <div className='freelancers-container'>
+      <div key='314' className='freelancers-container'>
       <div className='add-button-container'>
         
           <button 
@@ -127,20 +127,8 @@ export default function Project(props) {
 //const fields = { text: 'Name', value: 'Code' };
 const ProjectsList = (props) => {
    
-  const StyledRating = withStyles({
-    iconFilled: {
-      display: 'flex',
-      color: '#FF3366',
-      fontSize: '15pt',
-      alignSelf: 'center',
-    },
-    iconHover: {
-      color: '#ff3d47',
-    },
-  })(Rating);
-
   return (
-    <div key="312" className='projects-list'>
+    <div key="313" className='projects-list'>
       
       {
         props.projects.map(project => (
