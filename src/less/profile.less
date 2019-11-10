@@ -156,31 +156,33 @@
     .buttons{
       display: flex;
       flex-direction: row;
-      margin-top: 2%;
-      width: 50%;
-      align-self: flex-end;
+      margin-top: 1%;
+      width: 100%;
+      justify-content: flex-end;
       
       .submit {
         background-color: @jubrillo-green;
         color: white;
         border: none;
         font-weight: 700;
-        padding: 2%;
+        padding: 1%;
         font-family: @primary-font, 'serif';
         font-size: 12pt;
         border-radius: 10px;
         box-shadow: 0.9px 2px 7px #282c34;
+        min-width: 20%;
       }
       .cancel {
         background-color: @jubrillo-pink;
         color: white;
         border: none;
         font-weight: 700;
-        padding: 2%;
-        font-family: @primary-font, 'serif';
+        padding: 1%;
+        font-family: @secondary-font;
         font-size: 12pt;
         border-radius: 10px;
         box-shadow: 0.9px 2px 7px #282c34;
+        min-width: 20%;
       }
     }
 
@@ -259,3 +261,4 @@
     }
   }
 }
+

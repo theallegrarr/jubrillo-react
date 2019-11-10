@@ -10,6 +10,7 @@ import Cta from '../src/components/Cta';
 import Profile from '../src/components/User/Profile';
 import Freelancers from '../src/components/Freelancers/Freelancers';
 import Projects from '../src/components/Projects/Projects';
+import NewProject from '../src/components/Projects/NewProject';
 import ViewFreelancer from '../src/components/Freelancers/ViewFreelancer';
 import './App.css';
 import '../src/css/index.css';
@@ -73,6 +74,12 @@ function App() {
           exact path='/projects'
           render={props => {
               return (<Projects {...props}/>)
+          }} />
+
+      <Route 
+          exact path='/newproject'
+          render={props => {
+              return (<NewProject {...props}/>)
           }} />
       </div>
     </div>

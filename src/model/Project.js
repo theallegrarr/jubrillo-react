@@ -4,15 +4,15 @@ export default class Project extends Model {
   static className = 'JubrilloProject';
 
   static schema = {
-    name: {
+    title: {
       type: String,
       decrypted: true
     },
-    employer_id: {
+    employer_username: {
       type: String,
       decrypted: true
     },
-    applicants: {
+    project_index: {
       type: Number,
       decrypted: true
     },
@@ -35,11 +35,17 @@ export default class Project extends Model {
     duration: {
       type: Number,
       decrypted: true
+    },
+    active: {
+      type: Boolean,
+      decrypted: true
     }
   }
 
   static defaults = {
     duration: 3,
     budget: 30,
+    developer_id: '',
+    active: true,
   }
 }

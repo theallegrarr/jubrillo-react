@@ -525,31 +525,33 @@ img {
 .profile-form .edit-profile .buttons {
   display: flex;
   flex-direction: row;
-  margin-top: 2%;
-  width: 50%;
-  align-self: flex-end;
+  margin-top: 1%;
+  width: 100%;
+  justify-content: flex-end;
 }
 .profile-form .edit-profile .buttons .submit {
   background-color: #4CAF50;
   color: white;
   border: none;
   font-weight: 700;
-  padding: 2%;
+  padding: 1%;
   font-family: 'Nunito', 'serif';
   font-size: 12pt;
   border-radius: 10px;
   box-shadow: 0.9px 2px 7px #282c34;
+  min-width: 20%;
 }
 .profile-form .edit-profile .buttons .cancel {
   background-color: #FF3366;
   color: white;
   border: none;
   font-weight: 700;
-  padding: 2%;
-  font-family: 'Nunito', 'serif';
+  padding: 1%;
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
   font-size: 12pt;
   border-radius: 10px;
   box-shadow: 0.9px 2px 7px #282c34;
+  min-width: 20%;
 }
 .profile-form .edit-profile .control-styles {
   margin-bottom: 2%;
@@ -750,4 +752,84 @@ img {
 }
 .name-link:hover {
   text-decoration: underline;
+}
+.form-container {
+  margin-top: 40px;
+  padding: 1%;
+  padding-right: 3%;
+  background-color: white;
+}
+.form-container h2 {
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
+}
+.form-container .App {
+  min-height: 200px;
+}
+.edit-profile {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 1%;
+  justify-self: center;
+}
+.edit-profile .buttons {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1%;
+  width: 100%;
+  justify-content: flex-end;
+}
+.edit-profile .buttons .submit {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  font-weight: 700;
+  padding: 1%;
+  font-family: 'Nunito', 'serif';
+  font-size: 12pt;
+  border-radius: 10px;
+  box-shadow: 0.9px 2px 7px #282c34;
+  min-width: 20%;
+}
+.edit-profile .buttons .cancel {
+  background-color: #FF3366;
+  color: white;
+  border: none;
+  font-weight: 700;
+  padding: 1%;
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-size: 12pt;
+  border-radius: 10px;
+  box-shadow: 0.9px 2px 7px #282c34;
+  min-width: 20%;
+}
+.edit-profile .control-styles {
+  margin-bottom: 2%;
+}
+.edit-profile .profile-input {
+  width: 100%;
+  padding: 1px;
+  border: 0;
+  outline: none;
+  background-color: white;
+  border-bottom: 1px solid #4d4d4d;
+  transition: 0.5s border-bottom;
+  margin-bottom: 3%;
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-size: 14pt;
+  color: black;
+}
+.edit-profile .profile-input::placeholder {
+  color: #546E7A;
+  font-weight: 400;
+  font-size: 12pt;
+  font-family: 'Nunito', 'serif';
+}
+.edit-profile .profile-input:focus {
+  color: #546E7A;
+  border-bottom: 2px solid #FF3366;
+}
+.edit-profile .submit {
+  margin-right: 5%;
 }

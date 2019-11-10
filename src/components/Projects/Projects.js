@@ -105,7 +105,7 @@ export default function Project(props) {
         
         {
           projects.length > 0 ? 
-          (<ProjectsList freelancers={projects} key='321' />)
+          (<ProjectsList projects={projects} key='321' />)
           //(<CircularProgress className={classes.progress} />)
           :
           (<CircularProgress className={classes.progress} />)
