@@ -17,6 +17,7 @@
     "blockstack": "^19.3.0",
     "dotenv": "^8.1.0",
     "formik": "^1.5.8",
+    "javascript-time-ago": "^2.0.4",
     "less-watch-compiler": "^1.14.1",
     "radiks": "0.2.0",
     "radiks-server": "^0.2.3",

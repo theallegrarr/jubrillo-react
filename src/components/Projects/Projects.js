@@ -6,6 +6,8 @@ import StarBorderIcon from '@material-ui/icons/Star';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/core/styles';
+import TimeAgo from 'javascript-time-ago';
+import en from 'javascript-time-ago/locale/en';
 import * as data from '../User/skillsData.json';
 
 const fields = { text: 'Name', value: 'Code' };
@@ -16,7 +18,6 @@ export default function Project(props) {
   const [skills, setSkills] = useState([]);
   const [completedJobs, setCompleted] = useState();
   const [projects, setProject] = useState([]);
-
 
   const useStyles = makeStyles(theme => ({
     progress: {
@@ -164,6 +165,10 @@ function ProjectCard({ project }){
     },
   })(Rating);
 
+  TimeAgo.addLocale(en);
+  const timeAgo = new TimeAgo('en-US');
+  timeAgo.format(new Date());
+
   return(
     <div 
     key={project.attrs._id} 
@@ -171,6 +176,7 @@ function ProjectCard({ project }){
       <div className='job-heading'>
       <a href={`/projects/${project.attrs.project_index}`}>{project.attrs.title}</a>
       <h4 className='budget-amount'>budget: ${project.attrs.budget}</h4>
+      <p className='time-ago'>created {timeAgo.format(Date.now() - (Date.now()-project.attrs.createdAt))}</p>
       </div>
       <div className='rating-row'>
         {/* <p>Employer Rating: <br/></p> */}
@@ -189,7 +195,7 @@ function ProjectCard({ project }){
               fields={fields} mode="Box"
               value={project.attrs.skills}
               placeholder="Required Skills" 
-              readOnly
+              readonly={true}
               />
             </div>
         </div>

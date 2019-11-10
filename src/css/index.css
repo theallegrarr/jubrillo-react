@@ -844,7 +844,6 @@ img {
   width: 100%;
   max-width: 97%;
   padding: 10px;
-  box-shadow: 0.9px 2px 7px #282c34;
 }
 .projects-list .text-span {
   display: block;
@@ -877,7 +876,7 @@ img {
   background-color: #87a1ad;
   padding: 5px;
   border-radius: 4px;
-  box-shadow: 0.9px 2px 7px #282c34;
+  box-shadow: 0.5px 2px 7px #282c34;
 }
 .projects-list h2,
 .projects-list span,
@@ -913,8 +912,20 @@ img {
   box-shadow: none;
 }
 .add-button-container {
-  display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  width: 97%;
+  display: flex;
+  margin-bottom: 2%;
+  width: 100%;
+  max-width: 77%;
+  padding: 10px;
+  margin-left: 355px;
+  border-bottom: 0.3px solid #999999;
+}
+.time-ago {
+  margin-left: 20px;
+  align-self: center;
+  justify-self: center;
+  font-style: italic;
+  font-size: 6pt;
 }
