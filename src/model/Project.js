@@ -39,6 +39,10 @@ export default class Project extends Model {
     active: {
       type: Boolean,
       decrypted: true
+    },
+    step: {
+      type: Number,
+      decrypted: true
     }
   }
 
@@ -47,5 +51,6 @@ export default class Project extends Model {
     budget: 30,
     developer_id: '',
     active: true,
+    step: 1,
   }
 }

@@ -28,7 +28,11 @@ export default function Project(props) {
   const classes = useStyles();
 
   useEffect(() => {
-    ProjectSchema.fetchList().then(res => {
+    ProjectSchema.fetchList({
+      sort: '-createdAt',
+      limit: 10,
+      offset: 0
+    }).then(res => {
       console.log(res)
       setProject(res);
     }).catch(err => console.log(err))
@@ -148,7 +152,7 @@ function ProjectCard({ project }){
     return <div dangerouslySetInnerHTML={createMarkup()} />;
   }
 
-  const StyledRating = withStyles({
+  const StyledRating2 = withStyles({
     iconFilled: {
       display: 'flex',
       color: '#FF3366',
@@ -170,14 +174,9 @@ function ProjectCard({ project }){
       </div>
       <div className='rating-row'>
         {/* <p>Employer Rating: <br/></p> */}
-        <StyledRating
-          name="customized-color"
-          value={project.attrs.employer_rating}
-          // getLabelText={getLabelText}
-          precision={0.5}
-          readonly={true}
-          icon={<StarBorderIcon 
-          fontSize="large" />}
+        <StyledRating2 
+        value={project.attrs.employer_rating} 
+        readOnly 
         />
       </div>
       <span className='text-span'><MyComponent /></span>
@@ -189,8 +188,8 @@ function ProjectCard({ project }){
               dataSource={data.skills} 
               fields={fields} mode="Box"
               value={project.attrs.skills}
-              placeholder="Your Skills" 
-              readonly={true}
+              placeholder="Required Skills" 
+              readOnly
               />
             </div>
         </div>

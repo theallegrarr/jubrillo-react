@@ -23,11 +23,16 @@ export default class Application extends Model {
     duration: {
       type: String,
       decrypted: true
+    },
+    selected: {
+      type: Boolean,
+      decrypted: true
     }
   }
 
   static defaults = {
     duration: 3,
     applicant_bid: 30,
+    selected: false
   }
 }
