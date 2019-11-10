@@ -8,7 +8,8 @@ export default function insertProject (info) {
     budget: info.budget,
     description: info.description,
     skills: info.skills,
-    duration: info.duration
+    duration: info.duration,
+    employer_rating: info.employer_rating
   });
 
   return newData.save().then((res) => {

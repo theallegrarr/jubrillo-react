@@ -5,6 +5,7 @@ import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import NewProject from '../../model/newProject';
 import Projects from '../../model/Project';
+import Profile from '../../model/Profile';
 import * as data from '../User/skillsData.json';
 
 export default function NewProjectForm(props) {
@@ -13,8 +14,17 @@ export default function NewProjectForm(props) {
   const [description, setDescription] = useState('');
   const [skills, setSkills] = useState([]);
   const [duration, setDuration] = useState();
+  const [rating, setRating] = useState(0);
   const localData=JSON.parse(localStorage.getItem('blockstack-session'));
   const person=localData.userData;
+
+  useEffect(() => {
+    Profile.fetchList({ username: person.username })
+      .then(res => {
+        setRating(res[0].attrs.rating);
+        console.log(res[0].attrs.rating)
+      }).catch(err => console.log(err));
+  }, [])
 
   const createProject = () => {
     Projects.fetchList().then(res => {
@@ -25,6 +35,7 @@ export default function NewProjectForm(props) {
         budget: budget,
         description: description,
         skills: skills,
+        employer_rating: rating,
         duration: duration
       }
       NewProject(data)

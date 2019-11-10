@@ -134,13 +134,69 @@ const ProjectsList = (props) => {
     <div key="312" className='projects-list'>
       {
         props.projects.map(project => (
-          <div 
-          key={project.attrs._id} 
-          className='project-card'>
-            
-          </div>
+          <ProjectCard project={project} />
           ))
       }
+    </div>
+  );
+}
+
+function ProjectCard({ project }){
+  function createMarkup() {
+    return {__html: project.attrs.description};
+  }
+  
+  function MyComponent() {
+    return <div dangerouslySetInnerHTML={createMarkup()} />;
+  }
+
+  const StyledRating = withStyles({
+    iconFilled: {
+      display: 'flex',
+      color: '#FF3366',
+      fontSize: '15pt',
+      alignSelf: 'center',
+    },
+    iconHover: {
+      color: '#ff3d47',
+    },
+  })(Rating);
+
+  return(
+    <div 
+    key={project.attrs._id} 
+    className='project-card'>
+      <div className='job-heading'>
+      <a href={`/projects/${project.attrs.project_index}`}>{project.attrs.title}</a>
+      <h4 className='budget-amount'>budget: ${project.attrs.budget}</h4>
+      </div>
+      <div className='rating-row'>
+        {/* <p>Employer Rating: <br/></p> */}
+        <StyledRating
+          name="customized-color"
+          value={project.attrs.employer_rating}
+          // getLabelText={getLabelText}
+          precision={0.5}
+          readonly={true}
+          icon={<StarBorderIcon 
+          fontSize="large" />}
+        />
+      </div>
+      <span className='text-span'><MyComponent /></span>
+      <div className='control-pane'>
+        <div className='control-section'>
+            <div id='multidefault' className="control-styles">
+              <MultiSelectComponent 
+              id="customelement" 
+              dataSource={data.skills} 
+              fields={fields} mode="Box"
+              value={project.attrs.skills}
+              placeholder="Your Skills" 
+              readonly={true}
+              />
+            </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -833,3 +833,61 @@ img {
 .edit-profile .submit {
   margin-right: 5%;
 }
+.projects-list {
+  margin-left: 355px;
+  margin-top: 130px;
+}
+.projects-list .project-card {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2%;
+  width: 100%;
+  max-width: 97%;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0.9px 2px 7px #282c34;
+}
+.projects-list .text-span {
+  display: block;
+  height: 85px;
+  overflow: hidden;
+  white-space: wrap;
+  text-overflow: ellipsis;
+  margin: 0;
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-weight: 700;
+}
+.projects-list .job-heading,
+.projects-list .rating-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+}
+.projects-list .job-heading p,
+.projects-list .rating-row p {
+  font-size: 13pt;
+}
+.projects-list .job-heading .budget-amount,
+.projects-list .rating-row .budget-amount {
+  margin-left: 10px;
+  font-size: 10pt;
+  background-color: #87a1ad;
+  padding: 5px;
+  border-radius: 4px;
+  box-shadow: 0.9px 2px 7px #282c34;
+}
+.projects-list h2,
+.projects-list span,
+.projects-list div {
+  margin: 0;
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
+}
+.projects-list a {
+  text-decoration: none;
+}
+.projects-list a:hover {
+  text-decoration: underline;
+}
