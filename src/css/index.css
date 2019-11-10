@@ -919,6 +919,7 @@ img {
   width: 100%;
   max-width: 77%;
   padding: 10px;
+  padding-right: 30px;
   margin-left: 355px;
   border-bottom: 0.3px solid #999999;
 }
