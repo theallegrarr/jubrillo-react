@@ -1,6 +1,6 @@
 .projects-list {
   margin-left: 355px;
-  margin-top: 130px;
+  margin-top: 30px;
 
   .project-card {
     display: flex;
@@ -58,4 +58,32 @@
       text-decoration: underline;
     }
   }
+}
+
+.add-project-button {
+  margin-left: 355px;
+  margin-top: 80px;
+  align-self: right;
+  justify-self: right;
+  border: none;
+  background-color: @jubrillo-pink;
+  width: 200px;
+  color: white;
+  padding: 1%;
+  font-family: @secondary-font;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0.9px 2px 7px #282c34;
+  transition: 1s box-shadow;
+
+  &:hover {
+    box-shadow: none;
+  }
+}
+
+.add-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 97%;
 }

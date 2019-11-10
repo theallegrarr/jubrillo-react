@@ -102,8 +102,17 @@ export default function Project(props) {
         </div>
       </div>
       <div className='freelancers-container'>
+      <div className='add-button-container'>
         
-        {
+          <button 
+          className='add-project-button'
+          onClick={() => props.history.push('/newproject')}
+          >
+            + Create Project
+          </button>
+        
+      </div>
+         {
           projects.length > 0 ? 
           (<ProjectsList projects={projects} key='321' />)
           //(<CircularProgress className={classes.progress} />)
@@ -132,6 +141,7 @@ const ProjectsList = (props) => {
 
   return (
     <div key="312" className='projects-list'>
+      
       {
         props.projects.map(project => (
           <ProjectCard project={project} />
