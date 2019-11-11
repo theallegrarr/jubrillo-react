@@ -112,8 +112,11 @@ export default function Project(props) {
           <button 
           className='add-project-button'
           onClick={() => props.history.push('/newproject')}
-          >
-            + Create Project
+          ><span 
+          role='img'
+          description='lightning'
+          aria-labelledby=''>➕{' '}</span>
+            Create Project
           </button>
         
       </div>
