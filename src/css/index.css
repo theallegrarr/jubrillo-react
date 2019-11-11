@@ -930,3 +930,87 @@ img {
   font-style: italic;
   font-size: 6pt;
 }
+.project-container {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  padding-top: 60px;
+}
+.project-container .project-view-page {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  width: 70%;
+  margin: 20px;
+  margin-right: 30px;
+}
+.project-container .employer-info {
+  background-color: #00abb4;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0.5px 2px 7px #282c34;
+  border-radius: 12px;
+  min-height: 600px;
+}
+.project-container .employer-info p {
+  margin-bottom: 0;
+}
+.project-container .employer-info .rating-emp {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  padding: 3px;
+}
+.project-container h2,
+.project-container h3,
+.project-container h4,
+.project-container p {
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-weight: 900;
+}
+.project-container .completed-input {
+  width: 100%;
+  border-right: none;
+  padding: 1px;
+  border: 0;
+  outline: none;
+  background-color: #00abb4;
+  border-bottom: 1px solid #4d4d4d;
+  color: black;
+  transition: 0.5s border-bottom;
+  font-size: 12pt;
+}
+.project-container .completed-input::placeholder {
+  color: black;
+  font-weight: 400;
+  font-size: 12pt;
+  font-family: 'Nunito', 'serif';
+}
+.project-container .completed-input:focus {
+  color: black;
+  border-bottom: 2px solid #FF3366;
+}
+.project-container .apply {
+  margin-top: 40px;
+  border-top: 1px solid #4d4d4d;
+}
+.project-container .apply .sort-apply {
+  border: none;
+  background-color: #FF3366;
+  width: 45%;
+  color: white;
+  padding: 4%;
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0.9px 2px 7px #282c34;
+  transition: 1s box-shadow;
+  margin-top: 10px;
+}
+.project-container .apply .sort-apply:hover {
+  box-shadow: none;
+}
+.project-container .control-pane {
+  max-width: 90%;
+}

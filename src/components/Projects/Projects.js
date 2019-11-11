@@ -22,7 +22,7 @@ export default function Project(props) {
   const useStyles = makeStyles(theme => ({
     progress: {
       margin: theme.spacing(2),
-      marginTop: '300px',
+      marginTop: '20%',
       marginLeft: '50%',
     },
   }));

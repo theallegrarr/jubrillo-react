@@ -1,0 +1,92 @@
+.project-container {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  padding-top: 60px;
+
+  .project-view-page {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    width: 70%;
+    margin: 20px;
+    margin-right: 30px;
+  }
+
+  .employer-info {
+    background-color: @logo-color;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0.5px 2px 7px #282c34;
+    border-radius: 12px;
+    min-height: 600px;
+
+    p {
+      margin-bottom: 0;
+    }
+    .rating-emp {
+      display: flex;
+      justify-items: center;
+      align-items: center;
+      padding: 3px;
+    }
+  }
+
+  h2, h3, h4, p {
+    font-family: @secondary-font;
+    font-weight: 900;
+  }
+
+  .completed-input {
+    width: 100%;
+    border-right: none;
+    padding: 1px;
+    border: 0;
+    outline: none;
+    background-color: @logo-color;
+    border-bottom: 1px solid lighten(black, 30);
+    color: black;
+    transition: 0.5s border-bottom;
+    font-size: 12pt;
+    
+    &::placeholder {
+        color: black;
+        font-weight: 400;
+        font-size: 12pt;
+        font-family: @primary-font, 'serif';
+    }
+
+    &:focus{
+        color: black;
+        border-bottom: 2px solid @jubrillo-pink;
+    }
+  }
+
+  .apply {
+    margin-top: 40px;
+    border-top: 1px solid @jubrillo-gray;
+
+    .sort-apply {
+      border: none;
+      background-color: @jubrillo-pink;
+      width: 45%;
+      color: white;
+      padding: 4%;
+      font-family: @secondary-font;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0.9px 2px 7px #282c34;
+      transition: 1s box-shadow;
+      margin-top: 10px;
+  
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+
+  .control-pane {
+    max-width: 90%;
+  }
+}

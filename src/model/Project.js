@@ -43,6 +43,14 @@ export default class Project extends Model {
     step: {
       type: Number,
       decrypted: true
+    },
+    employer_rating: {
+      type: Number,
+      decrypted: true
+    },
+    freelancer_rating: {
+      type: Number,
+      decrypted: true
     }
   }
 
