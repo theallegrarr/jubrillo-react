@@ -8,6 +8,7 @@ import Rating from '@material-ui/lab/Rating';
 import StarBorderIcon from '@material-ui/icons/Star';
 import Projects from '../../model/Project';
 import Profile from '../../model/Profile';
+import Application from '../../model/addApplication';
 import * as data from '../User/skillsData.json';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
@@ -19,6 +20,23 @@ export default function ProjectPage(props) {
   const [budget, setBudget] = useState('');
   const [duration, setDuration] = useState('');
   const [message, setMessage] = useState('');
+  const localData=JSON.parse(localStorage.getItem('blockstack-session'));
+  const person=localData.userData;
+
+  const submitApplication = () => {
+    const data = {
+      project_id: project.project_id,
+      project_index: props.match.params.project_index,
+      applicant_username: person.username,
+      applicant_bid: budget,
+      applicant_message: message,
+      duration: duration
+    }
+    console.log(data)
+    Application(data).then(res => {
+      console.log('promise: ',res)
+    }).catch(err => console.log(err))
+  }
 
   useEffect(() => {
     Projects.fetchList({
@@ -34,9 +52,10 @@ export default function ProjectPage(props) {
           active: res[0].attrs.active,
           skills: res[0].attrs.skills,
           username: res[0].attrs.employer_username,
-          project: res[0].attrs.budget
+          project: res[0].attrs.budget,
+          project_id: res[0].attrs._id
         }
-
+        console.log(project)
         setProject(project);
         Profile.fetchList({ username: res[0].attrs.employer_username })
           .then(user => {
@@ -44,7 +63,6 @@ export default function ProjectPage(props) {
           }).catch(err => {
             console.log(err);
           })
-
       }
     })
   }, [])
@@ -113,7 +131,7 @@ export default function ProjectPage(props) {
                 </div>
               </div>
 
-              <p><MyComponent /></p>
+              <div className='p-text'><MyComponent /></div>
             </div>
             <div className='employer-info'>
           <p>Employer: {employer.username}</p>
@@ -134,6 +152,7 @@ export default function ProjectPage(props) {
             setDuration={setDuration}
             message={message}
             setMessage={setMessage}
+            submitApplication={submitApplication}
           />
           </div>
           </>
@@ -149,7 +168,8 @@ export default function ProjectPage(props) {
 function ApplicationForm({ 
   budget, setBudget, 
   duration, setDuration, 
-  message, setMessage 
+  message, setMessage,
+  submitApplication
 }) {
 
   return(
@@ -184,11 +204,14 @@ function ApplicationForm({
           setMessage(e.target.value);
         }}
         ></input>
-        <button className='sort-apply'>
+        <button 
+        className='sort-apply'
+        onClick={() => submitApplication()}>
           <span 
           role='img'
           description='lightning'
-          aria-labelledby=''>⚡</span>
+          aria-labelledby=''
+          >⚡</span>
            Make Offer!
         </button>
     </div>

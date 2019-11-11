@@ -73,6 +73,7 @@ export default function UserProfile(props) {
     },
   }));
 
+  const imageAddress = person.image ? person.image["0"].contentUrl : '';
   
   const uploadProfile = (e) => {
     e.preventDefault();
@@ -83,7 +84,7 @@ export default function UserProfile(props) {
       isFreelancer: freelancer,
       username: localData.userData.username,
       email: email,
-      image: person.image["0"].contentUrl
+      image: imageAddress
     }
     updateProfile(info);
   }
@@ -106,11 +107,14 @@ export default function UserProfile(props) {
 
   return (
     <div className='profile-form'>
-    {!person.image["0"].contentUrl && (<CircularProgress className={classes.progress} />)}
+    {!person && (<CircularProgress className={classes.progress} />)}
     {person && (
     <>
     <div className='profile-info'>
-      <img src={person.image["0"].contentUrl} alt='profile'/>
+      { person.image ? 
+        <img src={person.image["0"].contentUrl} alt='profile'/> : 
+        <img src={`https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png`} alt='profile'/>
+      }
         <div className='profile-others'>
           <h2 className='name'>{person.name}</h2>
           <h3 className='username'>{props.userDetails.username}</h3>

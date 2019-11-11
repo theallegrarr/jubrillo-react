@@ -34,9 +34,9 @@ export default function Project(props) {
       limit: 10,
       offset: 0
     }).then(res => {
-      console.log(res)
+      console.log('response: ',res)
       setProject(res);
-    }).catch(err => console.log(err))
+    }).catch(err => console.log('error: ',err))
 
   }, [])
 
@@ -180,7 +180,7 @@ function ProjectCard({ project }){
           description='lightning'
           aria-labelledby=''>💼{' '}</span>{project.attrs.title}
           </a>
-          
+
       <h4 className='budget-amount'>budget: ${project.attrs.budget}</h4>
       <p className='time-ago'>created {timeAgo.format(Date.now() - (Date.now()-project.attrs.createdAt))}</p>
       </div>

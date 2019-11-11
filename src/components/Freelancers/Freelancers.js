@@ -140,16 +140,15 @@ const FreelancersList = (props) => {
           key={freelancer.attrs._id} 
           className='freelancer-card'>
             <img 
-            src={freelancer.attrs.image} 
+            src={freelancer.attrs.image ? freelancer.attrs.image : `https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png`} 
             alt='headshot'/>
             <div className='other-fdetails'>
             <a 
             className='name-link'
             href={`/freelancers/${freelancer.attrs.username}`}>
-            {freelancer.attrs.name}
+            {freelancer.attrs.name ? freelancer.attrs.name : freelancer.attrs.username}
             </a>
             <div className='ratings' >
-              <p>Rating:   
               <StyledRating
               name="customized-color"
               value={freelancer.attrs.rating}
@@ -157,7 +156,7 @@ const FreelancersList = (props) => {
               precision={0.5}
               icon={<StarBorderIcon fontSize="inherit" />}
               readOnly
-            /></p></div>
+            /></div>
             <div className='control-pane'>
             <div className='control-section'>
                 <div id='multidefault' className="control-styles">

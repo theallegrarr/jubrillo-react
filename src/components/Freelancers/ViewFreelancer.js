@@ -78,7 +78,7 @@ function UserHeader({ person }) {
     
     <>
     <div className='profile-info'>
-      <img src={person.image} alt='profile'/>
+      <img src={person.image ? person.image : `https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png`} alt='profile'/>
         <div className='profile-others'>
           <h2 className='name'>{person.name}</h2>
           <h3 className='username'>{person.username}</h3>

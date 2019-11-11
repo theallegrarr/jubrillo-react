@@ -967,7 +967,8 @@ img {
 .project-container h2,
 .project-container h3,
 .project-container h4,
-.project-container p {
+.project-container p,
+.project-container .p-text {
   font-family: 'IBM Plex Mono', Arial, sans-serif;
   font-weight: 900;
 }
@@ -1008,7 +1009,7 @@ img {
   cursor: pointer;
   box-shadow: 0.9px 2px 7px #282c34;
   transition: 1s box-shadow;
-  margin-top: 10px;
+  margin-top: 40px;
 }
 .project-container .apply .sort-apply:hover {
   box-shadow: none;
