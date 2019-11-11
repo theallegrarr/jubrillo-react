@@ -211,8 +211,8 @@ function ApplicationForm({
           role='img'
           description='lightning'
           aria-labelledby=''
-          >⚡</span>
-           Make Offer!
+          >⚡{' '}</span>
+           Submit Offer!
         </button>
     </div>
   );
