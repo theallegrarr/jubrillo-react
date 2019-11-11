@@ -92,7 +92,12 @@ export default function ProjectPage(props) {
         project ? 
           <>
             <div className='project-view-page'>
-              <h2>{project.title}</h2>
+              <h2><span 
+                role='img'
+                description='lightning'
+      aria-labelledby=''>💼{' '}</span>
+                {project.title}</h2>
+            
               <div className='control-pane'>
                 <div className='control-section'>
                     <div id='multidefault' className="control-styles">
@@ -107,6 +112,7 @@ export default function ProjectPage(props) {
                     </div>
                 </div>
               </div>
+
               <p><MyComponent /></p>
             </div>
             <div className='employer-info'>

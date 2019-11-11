@@ -855,6 +855,7 @@ img {
   font-family: 'IBM Plex Mono', Arial, sans-serif;
   font-size: 10pt;
   font-weight: 700;
+  margin-bottom: 10px;
 }
 .projects-list .job-heading,
 .projects-list .rating-row {
@@ -952,6 +953,7 @@ img {
   box-shadow: 0.5px 2px 7px #282c34;
   border-radius: 12px;
   min-height: 600px;
+  max-height: 700px;
 }
 .project-container .employer-info p {
   margin-bottom: 0;

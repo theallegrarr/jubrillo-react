@@ -174,7 +174,13 @@ function ProjectCard({ project }){
     key={project.attrs._id} 
     className='project-card'>
       <div className='job-heading'>
-      <a href={`/projects/${project.attrs.project_index}`}>{project.attrs.title}</a>
+      <a href={`/projects/${project.attrs.project_index}`}>
+        <span 
+          role='img'
+          description='lightning'
+          aria-labelledby=''>💼{' '}</span>{project.attrs.title}
+          </a>
+          
       <h4 className='budget-amount'>budget: ${project.attrs.budget}</h4>
       <p className='time-ago'>created {timeAgo.format(Date.now() - (Date.now()-project.attrs.createdAt))}</p>
       </div>

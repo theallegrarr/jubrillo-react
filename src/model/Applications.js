@@ -8,7 +8,11 @@ export default class Application extends Model {
       type: String,
       decrypted: true
     },
-    applicant_id: {
+    project_index: {
+      type: Number,
+      decrypted: true
+    },
+    applicant_username: {
       type: String,
       decrypted: true
     },
