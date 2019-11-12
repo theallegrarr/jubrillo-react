@@ -77,10 +77,6 @@ export default function ProjectPage(props) {
     }).catch(err => console.log(err))
   }, [])
 
-  const showApplications = () => {
-
-  }
-
   const useStyles = makeStyles(theme => ({
     progress: {
       margin: theme.spacing(2),
@@ -155,7 +151,9 @@ export default function ProjectPage(props) {
                     description='lightning'
                     aria-labelledby=''
                     >📑{' '}</span>Applications({applications.length})</h2>
-                  <ApplicantsList applications={applications} />
+                  <ApplicantsList 
+                  applications={applications} 
+                  otherProps={props}/>
                   </>}
                 </div>
             </div>
@@ -171,6 +169,7 @@ export default function ProjectPage(props) {
           <p>Jobs Done: {employer.jobsDone}</p>
           <p>Jobs Created: {employer.jobsCreated}</p>
           <p>Employer Account was Created: {timeAgo.format(Date.now() - (Date.now()-employer.createdAt))}</p>
+          {person.username !== project.username && 
           <ApplicationForm 
             budget={budget}
             setBudget={setBudget}
@@ -179,7 +178,23 @@ export default function ProjectPage(props) {
             message={message}
             setMessage={setMessage}
             submitApplication={submitApplication}
-          />
+          />}
+          {person.username === project.username && 
+            <button 
+            className='hire-applicant'
+            style={{
+              'maxHeight': '80px', 
+              'padding': '3px',
+              'marginTop': '20px'
+              }}>
+              <span 
+              role='img'
+              description='lightning'
+              aria-labelledby=''
+              >📄{' '}</span>
+              Work Thread
+            </button>
+          }
           </div>
           </>
         :
@@ -239,27 +254,36 @@ function ApplicationForm({
           role='img'
           description='lightning'
           aria-labelledby=''
-          >⚡{' '}</span>
+          >📄{' '}</span>
            Submit Offer!
         </button>
     </div>
   );
 }
 
-function ApplicantsList({ applications }){
-
+function ApplicantsList({ applications, otherProps }){
+  const updateFreelancer = (app_id) => {
+    ApplicationSchema.findById(app_id).then(res => {
+      // console.log(res)
+      res.update({ selected: true });
+      res.save().then(result => {
+         // console.log(result)
+         otherProps.history.push(`/projects/${otherProps.match.params.project_index}/thread`)
+        }).catch(err => console.log(err));
+    }).catch(err => console.log(err));
+  }
 
   return(
   <div className="applicants-list">
     {
       applications.map(application => (
-        <div className='periphery-applicant'>
+        <div className='periphery-applicant' key={application._id}>
           <span 
           role='img'
           description='lightning'
           aria-labelledby=''
           >💡{' '}</span>
-        <div className='applicant-card' key={application._id}>
+        <div className='applicant-card'>
           <a href={`/freelancers/${application.attrs.applicant_username}`}>
             <h3>{application.attrs.applicant_username}</h3>
           </a>
@@ -267,12 +291,16 @@ function ApplicantsList({ applications }){
           <p>{application.attrs.applicant_message}</p>
         </div>
           <div className='buttons-stack'>
-            <button className='hire-applicant'>
+            <button 
+            className='hire-applicant'
+            onClick={() => {
+              updateFreelancer(application._id)
+            }}>
             <span 
               role='img'
               description='lightning'
               aria-labelledby=''
-              >👍{' '}</span>Select Freelancer
+              >🏆{' '}</span>Select Freelancer
               </button>
               <button className='hire-applicant'>
             <span 

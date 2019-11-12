@@ -12,6 +12,7 @@ import Freelancers from '../src/components/Freelancers/Freelancers';
 import Projects from '../src/components/Projects/Projects';
 import NewProject from '../src/components/Projects/NewProject';
 import ProjectPage from '../src/components/Projects/ProjectPage';
+import ProjectThread from '../src/components/Projects/ProjectThread';
 import ViewFreelancer from '../src/components/Freelancers/ViewFreelancer';
 import './App.css';
 import '../src/css/index.css';
@@ -81,6 +82,12 @@ function App() {
           exact path='/projects/:project_index'
           render={props => {
               return (<ProjectPage {...props}/>)
+          }} />
+
+      <Route 
+          exact path='/projects/:project_index/thread'
+          render={props => {
+              return (<ProjectThread {...props}/>)
           }} />
 
       <Route 
