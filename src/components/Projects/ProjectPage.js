@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { FaCommentAlt, FaBriefcase } from 'react-icons/fa';
+import TimeAgo from 'javascript-time-ago';
+import en from 'javascript-time-ago/locale/en';
+// import { FaCommentAlt, FaBriefcase } from 'react-icons/fa';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { MultiSelectComponent } from '@syncfusion/ej2-react-dropdowns';
 import { withStyles } from '@material-ui/core/styles';
 import { makeStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
-import StarBorderIcon from '@material-ui/icons/Star';
+// import StarBorderIcon from '@material-ui/icons/Star';
+
 import Projects from '../../model/Project';
 import Profile from '../../model/Profile';
 import Application from '../../model/addApplication';
+import ApplicationSchema from '../../model/Applications';
 import * as data from '../User/skillsData.json';
-import TimeAgo from 'javascript-time-ago';
-import en from 'javascript-time-ago/locale/en';
+
 const fields = { text: 'Name', value: 'Code' };
 
 export default function ProjectPage(props) {
@@ -20,9 +23,10 @@ export default function ProjectPage(props) {
   const [budget, setBudget] = useState('');
   const [duration, setDuration] = useState('');
   const [message, setMessage] = useState('');
+  const [applications, setApplications] = useState([]);
   const localData=JSON.parse(localStorage.getItem('blockstack-session'));
   const person=localData.userData;
-
+  
   const submitApplication = () => {
     const data = {
       project_id: project.project_id,
@@ -32,7 +36,7 @@ export default function ProjectPage(props) {
       applicant_message: message,
       duration: duration
     }
-    console.log(data)
+    // console.log(data)
     Application(data).then(res => {
       console.log('promise: ',res)
     }).catch(err => console.log(err))
@@ -55,17 +59,27 @@ export default function ProjectPage(props) {
           project: res[0].attrs.budget,
           project_id: res[0].attrs._id
         }
-        console.log(project)
+        // console.log(project)
         setProject(project);
         Profile.fetchList({ username: res[0].attrs.employer_username })
           .then(user => {
-            setEmployer(user[0].attrs)
+            setEmployer(user[0].attrs)  
           }).catch(err => {
             console.log(err);
           })
+        
+        ApplicationSchema.fetchList({"project_id": project.project_id})
+        .then(apps => {
+          console.log(project.project_id, parseInt(props.match.params.project_index),apps)
+          setApplications(apps);
+        }).catch(err => console.log(err));
       }
-    })
+    }).catch(err => console.log(err))
   }, [])
+
+  const showApplications = () => {
+
+  }
 
   const useStyles = makeStyles(theme => ({
     progress: {
@@ -104,10 +118,11 @@ export default function ProjectPage(props) {
   })(Rating);
 
   return(
+    <div>
     <div className='project-container'>
     
       {
-        project ? 
+        project.title ? 
           <>
             <div className='project-view-page'>
               <h2><span 
@@ -132,6 +147,17 @@ export default function ProjectPage(props) {
               </div>
 
               <div className='p-text'><MyComponent /></div>
+              <div className='applications'>
+                {person.username === project.username &&
+                  <>
+                  <h2 className='applicant-heading'><span 
+                    role='img'
+                    description='lightning'
+                    aria-labelledby=''
+                    >📑{' '}</span>Applications({applications.length})</h2>
+                  <ApplicantsList applications={applications} />
+                  </>}
+                </div>
             </div>
             <div className='employer-info'>
           <p>Employer: {employer.username}</p>
@@ -160,6 +186,8 @@ export default function ProjectPage(props) {
         <CircularProgress className={classes.progress} />
       }
     
+      
+    </div>
     
     </div>
   );
@@ -216,4 +244,46 @@ function ApplicationForm({
         </button>
     </div>
   );
+}
+
+function ApplicantsList({ applications }){
+
+
+  return(
+  <div className="applicants-list">
+    {
+      applications.map(application => (
+        <div className='periphery-applicant'>
+          <span 
+          role='img'
+          description='lightning'
+          aria-labelledby=''
+          >💡{' '}</span>
+        <div className='applicant-card' key={application._id}>
+          <a href={`/freelancers/${application.attrs.applicant_username}`}>
+            <h3>{application.attrs.applicant_username}</h3>
+          </a>
+          <h4>${application.attrs.applicant_bid}</h4>
+          <p>{application.attrs.applicant_message}</p>
+        </div>
+          <div className='buttons-stack'>
+            <button className='hire-applicant'>
+            <span 
+              role='img'
+              description='lightning'
+              aria-labelledby=''
+              >👍{' '}</span>Select Freelancer
+              </button>
+              <button className='hire-applicant'>
+            <span 
+              role='img'
+              description='lightning'
+              aria-labelledby=''
+              >💬{' '}</span>Start Conversation
+              </button>
+          </div>
+        </div>
+      ))
+    }
+  </div>);
 }

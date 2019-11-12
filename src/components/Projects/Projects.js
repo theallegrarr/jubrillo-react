@@ -136,11 +136,11 @@ export default function Project(props) {
 const ProjectsList = (props) => {
    
   return (
-    <div key="313" className='projects-list'>
+    <div key="524252425" className='projects-list'>
       
       {
         props.projects.map(project => (
-          <ProjectCard project={project} />
+          <ProjectCard project={project} key={project.attrs._id}/>
           ))
       }
     </div>

@@ -1,6 +1,6 @@
 import { Model } from 'radiks';
 
-export default class Application extends Model {
+export default class Applications extends Model {
   static className = 'JubrilloProjectApplications';
 
   static schema = {

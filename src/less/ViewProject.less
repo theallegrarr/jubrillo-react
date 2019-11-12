@@ -90,4 +90,79 @@
   .control-pane {
     max-width: 90%;
   }
+
+  .applications {
+    background-color: white;
+  }
+
+  .applicant-heading {
+    background-color: @logo-color;
+    padding: 20px;
+    width: 100%;
+    box-shadow: 0.5px 2px 7px #282c34;
+  }
+
+  .applicants-list {
+    display: flex;
+    flex-direction: column;
+    flex-flow: wrap;
+  }
+
+  .periphery-applicant {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: @logo-color;
+    box-shadow: 0.5px 2px 7px #282c34;
+    padding: 20px;
+    margin: 5px;
+
+    span {
+      padding-top: 40px;
+      margin-right: 20px;
+    }
+  }
+
+
+  .applicant-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 90%;
+    background-color: @logo-color;
+    min-height: 150px;
+    max-height: 150px;
+
+    a, h3, h4, p {
+      margin: 5px;
+    }
+  }
+  .buttons-stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 45%;
+    height: 90%;
+    max-width: 350px;
+  }
+
+  .hire-applicant {
+    border: none;
+    background-color: @jubrillo-pink;
+    width: 100%;
+    height: 40%;
+    color: white;
+    padding: 5px;
+    font-family: @secondary-font;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0.9px 2px 7px #282c34;
+    transition: 1s box-shadow;
+    align-self: center;
+    justify-self: center;
+
+    &:hover {
+      box-shadow: none;
+    }
+  }
 }

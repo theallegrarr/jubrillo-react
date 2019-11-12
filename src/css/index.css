@@ -1048,3 +1048,70 @@ img {
 .project-container .control-pane {
   max-width: 90%;
 }
+.project-container .applications {
+  background-color: white;
+}
+.project-container .applicant-heading {
+  background-color: #00abb4;
+  padding: 20px;
+  width: 100%;
+  box-shadow: 0.5px 2px 7px #282c34;
+}
+.project-container .applicants-list {
+  display: flex;
+  flex-direction: column;
+  flex-flow: wrap;
+}
+.project-container .periphery-applicant {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: #00abb4;
+  box-shadow: 0.5px 2px 7px #282c34;
+  padding: 20px;
+  margin: 5px;
+}
+.project-container .periphery-applicant span {
+  padding-top: 40px;
+  margin-right: 20px;
+}
+.project-container .applicant-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 90%;
+  background-color: #00abb4;
+  min-height: 150px;
+}
+.project-container .applicant-card a,
+.project-container .applicant-card h3,
+.project-container .applicant-card h4,
+.project-container .applicant-card p {
+  margin: 5px;
+}
+.project-container .buttons-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 45%;
+  height: 90%;
+  max-width: 350px;
+}
+.project-container .hire-applicant {
+  border: none;
+  background-color: #FF3366;
+  width: 100%;
+  height: 40%;
+  color: white;
+  padding: 5px;
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0.9px 2px 7px #282c34;
+  transition: 1s box-shadow;
+  align-self: center;
+  justify-self: center;
+}
+.project-container .hire-applicant:hover {
+  box-shadow: none;
+}
