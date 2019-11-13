@@ -55,6 +55,14 @@ export default class Project extends Model {
     selected_freelancer: {
       type: String,
       decrypted: true
+    },
+    agreement_reached : {
+      type: Boolean,
+      decrypted: true
+    },
+    work_description: {
+      type: String,
+      decrypted: true
     }
   }
 
@@ -64,5 +72,6 @@ export default class Project extends Model {
     developer_id: '',
     active: true,
     step: 1,
+    agreement_reached: false
   }
 }

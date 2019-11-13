@@ -1117,3 +1117,17 @@ img {
 .project-container .hire-applicant:hover {
   box-shadow: none;
 }
+.work-steps {
+  background-color: #00abb4;
+  padding: 1%;
+}
+.work-steps .next-button {
+  background-color: #FF3366;
+}
+.work-steps span,
+.work-steps text {
+  font-size: 12pt;
+}
+.work-steps .makeStyles-root-1 {
+  width: 100%;
+}
