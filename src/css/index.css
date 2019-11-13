@@ -1081,13 +1081,15 @@ img {
   justify-content: space-between;
   width: 90%;
   background-color: #00abb4;
-  min-height: 150px;
+  min-height: 100px;
+  max-height: 100px;
 }
 .project-container .applicant-card a,
 .project-container .applicant-card h3,
 .project-container .applicant-card h4,
 .project-container .applicant-card p {
   margin: 5px;
+  font-size: 12pt;
 }
 .project-container .buttons-stack {
   display: flex;

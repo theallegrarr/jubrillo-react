@@ -80,7 +80,7 @@ export default function ProjectPage(props) {
   const useStyles = makeStyles(theme => ({
     progress: {
       margin: theme.spacing(2),
-      marginTop: '50%',
+      marginTop: '30%',
       marginLeft: '50%',
     },
   }));
@@ -186,13 +186,16 @@ export default function ProjectPage(props) {
               'maxHeight': '80px', 
               'padding': '3px',
               'marginTop': '20px'
+              }}
+              onClick={() => {
+                props.history.push(`/projects/${props.match.params.project_index}/thread`)
               }}>
               <span 
               role='img'
               description='lightning'
               aria-labelledby=''
               >📄{' '}</span>
-              Work Thread
+              Go to Work Thread
             </button>
           }
           </div>
@@ -287,7 +290,7 @@ function ApplicantsList({ applications, otherProps }){
           <a href={`/freelancers/${application.attrs.applicant_username}`}>
             <h3>{application.attrs.applicant_username}</h3>
           </a>
-          <h4>${application.attrs.applicant_bid}</h4>
+          <h4>Budget: ${application.attrs.applicant_bid}</h4>
           <p>{application.attrs.applicant_message}</p>
         </div>
           <div className='buttons-stack'>
