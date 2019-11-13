@@ -51,6 +51,10 @@ export default class Project extends Model {
     freelancer_rating: {
       type: Number,
       decrypted: true
+    },
+    selected_freelancer: {
+      type: String,
+      decrypted: true
     }
   }
 

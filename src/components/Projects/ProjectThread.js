@@ -23,19 +23,15 @@ export default function ProjectThread (props) {
           skills: res[0].attrs.skills,
           username: res[0].attrs.employer_username,
           project: res[0].attrs.budget,
-          project_id: res[0].attrs._id
+          project_id: res[0].attrs._id,
+          freelancer_username: res[0].attrs.selected_freelancer
         }
         // console.log(project)
         setProject(project);
-
-        ApplicationSchema.fetchList({ "selected": true, "project_id": project.project_id}).then(res => {
-          console.log(res)
-          setApplicant(res[0].attrs);
           if(person.username !== project.username &&
-            res[0].attrs.applicant_username !== person.username){
+             project.freelancer_username !== person.username){
             props.history.push(`/projects/${props.match.params.project_index}`)
-          }
-        }).catch(err => console.log(err))
+        }
       }
     }).catch(err => console.log(err))
   }, [])

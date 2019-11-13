@@ -153,7 +153,8 @@ export default function ProjectPage(props) {
                     >📑{' '}</span>Applications({applications.length})</h2>
                   <ApplicantsList 
                   applications={applications} 
-                  otherProps={props}/>
+                  otherProps={props}
+                  project={project}/>
                   </>}
                 </div>
             </div>
@@ -264,12 +265,12 @@ function ApplicationForm({
   );
 }
 
-function ApplicantsList({ applications, otherProps }){
-  const updateFreelancer = (app_id) => {
-    ApplicationSchema.findById(app_id).then(res => {
-      // console.log(res)
-      res.update({ selected: true });
-      res.save().then(result => {
+function ApplicantsList({ applications, otherProps, project }){
+  function updateFreelancer(username) {
+    Projects.fetchList({_id: project.project_id}).then(res => {
+      console.log(res)
+      res[0].update({ selected_freelancer: username });
+      res[0].save().then(result => {
          // console.log(result)
          otherProps.history.push(`/projects/${otherProps.match.params.project_index}/thread`)
         }).catch(err => console.log(err));
@@ -297,7 +298,7 @@ function ApplicantsList({ applications, otherProps }){
             <button 
             className='hire-applicant'
             onClick={() => {
-              updateFreelancer(application._id)
+              updateFreelancer(application.attrs.applicant_username)
             }}>
             <span 
               role='img'
