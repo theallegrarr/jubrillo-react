@@ -10,9 +10,9 @@ export default function addApplication (data) {
     applicant_message: data.applicant_message,
     duration: data.duration
   });
-  console.log(newJobApp)
+  //console.log(newJobApp)
   return newJobApp.save().then((res) => {
-    console.log('job application made');
+    //console.log('job application made');
     return res;
   }).catch(err => console.log(err));
 }

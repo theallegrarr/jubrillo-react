@@ -1,6 +1,7 @@
 import React, {useEffect,useState} from 'react';
 import Projects from '../../model/Project';
 import Profile from '../../model/Profile';
+import Message from '../../model/Message';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
 import { makeStyles } from '@material-ui/core/styles';
@@ -9,6 +10,15 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import CKEditor from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { css } from 'glamor';
+import ScrollToBottom from 'react-scroll-to-bottom';
+ 
+const ROOT_CSS = css({
+  height: 600,
+  width: 400
+});
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -60,7 +70,7 @@ export default function ProjectThread (props) {
   const [applicant, setApplicant] = useState([]);
   const [messages, setMessages] = useState([]);
   const [activeStep, setActiveStep] = useState(0);
-  
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     Projects.fetchList({
@@ -96,6 +106,13 @@ export default function ProjectThread (props) {
         }).catch(err => {
           console.log(err);
         })
+
+        Message.fetchList({
+          project_id: project.project_id
+        }).then(res => {
+          console.log(res)
+          setMessages(res);
+        }).catch(err=> console.log(err))
         
           if(person.username !== project.username &&
              project.freelancer_username !== person.username){
@@ -112,6 +129,12 @@ export default function ProjectThread (props) {
         messages={messages}
         activeStep={activeStep}
         setActiveStep={setActiveStep}
+        message={message}
+        setMessage={setMessage}
+        person={person}
+        employer={employer}
+        applicant={applicant}
+        setMessages={setMessages}
       />
       <RightSideBar 
       employer={employer}
@@ -149,7 +172,10 @@ function LeftSideBar({
   project, 
   messages, 
   activeStep, 
-  setActiveStep 
+  setActiveStep,
+  message,
+  setMessage, setMessages,
+  person, employer, applicant
 }){
 
   return(
@@ -165,6 +191,30 @@ function LeftSideBar({
       activeStep={activeStep}
       setActiveStep={setActiveStep}/>
     </div>
+    <div className='messages-thread' id='chat-history'>
+      {
+        messages.length > 0 ?
+        <Messages 
+          messages={messages}
+          project={project}
+          person={person} 
+          className='chat-thread'
+          id='scroller'
+          
+          />
+        : <p>No Messages Yet!</p>
+      }
+    </div>
+    <ClassicEditorFunction 
+      className='classic-editor'
+      message={message}
+      setMessage={setMessage}
+      person={person}
+      employer={employer}
+      applicant={applicant}
+      project={project}
+      setMessages={setMessages}
+      />
   </div>)
 }
 
@@ -230,4 +280,87 @@ function HorizontalLinearStepper({
       </div>
     </div>
   );
+}
+
+function ClassicEditorFunction(props){
+  const addMessage = () => {
+    const newMessage = new Message({
+      body: props.message,
+      from: props.person.username,
+      to: props.person.username === props.employer.employer_username ? props.applicant.username : props.project.freelancer_username,
+      project_message: true,
+      chat_message: false,
+      project_id: props.project.project_id
+    });
+
+    return newMessage.save().then(res => {
+      console.log(res)
+      
+      Message.fetchList({
+        project_id: props.project.project_id
+      }).then(res => {
+        console.log(res)
+        props.setMessages(res);
+      }).catch(err=> console.log(err))
+
+      return res;
+    }).catch(err => console.log(err));
+  }
+
+  return(
+    <>
+    <div className="App">
+      <CKEditor
+          editor={ ClassicEditor }
+          data={props.message}
+          style={{'height': '150px'}}
+          onInit={ editor => {
+              // You can store the "editor" and use when it is needed.
+              //console.log( 'Editor is ready to use!', editor );
+          } }
+          onChange={ ( event, editor ) => {
+              const data = editor.getData();
+              // console.log( { event, editor, data } );
+              props.setMessage(data);
+          } }
+          onBlur={ ( event, editor ) => {
+              //console.log( 'Blur.', editor );
+          } }
+          onFocus={ ( event, editor ) => {
+              //console.log( 'Focus.', editor );
+          } }
+      />
+  </div>
+  <div className='send-message'>
+    <button
+      onClick={() => {
+        addMessage();
+      }}
+    >Send</button>
+  </div>
+  </>
+  );
+}
+
+function Messages({ messages, person, project }){
+  TimeAgo.addLocale(en);
+  const timeAgo = new TimeAgo('en-US');
+  timeAgo.format(new Date());
+
+  return(
+    <>
+    {
+    messages.map(msg => (
+      <div key={msg._id}>
+        <p>from: {msg.attrs.from===person.username ? 'You' : msg.attrs.from}</p>
+        <p>{timeAgo.format(Date.now() - (Date.now()-msg.attrs.createdAt))}</p>
+        <div className='p-text'><MyComponent data={msg.attrs.body}/></div>
+      </div>))
+    }
+    <div id="anchor"></div>
+  </>);
+}
+
+function MyComponent({ data }) {
+  return <div dangerouslySetInnerHTML={{__html: data}} />;
 }

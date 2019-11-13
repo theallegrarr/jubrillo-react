@@ -13,3 +13,51 @@
     width: 100%;
   }
 }
+
+.messages-thread {
+  max-height: 250px;
+  min-height: 250px;
+  overflow-y: scroll;
+  border: 1px solid gray;
+  bottom:0;
+}
+
+.chat-thread {
+  overflow-anchor: auto;
+}
+
+#scroller * {
+  /* don't allow the children of the scrollable element to be selected as an anchor node */
+  overflow-anchor: none;
+}
+
+#anchor {
+  /* allow the final child to be selected as an anchor node */
+  overflow-anchor: auto;
+
+  /* anchor nodes are required to have non-zero area */
+  height: 1px;
+}
+
+
+.send-message {
+  display: flex;
+  justify-self: flex-end;
+  align-self: flex-end;
+  text-align: center;
+  width: 100%;
+  margin-top: 1%;
+  justify-items: flex-end;
+  justify-content: flex-end;
+
+  button {
+    align-self: flex-end;
+    justify-self: flex-end;
+    padding: 1.5%;
+    border: none;
+    background-color: @jubrillo-pink;
+    color: white;
+    font-family: @secondary-font;
+    font-size: 12pt;
+  }
+}
