@@ -202,7 +202,7 @@ function LeftSideBar({
           id='scroller'
           
           />
-        : <p>No Messages Yet!</p>
+        : <p>Loading....</p>
       }
     </div>
     <ClassicEditorFunction 
@@ -351,9 +351,25 @@ function Messages({ messages, person, project }){
     <>
     {
     messages.map(msg => (
-      <div key={msg._id}>
-        <p>from: {msg.attrs.from===person.username ? 'You' : msg.attrs.from}</p>
-        <p>{timeAgo.format(Date.now() - (Date.now()-msg.attrs.createdAt))}</p>
+      <div key={msg._id} 
+      className='message-box'
+      style={{
+        'marginLeft': msg.attrs.from===person.username ? '0': '20%',
+        'marginRight': msg.attrs.from===person.username ? '20%': '0',
+        'textAlign': msg.attrs.from===person.username ? 'left': 'right',
+      }}>
+        <div 
+        className='msg-details'
+        style={{
+          'textAlign': msg.attrs.from===person.username ? 'left': 'right',
+          'justifyContent': msg.attrs.from===person.username ? 'flexStart': 'flexEnd',
+          'alignSelf': msg.attrs.from===person.username ? 'flex-start': 'flex-end'
+        }}
+        >
+          <p className='msg-from'>from: 
+          {msg.attrs.from===person.username ? 'You' : msg.attrs.from}</p>
+          <p className='msg-time'>{timeAgo.format(Date.now() - (Date.now()-msg.attrs.createdAt))}</p>
+        </div>
         <div className='p-text'><MyComponent data={msg.attrs.body}/></div>
       </div>))
     }

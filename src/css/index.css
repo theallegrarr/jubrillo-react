@@ -1132,11 +1132,12 @@ img {
   width: 100%;
 }
 .messages-thread {
-  max-height: 250px;
-  min-height: 250px;
+  max-height: 300px;
+  min-height: 300px;
   overflow-y: scroll;
   border: 1px solid gray;
   bottom: 0;
+  padding: 3%;
 }
 .chat-thread {
   overflow-anchor: auto;
@@ -1156,18 +1157,50 @@ img {
   justify-self: flex-end;
   align-self: flex-end;
   text-align: center;
-  width: 100%;
+  width: 80%;
   margin-top: 1%;
   justify-items: flex-end;
   justify-content: flex-end;
 }
 .send-message button {
   align-self: flex-end;
-  justify-self: flex-end;
   padding: 1.5%;
   border: none;
   background-color: #FF3366;
   color: white;
   font-family: 'IBM Plex Mono', Arial, sans-serif;
   font-size: 12pt;
+}
+.message-box {
+  display: flex;
+  flex-direction: column;
+  max-height: 60px;
+  padding: 5px;
+  background-color: gray;
+  margin: 8px;
+  margin-left: 20px;
+}
+.message-box .msg-details {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1px;
+}
+.message-box .msg-details .msg-time {
+  font-size: 8pt;
+  font-style: italic;
+  background-color: #00abb4;
+  padding-right: 6px;
+  padding-left: 6px;
+  border-radius: 5px;
+}
+.message-box .msg-from {
+  font-size: 9pt;
+}
+.message-box .msg-from,
+.message-box .msg-time,
+.message-box .p-text,
+.message-box p {
+  margin: 1px;
+  margin-right: 10px;
+  padding: 0;
 }
