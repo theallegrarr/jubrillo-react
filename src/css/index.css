@@ -1156,7 +1156,6 @@ img {
   justify-content: flex-end;
 }
 .send-message button {
-  align-self: flex-end;
   padding: 1.5%;
   border: none;
   background-color: #FF3366;

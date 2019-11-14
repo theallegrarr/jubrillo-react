@@ -298,7 +298,8 @@ function ClassicEditorFunction(props){
       console.log(res)
       
       Message.fetchList({
-        project_id: props.project.project_id
+        project_id: props.project.project_id,
+        sort: '-createdAt',
       }).then(res => {
         console.log(res)
         props.setMessages(res);
