@@ -108,7 +108,8 @@ export default function ProjectThread (props) {
         })
 
         Message.fetchList({
-          project_id: project.project_id
+          project_id: project.project_id,
+          sort: '-createdAt',
         }).then(res => {
           console.log(res)
           setMessages(res);
