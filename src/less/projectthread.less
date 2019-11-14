@@ -33,22 +33,20 @@
 
 .send-message {
   display: flex;
-  justify-self: flex-end;
-  align-self: flex-end;
   text-align: center;
-  width: 80%;
+  width: 100%;
   margin-top: 1%;
-  justify-items: flex-end;
   justify-content: flex-end;
 
   button {
-    
     padding: 1.5%;
     border: none;
     background-color: @jubrillo-pink;
     color: white;
     font-family: @secondary-font;
     font-size: 12pt;
+    width: 100px;
+    align-self: flex-end;
   }
 }
 
@@ -85,5 +83,29 @@
     margin: 1px;
     margin-right: 10px;
     padding: 0;
+  }
+
+  
+}
+
+.fund-opts {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2%;
+
+  button {
+    border: none;
+    background-color: @jubrillo-pink;
+    color: white;
+    font-family: @secondary-font;
+    padding: 2%;
+    box-shadow: 0.5px 2px 7px #282c34;
+    cursor: pointer;
+    width: 100px;
+
+    &:active {
+      box-shadow: none;
+    }
   }
 }

@@ -57,7 +57,8 @@ export default function ProjectPage(props) {
           skills: res[0].attrs.skills,
           username: res[0].attrs.employer_username,
           project: res[0].attrs.budget,
-          project_id: res[0].attrs._id
+          project_id: res[0].attrs._id,
+          selected_freelancer: res[0].attrs.selected_freelancer
         }
         // console.log(project)
         setProject(project);
@@ -170,7 +171,8 @@ export default function ProjectPage(props) {
           <p>Jobs Done: {employer.jobsDone}</p>
           <p>Jobs Created: {employer.jobsCreated}</p>
           <p>Employer Account was Created: {timeAgo.format(Date.now() - (Date.now()-employer.createdAt))}</p>
-          {person.username !== project.username && 
+          {(person.username !== project.username &&
+           project.selected_freelancer !== person.username) && 
           <ApplicationForm 
             budget={budget}
             setBudget={setBudget}
@@ -180,7 +182,8 @@ export default function ProjectPage(props) {
             setMessage={setMessage}
             submitApplication={submitApplication}
           />}
-          {person.username === project.username && 
+          {(person.username === project.username ||
+           project.selected_freelancer === person.username) && 
             <button 
             className='hire-applicant'
             style={{
@@ -295,6 +298,9 @@ function ApplicantsList({ applications, otherProps, project }){
           <p>{application.attrs.applicant_message}</p>
         </div>
           <div className='buttons-stack'>
+            {
+            project.selected_freelancer !== application.attrs.applicant_username
+            ?
             <button 
             className='hire-applicant'
             onClick={() => {
@@ -306,6 +312,17 @@ function ApplicantsList({ applications, otherProps, project }){
               aria-labelledby=''
               >🏆{' '}</span>Select Freelancer
               </button>
+              :
+              <button 
+              className='hire-applicant'
+              style={{ 'backgroundColor': 'gray'}}>
+              <span 
+                role='img'
+                description='lightning'
+                aria-labelledby=''
+                >🏆{' '}</span>Already Selected
+                </button>
+              }
               <button className='hire-applicant'>
             <span 
               role='img'

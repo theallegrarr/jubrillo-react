@@ -12,13 +12,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { css } from 'glamor';
-import ScrollToBottom from 'react-scroll-to-bottom';
- 
-const ROOT_CSS = css({
-  height: 600,
-  width: 400
-});
+import FundSchema from '../../model/FundingJob';
+//import MakePayment from '../../payments/initiateTxn';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -77,7 +72,7 @@ export default function ProjectThread (props) {
       "project_index": props.match.params.project_index
     }).then(res => {
       if(res.length>0){
-
+        //console.log(res)
         const project={
           title: res[0].attrs.title,
           description: res[0].attrs.description,
@@ -88,7 +83,8 @@ export default function ProjectThread (props) {
           username: res[0].attrs.employer_username,
           project: res[0].attrs.budget,
           project_id: res[0].attrs._id,
-          freelancer_username: res[0].attrs.selected_freelancer
+          freelancer_username: res[0].attrs.selected_freelancer,
+          project_index: props.match.params.project_index
         }
         // console.log(project)
         setProject(project);
@@ -139,13 +135,15 @@ export default function ProjectThread (props) {
       />
       <RightSideBar 
       employer={employer}
-      applicant={applicant}/>
+      applicant={applicant}
+      project={project}
+      />
     </div>
   );
 }
 
 
-function RightSideBar ({employer, applicant}){
+function RightSideBar ({employer, applicant, project}){
   TimeAgo.addLocale(en);
   const timeAgo = new TimeAgo('en-US');
   timeAgo.format(new Date());
@@ -153,18 +151,50 @@ function RightSideBar ({employer, applicant}){
   return (
   <>
   <div className='employer-info'>
+    <div className='fund-opts'>
+      <p><span 
+        role='img'
+        description='money'
+        aria-labelledby=''>💸{' '}</span>Job Balance: {
+        project.balance ? project.balance : 0
+        }</p>
+        <button 
+        onClick={() => {
+
+        }}>
+          Fund Job
+        </button>
+    </div>
     <a 
     href={`/freelancers/${employer.username}`}>
-      <p>Employer: {employer.username}</p></a>
-    <p>Jobs Created: {employer.jobsCreated}</p>
-    <p>Employer Account was Created: {timeAgo.format(Date.now() - (Date.now()-employer.createdAt))}</p>
+      <p><span 
+        role='img'
+        description='money'
+        aria-labelledby=''>🏢{' '}</span>Employer: {employer.username}</p></a>
+    <p><span 
+        role='img'
+        description='money'
+        aria-labelledby=''>⌛ {' '}</span>Jobs Created: {employer.jobsCreated}</p>
+    <p><span 
+        role='img'
+        description='money'
+        aria-labelledby=''>⏲️{' '}</span>Employer Account was Created: {timeAgo.format(Date.now() - (Date.now()-employer.createdAt))}</p>
   {/* </div>
   <div className='employer-info'> */}
     <a 
     href={`/freelancers/${applicant.username}`}>
-      <p>Freelancer: {applicant.username}</p></a>
-    <p>Jobs Done: {applicant.jobsDone}</p>
-    <p>Freelancer Account was Created: {timeAgo.format(Date.now() - (Date.now()-applicant.createdAt))}</p>
+      <p><span 
+        role='img'
+        description='money'
+        aria-labelledby=''>🛠️{' '}</span>Freelancer: {applicant.username}</p></a>
+    <p><span 
+        role='img'
+        description='money'
+        aria-labelledby=''>⌛ {' '}</span>Jobs Done: {applicant.jobsDone}</p>
+    <p><span 
+        role='img'
+        description='money'
+        aria-labelledby=''>⏲️{' '}</span>Freelancer Account was Created: {timeAgo.format(Date.now() - (Date.now()-applicant.createdAt))}</p>
   </div>
   </>);
 }
@@ -190,7 +220,8 @@ function LeftSideBar({
       <HorizontalLinearStepper 
       project={project}
       activeStep={activeStep}
-      setActiveStep={setActiveStep}/>
+      setActiveStep={setActiveStep}
+      person={person}/>
     </div>
     <div className='messages-thread' id='chat-history'>
       {
@@ -222,20 +253,25 @@ function LeftSideBar({
 function HorizontalLinearStepper({ 
   project, 
   activeStep, 
-  setActiveStep  }) {
+  setActiveStep,
+  person  }) {
   const classes = useStyles();
   const steps = getSteps();
 
   const handleNext = () => {
-    setActiveStep(activeStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep(prevActiveStep => prevActiveStep - 1);
-  };
-
-  const handleReset = () => {
-    setActiveStep(0);
+    
+    Projects.fetchList({
+      "_id": project.project_id
+    }).then(res => {
+      if(res.length>0){
+        //console.log(res)
+        res[0].update({ step: activeStep+1});
+        res[0].save().then(resp => {
+          //console.log(resp)
+          setActiveStep(activeStep+1)
+        }).catch(err =>  console.log(err))
+      }
+    }).catch(err => console.log(err));
   };
 
   return (
@@ -255,19 +291,22 @@ function HorizontalLinearStepper({
         {activeStep === steps.length ? (
           <div>
             <Typography className={classes.instructions}>All steps completed</Typography>
-            <Button onClick={handleReset}>Reset</Button>
+            {/* <Button onClick={handleReset}>Reset</Button> */}
           </div>
         ) : (
           <div>
+            { project.username === person.username &&
             <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
+            }
             <div>
-              <Button
+              {/* <Button
                 disabled={activeStep === 0}
                 onClick={handleBack}
                 className={classes.backButton}
               >
                 Back
-              </Button>
+              </Button> */}
+              { project.username === person.username &&
               <Button 
               variant="contained" 
               color="primary" 
@@ -275,6 +314,7 @@ function HorizontalLinearStepper({
               className='next-button'>
                 {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
               </Button>
+              }
             </div>
           </div>
         )}
