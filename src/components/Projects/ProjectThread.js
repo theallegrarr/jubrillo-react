@@ -279,6 +279,7 @@ function HorizontalLinearStepper({
       <Stepper 
       activeStep={activeStep} 
       alternativeLabel
+      className='stepper'
       >
         {steps.map(label => (
           <Step 

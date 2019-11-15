@@ -1120,9 +1120,11 @@ img {
 .work-steps {
   background-color: #00abb4;
   padding: 1%;
+  box-shadow: 0.5px 2px 7px #282c34;
 }
 .work-steps .next-button {
   background-color: #FF3366;
+  box-shadow: 0.5px 2px 7px #282c34;
 }
 .work-steps span,
 .work-steps text {
@@ -1134,7 +1136,7 @@ img {
 .messages-thread {
   display: flex;
   flex-direction: column-reverse;
-  max-height: 300px;
+  max-height: 600px;
   min-height: 300px;
   overflow-y: scroll;
   border: 1px solid gray;
@@ -1172,16 +1174,24 @@ img {
   display: flex;
   flex-direction: column-reverse;
   padding: 5px;
-  background-color: gray;
+  background-color: lightgray;
   margin: 8px;
   margin-left: 20px;
   box-shadow: 0.5px 2px 7px #282c34;
   border-radius: 10px;
+  padding: 12px;
+}
+.message-box:hover {
+  background-color: gray;
 }
 .message-box .msg-details {
   display: flex;
   flex-direction: row;
   margin-bottom: 1px;
+  border-top: 1px solid black;
+  margin-top: 10px;
+  padding-top: 7px;
+  width: 100%;
 }
 .message-box .msg-details .msg-time {
   font-size: 8pt;
@@ -1225,4 +1235,14 @@ img {
 .project-view-page .work-steps,
 .project-view-page .messages-thread {
   box-shadow: 0.5px 2px 7px #282c34;
+}
+.makeStyles-root-1 {
+  width: 100%;
+}
+.makeStyles-root-1 .stepper {
+  box-shadow: 0.5px 2px 7px #282c34;
+  border-radius: 10px;
+}
+.employer-info a {
+  text-decoration: none;
 }
