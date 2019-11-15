@@ -1144,6 +1144,7 @@ img {
 .chat-thread {
   display: flex;
   flex-direction: column-reverse;
+  box-shadow: 0.5px 2px 7px #282c34;
 }
 .send-message {
   display: flex;
@@ -1159,8 +1160,13 @@ img {
   color: white;
   font-family: 'IBM Plex Mono', Arial, sans-serif;
   font-size: 12pt;
-  width: 100px;
+  width: 130px;
   align-self: flex-end;
+  cursor: pointer;
+  box-shadow: 0.5px 2px 7px #282c34;
+}
+.send-message button:active {
+  box-shadow: none;
 }
 .message-box {
   display: flex;
@@ -1170,6 +1176,8 @@ img {
   background-color: gray;
   margin: 8px;
   margin-left: 20px;
+  box-shadow: 0.5px 2px 7px #282c34;
+  border-radius: 10px;
 }
 .message-box .msg-details {
   display: flex;
@@ -1213,4 +1221,9 @@ img {
 }
 .fund-opts button:active {
   box-shadow: none;
+}
+.project-view-page .App,
+.project-view-page .work-steps,
+.project-view-page .messages-thread {
+  box-shadow: 0.5px 2px 7px #282c34;
 }

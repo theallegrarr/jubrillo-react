@@ -27,6 +27,14 @@ export default class FundingJob extends Model {
     project_complete: {
       type: Boolean,
       decrypted: true
+    },
+    pending: {
+      type: Boolean,
+      decrypted: true
+    },
+    txn_id: {
+      type: String,
+      decrypted: true
     }
   }
 

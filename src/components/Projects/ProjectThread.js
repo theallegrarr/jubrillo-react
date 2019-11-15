@@ -12,8 +12,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { FaLocationArrow as LoloSend } from 'react-icons/fa';
 import FundSchema from '../../model/FundingJob';
-//import MakePayment from '../../payments/initiateTxn';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -378,7 +378,7 @@ function ClassicEditorFunction(props){
       onClick={() => {
         addMessage();
       }}
-    >Send</button>
+><LoloSend />{' '}Send</button>
   </div>
   </>
   );

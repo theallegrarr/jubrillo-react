@@ -28,6 +28,7 @@
 .chat-thread {
   display: flex;
   flex-direction: column-reverse;
+  box-shadow: 0.5px 2px 7px #282c34;
 }
 
 
@@ -45,9 +46,16 @@
     color: white;
     font-family: @secondary-font;
     font-size: 12pt;
-    width: 100px;
+    width: 130px;
     align-self: flex-end;
+    cursor: pointer;
+    box-shadow: 0.5px 2px 7px #282c34;
+  
+    &:active{
+      box-shadow: none;
+    }
   }
+
 }
 
 .message-box {
@@ -58,6 +66,8 @@
   background-color: gray;
   margin: 8px;
   margin-left: 20px;
+  box-shadow: 0.5px 2px 7px #282c34;
+  border-radius: 10px;
 
   .msg-details {
     display: flex;
@@ -107,5 +117,11 @@
     &:active {
       box-shadow: none;
     }
+  }
+}
+
+.project-view-page {
+  .App, .work-steps, .messages-thread {
+    box-shadow: 0.5px 2px 7px #282c34;
   }
 }
