@@ -1171,7 +1171,6 @@ img {
 .message-box {
   display: flex;
   flex-direction: column-reverse;
-  max-height: 60px;
   padding: 5px;
   background-color: gray;
   margin: 8px;
