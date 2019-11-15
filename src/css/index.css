@@ -1214,9 +1214,19 @@ img {
 }
 .fund-opts {
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4%;
+  background-color: white;
+  margin-bottom: 30px;
+  box-shadow: 0.5px 2px 7px #282c34;
+  border-radius: 10px;
+}
+.fund-opts .fund-buttons {
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 2%;
+  margin-top: 15px;
 }
 .fund-opts button {
   border: none;
@@ -1226,7 +1236,9 @@ img {
   padding: 2%;
   box-shadow: 0.5px 2px 7px #282c34;
   cursor: pointer;
-  width: 100px;
+  width: 49%;
+  border-radius: 10px;
+  font-weight: 700;
 }
 .fund-opts button:active {
   box-shadow: none;
@@ -1245,4 +1257,11 @@ img {
 }
 .employer-info a {
   text-decoration: none;
+}
+.employer-info .employer-name {
+  font-size: 15pt;
+}
+.employer-info .balance-name {
+  font-size: 16pt;
+  align-self: center;
 }

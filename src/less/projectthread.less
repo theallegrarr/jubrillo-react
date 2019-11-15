@@ -110,10 +110,20 @@
 
 .fund-opts {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  padding: 2%;
+  padding: 4%;
+  background-color: white;
+  margin-bottom: 30px;
+  box-shadow: 0.5px 2px 7px #282c34;
+  border-radius: 10px;
 
+  .fund-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
 
   button {
     border: none;
@@ -123,7 +133,9 @@
     padding: 2%;
     box-shadow: 0.5px 2px 7px #282c34;
     cursor: pointer;
-    width: 100px;
+    width: 49%;
+    border-radius: 10px;
+    font-weight: 700;
 
     &:active {
       box-shadow: none;
@@ -150,5 +162,12 @@
   
   a {
     text-decoration: none;
+  }
+  .employer-name {
+    font-size: 15pt;
+  }
+  .balance-name {
+    font-size: 16pt;
+    align-self: center;
   }
 }

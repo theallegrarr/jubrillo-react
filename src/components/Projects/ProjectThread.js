@@ -68,9 +68,12 @@ export default function ProjectThread (props) {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    Projects.fetchList({
-      "project_index": props.match.params.project_index
-    }).then(res => {
+    updateAllInfo();
+  }, [])
+
+  const updateAllInfo = async () => {
+    try {
+      const res = await Projects.fetchList({"project_index": props.match.params.project_index})
       if(res.length>0){
         //console.log(res)
         const project={
@@ -89,35 +92,25 @@ export default function ProjectThread (props) {
         // console.log(project)
         setProject(project);
         setActiveStep(project.step);
-        Profile.fetchList({ username: res[0].attrs.employer_username })
-          .then(user => {
-            setEmployer(user[0].attrs)  
-          }).catch(err => {
-            console.log(err);
-          })
 
-        Profile.fetchList({ username: res[0].attrs.selected_freelancer })
-        .then(user => {
-          setApplicant(user[0].attrs)  
-        }).catch(err => {
-          console.log(err);
-        })
+        const user = await Profile.fetchList({ username: res[0].attrs.employer_username })
+        setEmployer(user[0].attrs)  
 
-        Message.fetchList({
-          project_id: project.project_id,
-          sort: '-createdAt',
-        }).then(res => {
-          console.log(res)
-          setMessages(res);
-        }).catch(err=> console.log(err))
+        const applicantData = await Profile.fetchList({ username: res[0].attrs.selected_freelancer })
+        setApplicant(applicantData[0].attrs)
+
+        const messagesData = await Message.fetchList({project_id: project.project_id,sort: '-createdAt'});
+        setMessages(messagesData);
         
-          if(person.username !== project.username &&
-             project.freelancer_username !== person.username){
-            props.history.push(`/projects/${props.match.params.project_index}`)
+        if(person.username !== project.username &&
+            project.freelancer_username !== person.username){
+          props.history.push(`/projects/${props.match.params.project_index}`)
         }
       }
-    }).catch(err => console.log(err))
-  }, [])
+    } catch (err){
+      console.log(err);
+    }
+  }
 
   return(
     <div className='project-container'>
@@ -137,13 +130,14 @@ export default function ProjectThread (props) {
       employer={employer}
       applicant={applicant}
       project={project}
+      person={person}
       />
     </div>
   );
 }
 
 
-function RightSideBar ({employer, applicant, project}){
+function RightSideBar ({employer, applicant, project, person}){
   TimeAgo.addLocale(en);
   const timeAgo = new TimeAgo('en-US');
   timeAgo.format(new Date());
@@ -152,25 +146,40 @@ function RightSideBar ({employer, applicant, project}){
   <>
   <div className='employer-info'>
     <div className='fund-opts'>
-      <p><span 
+      <p
+       className='balance-name'
+      ><span 
         role='img'
         description='money'
         aria-labelledby=''>💸{' '}</span>Job Balance: {
         project.balance ? project.balance : 0
         }</p>
-        <button 
-        onClick={() => {
+        { project.username === person.username &&
+        <div className='fund-buttons'>
+          <button 
+          style={{ 'backgroundColor': 'green'}}
+          onClick={() => {
 
-        }}>
-          Fund Job
-        </button>
+          }}>
+            Refresh Balance
+          </button>
+          <button 
+          onClick={() => {
+
+          }}>
+            Add Funds
+          </button>
+        </div>
+        }
     </div>
     <a 
     href={`/freelancers/${employer.username}`}>
-      <p><span 
+      <p className='employer-name'><span 
         role='img'
         description='money'
-        aria-labelledby=''>🏢{' '}</span>Employer: {employer.username}</p></a>
+        aria-labelledby=''
+        className='employer-name'>🏢{' '}</span>
+          Employer: {employer.username}</p></a>
     <p><span 
         role='img'
         description='money'
@@ -178,12 +187,16 @@ function RightSideBar ({employer, applicant, project}){
     <p><span 
         role='img'
         description='money'
-        aria-labelledby=''>⏲️{' '}</span>Employer Account was Created: {timeAgo.format(Date.now() - (Date.now()-employer.createdAt))}</p>
+        aria-labelledby=''>⏲️{' '}</span>
+        Employer Account was Created: {timeAgo.format(Date.now() - (Date.now()-employer.createdAt))}
+        </p>
   {/* </div>
   <div className='employer-info'> */}
     <a 
     href={`/freelancers/${applicant.username}`}>
-      <p><span 
+      <p
+       className='employer-name'
+      ><span 
         role='img'
         description='money'
         aria-labelledby=''>🛠️{' '}</span>Freelancer: {applicant.username}</p></a>
