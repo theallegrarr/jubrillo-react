@@ -1265,3 +1265,122 @@ img {
   font-size: 16pt;
   align-self: center;
 }
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  /* Red */
+  color: white;
+  margin-top: 15px;
+  font-size: 12pt;
+  box-shadow: 0.5px 2px 7px #282c34;
+  border-radius: 10px;
+}
+/* The Modal (background) */
+.modal {
+  display: block;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: #000000;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+  /* Could be more or less, depending on screen size */
+}
+.modal-content .columns {
+  display: flex;
+  flex-direction: column;
+}
+.modal-content .columns h4 {
+  font-size: 13pt;
+  border-bottom: 1px dashed gray;
+  text-align: center;
+  width: 100%;
+}
+.modal-content .columns .bcode {
+  align-self: center;
+}
+.modal-content .columns .pay-header-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-bottom: 1px dashed gray;
+}
+.modal-content .columns .btc-addr {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 12pt;
+  border-radius: 3px;
+  border: none;
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
+}
+.modal-content .columns .btc-inputs {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 12pt;
+  border-radius: 3px;
+  border: none;
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  background-color: lightgray;
+}
+.modal-content .columns img {
+  display: flex;
+  flex-direction: row;
+  justify-self: flex-start;
+  width: 120px;
+}
+.modal-content .fund-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+.modal-content button {
+  border: none;
+  background-color: #FF3366;
+  color: white;
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  padding: 2%;
+  box-shadow: 0.5px 2px 7px #282c34;
+  cursor: pointer;
+  width: 49%;
+  border-radius: 10px;
+  font-weight: 700;
+}
+.modal-content button:active {
+  box-shadow: none;
+}
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

@@ -14,6 +14,7 @@ import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { FaLocationArrow as LoloSend } from 'react-icons/fa';
 import FundSchema from '../../model/FundingJob';
+import Popup from './PaymentPopUp';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -114,6 +115,9 @@ export default function ProjectThread (props) {
 
   return(
     <div className='project-container'>
+      <Popup 
+      project={project}
+      person={person}/>
       <LeftSideBar
         project={project}
         messages={messages}
@@ -208,7 +212,14 @@ function RightSideBar ({employer, applicant, project, person}){
         role='img'
         description='money'
         aria-labelledby=''>⏲️{' '}</span>Freelancer Account was Created: {timeAgo.format(Date.now() - (Date.now()-applicant.createdAt))}</p>
+    <div class="alert">
+    <span 
+        role='img'
+        description='money'
+        aria-labelledby=''>ℹ️{'   '}</span>This is an alert box.
+    </div>
   </div>
+  
   </>);
 }
 
