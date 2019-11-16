@@ -10,7 +10,6 @@ import ErrorBar from '../errorBar/errorBar';
 export default function Messages (props) {
   const [messages, setMessages] = useState([]);
   const [typedMessage, setTypedMessage] = useState([]);
-  const [startNew, setStart] = useState(false);
   const [mode, setMode] = useState(1);
   const [errorMessage, removeError] = useState('');
   const [errorType, setErrorType] = useState('bad');
@@ -20,14 +19,14 @@ export default function Messages (props) {
   useEffect(() => {
     const interval = setInterval(() => {
       if(person.username && props.match.params.other_person){
-        getMessages(messages, setMessages, props, setStart, person, setMode);
+        getMessages(messages, setMessages, props, person, setMode);
       } else {
         getAll(messages, setMessages)
       }
     }, 5000);
 
     return () => {
-      clearInterval(interval, setStart);
+      clearInterval(interval);
     };
   }, [])
 
@@ -108,8 +107,7 @@ function MessageContainer ({
 
 async function getMessages(messages, 
   setMessages, 
-  props, 
-  setStart, 
+  props,  
   person,
   setMode){
   try {
@@ -137,9 +135,7 @@ async function getMessages(messages,
     //console.log(allThreadMessages, allThreadMessages2, newArray)
     if(newArray) {
       setMessages(newArray)
-    } else {
-      setStart(true);
-    } 
+    }
   } catch (error) {
     console.log(error)
   } 

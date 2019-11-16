@@ -15,6 +15,7 @@ import ProjectPage from '../src/components/Projects/ProjectPage';
 import ProjectThread from '../src/components/Projects/ProjectThread';
 import ViewFreelancer from '../src/components/Freelancers/ViewFreelancer';
 import Messages from '../src/components/Messaging/Messages';
+import Notifications from '../src/components/Notifications/Notifications';
 import './App.css';
 import '../src/css/index.css';
 import '../src/css/global.css';
@@ -107,6 +108,12 @@ function App() {
           exact path='/messages/:other_person'
           render={props => {
               return (<Messages {...props}/>)
+          }} />
+
+      <Route 
+          exact path='/notifications'
+          render={props => {
+              return (<Notifications {...props}/>)
           }} />
       </div>
     </div>

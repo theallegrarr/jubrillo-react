@@ -125,6 +125,7 @@ export default class Header extends React.Component {
                 <button className="dropbtn"><FaAlignJustify />{this.state.username}</button>
                 <div className="dropdown-content">
                   <a href="/profile" className='drop-link'><FaIdCard />Profile</a>
+                  <a href="/notifications" className='drop-link'><FaIdCard />Notifications</a>
                   <a href="/myprojects" className='drop-link'><FaBriefcase />Projects</a>
                   <a href="/messages" className='drop-link'><FaListAlt />Messages</a>
                   <a href="/transactions" className='drop-link'><FaRegMoneyBillAlt />Transactions</a>
