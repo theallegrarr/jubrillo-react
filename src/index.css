@@ -60,3 +60,17 @@ code {
 .rw-input-reset {
   font-size: 12pt;
 }
+
+.makeStyles-root-1 {
+  width: 100%;
+}
+.stepper {
+  width: 100%;
+  box-shadow: 0.5px 2px 7px #282c34;
+  border-radius: 10px;
+}
+
+.work-steps {
+  box-shadow: 0.5px 2px 7px #282c34;
+  width: 100%;
+}

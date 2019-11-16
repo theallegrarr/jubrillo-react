@@ -47,7 +47,10 @@ export default async function VerifyTransaction( project_id, transaction_id ) {
             } else {
               return false;
             }
-          }).catch(err => console.log(err))
+          }).catch(err => {
+            console.log(err)
+            return false;
+          })
         }
       } else {
         //console.log('bad');
@@ -56,6 +59,7 @@ export default async function VerifyTransaction( project_id, transaction_id ) {
 
   } catch (error) {
     console.log(error)
+    return false;
   }
 }
 

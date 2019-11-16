@@ -20,7 +20,7 @@
 .messages-thread {
   display: flex;
   flex-direction: column-reverse;
-  max-height: 600px;
+  max-height: 400px;
   min-height: 300px;
   overflow-y: scroll;
   border: 1px solid gray;
@@ -175,7 +175,6 @@
 
 .alert {
   padding: 20px;
-  background-color: #f44336; /* Red */
   color: white;
   margin-top: 15px;
   font-size: 12pt;
@@ -183,4 +182,38 @@
   border-radius: 10px;
   width: 400px;
   max-width: 100%;
+}
+
+.error-alert {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 10; /* Sit on top */
+  left: 0;
+  top: 0;
+  padding: 20px;
+  background-color: #f44336; /* Red */
+  color: white;
+  margin-bottom: 15px;
+  margin-top: 70px;
+  margin-left: 35%;
+  align-items: center;
+  font-size: 12pt;
+  padding: 10px;
+}
+
+/* The close button */
+.close-alert {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.close-alert:hover {
+  color: black;
 }

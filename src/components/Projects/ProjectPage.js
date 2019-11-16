@@ -81,7 +81,7 @@ export default function ProjectPage(props) {
   const useStyles = makeStyles(theme => ({
     progress: {
       margin: theme.spacing(2),
-      marginTop: '30%',
+      marginTop: '15%',
       marginLeft: '50%',
     },
   }));

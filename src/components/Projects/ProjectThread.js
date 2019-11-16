@@ -16,6 +16,8 @@ import { FaLocationArrow as LoloSend } from 'react-icons/fa';
 import VerifyTxn from '../../payments/initiateTxn';
 import Popup from './PaymentPopUp';
 import CustomMessages from './StepMessage';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import ErrorBar from '../errorBar/errorBar';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -73,18 +75,54 @@ export default function ProjectThread (props) {
     usdAmount: 0
   });
   const [popDisp, setPopDisp] = useState(false);
+  const [errorMessage, removeError] = useState('a');
+  const [errorType, setErrorType] = useState('bad');
+  
 
   useEffect(() => {
-    updateAllInfo();
+    const interval = setInterval(() => {
+      updateAllInfo();
+    }, 5000);
+
+    return () => {
+      clearInterval(interval);
+    };
   }, [])
 
   const refreshPayment = () => {
-    VerifyTxn(project.project_id, form.transaction_id)
-      .then(res => {
-        // console.log(res)
-        updateAllInfo();
-      }).catch(err => console.log(err))
+    removeError('Checking Payment Status....');
+    setErrorType('good');
+    if(form.transaction_id){
+      VerifyTxn(project.project_id, form.transaction_id)
+        .then(res => {
+          //console.log(res)
+          if(res){
+            removeError('Payment Confirmed');
+            setErrorType('good');
+            updateAllInfo();
+          }else {
+            removeError('Unable to Confirm the Payment, Ensure that the transaction ID has been set');
+            setErrorType('bad');
+          }
+        }).catch(err => {
+          console.log(err)
+          removeError('Unable to Confirm the Payment, Ensure that the transaction ID has been set');
+          setErrorType('bad');
+        })
+    } else {
+      removeError(`Set the Transaction ID in the 'Add Funds' Form Before clicking Refresh`);
+      setErrorType('bad');
+    }
   }
+
+  const useStyles = makeStyles(theme => ({
+    progress: {
+      margin: theme.spacing(2),
+      marginTop: '15%',
+      marginLeft: '50%',
+    },
+  }));
+  const classes = useStyles();
 
   const updateAllInfo = async () => {
     try {
@@ -130,13 +168,23 @@ export default function ProjectThread (props) {
 
   return(
     <div className='project-container'>
-      {popDisp && <Popup 
-      project={project}
-      person={person}
-      form={form}
-      setForm={setForm}
-      setPopDisp={setPopDisp}/>}
-      <LeftSideBar
+     {errorMessage && 
+     <ErrorBar 
+     errorMessage={errorMessage}
+     errorType={errorType}
+     removeError={removeError}
+     />}
+     {project.title ?  
+      <>
+        {
+          popDisp && <Popup 
+            project={project}
+            person={person}
+            form={form}
+            setForm={setForm}
+            setPopDisp={setPopDisp}/>
+        }
+        <LeftSideBar
         project={project}
         messages={messages}
         activeStep={activeStep}
@@ -148,15 +196,20 @@ export default function ProjectThread (props) {
         applicant={applicant}
         setMessages={setMessages}
         update={updateAllInfo}
-      />
-      <RightSideBar 
-      employer={employer}
-      applicant={applicant}
-      project={project}
-      person={person}
-      setPopDisp={setPopDisp}
-      refreshPayment={refreshPayment}
-      />
+        setErrorType={setErrorType}
+        removeError={removeError}
+        />
+        <RightSideBar 
+        employer={employer}
+        applicant={applicant}
+        project={project}
+        person={person}
+        setPopDisp={setPopDisp}
+        refreshPayment={refreshPayment}
+        />
+      </>
+    : <CircularProgress className={classes.progress} />
+    }
     </div>
   );
 }
@@ -190,12 +243,14 @@ function RightSideBar ({
           }}>
             Refresh Balance
           </button>
-          <button 
-          onClick={() => {
+          {project.step<4 && 
+          (<button 
+            onClick={() => {
             setPopDisp(true);
           }}>
             Add Funds
-          </button>
+          </button>)
+          }
         </div>
         }
     </div>
@@ -235,13 +290,16 @@ function RightSideBar ({
         role='img'
         description='money'
         aria-labelledby=''>⏲️{' '}</span>Freelancer Account was Created: {timeAgo.format(Date.now() - (Date.now()-applicant.createdAt))}</p>
-    <div className="alert">
+    <div 
+    className="alert"
+    style={project.step === 4 ? 
+      {backgroundColor: 'green'}
+      :
+      {backgroundColor: 'red'}
+    }>
     <span 
         role='img'
         description='money'
-        style={{
-          maxWidth: '100px'
-        }}
         aria-labelledby=''>ℹ️{'   '}
         {employer.username === person.username ? 
         CustomMessages(project.step, 'employer') :
@@ -260,7 +318,8 @@ function LeftSideBar({
   setActiveStep,
   message,
   setMessage, setMessages,
-  person, employer, applicant, update
+  person, employer, applicant, update,
+  setErrorType, removeError
 }){
 
   return(
@@ -287,7 +346,8 @@ function LeftSideBar({
           person={person} 
           className='chat-thread'
           id='scroller'
-          
+          setErrorType={setErrorType}
+          removeError={removeError}
           />
         : <p>Loading....</p>
       }
@@ -301,6 +361,8 @@ function LeftSideBar({
       applicant={applicant}
       project={project}
       setMessages={setMessages}
+      setErrorType={setErrorType}
+      removeError={removeError}
       />
   </div>)
 }
@@ -400,6 +462,8 @@ function HorizontalLinearStepper({
 
 function ClassicEditorFunction(props){
   const addMessage = () => {
+    props.removeError('Sending Message....');
+    props.setErrorType('good');
     const newMessage = new Message({
       body: props.message,
       from: props.person.username,
@@ -410,18 +474,27 @@ function ClassicEditorFunction(props){
     });
 
     return newMessage.save().then(res => {
-      console.log(res)
-      
+      //console.log(res)
+      props.setMessage('');
+      props.removeError('Message Sent');
+      props.setErrorType('good');
       Message.fetchList({
         project_id: props.project.project_id,
         sort: '-createdAt',
       }).then(res => {
-        console.log(res)
         props.setMessages(res);
-      }).catch(err=> console.log(err))
+      }).catch(err=> {
+        console.log(err)
+        props.removeError('Message Fetch Failed, Please Refresh Page');
+        props.setErrorType('bad');
+      })
 
       return res;
-    }).catch(err => console.log(err));
+    }).catch(err => {
+      console.log(err)
+      props.removeError('Message Sending Failed');
+      props.setErrorType('bad');
+    });
   }
 
   return(

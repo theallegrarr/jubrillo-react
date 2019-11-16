@@ -11,8 +11,7 @@ export default function PopUp ({ person, project, form, setForm, setPopDisp }) {
   const [usdValue, setUSD] = useState(form.usdAmount);
 
   useEffect(() => {
-    // getRate();
-    setRate(8517);
+    getRate();
   }, [])
 
   const submit = () => {
