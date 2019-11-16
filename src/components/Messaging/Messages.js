@@ -21,6 +21,8 @@ export default function Messages (props) {
     const interval = setInterval(() => {
       if(person.username && props.match.params.other_person){
         getMessages(messages, setMessages, props, setStart, person, setMode);
+      } else {
+        getAll(messages, setMessages)
       }
     }, 5000);
 
@@ -31,15 +33,23 @@ export default function Messages (props) {
 
   return(
   <>
+    <div className="sidenav">
+      <h4>Chat history</h4>
+      <AllChats username={person.username} messages={messages}/>
+    </div>
     <div className='chat-container'>
-      <h3>Messages</h3>
+    {props.match.params.other_person ? <h3>Messaging with 
+        <a href={`/freelancers/${props.match.params.other_person}`}>
+          {`(${props.match.params.other_person})`}
+        </a>
+      </h3> : ''}
         {errorMessage && 
         <ErrorBar 
         errorMessage={errorMessage}
         errorType={errorType}
         removeError={removeError}
         />}
-        <MessageContainer 
+        {props.match.params.other_person ? <MessageContainer 
           person={person}
           typedMessage={typedMessage}
           setTypedMessage={setTypedMessage}
@@ -48,7 +58,7 @@ export default function Messages (props) {
           removeError={removeError}
           mode={mode}
           messages={messages}
-        />
+        /> : <h2>Find A Freelancer to Chat With</h2>}
     </div>
   </>);
 }
@@ -75,7 +85,7 @@ function MessageContainer ({
           <MessageCard 
             messages={messages}
             person={person} 
-            className='chat-thread'
+            className='chat-page-thread'
             id='scroller'
             setErrorType={setErrorType}
             removeError={removeError}
@@ -241,4 +251,49 @@ function MessageCard({ messages, person, otherProps }){
 
 function MyComponent({ data }) {
   return <div dangerouslySetInnerHTML={{__html: data}} />;
+}
+
+function AllChats({ username, messages }){
+
+  return(
+    <>
+      {
+        messages.map(message => (
+          <a href={`/messages/${message.attrs.from === username ? message.attrs.to : message.attrs.from}`}>
+            {message.attrs.from === username ? message.attrs.to : message.attrs.from}
+          </a>
+        ))
+      }
+    </>
+  )
+}
+
+async function getAll(username, setMessages) {
+  try {
+    const allThreadMessages  = await MessageSchema
+    .fetchList({
+      "from": username,
+      "chat_message": true
+    });
+    const allThreadMessages2  = await MessageSchema
+    .fetchList({
+      "to": username,
+      "chat_message": true
+    });
+
+    const newArray = 
+    allThreadMessages.concat(allThreadMessages2)
+    .sort(function(a,b){
+      // Turn your strings into dates, and then subtract them
+      // to get a value that is either negative, positive, or zero.
+      return new Date(b.attrs.createdAt) - new Date(a.attrs.createdAt);
+    });
+
+    //console.log(allThreadMessages, allThreadMessages2, newArray)
+    if(newArray) {
+      setMessages(newArray)
+    } 
+  } catch (error) {
+    console.log(error)
+  } 
 }

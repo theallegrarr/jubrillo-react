@@ -44,7 +44,7 @@ export default function ViewFreelancer(props) {
   return(
     <>
       {person ? 
-      <UserHeader person={person}/> 
+      <UserHeader person={person} otherProps={props}/> 
       :
       <CircularProgress className={classes.progress} />
       }
@@ -52,7 +52,7 @@ export default function ViewFreelancer(props) {
   );
 }
 
-function UserHeader({ person }) {
+function UserHeader({ person, otherProps }) {
   const useStyles = makeStyles(theme => ({
     progress: {
       margin: theme.spacing(2),
@@ -98,8 +98,10 @@ function UserHeader({ person }) {
           <FaBriefcase />
           HIRE
           </button> */}
-          <button className='msg-button'>
-          <FaCommentAlt /><p>{' '}</p>
+          <button 
+          className='msg-button'
+          onClick={() => otherProps.history.push(`/messages/${person.username}`)}>
+          <FaCommentAlt />{' '}
           MESSAGE
           </button>
         </div>

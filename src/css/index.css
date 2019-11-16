@@ -1423,3 +1423,37 @@ img {
   text-decoration: none;
   cursor: pointer;
 }
+.chat-container {
+  padding-left: 355px;
+  padding-top: 30px;
+  padding-right: 30px;
+  background-color: white;
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
+}
+.chat-container h3,
+.chat-container h2 {
+  margin-top: 80px;
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
+}
+.chat-container .chat-page-thread {
+  min-height: 100vh;
+  height: 100vh;
+}
+.chat-container .messages-thread {
+  margin-top: 50px;
+}
+.chat-container .message-box {
+  font-weight: 600;
+}
+.sidenav {
+  overflow: sroll;
+}
+.sidenav h4 {
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  margin-bottom: 20px;
+  padding-bottom: 0;
+}
+.sidenav a {
+  font-size: 12pt;
+  font-weight: 600;
+}
