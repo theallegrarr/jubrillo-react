@@ -15,6 +15,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { FaLocationArrow as LoloSend } from 'react-icons/fa';
 import VerifyTxn from '../../payments/initiateTxn';
 import Popup from './PaymentPopUp';
+import CustomMessages from './StepMessage';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -146,6 +147,7 @@ export default function ProjectThread (props) {
         employer={employer}
         applicant={applicant}
         setMessages={setMessages}
+        update={updateAllInfo}
       />
       <RightSideBar 
       employer={employer}
@@ -237,7 +239,14 @@ function RightSideBar ({
     <span 
         role='img'
         description='money'
-        aria-labelledby=''>ℹ️{'   '}</span>This is an alert box.
+        style={{
+          maxWidth: '100px'
+        }}
+        aria-labelledby=''>ℹ️{'   '}
+        {employer.username === person.username ? 
+        CustomMessages(project.step, 'employer') :
+        CustomMessages(project.step, 'freelancer')
+        }</span>
     </div>
   </div>
   
@@ -251,7 +260,7 @@ function LeftSideBar({
   setActiveStep,
   message,
   setMessage, setMessages,
-  person, employer, applicant
+  person, employer, applicant, update
 }){
 
   return(
@@ -266,7 +275,8 @@ function LeftSideBar({
       project={project}
       activeStep={activeStep}
       setActiveStep={setActiveStep}
-      person={person}/>
+      person={person}
+      update={update}/>
     </div>
     <div className='messages-thread' id='chat-history'>
       {
@@ -299,7 +309,7 @@ function HorizontalLinearStepper({
   project, 
   activeStep, 
   setActiveStep,
-  person  }) {
+  person, update  }) {
   const classes = useStyles();
   const steps = getSteps();
 
@@ -314,6 +324,7 @@ function HorizontalLinearStepper({
         res[0].save().then(resp => {
           //console.log(resp)
           setActiveStep(activeStep+1)
+          update()
         }).catch(err =>  console.log(err))
       }
     }).catch(err => console.log(err));
