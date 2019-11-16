@@ -75,7 +75,7 @@ export default function ProjectThread (props) {
     usdAmount: 0
   });
   const [popDisp, setPopDisp] = useState(false);
-  const [errorMessage, removeError] = useState('a');
+  const [errorMessage, removeError] = useState('');
   const [errorType, setErrorType] = useState('bad');
   
 
@@ -155,6 +155,19 @@ export default function ProjectThread (props) {
 
         const messagesData = await Message.fetchList({project_id: project.project_id,sort: '-createdAt'});
         setMessages(messagesData);
+
+        if(project.step === 4 && project.freelancer_username === person.username){
+          const jobsCompleted = applicantData[0].attrs.jobsCompleted;
+          //console.log(jobsCompleted.find(a => a === project.project_index))
+          if(!jobsCompleted || !jobsCompleted.find(a => a === project.project_index)){
+            const newValue = jobsCompleted ? 
+              jobsCompleted.push(project.project_index)
+              : [project.project_index];
+            applicantData[0].update({ jobsCompleted: newValue });
+            const updateJobs = await applicantData[0].save()
+            console.log(updateJobs)
+          }
+        }
         
         if(person.username !== project.username &&
             project.freelancer_username !== person.username){
@@ -285,7 +298,9 @@ function RightSideBar ({
     <p><span 
         role='img'
         description='money'
-        aria-labelledby=''>⌛ {' '}</span>Jobs Done: {applicant.jobsDone}</p>
+        aria-labelledby=''>⌛ {' '}</span>Jobs Done: {
+        applicant.jobsCompleted ?
+        applicant.jobsCompleted.length : 0}</p>
     <p><span 
         role='img'
         description='money'

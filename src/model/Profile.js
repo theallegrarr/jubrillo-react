@@ -47,7 +47,12 @@ export default class Profile extends Model {
     image: {
       type: String,
       decrypted: true
+    },
+    jobsCompleted: {
+      type: Array,
+      decrypted: true
     }
+
   }
 
   static defaults = {
@@ -55,6 +60,7 @@ export default class Profile extends Model {
     jobsDone: 0,
     jobsCreated: 0,
     rating: 5,
+    jobsCompleted: []
   }
 }
 
