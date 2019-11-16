@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { FaLocationArrow as LoloSend } from 'react-icons/fa';
-import FundSchema from '../../model/FundingJob';
+import VerifyTxn from '../../payments/initiateTxn';
 import Popup from './PaymentPopUp';
 
 const useStyles = makeStyles(theme => ({
@@ -67,10 +67,23 @@ export default function ProjectThread (props) {
   const [messages, setMessages] = useState([]);
   const [activeStep, setActiveStep] = useState(0);
   const [message, setMessage] = useState('');
+  const [form, setForm] = useState({
+    transaction_id: '',
+    usdAmount: 0
+  });
+  const [popDisp, setPopDisp] = useState(false);
 
   useEffect(() => {
     updateAllInfo();
   }, [])
+
+  const refreshPayment = () => {
+    VerifyTxn(project.project_id, form.transaction_id)
+      .then(res => {
+        // console.log(res)
+        updateAllInfo();
+      }).catch(err => console.log(err))
+  }
 
   const updateAllInfo = async () => {
     try {
@@ -88,7 +101,8 @@ export default function ProjectThread (props) {
           project: res[0].attrs.budget,
           project_id: res[0].attrs._id,
           freelancer_username: res[0].attrs.selected_freelancer,
-          project_index: props.match.params.project_index
+          project_index: props.match.params.project_index,
+          balance: res[0].attrs.work_balance
         }
         // console.log(project)
         setProject(project);
@@ -115,9 +129,12 @@ export default function ProjectThread (props) {
 
   return(
     <div className='project-container'>
-      <Popup 
+      {popDisp && <Popup 
       project={project}
-      person={person}/>
+      person={person}
+      form={form}
+      setForm={setForm}
+      setPopDisp={setPopDisp}/>}
       <LeftSideBar
         project={project}
         messages={messages}
@@ -135,13 +152,17 @@ export default function ProjectThread (props) {
       applicant={applicant}
       project={project}
       person={person}
+      setPopDisp={setPopDisp}
+      refreshPayment={refreshPayment}
       />
     </div>
   );
 }
 
 
-function RightSideBar ({employer, applicant, project, person}){
+function RightSideBar ({
+  employer, applicant, project, person, setPopDisp, refreshPayment
+}){
   TimeAgo.addLocale(en);
   const timeAgo = new TimeAgo('en-US');
   timeAgo.format(new Date());
@@ -163,13 +184,13 @@ function RightSideBar ({employer, applicant, project, person}){
           <button 
           style={{ 'backgroundColor': 'green'}}
           onClick={() => {
-
+            refreshPayment()
           }}>
             Refresh Balance
           </button>
           <button 
           onClick={() => {
-
+            setPopDisp(true);
           }}>
             Add Funds
           </button>
@@ -212,7 +233,7 @@ function RightSideBar ({employer, applicant, project, person}){
         role='img'
         description='money'
         aria-labelledby=''>⏲️{' '}</span>Freelancer Account was Created: {timeAgo.format(Date.now() - (Date.now()-applicant.createdAt))}</p>
-    <div class="alert">
+    <div className="alert">
     <span 
         role='img'
         description='money'
@@ -298,6 +319,24 @@ function HorizontalLinearStepper({
     }).catch(err => console.log(err));
   };
 
+  const handleBack = () => {
+    
+    Projects.fetchList({
+      "_id": project.project_id
+    }).then(res => {
+      if(res.length>0){
+        //console.log(res)
+        if(activeStep>1){
+          res[0].update({ step: activeStep-1});
+          res[0].save().then(resp => {
+          //console.log(resp)
+            setActiveStep(activeStep-1)
+          }).catch(err =>  console.log(err))
+        }
+      }
+    }).catch(err => console.log(err));
+  };
+
   return (
     <div className={classes.root}>
       <Stepper 
@@ -324,13 +363,13 @@ function HorizontalLinearStepper({
             <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
             }
             <div>
-              {/* <Button
+              {activeStep>1 && activeStep<4 && <Button
                 disabled={activeStep === 0}
                 onClick={handleBack}
                 className={classes.backButton}
               >
                 Back
-              </Button> */}
+              </Button>}
               { project.username === person.username &&
               <Button 
               variant="contained" 

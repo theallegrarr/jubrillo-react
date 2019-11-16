@@ -67,6 +67,10 @@ export default class Project extends Model {
     work_balance: {
       type: String,
       decrypted: true
+    },
+    transaction_id: {
+      type: String,
+      decrypted: true
     }
   }
 
@@ -77,6 +81,6 @@ export default class Project extends Model {
     active: true,
     step: 1,
     agreement_reached: false,
-    work_balance: 0,
+    work_balance: '0',
   }
 }
