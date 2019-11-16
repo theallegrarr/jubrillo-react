@@ -130,7 +130,7 @@ export default function UserProfile(props) {
         </div>
         <div className='buttons'>
           <button className='edit-button' onClick={() => setEdit(true)}>
-            <FaUserEdit/>
+            <FaUserEdit/>{' '}
             EDIT
           </button>
         </div>

@@ -323,7 +323,12 @@ function ApplicantsList({ applications, otherProps, project }){
                 >🏆{' '}</span>Already Selected
                 </button>
               }
-              <button className='hire-applicant'>
+              <button 
+              className='hire-applicant'
+              onClick={() => {
+                otherProps.history.push(`/messages/${application.attrs.applicant_username}`)
+              }}
+              >
             <span 
               role='img'
               description='lightning'

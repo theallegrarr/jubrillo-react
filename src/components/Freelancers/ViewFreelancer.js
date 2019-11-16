@@ -94,12 +94,12 @@ function UserHeader({ person }) {
         </div>
         <div className='buttons'>
           
-        <button className='hire-button'>
+        {/* <button className='hire-button'>
           <FaBriefcase />
           HIRE
-          </button>
+          </button> */}
           <button className='msg-button'>
-          <FaCommentAlt />
+          <FaCommentAlt /><p>{' '}</p>
           MESSAGE
           </button>
         </div>

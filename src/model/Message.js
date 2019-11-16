@@ -27,6 +27,10 @@ export default class Message extends Model {
     project_id: {
       type: String,
       decrypted: true
+    },
+    chat_id: {
+      type: String,
+      decrypted: true
     }
   }
 

@@ -102,6 +102,12 @@ function App() {
           render={props => {
               return (<Messages {...props}/>)
           }} />
+      
+      <Route 
+          exact path='/messages/:other_person'
+          render={props => {
+              return (<Messages {...props}/>)
+          }} />
       </div>
     </div>
   );
