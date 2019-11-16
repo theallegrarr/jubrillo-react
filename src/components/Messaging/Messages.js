@@ -255,7 +255,8 @@ function AllChats({ username, messages }){
     <>
       {
         messages.map(message => (
-          <a href={`/messages/${message.attrs.from === username ? message.attrs.to : message.attrs.from}`}>
+          <a href={`/messages/${message.attrs.from === username ? message.attrs.to : message.attrs.from}`}
+          key={message.attrs._id}>
             {message.attrs.from === username ? message.attrs.to : message.attrs.from}
           </a>
         ))
