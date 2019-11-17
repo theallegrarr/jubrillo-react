@@ -19,6 +19,7 @@ import Forum from '../src/components/Forum/Forum';
 import NewPost from '../src/components/Forum/NewPost';
 import Notifications from '../src/components/Notifications/Notifications';
 import PostPage from '../src/components/Forum/ViewPost';
+import FAQ from '../src/components/FAQ/FAQ';
 import './App.css';
 import '../src/css/index.css';
 import '../src/css/global.css';
@@ -134,6 +135,11 @@ function App() {
           exact path='/forum/:post_index/view'
           render={props => {
               return (<PostPage {...props}/>)
+          }} />
+      <Route 
+          exact path='/faq'
+          render={props => {
+              return (<FAQ {...props}/>)
           }} />
       </div>
     </div>

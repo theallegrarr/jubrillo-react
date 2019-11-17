@@ -43,7 +43,8 @@ export default function ProjectPage(props) {
       // console.log(post);
 
       const allReplies = await RepliesSchema.fetchList({
-        forum_post_id: post[0].attrs._id
+        forum_post_id: post[0].attrs._id,
+        sort: '-createdAt'
       })
       console.log(allReplies)
       setReplies(allReplies);
