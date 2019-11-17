@@ -74,7 +74,7 @@ function Posts ({ posts }) {
       key={post.attrs._id}
       className='forum-topic'>
         <div className='line-1'>
-          <a href={`/forum/${post.attrs.forum_index}`}>{post.attrs.topic}</a>
+          <a href={`/forum/${post.attrs.forum_index}/view`}>{post.attrs.topic}</a>
           <p className='time-ago'>created {timeAgo.format(Date.now() - (Date.now()-post.attrs.createdAt))}</p>
         </div>
         <p>Author: 

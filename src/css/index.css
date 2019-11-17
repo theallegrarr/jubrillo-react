@@ -1585,3 +1585,50 @@ img {
   box-shadow: 0.9px 2px 7px #282c34;
   border-radius: 3px;
 }
+.view-post-container {
+  background-color: white;
+  padding: 30px;
+  padding-top: 40px;
+}
+.view-post-container h4 {
+  font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}
+.view-post-container .time-ago {
+  font-size: 10pt;
+  padding: 5px;
+  box-shadow: 0.9px 2px 7px #282c34;
+  background-color: #00abb4;
+  border-radius: 5px;
+  width: 200px;
+  text-align: center;
+}
+.view-post-container .author-info {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+}
+.view-post-container .post-head {
+  border-bottom: 1px dashed gray;
+}
+.view-post-container .post-body {
+  font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
+  font-weight: 600;
+}
+.view-post-container .reply-button {
+  margin-top: 10px;
+  padding: 10px;
+  font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
+  font-weight: 600;
+  font-size: 11pt;
+  box-shadow: 0.9px 2px 7px #282c34;
+  background-color: #00abb4;
+  border-radius: 5px;
+  border: none;
+}
+.view-post-container .reply-button:active {
+  box-shadow: none;
+}
