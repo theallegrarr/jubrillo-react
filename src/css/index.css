@@ -1521,6 +1521,11 @@ img {
   background-color: white;
   padding: 20px;
 }
+.forum-container a {
+  font-size: 12pt;
+  padding: 0;
+  margin: 0;
+}
 .forum-container h4 {
   margin-bottom: 0;
   margin-top: 50px;
@@ -1577,6 +1582,8 @@ img {
 .forum-container .forum-topic .line-1 {
   display: flex;
   flex-direction: row;
+  padding: 0;
+  margin: 0;
 }
 .forum-container .forum-topic .line-1 p {
   font-size: 9pt;
@@ -1584,6 +1591,8 @@ img {
   padding: 3px;
   box-shadow: 0.9px 2px 7px #282c34;
   border-radius: 3px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 .view-post-container {
   background-color: white;
