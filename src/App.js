@@ -15,6 +15,8 @@ import ProjectPage from '../src/components/Projects/ProjectPage';
 import ProjectThread from '../src/components/Projects/ProjectThread';
 import ViewFreelancer from '../src/components/Freelancers/ViewFreelancer';
 import Messages from '../src/components/Messaging/Messages';
+import Forum from '../src/components/Forum/Forum';
+import NewPost from '../src/components/Forum/NewPost';
 import Notifications from '../src/components/Notifications/Notifications';
 import './App.css';
 import '../src/css/index.css';
@@ -114,6 +116,18 @@ function App() {
           exact path='/notifications'
           render={props => {
               return (<Notifications {...props}/>)
+          }} />
+      
+      <Route 
+          exact path='/forum'
+          render={props => {
+              return (<Forum {...props}/>)
+          }} />
+
+      <Route 
+          exact path='/forum/new'
+          render={props => {
+              return (<NewPost {...props}/>)
           }} />
       </div>
     </div>
