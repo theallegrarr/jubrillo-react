@@ -8,10 +8,17 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
 import ForumSchema from '../../model/Forum';
 import RepliesSchema from '../../model/ForumReplies';
+import ErrorBar from '../errorBar/errorBar';
 
 export default function ProjectPage(props) {
   const [post, setPost] = useState({});
   const [reply, setReply] = useState('');
+  const [replies, setReplies] = useState([]);
+  const [errorMessage, removeError] = useState('');
+  const [errorType, setErrorType] = useState('');
+  const [showComments, setShowComments] = useState(false);
+  const localData=JSON.parse(localStorage.getItem('blockstack-session'));
+  const person=localData.userData;
 
   useEffect(() => {
     getPost();
@@ -33,9 +40,43 @@ export default function ProjectPage(props) {
         forum_index: props.match.params.post_index
       })
       setPost(post[0].attrs);
-      console.log(post);
+      // console.log(post);
+
+      const allReplies = await RepliesSchema.fetchList({
+        forum_post_id: post[0].attrs._id
+      })
+      console.log(allReplies)
+      setReplies(allReplies);
     } catch(error) {
       console.log(error)
+    }
+  }
+
+  async function sendComment(){
+    setErrorType(`good`)
+    removeError(`Updating Comments, Please Wait.....`);
+    
+    try {
+      if(reply){
+        const newReply = new RepliesSchema({
+          body: reply,
+          author: person.username,
+          forum_post_id: post._id
+        })
+
+        await newReply.save();
+        await getPost();
+        setErrorType(`good`)
+        removeError(`Comment Added`);
+        setReply('')
+      } else {
+        setErrorType(`bad`)
+        removeError(`Type a Comment...`);
+      }
+    } catch (error) {
+      console.log(error)
+      setErrorType(`bad`)
+      removeError(`Update Failed, Please Try Again...`);
     }
   }
 
@@ -43,18 +84,33 @@ export default function ProjectPage(props) {
     <div 
     key='0000367363'
     className='view-post-container'>
+      {errorMessage && 
+      <ErrorBar 
+      errorMessage={errorMessage}
+      errorType={errorType}
+      removeError={removeError}
+      />}
       {
         post.topic ? 
           <Post post={post} />
           :
           <CircularProgress className={classes.progress} />
       }
+      <div className='replies-area'>
+        <Replies 
+        replies={replies}
+        showComments={showComments}
+        setShowComments={setShowComments}/>
+      </div>
       <div>
         <ClassicEditorFunction 
         reply={reply} 
         setReply={setReply} />
         <button 
         className='reply-button'
+        onClick={() => {
+          sendComment()
+        }}
         >Add Reply</button>
       </div>
     </div>
@@ -82,6 +138,37 @@ function Post({ post }) {
     </div>
     </>
   );
+}
+
+function Replies({ 
+  replies,
+  showComments,
+  setShowComments 
+}) {
+  TimeAgo.addLocale(en);
+  const timeAgo = new TimeAgo('en-US');
+  timeAgo.format(new Date());
+
+  return(<>
+    <h4
+      className='replies-head'
+      onClick={() => setShowComments(!showComments)}
+    >Replies ({replies.length})</h4>
+    {
+      replies.length>0 && showComments &&
+      replies.map(reply => (
+        <div 
+        key={reply.attrs._id}
+        className='reply-card'>
+          <div className='author-info'>
+            <p>from: {reply.attrs.author}</p>
+            <p className='time-ago'>sent {timeAgo.format(Date.now() - (Date.now()-reply.attrs.createdAt))}</p>
+          </div>
+          <MyComponent html={reply.attrs.body}/>
+        </div>
+      ))
+    }
+  </>)
 }
 
 function createMarkup(html) {
@@ -118,3 +205,4 @@ function ClassicEditorFunction(props){
   </div>
   );
 }
+

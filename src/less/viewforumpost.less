@@ -36,6 +36,10 @@
     font-weight: 600;
   }
 
+  h1, h2, h3, h4, h5, a, p {
+    font-family: @secondary-font;
+  }
+
   .reply-button {
     margin-top: 10px;
     padding: 10px;
@@ -46,9 +50,26 @@
     background-color: @logo-color;
     border-radius: 5px;
     border: none;
+    cursor: pointer;
 
     &:active {
       box-shadow: none;
     }
+  }
+
+  .replies-head {
+    cursor: pointer;
+    padding: 10px;
+    box-shadow: 0.9px 2px 7px #282c34;
+    background-color: @logo-color;
+    margin-bottom: 20px;
+
+    &:active {
+      box-shadow: none;
+    }
+  }
+
+  .reply-card {
+    padding: 10px;
   }
 }

@@ -1533,6 +1533,15 @@ img {
   font-family: 'IBM Plex Mono', Arial, sans-serif;
   font-weight: 900;
 }
+.forum-container h1,
+.forum-container h2,
+.forum-container h3,
+.forum-container h4,
+.forum-container h5,
+.forum-container a,
+.forum-container p {
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
+}
 .forum-container .add-post-button {
   margin-top: 0;
   align-self: right;
@@ -1627,6 +1636,15 @@ img {
   font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
   font-weight: 600;
 }
+.view-post-container h1,
+.view-post-container h2,
+.view-post-container h3,
+.view-post-container h4,
+.view-post-container h5,
+.view-post-container a,
+.view-post-container p {
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
+}
 .view-post-container .reply-button {
   margin-top: 10px;
   padding: 10px;
@@ -1637,7 +1655,21 @@ img {
   background-color: #00abb4;
   border-radius: 5px;
   border: none;
+  cursor: pointer;
 }
 .view-post-container .reply-button:active {
   box-shadow: none;
+}
+.view-post-container .replies-head {
+  cursor: pointer;
+  padding: 10px;
+  box-shadow: 0.9px 2px 7px #282c34;
+  background-color: #00abb4;
+  margin-bottom: 20px;
+}
+.view-post-container .replies-head:active {
+  box-shadow: none;
+}
+.view-post-container .reply-card {
+  padding: 10px;
 }
