@@ -154,6 +154,7 @@ export default function ProjectThread (props) {
         setApplicant(applicantData[0].attrs)
 
         const messagesData = await Message.fetchList({project_id: project.project_id,sort: '-createdAt'});
+        //console.log(messagesData)
         setMessages(messagesData);
 
         if(project.step === 4 && project.freelancer_username === person.username){
@@ -165,7 +166,7 @@ export default function ProjectThread (props) {
               : [project.project_index];
             applicantData[0].update({ jobsCompleted: newValue });
             const updateJobs = await applicantData[0].save()
-            console.log(updateJobs)
+            //console.log(updateJobs)
           }
         }
         
@@ -479,15 +480,17 @@ function ClassicEditorFunction(props){
   const addMessage = () => {
     props.removeError('Sending Message....');
     props.setErrorType('good');
+    
     const newMessage = new Message({
       body: props.message,
       from: props.person.username,
-      to: props.person.username === props.employer.employer_username ? props.applicant.username : props.project.freelancer_username,
+      to: props.person.username === props.project.username ? props.project.freelancer_username : props.project.username,
       project_message: true,
       chat_message: false,
       project_id: props.project.project_id,
       project_index: props.project.project_index
     });
+    console.log(newMessage);
 
     return newMessage.save().then(res => {
       //console.log(res)

@@ -5,6 +5,8 @@ import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import MessageSchema from '../../model/Message';
 import { FaLocationArrow as LoloSend } from 'react-icons/fa';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { makeStyles } from '@material-ui/core/styles';
 import ErrorBar from '../errorBar/errorBar';
 
 export default function Messages (props) {
@@ -16,6 +18,15 @@ export default function Messages (props) {
   const localData=JSON.parse(localStorage.getItem('blockstack-session'));
   const person=localData.userData;
 
+  const useStyles = makeStyles(theme => ({
+    progress: {
+      margin: theme.spacing(2),
+      marginTop: '20%',
+      marginLeft: '50%',
+    },
+  }));
+  const classes = useStyles();
+
   useEffect(() => {
     const interval = setInterval(() => {
       if(person.username && props.match.params.other_person){
@@ -23,7 +34,7 @@ export default function Messages (props) {
       } else {
         getAll(messages, setMessages)
       }
-    }, 5000);
+    }, 1000);
 
     return () => {
       clearInterval(interval);
@@ -34,7 +45,13 @@ export default function Messages (props) {
   <>
     <div className="sidenav">
       <h4>Chat history</h4>
-      <AllChats username={person.username} messages={messages}/>
+      {messages.length>0 ? 
+      <AllChats 
+      username={person.username} 
+      messages={messages}/>
+      :
+      <CircularProgress className={classes.progress} />
+      }
     </div>
     <div className='chat-container'>
     {props.match.params.other_person ? <h3>Messaging with 
