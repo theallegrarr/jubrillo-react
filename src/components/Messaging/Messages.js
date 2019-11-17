@@ -267,28 +267,18 @@ function AllChats({ username, messages }){
 
 async function getAll(username, setMessages) {
   try {
-    const allThreadMessages  = await MessageSchema
-    .fetchList({
-      "from": username,
-      "chat_message": true
-    });
     const allThreadMessages2  = await MessageSchema
     .fetchList({
       "to": username,
-      "chat_message": true
+      "chat_message": true,
+      "limit": 100,
+      "sort": '-createdAt'
     });
 
-    const newArray = 
-    allThreadMessages.concat(allThreadMessages2)
-    .sort(function(a,b){
-      // Turn your strings into dates, and then subtract them
-      // to get a value that is either negative, positive, or zero.
-      return new Date(b.attrs.createdAt) - new Date(a.attrs.createdAt);
-    });
-
+    
     //console.log(allThreadMessages, allThreadMessages2, newArray)
-    if(newArray) {
-      setMessages(newArray)
+    if(allThreadMessages2) {
+      setMessages(allThreadMessages2)
     } 
   } catch (error) {
     console.log(error)

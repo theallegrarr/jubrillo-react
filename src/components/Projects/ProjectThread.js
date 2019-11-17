@@ -82,7 +82,7 @@ export default function ProjectThread (props) {
   useEffect(() => {
     const interval = setInterval(() => {
       updateAllInfo();
-    }, 5000);
+    }, 1000);
 
     return () => {
       clearInterval(interval);
@@ -485,7 +485,8 @@ function ClassicEditorFunction(props){
       to: props.person.username === props.employer.employer_username ? props.applicant.username : props.project.freelancer_username,
       project_message: true,
       chat_message: false,
-      project_id: props.project.project_id
+      project_id: props.project.project_id,
+      project_index: props.project.project_index
     });
 
     return newMessage.save().then(res => {

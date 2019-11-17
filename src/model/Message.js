@@ -31,6 +31,10 @@ export default class Message extends Model {
     chat_id: {
       type: String,
       decrypted: true
+    },
+    project_index: {
+      type: Number,
+      decrypted: true
     }
   }
 

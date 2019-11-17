@@ -2,9 +2,16 @@ import React, {useEffect, useState} from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
 import MessageSchema from '../../model/Message';
+import TimeAgo from 'javascript-time-ago';
+import en from 'javascript-time-ago/locale/en';
+import ErrorBar from '../errorBar/errorBar';
 
 export default function Notifications(props) {
   const [latests, setLatests] = useState([]);
+  const [offset, setOffset] = useState(0);
+  const [errorMessage, removeError] = useState('');
+  const [errorType, setErrorType] = useState('bad');
+
   const localData=JSON.parse(localStorage.getItem('blockstack-session'));
   const person=localData.userData;
 
@@ -18,36 +25,132 @@ export default function Notifications(props) {
   const classes = useStyles();
 
   useEffect(() => {
-      checkNotifications(setLatests, person.username);
+      checkNotifications(setLatests, 
+        person.username,
+        0,
+        removeError,
+        setErrorType);
   }, [])
 
-  return(<>
-    <h3>Notifications</h3>
-    {
-      latests.length > 0 ?
-      latests.map(latest => (
-        <div 
-        className='notif-item'
-        key={latest.attrs._id}>
-          <p>{latest.attrs.body}</p>
-        </div>
-      ))
-      :
-      <CircularProgress className={classes.progress} />
+  const nextPage = () => {
+    removeError('Trying to go forward')
+    setErrorType('good')
+    checkNotifications(setLatests, 
+      person.username, 
+      offset+20,
+      removeError,
+      setErrorType)
+    setOffset(offset+20);
+  }
+
+  const prevPage = () => {
+    removeError('Trying to go back')
+    setErrorType('good')
+    if(offset>=20){
+    checkNotifications(setLatests, 
+      person.username, 
+      offset-20,
+      removeError,
+      setErrorType)
+    setOffset(offset-20);
+    } else {
+      removeError('This is the first page')
+      setErrorType('good')
     }
-  </>)
+  }
+
+  TimeAgo.addLocale(en);
+  const timeAgo = new TimeAgo('en-US');
+  timeAgo.format(new Date());
+
+  return(
+  <div className='notifications-container'>
+    {errorMessage && 
+     <ErrorBar 
+     errorMessage={errorMessage}
+     errorType={errorType}
+     removeError={removeError}
+     />}
+    <h3>Notifications</h3>
+      <div className='not-list'>
+        {
+        latests.length > 0 ?
+        latests.map(latest => (
+          <div 
+          className='notif-item'
+          key={latest.attrs._id}>
+            <div>
+              {
+                latest.attrs.project_message ? 
+                <a href={`/projects/${latest.attrs.project_index}/thread`}>Project Thread </a>
+                :
+                <a href={`/messages/${latest.attrs.from}`}>Chat Thread </a>
+              }
+            </div>
+            <div>
+              <MyComponent html={latest.attrs.body} />
+            </div>
+            <div>
+              <p className='time-ago from'>from {latest.attrs.from}</p>
+            </div>
+            <div>
+              <p className='time-ago'>received {timeAgo.format(Date.now() - (Date.now()-latest.attrs.createdAt))}</p>
+            </div>
+          </div>
+        ))
+        :
+        <CircularProgress className={classes.progress} />
+        }
+      </div>
+      <div className='paginate-buttons'>
+        <button
+          onClick={() => {
+            nextPage()
+          }}
+        >Next Page</button>
+        {offset>=20 && <button
+          onClick={() => {
+            prevPage()
+          }}
+        >Prev. Page</button>}
+      </div>
+  </div>)
 }
 
-async function checkNotifications(setLatests, username) {
+async function checkNotifications(
+  setLatests, 
+  username, 
+  offsetValue,
+  removeError,
+  setErrorType) {
   try {
     const allThreadMessages = await MessageSchema.fetchList({
       to: username,
       sort: '-createdAt',
-      limit: 20
+      limit: 20,
+      offset: offsetValue > 0 ? offsetValue : 0
     })
-    console.log(allThreadMessages)
+    //console.log(allThreadMessages)
+    if(allThreadMessages.length > 0) {
     setLatests(allThreadMessages);
+    setErrorType(`good`)
+    removeError(`Notifications Fetch Complete!`)
+    } else {
+    setLatests(allThreadMessages);
+    setErrorType(`good`)
+    removeError(`No More Notifications!`)
+    }
   } catch (error) {
     console.log(error);
+    setErrorType(`bad`)
+    removeError(`Failed to Fetch Notifications!`)
   }
+}
+
+function createMarkup(html) {
+  return {__html: html};
+}
+
+function MyComponent({html}) {
+  return <div dangerouslySetInnerHTML={createMarkup(html)} />;
 }

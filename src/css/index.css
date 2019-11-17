@@ -1457,3 +1457,63 @@ img {
   font-size: 12pt;
   font-weight: 600;
 }
+.notifications-container {
+  background-color: white;
+  width: 100%;
+  align-self: center;
+  justify-self: center;
+  padding: 10%;
+  padding-top: 50px;
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-weight: 600;
+}
+.notifications-container h3 {
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
+}
+.notifications-container .not-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-self: center;
+  justify-self: center;
+  text-align: center;
+  text-justify: center;
+}
+.notifications-container .not-list .notif-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 12pt;
+  box-shadow: 0.5px 2px 7px #282c34;
+  padding: 10px;
+  padding: 1%;
+}
+.notifications-container .not-list .notif-item .time-ago {
+  font-style: italic;
+  font-size: 9pt;
+}
+.notifications-container .not-list .notif-item .time-ago.from {
+  background-color: #00abb4;
+  padding: 7px;
+  box-shadow: 0.5px 2px 7px #282c34;
+  border-radius: 12px;
+}
+.paginate-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+.paginate-buttons button {
+  border: none;
+  padding: 20px;
+  width: 150px;
+  color: white;
+  background-color: #00abb4;
+  box-shadow: 0.5px 2px 7px #282c34;
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+}
+.paginate-buttons button:active {
+  box-shadow: none;
+}
