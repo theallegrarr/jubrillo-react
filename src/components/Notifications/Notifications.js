@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
 import MessageSchema from '../../model/Message';
+import LastCheck from '../../model/LastCheck';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
 import ErrorBar from '../errorBar/errorBar';
@@ -25,12 +26,36 @@ export default function Notifications(props) {
   const classes = useStyles();
 
   useEffect(() => {
-      checkNotifications(setLatests, 
-        person.username,
-        0,
-        removeError,
-        setErrorType);
+    checkNotifications(setLatests, 
+      person.username,
+      0,
+      removeError,
+      setErrorType);
+      
+    updateTime();
   }, [])
+
+  async function updateTime(){
+    try {
+      const existingCheck = await LastCheck.fetchList({ owner: person.username })
+      // console.log(existingCheck)
+      if(existingCheck.length > 0){
+        existingCheck[0].update({ message: `last checked at ${Date.now()}`})
+        await existingCheck[0].save()
+        //console.log(updateChecker)
+      } else {
+        const checker = new LastCheck({
+          message: `last checked at ${Date.now()}`,
+          owner: person.username
+        })
+
+        await checker.save()
+        //console.log(saveCheck)
+      }
+    } catch (error){
+      console.log(error)
+    }
+  }
 
   const nextPage = () => {
     removeError('Trying to go forward')

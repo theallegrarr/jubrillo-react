@@ -11,7 +11,8 @@ import {
 } from 'blockstack';
 import { User, configure } from 'radiks';
 import createUser from '../model/createUser';
-
+import MessageSchema from '../model/Message';
+import LastCheck from '../model/LastCheck';
 const appConfig = new AppConfig(['store_write', 'publish_data'])
 const userSession = new UserSession({ appConfig: appConfig })
 const avatarFallbackImage = 'https://s3.amazonaws.com/onename/avatar-placeholder.png';
@@ -33,11 +34,35 @@ export default class Header extends React.Component {
   	  	avatarUrl() {
   	  	  return avatarFallbackImage;
   	  	},
-  	  },
+      },
+      color: false
   	};
   }
 
   componentDidMount() {
+    
+    this.interval = setInterval(() => {
+      const localData=JSON.parse(localStorage.getItem('blockstack-session'));
+      const person=localData.userData;
+      if(person){
+        checkNotifications(person.username)
+          .then(res => {
+            if(res === true){
+              this.setState({
+                ...this.state,
+                color: true
+              });
+            } else {
+              this.setState({
+                ...this.state,
+                color: false
+              });
+            }
+            //console.log(this.state)
+          }).catch(error => { console.log(error) })
+      }
+    }, 1000);
+
     if (userSession.isSignInPending()) {
       userSession.handlePendingSignIn().then((userData) => {
         window.history.replaceState({}, document.title, "/")
@@ -58,6 +83,7 @@ export default class Header extends React.Component {
       this.setState({
         person: new Person(userSession.loadUserData().profile),
         username: userSession.loadUserData().username,
+        color: this.state.color
       });
       User.createWithCurrentUser().then(res => {
         // console.log(res)
@@ -66,6 +92,10 @@ export default class Header extends React.Component {
       .catch(err => console.log(err))
       
     }
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
 
@@ -122,10 +152,28 @@ export default class Header extends React.Component {
               (
               <>
               <div className="dropdown">
-                <button className="dropbtn"><FaAlignJustify />{this.state.username}</button>
+                <button 
+                className="dropbtn"
+                style={this.state.color ?
+                  {backgroundColor: 'green'}
+                  :
+                  {backgroundColor: 'darkgray'}
+                }>
+                  <FaAlignJustify />
+                  {this.state.username}
+                </button>
                 <div className="dropdown-content">
                   <a href="/profile" className='drop-link'><FaIdCard />Profile</a>
-                  <a href="/notifications" className='drop-link'><FaIdCard />Notifications</a>
+                  <a 
+                  href="/notifications" 
+                  className='drop-link'
+                  style={this.state.color ?
+                    {backgroundColor: 'green'}
+                    :
+                    {backgroundColor: 'darkgray'}}
+                  >
+                    <FaIdCard />Notifications
+                  </a>
                   <a href="/myprojects" className='drop-link'><FaBriefcase />Projects</a>
                   <a href="/messages" className='drop-link'><FaListAlt />Messages</a>
                   <a href="/transactions" className='drop-link'><FaRegMoneyBillAlt />Transactions</a>
@@ -143,4 +191,38 @@ export default class Header extends React.Component {
         </nav>
       </div>
     );}
+}
+
+async function checkNotifications(username) {
+  try {
+    const allThreadMessages = await MessageSchema.fetchList({
+      to: username,
+      sort: '-createdAt',
+      limit: 50
+    })
+    const lastTime = await LastCheck.fetchList({
+      owner: username
+    })
+    //console.log(lastTime)
+
+    if(allThreadMessages.length > 0 && lastTime.length>0) {
+      if(checkTime(allThreadMessages, lastTime[0].attrs.updatedAt)){
+        //console.log('time checked')
+        return true;
+      } 
+    }
+
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function checkTime(messages, lastUpdateTime) {
+  for(let i=messages.length-1; i>=0; i--){
+    if(messages[i].attrs.createdAt > lastUpdateTime){
+      //console.log(lastUpdateTime, messages[i].attrs.createdAt)
+      return true;
+    }
+  }
+  return false;
 }
