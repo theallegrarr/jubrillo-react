@@ -103,15 +103,15 @@ export default class Header extends React.Component {
           <NavLink className="link" key={'002'} to={'/projects'}>
             projects
           </NavLink>
-          <NavLink className="link" key={'003'} to={'/collaborate'}>
-            collaborate
+          <NavLink className="link" key={'003'} to={'/forum'}>
+            forum
           </NavLink>
-          <NavLink className="link" key={'004'} to={'/board'}>
-            board
+          <NavLink className="link" key={'004'} to={'/faq'}>
+            faq
           </NavLink>
-          <NavLink className="link" key={'005'} to={'/escrow'}>
+          {/* <NavLink className="link" key={'005'} to={'/escrow'}>
             escrow
-          </NavLink>
+          </NavLink> */}
           {
             !userSession.isUserSignedIn() ?
               <button 
