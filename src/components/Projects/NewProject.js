@@ -38,10 +38,23 @@ export default function NewProjectForm(props) {
         duration: duration
       }
       NewProject(data)
-        .then(res => console.log('Project Created:', res))
-        .catch(err => console.log(err));
+        .then(res => {
+          console.log('Project Created:', res)
+          updateUserProjects();
+        }).catch(err => console.log(err));
     }).catch(err => console.log(err));
   }
+
+  async function updateUserProjects(){
+    try {
+      const userInfo = await Profile.fetchList({ username: person.username })
+      userInfo[0].update({ jobsCreated: userInfo[0].attrs.jobsCreated+1 })
+      await userInfo[0].save();
+      
+    } catch(error) {
+      console.log(error)
+    }
+  } 
 
   return(
   <div className='form-container'>
