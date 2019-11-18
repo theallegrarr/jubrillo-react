@@ -131,7 +131,8 @@ function Post({ post }) {
         <p>Author: <a href={`/freelancers/${post.author}`}>
           {post.author}
         </a></p>
-        <p className='time-ago'>created {timeAgo.format(Date.now() - (Date.now()-post.createdAt))}</p>
+        <p 
+        className='time-ago'>created {timeAgo.format(Date.now() - (Date.now()-post.createdAt))}</p>
       </div>
     </div>
     <div className='post-body'>

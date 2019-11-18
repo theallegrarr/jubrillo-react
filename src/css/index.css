@@ -956,11 +956,14 @@ img {
   border-bottom: 0.3px solid #999999;
 }
 .time-ago {
+  display: flex;
+  flex-direction: row;
   margin-left: 20px;
   align-self: center;
   justify-self: center;
   font-style: italic;
   font-size: 6pt;
+  max-width: 400px;
 }
 .project-container {
   display: flex;
@@ -1928,5 +1931,6 @@ img {
   background-color: #00abb4;
   border-radius: 5px;
   width: 200px;
+  max-width: 300px;
   text-align: center;
 }

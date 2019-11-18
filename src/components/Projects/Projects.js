@@ -34,7 +34,7 @@ export default function Project(props) {
       limit: 10,
       offset: 0
     }).then(res => {
-      console.log('response: ',res)
+      //console.log('response: ',res)
       setProject(res);
     }).catch(err => console.log('error: ',err))
 

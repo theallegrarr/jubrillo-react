@@ -7,13 +7,13 @@ import { MultiSelectComponent } from '@syncfusion/ej2-react-dropdowns';
 import { withStyles } from '@material-ui/core/styles';
 import { makeStyles } from '@material-ui/core/styles';
 import Rating from '@material-ui/lab/Rating';
-// import StarBorderIcon from '@material-ui/icons/Star';
-
+// import StarBorderIcon from '@material-ui/icons/Star'; 
 import Projects from '../../model/Project';
 import Profile from '../../model/Profile';
 import Application from '../../model/addApplication';
 import ApplicationSchema from '../../model/Applications';
 import * as data from '../User/skillsData.json';
+import ErrorBar from '../errorBar/errorBar';
 
 const fields = { text: 'Name', value: 'Code' };
 
@@ -25,6 +25,8 @@ export default function ProjectPage(props) {
   const [message, setMessage] = useState('');
   const [applications, setApplications] = useState([]);
   const localData=JSON.parse(localStorage.getItem('blockstack-session'));
+  const [errorMessage, removeError] = useState('');
+  const [errorType, setErrorType] = useState(''); 
   const person=localData.userData;
   
   const submitApplication = () => {
@@ -38,7 +40,7 @@ export default function ProjectPage(props) {
     }
     // console.log(data)
     Application(data).then(res => {
-      console.log('promise: ',res)
+      //console.log('promise: ',res)
     }).catch(err => console.log(err))
   }
 
@@ -71,7 +73,7 @@ export default function ProjectPage(props) {
         
         ApplicationSchema.fetchList({"project_id": project.project_id})
         .then(apps => {
-          console.log(project.project_id, parseInt(props.match.params.project_index),apps)
+          //console.log(project.project_id, parseInt(props.match.params.project_index),apps)
           setApplications(apps);
         }).catch(err => console.log(err));
       }
@@ -117,7 +119,12 @@ export default function ProjectPage(props) {
   return(
     <div>
     <div className='project-container'>
-    
+    {errorMessage && 
+      <ErrorBar 
+      errorMessage={errorMessage}
+      errorType={errorType}
+      removeError={removeError}
+      />}
       {
         project.title ? 
           <>
@@ -155,7 +162,9 @@ export default function ProjectPage(props) {
                   <ApplicantsList 
                   applications={applications} 
                   otherProps={props}
-                  project={project}/>
+                  project={project}                
+                  removeError={removeError}
+                  setErrorType={setErrorType}/>
                   </>}
                 </div>
             </div>
@@ -268,16 +277,34 @@ function ApplicationForm({
   );
 }
 
-function ApplicantsList({ applications, otherProps, project }){
+function ApplicantsList({ 
+  applications, 
+  otherProps, 
+  project,
+  removeError,
+  setErrorType
+}){
   function updateFreelancer(username) {
+    setErrorType('good')
+    removeError('Attempting to Select Freelancer');
     Projects.fetchList({_id: project.project_id}).then(res => {
-      console.log(res)
+      if(res[0].attrs.step < 3){
       res[0].update({ selected_freelancer: username });
       res[0].save().then(result => {
          // console.log(result)
+         setErrorType('good')
+         removeError('Freelancer Selected');
          otherProps.history.push(`/projects/${otherProps.match.params.project_index}/thread`)
         }).catch(err => console.log(err));
-    }).catch(err => console.log(err));
+      } else {
+        setErrorType('bad')
+        removeError('Freelancer Cannot be Replaced After Project Funding');
+      }
+    }).catch(err => {
+      console.log(err)
+      setErrorType('bad')
+        removeError('An Error occurred, Please Try Again Later....');
+    });
   }
 
   return(
