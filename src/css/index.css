@@ -1877,3 +1877,56 @@ img {
     transform: rotateX(0deg);
   }
 }
+.my-projects-container {
+  background-color: white;
+  padding: 50px;
+}
+.my-projects-container h4 {
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-weight: 700;
+}
+.my-projects-container .mp-switch {
+  border: none;
+  margin: 10px;
+  padding: 20px;
+  padding-left: 50px;
+  margin-left: 0;
+  background-color: white;
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-weight: 900;
+  font-size: 12pt;
+  cursor: pointer;
+  width: 25%;
+  min-width: 150px;
+}
+.my-projects-container .switch-row {
+  display: flex;
+}
+.my-projects-container .my-projects-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 40px;
+}
+.my-projects-container a {
+  text-decoration: none;
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-weight: 900;
+  padding: 10px;
+  font-size: 12pt;
+}
+.my-projects-container .project-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 0.3px solid lightgray;
+}
+.time-ago {
+  font-size: 10pt;
+  padding: 5px;
+  box-shadow: 0.9px 2px 7px #282c34;
+  background-color: #00abb4;
+  border-radius: 5px;
+  width: 200px;
+  text-align: center;
+}

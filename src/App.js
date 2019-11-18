@@ -20,6 +20,7 @@ import NewPost from '../src/components/Forum/NewPost';
 import Notifications from '../src/components/Notifications/Notifications';
 import PostPage from '../src/components/Forum/ViewPost';
 import FAQ from '../src/components/FAQ/FAQ';
+import MyProjects from '../src/components/User/MyProjects';
 import './App.css';
 import '../src/css/index.css';
 import '../src/css/global.css';
@@ -140,6 +141,11 @@ function App() {
           exact path='/faq'
           render={props => {
               return (<FAQ {...props}/>)
+          }} />
+      <Route 
+          exact path='/myprojects'
+          render={props => {
+              return (<MyProjects {...props}/>)
           }} />
       </div>
     </div>
