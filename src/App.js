@@ -21,6 +21,7 @@ import Notifications from '../src/components/Notifications/Notifications';
 import PostPage from '../src/components/Forum/ViewPost';
 import FAQ from '../src/components/FAQ/FAQ';
 import MyProjects from '../src/components/User/MyProjects';
+import Transactions from '../src/components/User/MyTransactions';
 import './App.css';
 import '../src/css/index.css';
 import '../src/css/global.css';
@@ -146,6 +147,11 @@ function App() {
           exact path='/myprojects'
           render={props => {
               return (<MyProjects {...props}/>)
+          }} />
+      <Route 
+          exact path='/transactions'
+          render={props => {
+              return (<Transactions {...props}/>)
           }} />
       </div>
     </div>

@@ -3,7 +3,7 @@ import ProjectSchema from '../../model/Project';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
 
-export default function MyProjects(props){
+export default function Transactions(props){
   const [option, setOption] = useState('created');
   const [projects, setProjects] = useState([]);
   const localData=JSON.parse(localStorage.getItem('blockstack-session'));
@@ -27,7 +27,12 @@ export default function MyProjects(props){
       };
 
       const Assigned = await ProjectSchema.fetchList(condition)
-      setProjects(Assigned);
+      const newArray = 
+      Assigned.filter(assign => 
+        parseFloat(assign.attrs.work_balance) > 0
+      );
+      
+      setProjects(newArray);
     } catch (error) {
       console.log(error)
     }
@@ -36,7 +41,7 @@ export default function MyProjects(props){
 
   return (
     <div className="my-projects-container">
-      <h4>My Projects</h4>
+      <h4>My Transactions</h4>
       <div>
         <div className='switch-row'>
         <p 
@@ -51,7 +56,7 @@ export default function MyProjects(props){
           setOption('created')
           getAssignedProjects('created')
         }}>
-          My Created Projects
+          My Outgoing Transactions
         </p>
         <p 
         className='mp-switch'
@@ -65,16 +70,19 @@ export default function MyProjects(props){
           setOption('assigned')
           getAssignedProjects('assigned')
         }}>
-          My Assigned Projects
+          My Incoming Transactions
         </p>
         </div>
-        <AllProjects projects={projects}/>
+        {
+          projects.length>0 &&
+          <AllTransactions projects={projects}/>
+        }
       </div>
   </div>
   );
 }
 
-function AllProjects ({ projects }){
+function AllTransactions ({ projects }){
   TimeAgo.addLocale(en);
   const timeAgo = new TimeAgo('en-US');
   timeAgo.format(new Date());
@@ -83,10 +91,13 @@ function AllProjects ({ projects }){
   <div className='my-projects-list'>
     {
       projects.map(project => (
-        <div className='project-bar'>
+        <div 
+        className='project-bar' 
+        key={project.attrs._id}>
           <a href={`/projects/${project.attrs.project_index}`}>
             {project.attrs.title}
           </a>
+          <p className='time-ago'>Amount: BTC {project.attrs.work_balance}</p>
           <p className='time-ago'>created {timeAgo.format(Date.now() - (Date.now()-project.attrs.createdAt))}</p>
         </div>
       ))
