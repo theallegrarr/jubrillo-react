@@ -257,3 +257,26 @@
   /* Change the background color of the dropdown button when the dropdown content is shown */
   .dropdown:hover .dropbtn {background-color: @logo-color;}
 //////////
+
+.header-container {
+    .error-alert {
+        position: fixed;
+        margin-left: 82vw;
+        margin-top: 88vh;
+        background-color: @logo-color;
+        padding: 15px;
+        font-family: @secondary-font;
+        box-shadow: 0.5px 2px 7px #282c34;
+        cursor: pointer;
+        text-decoration: none;
+        font-weight: 700;
+        
+        img {
+            width: 20px;
+        }
+
+        &:active {
+            box-shadow: none;
+        }
+    }
+}

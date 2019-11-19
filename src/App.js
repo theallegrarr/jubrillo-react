@@ -50,6 +50,7 @@ function App() {
         <Header className='navbar' />
         <Route exact path='/' component={Cta} />
         
+        
         <Route 
           exact path='/profile'
           render={props => {

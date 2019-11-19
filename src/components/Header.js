@@ -113,7 +113,7 @@ export default class Header extends React.Component {
     // const { person } = this.state;
 
     return(
-      <div>
+      <div className='header-container'>
         <nav className='navbar'>
           <NavLink key={'000'} to={'/'} className='navImg'>
             <img src={logo} alt='logo'></img>
@@ -189,6 +189,17 @@ export default class Header extends React.Component {
 
           </div>
         </nav>
+        <a 
+        style={{display: "table-cell"}} 
+        href="https://discord.gg/ZAQbdk" 
+        target="_blank"
+        rel="noopener noreferrer"
+        className="error-alert">
+            {/* <img 
+            src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHIIV-ZJOTXj5zVl9Dphh-Mf4s58HebQyybuxy9bqpqQGmlqqx&s`}
+            alt='support' /> */}
+            Need Support? Click Here
+        </a>
       </div>
     );}
 }

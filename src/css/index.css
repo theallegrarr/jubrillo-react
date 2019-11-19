@@ -291,6 +291,24 @@ img {
 .dropdown:hover .dropbtn {
   background-color: #00abb4;
 }
+.header-container .error-alert {
+  position: fixed;
+  margin-left: 82vw;
+  margin-top: 88vh;
+  background-color: #00abb4;
+  padding: 15px;
+  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  box-shadow: 0.5px 2px 7px #282c34;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 700;
+}
+.header-container .error-alert img {
+  width: 20px;
+}
+.header-container .error-alert:active {
+  box-shadow: none;
+}
 .cta-container {
   margin-top: 0.5%;
   display: flex;
@@ -1930,7 +1948,6 @@ img {
   box-shadow: 0.9px 2px 7px #282c34;
   background-color: #00abb4;
   border-radius: 5px;
-  width: 200px;
-  max-width: 300px;
+  max-width: 400px;
   text-align: center;
 }
