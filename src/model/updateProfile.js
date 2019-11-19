@@ -1,26 +1,32 @@
 import Profile from './Profile';
 
-export default function updateProfile (info) {
-  //console.log(person.attrs.profile.name, person.attrs.username)
-  const newData = new Profile({
-    name: info.name,
-    username: info.username,
-    // rating: info.ratings,
-    summary: info.summary,
-    skills: info.skills,
-    isFreelancer: info.isFreelancer,
-    email: info.email,
-    image: info.image
-  });
-  //console.log(newUser)
-  Profile.fetchList({
-    "username": info.username
-  }).then(res => {
-    if(res.length>0){
-      res[0].destroy().then(res => console.log('entry destroyed')).catch(err => console.log('no entry'));
-    }
-    newData.save().then((res) => {
-      console.log(res);
-    }).catch(err => console.log(err));
-    }).catch(err => console.log(err));
+export default async function updateProfile (info, setError, removeError) {
+  setError('good');
+  removeError('Uploading User Information...')
+  try {
+    const profile = await Profile.fetchList({
+      "username": info.username
+    })
+    
+    profile[0].update({
+      name: info.name,
+      username: info.username,
+      // rating: info.ratings,
+      summary: info.summary,
+      skills: info.skills,
+      isFreelancer: info.isFreelancer,
+      email: info.email,
+      image: info.image
+    })
+
+    //const saved = 
+    await profile[0].save();
+    //console.log(saved)
+    setError('good');
+    removeError('Info Updated Successfully...')
+  } catch (error) {
+    console.log(error)
+    setError('bad');
+    removeError('Update Failed, Try Again')
+  }
 }

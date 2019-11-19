@@ -17,6 +17,8 @@ import Switch from '@material-ui/core/Switch';
 import updateProfile from '../../model/updateProfile';
 import Profile from '../../model/Profile';
 import * as data from './skillsData.json';
+import ErrorBar from '../errorBar/errorBar';
+
 
 // Summary, ratings, skills, rate, Role, Image, Name, Location
 let person={};
@@ -47,6 +49,8 @@ export default function UserProfile(props) {
   const [skills, setSkills] = useState([]);
   const [freelancer, setFreelancer] = useState(false);
   const [email, setEmail] = useState('');
+  const [errorMessage, removeError] = useState('');
+  const [errorType, setErrorType] = useState('bad');
 
   const localData=JSON.parse(localStorage.getItem('blockstack-session'));
   person=localData.userData.profile;
@@ -86,7 +90,12 @@ export default function UserProfile(props) {
       email: email,
       image: imageAddress
     }
-    updateProfile(info);
+    if(info.summary && info.skills && info.email){
+      updateProfile(info, setErrorType, removeError)
+    } else {
+      setErrorType('bad');
+      removeError('Complete All Fields Before Submitting...')
+    }
   }
 
   const classes = useStyles();
@@ -107,6 +116,12 @@ export default function UserProfile(props) {
 
   return (
     <div className='profile-form'>
+    {errorMessage && 
+     <ErrorBar 
+     errorMessage={errorMessage}
+     errorType={errorType}
+     removeError={removeError}
+     />}
     {!person && (<CircularProgress className={classes.progress} />)}
     {person && (
     <>

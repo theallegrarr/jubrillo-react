@@ -7,6 +7,7 @@ import NewProject from '../../model/newProject';
 import Projects from '../../model/Project';
 import Profile from '../../model/Profile';
 import * as data from '../User/skillsData.json';
+import ErrorBar from '../errorBar/errorBar';
 
 export default function NewProjectForm(props) {
   const [title, setTitle] = useState('');
@@ -15,6 +16,8 @@ export default function NewProjectForm(props) {
   const [skills, setSkills] = useState([]);
   const [duration, setDuration] = useState();
   const [rating, setRating] = useState(0);
+  const [errorMessage, removeError] = useState('');
+  const [errorType, setErrorType] = useState('bad');
   const localData=JSON.parse(localStorage.getItem('blockstack-session'));
   const person=localData.userData;
 
@@ -26,6 +29,8 @@ export default function NewProjectForm(props) {
   }, [])
 
   const createProject = () => {
+    setErrorType('good');
+    removeError('Creating new Project...')
     Projects.fetchList().then(res => {
       const data = {
         title: title,
@@ -37,20 +42,28 @@ export default function NewProjectForm(props) {
         employer_rating: rating,
         duration: duration
       }
-      NewProject(data)
-        .then(res => {
-          console.log('Project Created:', res)
-          updateUserProjects();
-        }).catch(err => console.log(err));
+      if(data.title && data.budget && data.description && data.skills && data.duration){
+        NewProject(data)
+          .then(res => {
+            setErrorType('good');
+            removeError('Project created successfully...')
+            updateUserProjects(data.project_index);
+          }).catch(err => console.log(err));
+      } else {
+        setErrorType('bad');
+        removeError('Complete all fields before submitting...')
+      }
     }).catch(err => console.log(err));
   }
 
-  async function updateUserProjects(){
+  async function updateUserProjects(index){
+    setErrorType('good');
+    removeError(`You'll be redirected in a few...`)
     try {
       const userInfo = await Profile.fetchList({ username: person.username })
       userInfo[0].update({ jobsCreated: userInfo[0].attrs.jobsCreated+1 })
       await userInfo[0].save();
-      
+      props.history.push(`/projects/${index}`)
     } catch(error) {
       console.log(error)
     }
@@ -58,6 +71,12 @@ export default function NewProjectForm(props) {
 
   return(
   <div className='form-container'>
+    {errorMessage && 
+     <ErrorBar 
+     errorMessage={errorMessage}
+     errorType={errorType}
+     removeError={removeError}
+     />}
     <h2>Create a New Project</h2>
     <ProjectForm 
       title={title}
