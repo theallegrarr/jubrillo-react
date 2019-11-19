@@ -24,12 +24,15 @@ export default function ProjectPage(props) {
   const [duration, setDuration] = useState('');
   const [message, setMessage] = useState('');
   const [applications, setApplications] = useState([]);
+  const [canApply, setCanApply] = useState(false);
   const localData=JSON.parse(localStorage.getItem('blockstack-session'));
   const [errorMessage, removeError] = useState('');
   const [errorType, setErrorType] = useState(''); 
   const person=localData.userData;
   
   const submitApplication = () => {
+    setErrorType('good')
+    removeError('Sending Application')
     const data = {
       project_id: project.project_id,
       project_index: props.match.params.project_index,
@@ -41,10 +44,17 @@ export default function ProjectPage(props) {
     // console.log(data)
     Application(data).then(res => {
       //console.log('promise: ',res)
-    }).catch(err => console.log(err))
+      setErrorType('good')
+      removeError('Application Sent....')
+    }).catch(err => {
+      console.log(err)
+      setErrorType('bad')
+      removeError('An Error Occured....')
+    })
   }
 
   useEffect(() => {
+    validateApplicant();
     Projects.fetchList({
       "project_index": props.match.params.project_index
     }).then(res => {
@@ -79,6 +89,27 @@ export default function ProjectPage(props) {
       }
     }).catch(err => console.log(err))
   }, [])
+
+  async function validateApplicant(){
+    try {
+      const projectNow = await Projects.fetchList({
+        "project_index": props.match.params.project_index
+      })
+      //console.log(projectNow)
+      const appliedAlready = await ApplicationSchema.fetchList({
+        project_id: projectNow[0].attrs._id,
+        applicant_username: person.username
+      })
+      //console.log(appliedAlready)
+      if(appliedAlready.length>0){
+        setCanApply(false)
+      } else {
+        setCanApply(true)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const useStyles = makeStyles(theme => ({
     progress: {
@@ -182,6 +213,7 @@ export default function ProjectPage(props) {
           <p>Employer Account was Created: {timeAgo.format(Date.now() - (Date.now()-employer.createdAt))}</p>
           {(person.username !== project.username &&
            project.selected_freelancer !== person.username) && 
+           canApply &&
           <ApplicationForm 
             budget={budget}
             setBudget={setBudget}
@@ -191,6 +223,9 @@ export default function ProjectPage(props) {
             setMessage={setMessage}
             submitApplication={submitApplication}
           />}
+          {!canApply && person.username !== project.username &&
+            <p>You Already Applied</p>
+          }
           {(person.username === project.username ||
            project.selected_freelancer === person.username) && 
             <button 
