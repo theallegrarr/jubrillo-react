@@ -18,6 +18,7 @@ import Popup from './PaymentPopUp';
 import CustomMessages from './StepMessage';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import ErrorBar from '../errorBar/errorBar';
+import Review from '../Projects/Review';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -77,6 +78,8 @@ export default function ProjectThread (props) {
   const [popDisp, setPopDisp] = useState(false);
   const [errorMessage, removeError] = useState('');
   const [errorType, setErrorType] = useState('bad');
+  const [sentReview, setSent] = useState({});
+  const [receivedReview, setReceived] = useState({});
   
 
   useEffect(() => {
@@ -220,6 +223,10 @@ export default function ProjectThread (props) {
         person={person}
         setPopDisp={setPopDisp}
         refreshPayment={refreshPayment}
+        sentReview={sentReview}
+        receivedReview={receivedReview}
+        setSent={setSent}
+        setReceived={setReceived}
         />
       </>
     : <CircularProgress className={classes.progress} />
@@ -230,7 +237,8 @@ export default function ProjectThread (props) {
 
 
 function RightSideBar ({
-  employer, applicant, project, person, setPopDisp, refreshPayment
+  employer, applicant, project, person, setPopDisp, refreshPayment,
+  sentReview, receivedReview, setSent, setReceived
 }){
   TimeAgo.addLocale(en);
   const timeAgo = new TimeAgo('en-US');
@@ -268,6 +276,15 @@ function RightSideBar ({
         </div>
         }
     </div>
+    {project.step>=4 &&
+    <Review 
+      project={project}
+      person={person}
+      sentReview={sentReview}
+      receivedReview={receivedReview}
+      setSent={setSent}
+      setReceived={setReceived}
+    />}
     <a 
     href={`/freelancers/${employer.username}`}>
       <p className='employer-name'><span 

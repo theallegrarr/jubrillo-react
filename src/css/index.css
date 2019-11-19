@@ -989,6 +989,8 @@ img {
   flex-direction: row;
   background-color: white;
   padding-top: 60px;
+  padding-left: 30px;
+  padding-right: 50px;
 }
 .project-container .project-view-page {
   background-color: white;
@@ -1006,7 +1008,7 @@ img {
   box-shadow: 0.5px 2px 7px #282c34;
   border-radius: 12px;
   min-height: 600px;
-  max-height: 700px;
+  max-height: 900px;
 }
 .project-container .employer-info p {
   margin-bottom: 0;
