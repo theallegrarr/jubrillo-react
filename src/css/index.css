@@ -82,14 +82,15 @@ img {
   padding-left: 15px;
   padding-right: 15px;
   z-index: 9;
+  max-height: 45px;
 }
 .main .navbar .navImg {
   display: flex;
   flex-direction: column;
   justify-self: flex-start;
   justify-content: flex-start;
-  width: 100px;
-  max-height: 100px;
+  width: 115px;
+  max-height: 115px;
   margin-left: 1%;
   margin-bottom: 0.5%;
   margin-top: 0.5%;

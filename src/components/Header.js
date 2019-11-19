@@ -121,11 +121,11 @@ export default class Header extends React.Component {
 
           <div className='links'>
           <div className='search'>
-            <button className='searchButton'>
+            {/* <button className='searchButton'>
               <FaSearch />
             </button>
             <input className='searchTerm' type='text' placeholder='Search.....'>
-            </input>
+            </input> */}
           </div>
           <NavLink className="link" key={'001'} to={'/freelancers'}>
             freelancers
