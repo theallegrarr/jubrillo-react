@@ -8,6 +8,7 @@ import { FaLocationArrow as LoloSend } from 'react-icons/fa';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
 import ErrorBar from '../errorBar/errorBar';
+import uuid from 'uuid';
 
 export default function Messages (props) {
   const [messages, setMessages] = useState([]);
@@ -267,14 +268,20 @@ function MyComponent({ data }) {
 }
 
 function AllChats({ username, messages }){
-
+  const senders =  messages.map(message => message.attrs.from)
+  const dsenders = Array.from(new Set(senders))
+  const filtered = dsenders.filter(sender => sender !== username && sender !== false);
+  //console.log(filtered)
   return(
     <>
       {
-        messages.map(message => (
-          <a href={`/messages/${message.attrs.from === username ? message.attrs.to : message.attrs.from}`}
-          key={message.attrs._id}>
-            {message.attrs.from === username ? message.attrs.to : message.attrs.from}
+        filtered.map(sender => (
+
+          <a 
+          href={`/messages/${sender}`}
+          key={uuid()}
+          >
+            {sender}
           </a>
         ))
       }
