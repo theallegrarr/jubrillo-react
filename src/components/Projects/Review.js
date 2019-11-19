@@ -6,6 +6,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/core/styles';
 import ProjectSchema from '../../model/Project';
 import ReviewSchema from '../../model/Reviews';
+import UsedReviews from '../../model/ReviewUsed';
+import ProfileSchema from '../../model/Profile';
 
 export default function Review ({ 
   person, project,
@@ -18,6 +20,7 @@ export default function Review ({
   useEffect(() => {
     const interval = setInterval(() => {
       updateReviews();
+      updateMyReview(person, receivedReview,project);
     }, 1000);
 
     return () => {
@@ -189,4 +192,43 @@ function ShowReview({
           />
     </div>
   }</>)
+}
+
+async function updateMyReview(person, receivedReview, project){
+  try {
+    
+    const MyProfile = await ProfileSchema.fetchList({
+      username: person.username
+    })
+    const myReview = await ReviewSchema.fetchList({
+      project_id: project.project_id,
+      to: person.username
+    })
+    const myReceivedReview = await UsedReviews.fetchList({
+      owner: person.username,
+      project_id: project.project_id
+    })
+
+    //console.log(myReceivedReview,myReview)
+    if(myReceivedReview.length === 0 && myReview.length>0){
+      //console.log(myReview)
+      const newRating = (myReview[0].attrs.rating + MyProfile[0].attrs.rating)/2;
+      //console.log(newRating)
+
+      MyProfile[0].update({
+        rating: newRating
+      })
+      const res = await MyProfile[0].save()
+      //console.log(res)
+      const newUsed = new UsedReviews({
+        owner: person.username,
+        project_id: project.project_id,
+        review_id: myReview[0].attrs._id
+      })
+      await newUsed.save()
+    }
+
+  } catch (error) {
+    console.log(error)
+  }
 }
