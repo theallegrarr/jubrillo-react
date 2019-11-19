@@ -185,7 +185,13 @@ function ProjectCard({ project }){
           </a>
 
       <h4 className='budget-amount'>budget: ${project.attrs.budget}</h4>
-      <p className='time-ago'>created {timeAgo.format(Date.now() - (Date.now()-project.attrs.createdAt))}</p>
+      <p 
+      style={{
+        'fontSize': '8pt',
+        'fontWeight': '700'
+      }}
+      className='time-ago'
+      >created {timeAgo.format(Date.now() - (Date.now()-project.attrs.createdAt))}</p>
       </div>
       <div className='rating-row'>
         {/* <p>Employer Rating: <br/></p> */}
