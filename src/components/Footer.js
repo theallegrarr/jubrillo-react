@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaTwitter } from 'react-icons/fa';
+//import { FaTwitter } from 'react-icons/fa';
 
 export default function Footer (props) {
 
