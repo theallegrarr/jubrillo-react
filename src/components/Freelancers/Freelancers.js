@@ -7,6 +7,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/core/styles';
 import * as data from '../User/skillsData.json';
+import ErrorBar from '../errorBar/errorBar';
 
 const fields = { text: 'Name', value: 'Code' };
 
@@ -14,9 +15,10 @@ export default function Freelancers(props) {
   
   const [rateSort, setRate] = useState(0);
   const [skills, setSkills] = useState([]);
-  const [completedJobs, setCompleted] = useState();
+  //const [completedJobs, setCompleted] = useState(0);
   const [freelancers, setFreelancers] = useState([]);
-
+  const [errorMessage, removeError] = useState('');
+  const [errorType, setErrorType] = useState(''); 
 
   const useStyles = makeStyles(theme => ({
     progress: {
@@ -31,11 +33,84 @@ export default function Freelancers(props) {
     Profile.fetchList({
       "isFreelancer": true
     }).then(res => {
-      console.log(res)
+       //console.log(res)
       setFreelancers(res);
     }).catch(err => console.log(err))
 
   }, [])
+
+  function sortSelectedSkills(list,skills){
+    let newList=[];
+    for(let i=0; i< list.length; i++){
+      if(checker(skills, list[i].attrs.skills)){
+        //console.log(list[i])
+        newList.push(list[i])
+      }
+    };
+    return newList;
+  }
+
+  const checker = (arr, target) => {
+    for(let j=0; j<skills.length; j++){
+      //console.log(target.indexOf(skills[j]))
+      if(target.indexOf(skills[j])<0)return false;
+    }
+    return true;
+  };
+
+  
+
+  async function sortFreelancers(){
+    setErrorType('good')
+    removeError('Refining the list of Freelancers')
+    try {
+      let sortedList=[];
+      if(skills.length === 0){
+        sortedList = await Profile.fetchList({
+          // jobsDone: { $size: completedJobs-1 },
+          rating: { $gt: rateSort-1 }
+        })
+      } else {
+        sortedList = await Profile.fetchList({
+          // jobsDone: { $size: completedJobs-1 },
+          //rating: { $gt: rateSort-1 },
+          rating: { $gt: rateSort-1 },
+          offset: 0
+            // Do something here
+         });
+        //console.log(sortedList)
+        sortedList = await sortSelectedSkills(sortedList,skills)
+        //console.log(sortedList)
+      }
+      
+      
+      if(sortedList.length >0){
+        setFreelancers(sortedList)
+        setErrorType('good')
+        removeError('List Updated')
+      } else {
+        setErrorType('good')
+        removeError('No Freelancers Matching Your Selection')
+      }
+    } catch(error) {
+      console.log(error.message)
+      setErrorType('bad')
+      removeError('Sort Failed')
+    }
+  }
+
+  async function resetList(){
+    setErrorType('good')
+    removeError('Fetching default list')
+    Profile.fetchList({
+      "isFreelancer": true
+    }).then(res => {
+      // console.log(res)
+      setFreelancers(res);
+      setErrorType('good')
+      removeError('List updated')
+    }).catch(err => console.log(err))
+  }
 
   const StyledRating = withStyles({
     iconFilled: {
@@ -64,11 +139,11 @@ export default function Freelancers(props) {
             placeholder="Select Skills" 
             value={skills}
             style={{ "borderBottom": "none" }}
-            onchange={(e) => setSkills(e.value)}
+            change={(e) => setSkills(e.value)}
             />
           </div>
         </div>
-        <p>Min Jobs Completed: </p>
+        {/* <p>Min Jobs Completed: </p>
         <input 
         type='text' 
         className='completed-input'
@@ -77,7 +152,7 @@ export default function Freelancers(props) {
         onChange={(e) => {
           setCompleted(e.target.value);
         }}
-        ></input>
+        ></input> */}
         <p>Min Rating: </p>
         <StyledRating
               name="customized-color"
@@ -91,20 +166,25 @@ export default function Freelancers(props) {
                 fontSize="large" />}
             />
         <div className='sort-actions'>
-          <button className='sort-apply'>Apply</button>
+          <button 
+          className='sort-apply'
+          onClick={() => sortFreelancers()}>Apply</button>
           <button 
           className='sort-apply reset'
           onClick={() => {
-            setSkills([])
-            setCompleted(0)
-            setRate(0)
+            resetList()
           }}>
             Reset
           </button>
         </div>
       </div>
       <div className='freelancers-container'>
-        
+      {errorMessage && 
+      <ErrorBar 
+      errorMessage={errorMessage}
+      errorType={errorType}
+      removeError={removeError}
+      />}
         {
           freelancers.length > 0 ? 
           (<FreelancersList freelancers={freelancers} key='311' />)

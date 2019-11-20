@@ -9,6 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
 import * as data from '../User/skillsData.json';
+import ErrorBar from '../errorBar/errorBar';
 
 const fields = { text: 'Name', value: 'Code' };
 
@@ -16,8 +17,10 @@ export default function Project(props) {
   
   const [rateSort, setRate] = useState(0);
   const [skills, setSkills] = useState([]);
-  const [completedJobs, setCompleted] = useState();
+  const [budget, setBudget] = useState(0);
   const [projects, setProject] = useState([]);
+  const [errorMessage, removeError] = useState('');
+  const [errorType, setErrorType] = useState(''); 
 
   const useStyles = makeStyles(theme => ({
     progress: {
@@ -31,14 +34,73 @@ export default function Project(props) {
   useEffect(() => {
     ProjectSchema.fetchList({
       sort: '-createdAt',
-      limit: 10,
+      limit: 20,
       offset: 0
     }).then(res => {
-      //console.log('response: ',res)
       setProject(res);
     }).catch(err => console.log('error: ',err))
 
   }, [])
+
+  function sortSelectedProjects(list,skills){
+    let newList=[];
+    for(let i=0; i<list.length; i++){
+      //console.log(list[i])
+      if(list[i].attrs.skills){
+        if(checker(skills, list[i].attrs.skills) && parseInt(list[i].attrs.budget)>budget){
+          //console.log(list[i])
+          newList.push(list[i])
+        }
+      }
+    };
+    return newList;
+  }
+
+  const checker = (arr, target) => {
+    for(let j=0; j<skills.length; j++){
+      if(target.indexOf(skills[j])<0)return false;
+    }
+    return true;
+  };
+
+  async function sortProjects(){
+    setErrorType('good')
+    removeError('Refining the Projects List')
+    try {
+      
+      let sortedList = await ProjectSchema.fetchList()
+      sortedList = await sortSelectedProjects(sortedList,skills)
+      
+      
+      if(sortedList.length >0){
+        setProject(sortedList)
+        setErrorType('good')
+        removeError('List Updated')
+      } else {
+        setErrorType('good')
+        removeError('No Projects Matching Your Selection')
+      }
+    } catch(error) {
+      //console.log(error.message)
+      setErrorType('bad')
+      removeError('Sort Failed')
+    }
+  }
+
+  async function resetList(){
+    setErrorType('good')
+    removeError('Fetching default list')
+    ProjectSchema.fetchList({
+      sort: '-createdAt',
+      limit: 20,
+      offset: 0
+    }).then(res => {
+      // console.log(res)
+      setProject(res);
+      setErrorType('good')
+      removeError('List updated')
+    }).catch(err => console.log(err))
+  }
 
   const StyledRating = withStyles({
     iconFilled: {
@@ -67,7 +129,7 @@ export default function Project(props) {
             placeholder="Select Skills" 
             value={skills}
             style={{ "borderBottom": "none" }}
-            onchange={(e) => setSkills(e.value)}
+            change={(e) => setSkills(e.value)}
             />
           </div>
         </div>
@@ -76,12 +138,12 @@ export default function Project(props) {
         type='text' 
         className='completed-input'
         placeholder='Enter a number'
-        value={completedJobs}
+        value={budget}
         onChange={(e) => {
-          setCompleted(e.target.value);
+          setBudget(e.target.value);
         }}
         ></input>
-        <p>Min. Employer Rating: </p>
+        {/* <p>Min. Employer Rating: </p>
         <StyledRating
               name="customized-color"
               value={rateSort}
@@ -92,21 +154,27 @@ export default function Project(props) {
               }}
               icon={<StarBorderIcon 
                 fontSize="large" />}
-            />
+            /> */}
         <div className='sort-actions'>
-          <button className='sort-apply'>Apply</button>
+          <button 
+          className='sort-apply'
+          onClick={() => sortProjects()}>Apply</button>
           <button 
           className='sort-apply reset'
           onClick={() => {
-            setSkills([])
-            setCompleted(0)
-            setRate(0)
+            resetList()
           }}>
             Reset
           </button>
         </div>
       </div>
       <div key='314' className='freelancers-container'>
+      {errorMessage && 
+      <ErrorBar 
+      errorMessage={errorMessage}
+      errorType={errorType}
+      removeError={removeError}
+      />}
       <div className='add-button-container'>
         
           <button 
