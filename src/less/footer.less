@@ -1,12 +1,11 @@
 /** code by webdevtrick ( https://webdevtrick.com ) **/
 
 footer{
-	bottom: 0;
+	//bottom: 0;
   z-index: 20;
-  max-height: 90px;
-  position: fixed;
-  align-self: flex-end;
-  justify-self: flex-end;
+  max-height: 100%;
+  position: absolute;
+  font-family: @secondary-font;
 }
 .footer-distributed{
 	background-color: #292c2f;
@@ -32,6 +31,7 @@ footer{
 }
 
 .footer-distributed h3{
+  font-family: @secondary-font;
 	color:  #ffffff;
 	margin: 0;
 }
@@ -134,7 +134,8 @@ footer{
 	height: 35px;
 	cursor: pointer;
 	background-color:  #33383b;
-	border-radius: 2px;
+  border-radius: 2px;
+  font-family: @secondary-font;
 
 	font-size: 20px;
 	color: #ffffff;
