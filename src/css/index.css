@@ -326,6 +326,7 @@ img {
   font-family: 'Nunito' 'serif';
   padding: 4%;
   margin-bottom: 0;
+  min-height: 90vh;
 }
 .cta-container .cta-text {
   display: flex;
