@@ -5,7 +5,10 @@ export default class Person extends Model {
 
   static schema = {
     name: String,
-    username: String,
+    username: {
+      type: String,
+      decrypted: true
+    },
     email: String,
     rating: Number,
     rank: Number,

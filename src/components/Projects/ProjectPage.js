@@ -211,7 +211,7 @@ export default function ProjectPage(props) {
           <p>Jobs Done: {employer.jobsDone}</p>
           <p>Jobs Created: {employer.jobsCreated}</p>
           <p>Employer Account was Created: {timeAgo.format(Date.now() - (Date.now()-employer.createdAt))}</p>
-          {(person.username !== project.username &&
+          {(person.username !== employer.username &&
            project.selected_freelancer !== person.username) && 
            canApply &&
           <ApplicationForm 
@@ -223,7 +223,7 @@ export default function ProjectPage(props) {
             setMessage={setMessage}
             submitApplication={submitApplication}
           />}
-          {!canApply && person.username !== project.username &&
+          {!canApply && person.username !== employer.username &&
             <p>You Already Applied</p>
           }
           {(person.username === project.username ||

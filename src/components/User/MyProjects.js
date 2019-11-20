@@ -2,6 +2,7 @@ import React,{useState, useEffect} from 'react';
 import ProjectSchema from '../../model/Project';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
+import uuid from  'uuid';
 
 export default function MyProjects(props){
   const [option, setOption] = useState('created');
@@ -83,7 +84,7 @@ function AllProjects ({ projects }){
   <div className='my-projects-list'>
     {
       projects.map(project => (
-        <div className='project-bar'>
+        <div className='project-bar' key={uuid()}>
           <a href={`/projects/${project.attrs.project_index}`}>
             {project.attrs.title}
           </a>
