@@ -22,6 +22,7 @@ import PostPage from '../src/components/Forum/ViewPost';
 import FAQ from '../src/components/FAQ/FAQ';
 import MyProjects from '../src/components/User/MyProjects';
 import Transactions from '../src/components/User/MyTransactions';
+import Footer from '../src/components/Footer';
 import './App.css';
 import '../src/css/index.css';
 import '../src/css/global.css';
@@ -48,6 +49,7 @@ function App() {
     <div>
       <div className='main container'>
         <Header className='navbar' />
+        
         <Route exact path='/' component={Cta} />
         
         
@@ -155,6 +157,7 @@ function App() {
               return (<Transactions {...props}/>)
           }} />
       </div>
+      <Footer />
     </div>
   );
 }
