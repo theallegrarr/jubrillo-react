@@ -325,6 +325,7 @@ img {
   width: 96%;
   font-family: 'Nunito' 'serif';
   padding: 4%;
+  margin-bottom: 0;
 }
 .cta-container .cta-text {
   display: flex;
@@ -404,7 +405,7 @@ img {
   margin-top: 30px;
   background-color: white;
   font-family: 'Nunito', 'serif';
-  min-height: 80vh;
+  min-height: 90vh;
 }
 .profile-form .profile-info {
   display: flex;
@@ -643,7 +644,7 @@ img {
 }
 .freelancers-container {
   background-color: white;
-  min-height: 80vh;
+  min-height: 90vh;
 }
 .freelancers-container .freelancers-list {
   display: flex;
@@ -830,7 +831,7 @@ img {
   justify-content: space-between;
   margin: 1%;
   justify-self: center;
-  min-height: 80vh;
+  min-height: 90vh;
 }
 .edit-profile .buttons {
   display: flex;
@@ -895,7 +896,7 @@ img {
 .projects-list {
   margin-left: 355px;
   margin-top: 30px;
-  min-height: 80vh;
+  min-height: 90vh;
 }
 .projects-list .project-card {
   display: flex;
@@ -1001,7 +1002,7 @@ img {
   padding-top: 60px;
   padding-left: 30px;
   padding-right: 50px;
-  min-height: 80vh;
+  min-height: 90vh;
 }
 .project-container .project-view-page {
   background-color: white;
@@ -1156,7 +1157,7 @@ img {
   background-color: #00abb4;
   padding: 1%;
   box-shadow: 0.5px 2px 7px #282c34;
-  min-height: 80vh;
+  min-height: 90vh;
 }
 .work-steps .next-button {
   background-color: #FF3366;
@@ -1465,7 +1466,7 @@ img {
   padding-right: 30px;
   background-color: white;
   font-family: 'IBM Plex Mono', Arial, sans-serif;
-  min-height: 80vh;
+  min-height: 90vh;
 }
 .chat-container h3,
 .chat-container h2 {
@@ -1503,7 +1504,7 @@ img {
   padding-top: 50px;
   font-family: 'IBM Plex Mono', Arial, sans-serif;
   font-weight: 600;
-  min-height: 80vh;
+  min-height: 90vh;
 }
 .notifications-container h3 {
   font-family: 'IBM Plex Mono', Arial, sans-serif;
@@ -1558,7 +1559,7 @@ img {
 .forum-container {
   background-color: white;
   padding: 20px;
-  min-height: 80vh;
+  min-height: 90vh;
 }
 .forum-container a {
   font-size: 12pt;
@@ -1646,7 +1647,7 @@ img {
   background-color: white;
   padding: 30px;
   padding-top: 40px;
-  min-height: 80vh;
+  min-height: 90vh;
 }
 .view-post-container h4 {
   font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
@@ -1920,7 +1921,7 @@ img {
 .my-projects-container {
   background-color: white;
   padding: 50px;
-  min-height: 80vh;
+  min-height: 90vh;
 }
 .my-projects-container h4 {
   font-family: 'IBM Plex Mono', Arial, sans-serif;
@@ -1986,7 +1987,6 @@ footer {
   text-align: left;
   font: bold 16px sans-serif;
   padding: 15px 20px;
-  margin-top: 80px;
 }
 .footer-distributed .footer-left,
 .footer-distributed .footer-center,
