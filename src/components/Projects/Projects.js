@@ -35,7 +35,8 @@ export default function Project(props) {
     ProjectSchema.fetchList({
       sort: '-createdAt',
       limit: 20,
-      offset: 0
+      offset: 0,
+      step: { $lt: 3 }
     }).then(res => {
       setProject(res);
     }).catch(err => console.log('error: ',err))
@@ -68,7 +69,10 @@ export default function Project(props) {
     removeError('Refining the Projects List')
     try {
       
-      let sortedList = await ProjectSchema.fetchList()
+      let sortedList = await ProjectSchema.fetchList({
+        sort: '-createdAt',
+        step: { $lt: 3 }
+      })
       sortedList = await sortSelectedProjects(sortedList,skills)
       
       
@@ -93,7 +97,8 @@ export default function Project(props) {
     ProjectSchema.fetchList({
       sort: '-createdAt',
       limit: 20,
-      offset: 0
+      offset: 0,
+      step: { $lt: 3 }
     }).then(res => {
       // console.log(res)
       setProject(res);
