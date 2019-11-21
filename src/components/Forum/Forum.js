@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import ForumSchema from '../../model/Forum';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
-import ReplySchema from '../../model/ForumReplies';
+//import ReplySchema from '../../model/ForumReplies';
 
 export default function Forum(props) {
   const [posts, setPosts] = useState([]);
@@ -20,7 +20,7 @@ export default function Forum(props) {
         sort: '-createdAt'
       })
       setPosts(fetchPosts)
-      console.log(fetchPosts)
+      //console.log(fetchPosts)
     } catch (error) {
       console.log(error)
     }

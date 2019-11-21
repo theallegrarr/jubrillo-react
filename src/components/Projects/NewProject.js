@@ -11,10 +11,10 @@ import ErrorBar from '../errorBar/errorBar';
 
 export default function NewProjectForm(props) {
   const [title, setTitle] = useState('');
-  const [budget, setBudget] = useState();
+  const [budget, setBudget] = useState(0);
   const [description, setDescription] = useState('');
   const [skills, setSkills] = useState([]);
-  const [duration, setDuration] = useState();
+  const [duration, setDuration] = useState(0);
   const [rating, setRating] = useState(0);
   const [errorMessage, removeError] = useState('');
   const [errorType, setErrorType] = useState('bad');
@@ -115,7 +115,7 @@ function ProjectForm({
   return (
     <Formik 
       initialValues={{ email: '', summary: '' }}
-      //onSubmit={}
+      //onSubmit=
       render={() => (
         <Form className='edit-profile'>
           <Field 
@@ -131,7 +131,7 @@ function ProjectForm({
           name='budget' 
           type="text" 
           placeholder='Enter Your Budget in $ (Minimum of $30)....' 
-          value={budget}
+          value={budget === 0 ? '' : budget}
           onChange={(e) => setBudget(e.target.value)}/>
 
           <Field 
@@ -139,7 +139,7 @@ function ProjectForm({
           name='budget' 
           type="text" 
           placeholder='Enter Your Target Duration in Days....' 
-          value={duration}
+          value={duration === 0 ? '' : duration}
           onChange={(e) => setDuration(e.target.value)}/>
 
           <div className='control-pane'>

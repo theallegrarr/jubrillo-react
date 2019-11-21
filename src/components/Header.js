@@ -47,8 +47,15 @@ export default class Header extends React.Component {
   }
   
   componentDidMount() {
-    
-    
+    const localData=JSON.parse(localStorage.getItem('blockstack-session'));
+    const localuser=localData.userData;
+    if(localuser && this.state.user === 'loading...'){
+      this.setState({
+        ...this.state,
+        user: localuser.username
+      })
+    }
+
     this.interval = setInterval( async () => {
       MessageSchema.fetchList({
         to: this.state.user,

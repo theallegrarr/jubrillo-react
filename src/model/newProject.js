@@ -13,6 +13,7 @@ export default function insertProject (info) {
   });
 
   return newData.save().then((res) => {
-    console.log(res);
+    //console.log(res);
+    if(res)return true;
   }).catch(err => console.log(err));
 }
