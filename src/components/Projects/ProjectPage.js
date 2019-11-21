@@ -46,6 +46,7 @@ export default function ProjectPage(props) {
       //console.log('promise: ',res)
       setErrorType('good')
       removeError('Application Sent....')
+      setCanApply(false)
     }).catch(err => {
       console.log(err)
       setErrorType('bad')

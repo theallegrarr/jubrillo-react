@@ -664,6 +664,7 @@ img {
   cursor: pointer;
   transition: 2s background-color;
   max-width: 45%;
+  overflow: hidden;
 }
 .freelancers-container .freelancers-list .freelancer-card:hover {
   background-color: #cdcdcd;

@@ -22,7 +22,7 @@ import Review from '../Projects/Review';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: '90%',
+    width: '100%',
     fontSize: '12pt'
   },
   button: {
@@ -146,8 +146,8 @@ export default function ProjectThread (props) {
           project_index: props.match.params.project_index,
           balance: res[0].attrs.work_balance
         }
-
-        if(!project.freelancer_username){
+        //console.log(project)
+        if(!project.freelancer_username||project.freelancer_username === undefined){
           props.history.push(`/projects/${props.match.params.project_index}`)
         }
         // console.log(project)
