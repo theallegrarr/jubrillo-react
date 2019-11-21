@@ -128,11 +128,11 @@ export default function Notifications(props) {
         }
       </div>
       <div className='paginate-buttons'>
-        <button
+        {latests.length >=20 && <button
           onClick={() => {
             nextPage()
           }}
-        >Next Page</button>
+        >Next Page</button>}
         {offset>=20 && <button
           onClick={() => {
             prevPage()

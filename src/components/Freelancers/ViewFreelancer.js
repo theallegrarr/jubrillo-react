@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaCommentAlt, FaBriefcase } from 'react-icons/fa';
+import { FaCommentAlt } from 'react-icons/fa';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { MultiSelectComponent } from '@syncfusion/ej2-react-dropdowns';
 import { withStyles } from '@material-ui/core/styles';
@@ -27,6 +27,8 @@ export default function ViewFreelancer(props) {
           username: res[0].attrs.username,
           name: res[0].attrs.name,
           skills: res[0].attrs.skills,
+          completed: res[0].attrs.jobsDone,
+          created: res[0].attrs.jobsCreated
         }
 
         setPerson(newPerson);
@@ -115,12 +117,12 @@ function UserHeader({ person, otherProps }) {
 
         </div>
       </div>
-      {ProfileDetails(person.skills, person.summary)}
+      {ProfileDetails(person.skills, person.summary, person.completed, person.created)}
     </div>
   );
 }
 
-function ProfileDetails(skills, summary){
+function ProfileDetails(skills, summary, completed, created){
   function createMarkup() {
     return {__html: summary};
   }
@@ -130,6 +132,11 @@ function ProfileDetails(skills, summary){
   }
   
   return(
+    <div className='profile-out-row'>
+      <div className='user-stats'>
+      <h3>Completed Jobs: {completed}</h3>
+      <h3>Created Jobs: {created}</h3>
+      </div>
     <div className="profile-show">
       <div className="profile-row">
         <h3>Skills: </h3> 
@@ -157,6 +164,7 @@ function ProfileDetails(skills, summary){
           <MyComponent/>
         </div>
         </div>
+    </div>
     </div>
   );
 }

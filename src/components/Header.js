@@ -11,7 +11,7 @@ import {
   AppConfig,
   Person
 } from 'blockstack';
-import { User, configure, getConfig } from 'radiks';
+import { User, configure } from 'radiks';
 // import createUser from '../model/createUser';
 import MessageSchema from '../model/Message';
 import LastCheck from '../model/LastCheck';
@@ -20,12 +20,11 @@ const userSession = new UserSession({ appConfig: appConfig })
 const avatarFallbackImage = 'https://s3.amazonaws.com/onename/avatar-placeholder.png';
 
 configure({
-  apiServer: 'http://localhost:1260',
-  //apiServer: 'https://jubrillo-node.herokuapp.com',
+  //apiServer: 'http://localhost:1260',
+  apiServer: 'https://jubrillo-node.herokuapp.com',
   userSession,
 });
 
-let delay=0;
 export default class Header extends React.Component {
   constructor(props) {
   	super(props);
@@ -128,7 +127,7 @@ export default class Header extends React.Component {
         });
       }
       }
-    }, 5000);
+    }, 3000);
   }
 
   componentWillUnmount() {
@@ -165,15 +164,20 @@ export default class Header extends React.Component {
             <input className='searchTerm' type='text' placeholder='Search.....'>
             </input> */}
           </div>
-          <NavLink className="link" key={'001'} to={'/freelancers'}>
-            freelancers
-          </NavLink>
-          <NavLink className="link" key={'002'} to={'/projects'}>
-            projects
-          </NavLink>
-          <NavLink className="link" key={'003'} to={'/forum'}>
-            forum
-          </NavLink>
+          
+          {userSession.isUserSignedIn() &&
+          <>
+            <NavLink className="link" key={'001'} to={'/freelancers'}>
+              freelancers
+            </NavLink>
+            <NavLink className="link" key={'002'} to={'/projects'}>
+              projects
+            </NavLink>
+            <NavLink className="link" key={'003'} to={'/forum'}>
+              forum
+            </NavLink>
+          </>
+          }
           <NavLink className="link" key={'004'} to={'/faq'}>
             faq
           </NavLink>
@@ -185,7 +189,7 @@ export default class Header extends React.Component {
               <button 
               className='signbutton'
               onClick={ this.handleSignIn.bind(this) }
-              > GET STARTED </button> 
+              > Log In/Regsiter </button> 
               : 
               (
               <>

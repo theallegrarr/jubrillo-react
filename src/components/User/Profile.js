@@ -49,6 +49,8 @@ export default function UserProfile(props) {
   const [skills, setSkills] = useState([]);
   const [freelancer, setFreelancer] = useState(false);
   const [email, setEmail] = useState('');
+  const [completed, setCompleted] = useState(0);
+  const [created, setCreated] = useState('');
   const [errorMessage, removeError] = useState('');
   const [errorType, setErrorType] = useState('bad');
 
@@ -67,6 +69,8 @@ export default function UserProfile(props) {
         setSkills(res[0].attrs.skills);
         setFreelancer(res[0].attrs.isFreelancer);
         setEmail(res[0].attrs.email);
+        setCompleted(res[0].attrs.jobsDone);
+        setCreated(res[0].attrs.jobsCreated)
       }
     })
   }, [])
@@ -165,7 +169,7 @@ export default function UserProfile(props) {
         </div>
       </div>
       {editing && ProfileForm(email, setEmail, setSummary, skills, setSkills, freelancer, setFreelancer, uploadProfile, setEdit, summary)}
-      {!editing && ProfileDetails(email, freelancer, skills, summary)}
+      {!editing && ProfileDetails(email, freelancer, skills, summary, completed, created)}
     </div>
   );
 }
@@ -269,7 +273,9 @@ function ClassicEditorFunction(props){
   );
 }
 
-function ProfileDetails(email, freelancer, skills, summary){
+function ProfileDetails(
+  email, freelancer, skills, summary,
+  completed, created){
   function createMarkup() {
     return {__html: summary};
   }
@@ -279,6 +285,11 @@ function ProfileDetails(email, freelancer, skills, summary){
   }
   
   return(
+    <div className='profile-out-row'>
+      <div className='user-stats'>
+      <h3>Completed Jobs: {completed}</h3>
+      <h3>Created Jobs: {created}</h3>
+      </div>
     <div className="profile-show">
       <div className="profile-row">
         <h3>Email: </h3> 
@@ -310,6 +321,7 @@ function ProfileDetails(email, freelancer, skills, summary){
           <MyComponent/>
         </div>
         </div>
+    </div>
     </div>
   );
 }

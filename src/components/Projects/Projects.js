@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { MultiSelectComponent } from '@syncfusion/ej2-react-dropdowns';
 import ProjectSchema from '../../model/Project';
 import Rating from '@material-ui/lab/Rating';
-import StarBorderIcon from '@material-ui/icons/Star';
+//import StarBorderIcon from '@material-ui/icons/Star';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/core/styles';
@@ -15,7 +15,6 @@ const fields = { text: 'Name', value: 'Code' };
 
 export default function Project(props) {
   
-  const [rateSort, setRate] = useState(0);
   const [skills, setSkills] = useState([]);
   const [budget, setBudget] = useState(0);
   const [projects, setProject] = useState([]);

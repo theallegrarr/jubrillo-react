@@ -335,14 +335,16 @@ img {
   width: 48%;
 }
 .cta-container .cta-text h1 {
-  font-family: 'Nunito', 'serif';
+  font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
   text-transform: uppercase;
   color: #00abb4;
+  font-weight: 700;
 }
 .cta-container .cta-text p {
   font-family: 'Nunito', 'serif';
-  text-transform: uppercase;
   color: aliceblue;
+  font-weight: 500;
+  font-size: 13pt;
 }
 .cta-container .cta-text .cta-buttons {
   display: flex;
@@ -619,7 +621,7 @@ img {
   background: white;
   box-shadow: 0.9px 2px 7px #282c34;
   width: 1200px;
-  max-width: 90%;
+  max-width: 80%;
   margin-top: 10px;
   padding: 5px;
   text-align: center;
@@ -640,6 +642,22 @@ img {
   display: flex;
   align-self: center;
   width: 80%;
+  font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
+}
+.profile-out-row {
+  display: flex;
+  flex-direction: row;
+  padding: 2%;
+}
+.profile-out-row .user-stats {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+  padding: 20px;
+}
+.profile-out-row .user-stats h3 {
+  min-width: 20vw;
+  font-size: 16pt;
   font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
 }
 .freelancers-container {

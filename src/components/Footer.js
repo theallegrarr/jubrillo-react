@@ -9,11 +9,11 @@ export default function Footer (props) {
 
 			<div className="footer-left">
 
-				<h3>Jubrillo</h3>
+				<h3>Jubrillo &copy; 2019</h3>
 
 				<p className="footer-links">
-					<a href="/forum">Forum</a>
-          {' '}·{' '}
+					{/*<a href="/forum">Forum</a>
+           {' '}·{' '} */}
 					<a href="/faq">FAQ</a>
           {/* .
           <p>Jubrillo &copy; 2019</p> */}

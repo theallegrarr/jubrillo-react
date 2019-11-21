@@ -46,7 +46,7 @@ export default function ProjectPage(props) {
         forum_post_id: post[0].attrs._id,
         sort: '-createdAt'
       })
-      console.log(allReplies)
+      //console.log(allReplies)
       setReplies(allReplies);
     } catch(error) {
       console.log(error)

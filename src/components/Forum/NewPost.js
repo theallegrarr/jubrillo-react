@@ -3,14 +3,19 @@ import { Formik, Form, Field } from 'formik';
 import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import ForumSchema from '../../model/Forum';
+import ErrorBar from '../errorBar/errorBar';
 
 export default function NewProjectForm(props) {
   const [topic, setTopic] = useState('');
   const [body, setBody] = useState('');
+  const [errorMessage, removeError] = useState('');
+  const [errorType, setErrorType] = useState(''); 
   const localData=JSON.parse(localStorage.getItem('blockstack-session'));
   const person=localData.userData;
 
   async function createPost () {
+    setErrorType('good');
+    removeError('Adding New Post...');
     try {
       const allPosts = await ForumSchema.fetchList();
       const nextIndex = allPosts.length+1;
@@ -32,6 +37,12 @@ export default function NewProjectForm(props) {
 
   return(
   <div className='form-container'>
+    {errorMessage && 
+      <ErrorBar 
+      errorMessage={errorMessage}
+      errorType={errorType}
+      removeError={removeError}
+      />}
     <h2>Create a New Post</h2>
     <PostForm 
       topic={topic}

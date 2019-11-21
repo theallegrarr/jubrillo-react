@@ -232,7 +232,7 @@
       background: white;
       box-shadow: 0.9px 2px 7px #282c34;
       width: 1200px;
-      max-width: 90%;
+      max-width: 80%;
       margin-top: 10px;
       padding: 5px;
       text-align: center;
@@ -261,3 +261,21 @@
   }
 }
 
+.profile-out-row {
+  display: flex;
+  flex-direction: row;
+  padding: 2%;
+
+  .user-stats {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    padding: 20px;
+
+    h3 {
+      min-width: 20vw;
+      font-size: 16pt;
+      font-family: @secondary-font, 'serif';
+    }
+  }
+}
