@@ -33,7 +33,7 @@ export default function Messages (props) {
       if(person.username && props.match.params.other_person){
         getMessages(messages, setMessages, props, person, setMode);
       } else {
-        getAll(messages, setMessages)
+        getAll(person.username, setMessages)
       }
     }, 1000);
 
@@ -302,7 +302,17 @@ async function getAll(username, setMessages) {
     
     //console.log(allThreadMessages, allThreadMessages2, newArray)
     if(allThreadMessages2) {
-      setMessages(allThreadMessages2)
+      if(allThreadMessages2.length > 0){
+        setMessages(allThreadMessages2)
+      } else {
+        setMessages([
+          {
+            attrs:
+              {
+                from: 'No Messages Yet'
+              }
+        }])
+      }
     } 
   } catch (error) {
     console.log(error)
