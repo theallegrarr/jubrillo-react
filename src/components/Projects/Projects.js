@@ -38,6 +38,7 @@ export default function Project(props) {
       offset: 0,
       step: { $lt: 3 }
     }).then(res => {
+      console.log(res)
       setProject(res);
     }).catch(err => console.log('error: ',err))
 
@@ -100,7 +101,7 @@ export default function Project(props) {
       offset: 0,
       step: { $lt: 3 }
     }).then(res => {
-      // console.log(res)
+      console.log(res)
       setProject(res);
       setErrorType('good')
       removeError('List updated')

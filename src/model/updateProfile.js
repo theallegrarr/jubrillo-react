@@ -8,20 +8,33 @@ export default async function updateProfile (info, setError, removeError) {
       "username": info.username
     })
     
-    profile[0].update({
-      name: info.name,
-      username: info.username,
-      // rating: info.ratings,
-      summary: info.summary,
-      skills: info.skills,
-      isFreelancer: info.isFreelancer,
-      email: info.email,
-      image: info.image
-    })
-
-    //const saved = 
+    if(profile.length > 0){
+      profile[0].update({
+        name: info.name,
+        username: info.username,
+        // rating: info.ratings,
+        summary: info.summary,
+        skills: info.skills,
+        isFreelancer: info.isFreelancer,
+        email: info.email,
+        image: info.image
+      })
+    } else {
+      profile[0] = new Profile({
+        name: info.name,
+        username: info.username,
+        // rating: info.ratings,
+        summary: info.summary,
+        skills: info.skills,
+        isFreelancer: info.isFreelancer,
+        email: info.email,
+        image: info.image
+      })
+    }
+    
+    const saved = 
     await profile[0].save();
-    //console.log(saved)
+    console.log(saved)
     setError('good');
     removeError('Info Updated Successfully...')
   } catch (error) {

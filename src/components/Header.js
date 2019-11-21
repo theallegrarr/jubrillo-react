@@ -2,15 +2,17 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import '../css/index.css';
 import '../css/global.css';
-import { FaSearch, FaAlignJustify, FaIdCard, FaListAlt, FaSignOutAlt, FaBriefcase, FaRegMoneyBillAlt } from 'react-icons/fa';
+import { 
+  //FaSearch, 
+  FaAlignJustify, FaIdCard, FaListAlt, FaSignOutAlt, FaBriefcase, FaRegMoneyBillAlt } from 'react-icons/fa';
 import logo from '../assets/logo.png';
 import {
   UserSession,
   AppConfig,
   Person
 } from 'blockstack';
-import { User, configure } from 'radiks';
-import createUser from '../model/createUser';
+import { User, configure, getConfig } from 'radiks';
+// import createUser from '../model/createUser';
 import MessageSchema from '../model/Message';
 import LastCheck from '../model/LastCheck';
 const appConfig = new AppConfig(['store_write', 'publish_data'])
@@ -19,9 +21,11 @@ const avatarFallbackImage = 'https://s3.amazonaws.com/onename/avatar-placeholder
 
 configure({
   apiServer: 'http://localhost:1260',
+  //apiServer: 'https://jubrillo-node.herokuapp.com',
   userSession,
 });
 
+let delay=0;
 export default class Header extends React.Component {
   constructor(props) {
   	super(props);
@@ -36,19 +40,36 @@ export default class Header extends React.Component {
   	  	},
       },
       color: false,
-      user: 'loading...'
+      user: 'loading...',
+      created: false,
+      messageExists: false
   	};
   }
-
+  
   componentDidMount() {
     
-    this.interval = setInterval(() => {
+    
+    this.interval = setInterval( async () => {
+      MessageSchema.fetchList({
+        to: this.state.user,
+        sort: '-createdAt',
+        limit: 50
+      }).then(res => {
+        if(res.length > 0){
+          this.setState({
+            ...this.state,
+            messageExists: true
+          })
+        }
+      }).catch(err => {})
+
       const localData=JSON.parse(localStorage.getItem('blockstack-session'));
       const person=localData.userData;
       //console.log(this.state.user)
-      if(person){
+      if(person && this.state.messageExists){
         checkNotifications(person.username)
           .then(res => {
+            //console.log(res)
             if(res === true){
               this.setState({
                 ...this.state,
@@ -73,10 +94,25 @@ export default class Header extends React.Component {
             userData: userData
           })
         });
+        
       }
       //console.log(this.state)
       if(userSession.isUserSignedIn()){
-        this.setState({
+          try {
+            //await userSession.handlePendingSignIn();
+            if(this.state.created === false){ 
+              await User.createWithCurrentUser();
+              this.setState({
+                ...this.state,
+                created: true
+              })
+            }
+          } catch(error) {
+            console.log(error)
+          }
+
+        if(this.state.user === 'loading...'){
+          this.setState({
           ...this.state,
           person: new Person(userSession.loadUserData().profile),
           username: userSession.loadUserData().username,
@@ -84,7 +120,8 @@ export default class Header extends React.Component {
           color: this.state.color
         });
       }
-    }, 1000);
+      }
+    }, 5000);
   }
 
   componentWillUnmount() {
@@ -92,9 +129,10 @@ export default class Header extends React.Component {
   }
 
 
-  handleSignIn(e) {
-    e.preventDefault();
+  async handleSignIn(e) {
+    //e.preventDefault();
     userSession.redirectToSignIn();
+    
   }
 
   handleSignOut(e) {
@@ -204,16 +242,26 @@ async function checkNotifications(username) {
       sort: '-createdAt',
       limit: 50
     })
-    const lastTime = await LastCheck.fetchList({
+    
+    const checked = await LastCheck.fetchList({
       owner: username
     })
-    //console.log(lastTime)
-
-    if(allThreadMessages.length > 0 && lastTime.length>0) {
-      if(checkTime(allThreadMessages, lastTime[0].attrs.updatedAt)){
-        //console.log('time checked')
-        return true;
-      } 
+    if(checked.length === 0){
+      const newCheck = new LastCheck({
+        message: 'checked',
+        owner: username
+      })
+      await newCheck.save()
+    }
+    
+    //console.log(checked);
+    if(checked.length>0){
+      if(allThreadMessages.length > 0 && checked && (checked[0].attrs.updatedAt)) {
+        if(checkTime(allThreadMessages, checked[0].attrs.updatedAt)){
+          //console.log('time checked')
+          return true;
+        } 
+      }
     }
 
   } catch (error) {
@@ -223,6 +271,7 @@ async function checkNotifications(username) {
 
 function checkTime(messages, lastUpdateTime) {
   for(let i=messages.length-1; i>=0; i--){
+    //console.log(lastUpdateTime, messages[i].attrs.createdAt)
     if(messages[i].attrs.createdAt > lastUpdateTime){
       //console.log(lastUpdateTime, messages[i].attrs.createdAt)
       return true;
