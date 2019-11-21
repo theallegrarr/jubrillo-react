@@ -5,13 +5,13 @@ export default function Footer (props) {
 
   return(
   <div className='footer'>
-		<footer class="footer-distributed">
+		<footer className="footer-distributed">
 
-			<div class="footer-left">
+			<div className="footer-left">
 
 				<h3>Jubrillo</h3>
 
-				<p class="footer-links">
+				<p className="footer-links">
 					<a href="/forum">Forum</a>
           {' '}·{' '}
 					<a href="/faq">FAQ</a>
@@ -25,24 +25,24 @@ export default function Footer (props) {
 				
 			</div>
 
-			<div class="footer-center">
+			<div className="footer-center">
 
 				<div>
-					<i class="fa fa-phone"></i>
+					<i className="fa fa-phone"></i>
 					<p>Contact us:</p>
 				</div>
 
 				<div>
-					<i class="fa fa-envelope"></i>
+					<i className="fa fa-envelope"></i>
 					<p><a href="mailto:support@jubrillo.work">support@jubrillo.work</a>
           </p>
             
         </div>
       </div>
       
-			<div class="footer-right">
+			<div className="footer-right">
 
-				<p class="footer-company-about">
+				<p className="footer-company-about">
 					<span>About this service</span>
 				 {`A Freelance work & hiring service that respects the core principles of decentralization`}
 				</p>

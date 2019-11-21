@@ -1004,6 +1004,7 @@ img {
   padding-left: 30px;
   padding-right: 50px;
   min-height: 90vh;
+  border-bottom: 30px solid white;
 }
 .project-container .project-view-page {
   background-color: white;
@@ -1158,7 +1159,6 @@ img {
   background-color: #00abb4;
   padding: 1%;
   box-shadow: 0.5px 2px 7px #282c34;
-  min-height: 90vh;
 }
 .work-steps .next-button {
   background-color: #FF3366;
@@ -1369,6 +1369,12 @@ img {
   background-color: rgba(0, 0, 0, 0.4);
   /* Black w/ opacity */
 }
+.modal p {
+  text-align: center;
+  text-justify: center;
+  margin-bottom: 0;
+  padding: 0;
+}
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
@@ -1379,6 +1385,7 @@ img {
   min-width: 500px;
   width: 30%;
   /* Could be more or less, depending on screen size */
+  box-shadow: 0.5px 2px 7px #282c34;
 }
 .modal-content .valueH1 {
   text-align: center;
@@ -1405,12 +1412,20 @@ img {
   border-bottom: 1px dashed gray;
 }
 .modal-content .columns .btc-addr {
-  margin-top: 20px;
+  margin-top: 5px;
   text-align: center;
   font-size: 12pt;
   border-radius: 3px;
-  border: none;
+  border: 0.5px solid #00abb4;
+  background-color: #00abb4;
   font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-weight: 700;
+  padding: 4px;
+  box-shadow: 0.5px 2px 7px #282c34;
+  cursor: pointer;
+}
+.modal-content .columns .btc-addr:active {
+  box-shadow: none;
 }
 .modal-content .columns .btc-inputs {
   margin-top: 20px;
@@ -1420,6 +1435,8 @@ img {
   border: none;
   font-family: 'IBM Plex Mono', Arial, sans-serif;
   background-color: lightgray;
+  padding: 5px;
+  font-weight: 700;
 }
 .modal-content .columns img {
   display: flex;

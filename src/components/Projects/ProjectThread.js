@@ -50,7 +50,7 @@ function getStepContent(step) {
     case 0:
       return 'Select a Freelancer';
     case 1:
-      return 'Reach agreement with Freelancer';
+      return 'Select a Freelancer to Start Thread';
     case 2:
       return 'Fund Job Based on Agreement';
     case 3:
@@ -145,6 +145,10 @@ export default function ProjectThread (props) {
           freelancer_username: res[0].attrs.selected_freelancer,
           project_index: props.match.params.project_index,
           balance: res[0].attrs.work_balance
+        }
+
+        if(!project.freelancer_username){
+          props.history.push(`/projects/${props.match.params.project_index}`)
         }
         // console.log(project)
         setProject(project);

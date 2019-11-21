@@ -73,6 +73,7 @@ export default function ProjectPage(props) {
           selected_freelancer: res[0].attrs.selected_freelancer
         }
         // console.log(project)
+        
         setProject(project);
         Profile.fetchList({ username: res[0].attrs.employer_username })
           .then(user => {
@@ -236,7 +237,12 @@ export default function ProjectPage(props) {
               'marginTop': '20px'
               }}
               onClick={() => {
-                props.history.push(`/projects/${props.match.params.project_index}/thread`)
+                if(project.selected_freelancer){
+                  props.history.push(`/projects/${props.match.params.project_index}/thread`)
+                } else {
+                  setErrorType('bad');
+                  removeError('select a freelancer first')
+                }
               }}>
               <span 
               role='img'

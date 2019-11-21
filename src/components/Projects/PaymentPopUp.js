@@ -2,13 +2,17 @@ import React, {useEffect, useState} from 'react';
 import icon from '../../assets/logo.png';
 import bc from '../../assets/barcode.png';
 import axios from 'axios';
+import ErrorBar from '../errorBar/errorBar';
 
+const wallet = `1MUy689ex2dcX58WAdTkdA6u5hs2nnKzCv`;
 export default function PopUp ({ person, project, form, setForm, setPopDisp }) {
 
   const [amount, setAmount] = useState(0);
   const [rate, setRate] = useState(0);
   const [txnId, setID] = useState(form.transaction_id);
   const [usdValue, setUSD] = useState(form.usdAmount);
+  const [errorMessage, removeError] = useState('');
+  const [errorType, setErrorType] = useState(''); 
 
   useEffect(() => {
     getRate();
@@ -28,13 +32,19 @@ export default function PopUp ({ person, project, form, setForm, setPopDisp }) {
     try {
       const res = await axios.get(`https://api.coindesk.com/v1/bpi/currentprice.json`)
       await setRate(parseFloat(res.data.bpi.USD.rate.replace(/,/g, '')))
-      console.log(res.data.bpi.USD.rate.replace(/,/g, ''))
+      //console.log(res.data.bpi.USD.rate.replace(/,/g, ''))
     } catch (error) {
       console.log(error);
     }
   }
 
   return(<>
+      {errorMessage && 
+      <ErrorBar 
+      errorMessage={errorMessage}
+      errorType={errorType}
+      removeError={removeError}
+      />}
       <div id="myModal" className="modal">
         <div className="modal-content">
           <div className='columns'>
@@ -45,15 +55,23 @@ export default function PopUp ({ person, project, form, setForm, setPopDisp }) {
 <h4>Fund Job #{project.project_index} - {project.title}</h4>
             <img className='bcode' src={bc} alt='barcode'></img>
   <h1 className='valueH1'>₿: {amount ? amount : 0}</h1>
+            <p>{`Address(Click to Copy)`}</p>
             <input
-              value={`1MUy689ex2dcX58WAdTkdA6u5hs2nnKzCv`}
+              value={wallet}
               className='btc-addr'
-              disabled
+              readOnly
+              onClick={(e) => {
+                e.target.select();
+                document.execCommand('copy');
+                e.target.focus();
+                setErrorType('good')
+                removeError('Copied to Clipboard!');
+              }}
             ></input>
             <input
               value={usdValue ? usdValue : ''}
               className='btc-inputs'
-              placeholder='Enter Amount in $'
+              placeholder='Enter Amount in $ to get BTC Equivalent'
               onChange={(e) => {
                 setUSD(e.target.value)
                 setAmount((parseFloat(e.target.value)/rate).toFixed(7))
@@ -63,7 +81,7 @@ export default function PopUp ({ person, project, form, setForm, setPopDisp }) {
             <input
               value={txnId}
               className='btc-inputs'
-              placeholder='Transaction ID'
+              placeholder='Enter Transaction ID After Sending Payment'
               onChange={(e)=>setID(e.target.value)}
             ></input>
             <div className='fund-buttons'>

@@ -10,6 +10,13 @@
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+  p {
+    text-align: center;
+    text-justify: center;
+    margin-bottom: 0;
+    padding: 0;
+  }
 }
 
 /* Modal Content/Box */
@@ -20,7 +27,8 @@
   border: 1px solid #888;
   min-width: 500px;
   width: 30%; /* Could be more or less, depending on screen size */
-  
+  box-shadow: 0.5px 2px 7px #282c34;
+
   .valueH1 {
     text-align: center;
   }
@@ -50,12 +58,21 @@
     }
 
     .btc-addr {
-      margin-top: 20px;
+      margin-top: 5px;
       text-align: center;
       font-size: 12pt;
       border-radius: 3px;
-      border: none;
+      border: 0.5px solid @logo-color;
+      background-color: @logo-color;
       font-family: @secondary-font;
+      font-weight: 700;
+      padding: 4px;
+      box-shadow: 0.5px 2px 7px #282c34;
+      cursor: pointer;
+
+      &:active {
+        box-shadow: none;
+      }
     }
 
     .btc-inputs {
@@ -66,6 +83,8 @@
       border: none;
       font-family: @secondary-font;
       background-color: lightgray;
+      padding: 5px;
+      font-weight: 700;
     }
 
     img {
