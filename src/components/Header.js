@@ -35,7 +35,8 @@ export default class Header extends React.Component {
   	  	  return avatarFallbackImage;
   	  	},
       },
-      color: false
+      color: false,
+      user: 'Anonymous'
   	};
   }
 
@@ -44,6 +45,7 @@ export default class Header extends React.Component {
     this.interval = setInterval(() => {
       const localData=JSON.parse(localStorage.getItem('blockstack-session'));
       const person=localData.userData;
+      //console.log(this.state.user)
       if(person){
         checkNotifications(person.username)
           .then(res => {
@@ -61,37 +63,29 @@ export default class Header extends React.Component {
             //console.log(this.state)
           }).catch(error => { console.log(error) })
       }
+    
+
+      if (userSession.isSignInPending()) {
+        userSession.handlePendingSignIn().then((userData) => {
+          window.history.replaceState({}, document.title, "/")
+          this.setState({ 
+            ...this.state,
+            user: person.username,
+            userData: userData
+          })
+        });
+      }
+      //console.log(this.state)
+      if(userSession.isUserSignedIn()){
+        this.setState({
+          ...this.state,
+          person: new Person(userSession.loadUserData().profile),
+          username: userSession.loadUserData().username,
+          user: person.username,
+          color: this.state.color
+        });
+      }
     }, 1000);
-
-    if (userSession.isSignInPending()) {
-      userSession.handlePendingSignIn().then((userData) => {
-        window.history.replaceState({}, document.title, "/")
-        this.setState({ userData: userData})
-        //this.props.updateUser({ userData: userData});
-
-        User.createWithCurrentUser().then(res => {
-          // console.log(res)
-          createUser(res);
-        })
-        .catch(err => console.log(err))
-        
-      });
-      
-    }
-    //console.log(this.state)
-    if(userSession.isUserSignedIn()){
-      this.setState({
-        person: new Person(userSession.loadUserData().profile),
-        username: userSession.loadUserData().username,
-        color: this.state.color
-      });
-      User.createWithCurrentUser().then(res => {
-        // console.log(res)
-        createUser(res);
-      })
-      .catch(err => console.log(err))
-      
-    }
   }
 
   componentWillUnmount() {
@@ -160,7 +154,7 @@ export default class Header extends React.Component {
                   {backgroundColor: 'darkgray'}
                 }>
                   <FaAlignJustify />
-                  {this.state.username}
+                  {this.state.user}
                 </button>
                 <div className="dropdown-content">
                   <a href="/profile" className='drop-link'><FaIdCard />Profile</a>
