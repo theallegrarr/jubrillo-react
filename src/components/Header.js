@@ -36,7 +36,7 @@ export default class Header extends React.Component {
   	  	},
       },
       color: false,
-      user: 'Anonymous'
+      user: 'loading...'
   	};
   }
 
@@ -70,7 +70,6 @@ export default class Header extends React.Component {
           window.history.replaceState({}, document.title, "/")
           this.setState({ 
             ...this.state,
-            user: person.username,
             userData: userData
           })
         });
@@ -81,7 +80,7 @@ export default class Header extends React.Component {
           ...this.state,
           person: new Person(userSession.loadUserData().profile),
           username: userSession.loadUserData().username,
-          user: person.username,
+          user: person ? person.username : 'loading...',
           color: this.state.color
         });
       }
