@@ -14,6 +14,8 @@ import Application from '../../model/addApplication';
 import ApplicationSchema from '../../model/Applications';
 import * as data from '../User/skillsData.json';
 import ErrorBar from '../errorBar/errorBar';
+import uuid from 'uuid';
+import { NavLink } from 'react-router-dom';
 
 const fields = { text: 'Name', value: 'Code' };
 
@@ -43,7 +45,7 @@ export default function ProjectPage(props) {
     }
     // console.log(data)
     Application(data).then(res => {
-      //console.log('promise: ',res)
+      console.log('promise: ',res)
       setErrorType('good')
       removeError('Application Sent....')
       setCanApply(false)
@@ -360,9 +362,11 @@ function ApplicantsList({
           aria-labelledby=''
           >💡{' '}</span>
         <div className='applicant-card'>
-          <a href={`/freelancers/${application.attrs.applicant_username}`}>
+          <NavLink 
+          to={`/freelancers/${application.attrs.applicant_username}`}
+          key={uuid}>
             <h3>{application.attrs.applicant_username}</h3>
-          </a>
+          </NavLink>
           <h4>Budget: ${application.attrs.applicant_bid}</h4>
           <p>{application.attrs.applicant_message}</p>
         </div>

@@ -9,6 +9,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
 import ErrorBar from '../errorBar/errorBar';
 import uuid from 'uuid';
+import { NavLink } from 'react-router-dom';
 
 export default function Messages (props) {
   const [messages, setMessages] = useState([]);
@@ -56,9 +57,11 @@ export default function Messages (props) {
     </div>
     <div className='chat-container'>
     {props.match.params.other_person ? <h3>Messaging with 
-        <a href={`/freelancers/${props.match.params.other_person}`}>
+        <NavLink 
+          key={uuid}
+          to={`/freelancers/${props.match.params.other_person}`}>
           {`(${props.match.params.other_person})`}
-        </a>
+        </NavLink>
       </h3> : ''}
         {errorMessage && 
         <ErrorBar 
@@ -277,12 +280,12 @@ function AllChats({ username, messages }){
       {
         filtered.map(sender => (
 
-          <a 
-          href={`/messages/${sender}`}
+          <NavLink
+          to={`/messages/${sender}`}
           key={uuid()}
           >
             {sender}
-          </a>
+          </NavLink>
         ))
       }
     </>

@@ -19,6 +19,8 @@ import CustomMessages from './StepMessage';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import ErrorBar from '../errorBar/errorBar';
 import Review from '../Projects/Review';
+import uuid from 'uuid';
+import { NavLink } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -289,14 +291,15 @@ function RightSideBar ({
       setSent={setSent}
       setReceived={setReceived}
     />}
-    <a 
-    href={`/freelancers/${employer.username}`}>
+    <NavLink
+    to={`/freelancers/${employer.username}`}
+    key={uuid}>
       <p className='employer-name'><span 
         role='img'
         description='money'
         aria-labelledby=''
         className='employer-name'>🏢{' '}</span>
-          Employer: {employer.username}</p></a>
+          Employer: {employer.username}</p></NavLink>
     <p><span 
         role='img'
         description='money'
@@ -309,14 +312,15 @@ function RightSideBar ({
         </p>
   {/* </div>
   <div className='employer-info'> */}
-    <a 
-    href={`/freelancers/${applicant.username}`}>
+    <NavLink
+    to={`/freelancers/${applicant.username}`}
+    key={uuid}>
       <p
        className='employer-name'
       ><span 
         role='img'
         description='money'
-        aria-labelledby=''>🛠️{' '}</span>Freelancer: {applicant.username}</p></a>
+        aria-labelledby=''>🛠️{' '}</span>Freelancer: {applicant.username}</p></NavLink>
     <p><span 
         role='img'
         description='money'

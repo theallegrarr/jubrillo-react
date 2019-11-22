@@ -20,8 +20,8 @@ const userSession = new UserSession({ appConfig: appConfig })
 const avatarFallbackImage = 'https://s3.amazonaws.com/onename/avatar-placeholder.png';
 
 configure({
-  //apiServer: 'http://localhost:1260',
-  apiServer: 'https://jubrillo-node.herokuapp.com',
+  apiServer: 'http://localhost:1260',
+  //apiServer: 'https://jubrillo-node-alt.herokuapp.com',
   userSession,
 });
 
@@ -56,7 +56,7 @@ export default class Header extends React.Component {
     }
     const localUserData=JSON.parse(localStorage.getItem('blockstack-session'));
     const person=localUserData.userData;
-    
+
     if (userSession.isSignInPending()) {
       userSession.handlePendingSignIn().then((userData) => {
         window.history.replaceState({}, document.title, "/")
@@ -102,7 +102,9 @@ export default class Header extends React.Component {
     }
     
     this.interval = setInterval( async () => {
-      console.log(1)
+      
+      if(userSession.isUserSignedIn()){
+        //console.log(1)
       MessageSchema.fetchList({
         to: this.state.user,
         sort: '-createdAt',
@@ -138,7 +140,7 @@ export default class Header extends React.Component {
           }).catch(error => { console.log(error) })
       }
     
-
+    }
       
     }, 3000);
   }
@@ -180,7 +182,10 @@ export default class Header extends React.Component {
           
           {userSession.isUserSignedIn() &&
           <>
-            <NavLink className="link" key={'001'} to={'/freelancers'}>
+            <NavLink 
+            className="link" 
+            key={'001'} 
+            to={'/freelancers'}>
               freelancers
             </NavLink>
             <NavLink className="link" key={'002'} to={'/projects'}>
@@ -218,20 +223,43 @@ export default class Header extends React.Component {
                   {this.state.user}
                 </button>
                 <div className="dropdown-content">
-                  <a href="/profile" className='drop-link'><FaIdCard />Profile</a>
-                  <a 
-                  href="/notifications" 
-                  className='drop-link'
-                  style={this.state.color ?
-                    {backgroundColor: 'green'}
-                    :
-                    {backgroundColor: 'darkgray'}}
+                  
+                  <NavLink 
+                    to={"/profile"} 
+                    className='drop-link'
+                    key={'0042'}><FaIdCard />My Profile
+                  </NavLink>
+
+                  <NavLink 
+                    to={"/notifications"} 
+                    className='drop-link'
+                    key={'0043'}
+                    style={this.state.color ?
+                      {backgroundColor: 'green'}
+                      :
+                      {backgroundColor: 'darkgray'}}
                   >
                     <FaIdCard />Notifications
-                  </a>
-                  <a href="/myprojects" className='drop-link'><FaBriefcase />Projects</a>
-                  <a href="/messages" className='drop-link'><FaListAlt />Messages</a>
-                  <a href="/transactions" className='drop-link'><FaRegMoneyBillAlt />Transactions</a>
+                  </NavLink>
+
+                  <NavLink 
+                  to={"/myprojects"} 
+                  className='drop-link'
+                  key={'0044'}><FaBriefcase />My Projects
+                  </NavLink>
+
+                  <NavLink 
+                  to={"/messages"} 
+                  className='drop-link'
+                  key={'0045'}><FaListAlt />Messages
+                  </NavLink>
+                  <NavLink 
+                  to={"/transactions"} 
+                  className='drop-link'
+                  key={'0046'}><FaRegMoneyBillAlt />Transactions
+                  </NavLink>
+                  
+                  
                   <a href="/"
                   onClick={ this.handleSignOut.bind(this) }
                   className='drop-link'><FaSignOutAlt />Sign Out</a>

@@ -8,6 +8,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/core/styles';
 import * as data from '../User/skillsData.json';
 import ErrorBar from '../errorBar/errorBar';
+import uuid from 'uuid';
+import { NavLink } from 'react-router-dom';
 
 const fields = { text: 'Name', value: 'Code' };
 
@@ -223,11 +225,12 @@ const FreelancersList = (props) => {
             src={freelancer.attrs.image ? freelancer.attrs.image : `https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png`} 
             alt='headshot'/>
             <div className='other-fdetails'>
-            <a 
+            <NavLink 
             className='name-link'
-            href={`/freelancers/${freelancer.attrs.username}`}>
+            key={uuid}
+            to={`/freelancers/${freelancer.attrs.username}`}>
             {freelancer.attrs.name ? freelancer.attrs.name : freelancer.attrs.username}
-            </a>
+            </NavLink>
             <div className='ratings' >
               <StyledRating
               name="customized-color"

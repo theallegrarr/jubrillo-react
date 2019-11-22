@@ -10,6 +10,8 @@ import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
 import * as data from '../User/skillsData.json';
 import ErrorBar from '../errorBar/errorBar';
+import uuid from 'uuid';
+import { NavLink } from 'react-router-dom';
 
 const fields = { text: 'Name', value: 'Code' };
 
@@ -238,12 +240,14 @@ function ProjectCard({ project }){
     key={project.attrs._id} 
     className='project-card'>
       <div className='job-heading'>
-      <a href={`/projects/${project.attrs.project_index}`}>
-        <span 
-          role='img'
-          description='lightning'
-          aria-labelledby=''>💼{' '}</span>{project.attrs.title}
-          </a>
+        <NavLink 
+        to={`/projects/${project.attrs.project_index}`}
+        key={uuid}>
+          <span 
+            role='img'
+            description='lightning'
+            aria-labelledby=''>💼{' '}</span>{project.attrs.title}
+        </NavLink>
 
       <h4 className='budget-amount'>budget: ${project.attrs.budget}</h4>
       <p 

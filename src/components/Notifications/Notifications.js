@@ -6,6 +6,8 @@ import LastCheck from '../../model/LastCheck';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
 import ErrorBar from '../errorBar/errorBar';
+import uuid from 'uuid';
+import { NavLink } from 'react-router-dom';
 
 export default function Notifications(props) {
   const [latests, setLatests] = useState([]);
@@ -107,9 +109,15 @@ export default function Notifications(props) {
             <div>
               {
                 latest.attrs.project_message ? 
-                <a href={`/projects/${latest.attrs.project_index}/thread`}>Project Thread </a>
+                <NavLink 
+                to={`/projects/${latest.attrs.project_index}/thread`}
+                key={uuid}>Project Thread </NavLink>
                 :
-                <a href={`/messages/${latest.attrs.from}`}>Chat Thread </a>
+                <NavLink 
+                to={`/messages/${latest.attrs.from}`}
+                key={uuid}
+                >Chat Thread 
+                </NavLink>
               }
             </div>
             <div>
