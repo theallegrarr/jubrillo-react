@@ -3,6 +3,7 @@ import ProjectSchema from '../../model/Project';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
 import uuid from  'uuid';
+import { NavLink } from 'react-router-dom';
 
 export default function MyProjects(props){
   const [option, setOption] = useState('created');
@@ -85,9 +86,11 @@ function AllProjects ({ projects }){
     {
       projects.map(project => (
         <div className='project-bar' key={uuid()}>
-          <a href={`/projects/${project.attrs.project_index}`}>
+          <NavLink 
+          key={'444444440001'}
+          to={`/projects/${project.attrs.project_index}`}>
             {project.attrs.title}
-          </a>
+          </NavLink>
           <p className='time-ago'>created {timeAgo.format(Date.now() - (Date.now()-project.attrs.createdAt))}</p>
         </div>
       ))

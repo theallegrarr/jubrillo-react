@@ -9,6 +9,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import ForumSchema from '../../model/Forum';
 import RepliesSchema from '../../model/ForumReplies';
 import ErrorBar from '../errorBar/errorBar';
+import uuid from 'uuid';
+import { NavLink } from 'react-router-dom';
 
 export default function ProjectPage(props) {
   const [post, setPost] = useState({});
@@ -128,9 +130,11 @@ function Post({ post }) {
     <div className='post-head'>
       <h4>Post Topic: {post.topic}</h4>
       <div className='author-info'>
-        <p>Author: <a href={`/freelancers/${post.author}`}>
+        <p>Author: <NavLink 
+        key={uuid}
+        to={`/freelancers/${post.author}`}>
           {post.author}
-        </a></p>
+        </NavLink></p>
         <p 
         className='time-ago'>created {timeAgo.format(Date.now() - (Date.now()-post.createdAt))}</p>
       </div>

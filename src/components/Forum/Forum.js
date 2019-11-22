@@ -4,6 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import ForumSchema from '../../model/Forum';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
+import uuid from 'uuid';
+import { NavLink } from 'react-router-dom';
 //import ReplySchema from '../../model/ForumReplies';
 
 export default function Forum(props) {
@@ -74,13 +76,18 @@ function Posts ({ posts }) {
       key={post.attrs._id}
       className='forum-topic'>
         <div className='line-1'>
-          <a href={`/forum/${post.attrs.forum_index}/view`}>{post.attrs.topic}</a>
+          <NavLink
+          key={uuid}
+          to={`/forum/${post.attrs.forum_index}/view`}
+          >{post.attrs.topic}</NavLink>
           <p className='time-ago'>created {timeAgo.format(Date.now() - (Date.now()-post.attrs.createdAt))}</p>
         </div>
         <p>Author: 
-          <a href={`/freelancers/${post.attrs.author}`}>
+          <NavLink 
+          key={uuid}
+          to={`/freelancers/${post.attrs.author}`}>
             {post.attrs.author}
-          </a>
+          </NavLink>
         </p>
       </div>
       ))

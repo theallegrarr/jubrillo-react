@@ -293,7 +293,7 @@ function RightSideBar ({
     />}
     <NavLink
     to={`/freelancers/${employer.username}`}
-    key={uuid}>
+    key={'00011123'}>
       <p className='employer-name'><span 
         role='img'
         description='money'
@@ -314,7 +314,7 @@ function RightSideBar ({
   <div className='employer-info'> */}
     <NavLink
     to={`/freelancers/${applicant.username}`}
-    key={uuid}>
+    key={'00011124'}>
       <p
        className='employer-name'
       ><span 
