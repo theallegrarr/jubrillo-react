@@ -157,13 +157,13 @@ export default class Header extends React.Component {
           </NavLink>
 
           <div className='links'>
-          <div className='search'>
-            {/* <button className='searchButton'>
+          {/* <div className='search'>
+           <button className='searchButton'>
               <FaSearch />
             </button>
             <input className='searchTerm' type='text' placeholder='Search.....'>
-            </input> */}
-          </div>
+            </input> 
+          </div> */}
           
           {userSession.isUserSignedIn() &&
           <>
