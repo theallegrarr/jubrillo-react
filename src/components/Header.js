@@ -54,8 +54,55 @@ export default class Header extends React.Component {
         user: localuser.username
       })
     }
+    const localUserData=JSON.parse(localStorage.getItem('blockstack-session'));
+    const person=localUserData.userData;
+    
+    if (userSession.isSignInPending()) {
+      userSession.handlePendingSignIn().then((userData) => {
+        window.history.replaceState({}, document.title, "/")
+        this.setState({ 
+          ...this.state,
+          userData: userData,
+          user: person ? person.username : userSession.loadUserData().username
+        })
+      });
+      
+    }
+    //console.log(this.state)
+    
+    if(userSession.isUserSignedIn()){
+        if(checkCreated(this.state.created)){
+          this.setState({
+            ...this.state,
+            created: true
+          })
+        }
 
+        if(this.state.user === 'loading...'){
+          this.setState({
+          ...this.state,
+          person: new Person(userSession.loadUserData().profile),
+          username: userSession.loadUserData().username,
+          user: person ? person.username : userSession.loadUserData().username,
+          color: this.state.color
+        });
+      }
+    }
+
+    async function checkCreated (created){
+      try {
+        //await userSession.handlePendingSignIn();
+        if(created === false){ 
+          await User.createWithCurrentUser();
+          return true;
+        }
+      } catch(error) {
+        console.log(error)
+      }
+    }
+    
     this.interval = setInterval( async () => {
+      console.log(1)
       MessageSchema.fetchList({
         to: this.state.user,
         sort: '-createdAt',
@@ -92,41 +139,7 @@ export default class Header extends React.Component {
       }
     
 
-      if (userSession.isSignInPending()) {
-        userSession.handlePendingSignIn().then((userData) => {
-          window.history.replaceState({}, document.title, "/")
-          this.setState({ 
-            ...this.state,
-            userData: userData
-          })
-        });
-        
-      }
-      //console.log(this.state)
-      if(userSession.isUserSignedIn()){
-          try {
-            //await userSession.handlePendingSignIn();
-            if(this.state.created === false){ 
-              await User.createWithCurrentUser();
-              this.setState({
-                ...this.state,
-                created: true
-              })
-            }
-          } catch(error) {
-            console.log(error)
-          }
-
-        if(this.state.user === 'loading...'){
-          this.setState({
-          ...this.state,
-          person: new Person(userSession.loadUserData().profile),
-          username: userSession.loadUserData().username,
-          user: person ? person.username : 'loading...',
-          color: this.state.color
-        });
-      }
-      }
+      
     }, 3000);
   }
 
