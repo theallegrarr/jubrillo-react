@@ -354,91 +354,182 @@ img {
     margin-top: 0;
   }
 }
-.cta-container {
-  margin-top: 0.5%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-self: center;
-  width: 96%;
-  font-family: 'Nunito' 'serif';
-  padding: 4%;
-  margin-bottom: 0;
-  min-height: 90vh;
+@media (min-width: 800px) {
+  .cta-container {
+    margin-top: 0.5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-self: center;
+    width: 96%;
+    font-family: 'Nunito' 'serif';
+    padding: 4%;
+    margin-bottom: 0;
+    min-height: 90vh;
+  }
+  .cta-container .cta-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 48%;
+  }
+  .cta-container .cta-text h1 {
+    font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
+    text-transform: uppercase;
+    color: #00abb4;
+    font-weight: 700;
+  }
+  .cta-container .cta-text p {
+    font-family: 'Nunito', 'serif';
+    color: aliceblue;
+    font-weight: 500;
+    font-size: 13pt;
+  }
+  .cta-container .cta-text .cta-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 60%;
+  }
+  .cta-container .cta-text .cta-buttons .gs-button {
+    width: 45%;
+    border: 0;
+    height: 4rem;
+    margin: 5rem 0 2.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    background: #00abb4;
+    font-size: 1.5rem;
+    border-radius: 3rem;
+    cursor: pointer;
+    overflow: hidden;
+    font-family: 'Nunito', 'serif';
+    font-weight: 900;
+    transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
+  }
+  .cta-container .cta-text .cta-buttons .gs-button:hover {
+    background-color: #4d4d4d;
+    border: 1px solid #00abb4;
+  }
+  .cta-container .cta-text .cta-buttons .gs-button:active {
+    font-size: 1.4rem;
+  }
+  .cta-container .cta-text .cta-buttons .faq-button {
+    width: 45%;
+    height: 4rem;
+    margin: 5rem 0 2.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    background: #FF3366;
+    font-size: 1.5rem;
+    border-radius: 3rem;
+    cursor: pointer;
+    overflow: hidden;
+    border: 0;
+    font-family: 'Nunito', 'serif';
+    font-weight: 900;
+    transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
+  }
+  .cta-container .cta-text .cta-buttons .faq-button:hover {
+    background-color: #4d4d4d;
+    border: 1px solid #FF3366;
+  }
+  .cta-container .cta-text .cta-buttons .faq-button:active {
+    font-size: 1.4rem;
+  }
+  .cta-container img {
+    display: flex;
+    width: 50%;
+    margin-top: 2.7%;
+    opacity: 0.7;
+  }
 }
-.cta-container .cta-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  width: 48%;
-}
-.cta-container .cta-text h1 {
-  font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
-  text-transform: uppercase;
-  color: #00abb4;
-  font-weight: 700;
-}
-.cta-container .cta-text p {
-  font-family: 'Nunito', 'serif';
-  color: aliceblue;
-  font-weight: 500;
-  font-size: 13pt;
-}
-.cta-container .cta-text .cta-buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 60%;
-}
-.cta-container .cta-text .cta-buttons .gs-button {
-  width: 45%;
-  border: 0;
-  height: 4rem;
-  margin: 5rem 0 2.2rem;
-  color: rgba(255, 255, 255, 0.8);
-  background: #00abb4;
-  font-size: 1.5rem;
-  border-radius: 3rem;
-  cursor: pointer;
-  overflow: hidden;
-  font-family: 'Nunito', 'serif';
-  font-weight: 900;
-  transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
-}
-.cta-container .cta-text .cta-buttons .gs-button:hover {
-  background-color: #4d4d4d;
-  border: 1px solid #00abb4;
-}
-.cta-container .cta-text .cta-buttons .gs-button:active {
-  font-size: 1.4rem;
-}
-.cta-container .cta-text .cta-buttons .faq-button {
-  width: 45%;
-  height: 4rem;
-  margin: 5rem 0 2.2rem;
-  color: rgba(255, 255, 255, 0.8);
-  background: #FF3366;
-  font-size: 1.5rem;
-  border-radius: 3rem;
-  cursor: pointer;
-  overflow: hidden;
-  border: 0;
-  font-family: 'Nunito', 'serif';
-  font-weight: 900;
-  transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
-}
-.cta-container .cta-text .cta-buttons .faq-button:hover {
-  background-color: #4d4d4d;
-  border: 1px solid #FF3366;
-}
-.cta-container .cta-text .cta-buttons .faq-button:active {
-  font-size: 1.4rem;
-}
-.cta-container img {
-  display: flex;
-  width: 50%;
-  margin-top: 2.7%;
-  opacity: 0.7;
+@media (max-width: 800px) {
+  .cta-container {
+    margin-top: 0.5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-self: center;
+    width: 96%;
+    font-family: 'Nunito' 'serif';
+    padding: 4%;
+    margin-bottom: 0;
+    min-height: 90vh;
+  }
+  .cta-container .cta-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+    padding-top: 180px;
+  }
+  .cta-container .cta-text h1 {
+    font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
+    text-transform: uppercase;
+    color: #00abb4;
+    font-weight: 700;
+  }
+  .cta-container .cta-text p {
+    font-family: 'Nunito', 'serif';
+    color: aliceblue;
+    font-weight: 500;
+    font-size: 13pt;
+  }
+  .cta-container .cta-text .cta-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 60%;
+  }
+  .cta-container .cta-text .cta-buttons .gs-button {
+    width: 45%;
+    border: 0;
+    height: 4rem;
+    margin: 5rem 0 2.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    background: #00abb4;
+    font-size: 1.5rem;
+    border-radius: 3rem;
+    cursor: pointer;
+    overflow: hidden;
+    font-family: 'Nunito', 'serif';
+    font-weight: 900;
+    transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
+  }
+  .cta-container .cta-text .cta-buttons .gs-button:hover {
+    background-color: #4d4d4d;
+    border: 1px solid #00abb4;
+  }
+  .cta-container .cta-text .cta-buttons .gs-button:active {
+    font-size: 1.4rem;
+  }
+  .cta-container .cta-text .cta-buttons .faq-button {
+    width: 45%;
+    height: 4rem;
+    margin: 5rem 0 2.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    background: #FF3366;
+    font-size: 1.5rem;
+    border-radius: 3rem;
+    cursor: pointer;
+    overflow: hidden;
+    border: 0;
+    font-family: 'Nunito', 'serif';
+    font-weight: 900;
+    transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
+  }
+  .cta-container .cta-text .cta-buttons .faq-button:hover {
+    background-color: #4d4d4d;
+    border: 1px solid #FF3366;
+  }
+  .cta-container .cta-text .cta-buttons .faq-button:active {
+    font-size: 1.4rem;
+  }
+  .cta-container img {
+    display: none;
+    width: 50%;
+    margin-top: 2.7%;
+    opacity: 0.7;
+  }
 }
 .profile-form {
   display: flex;
@@ -1255,6 +1346,7 @@ img {
     flex-direction: column;
     padding-left: 2px;
     margin-left: 2px;
+    padding-top: 180px;
   }
   .applicant-card {
     display: flex;
@@ -1276,6 +1368,9 @@ img {
     max-width: 100vw;
     min-width: 100vw;
     margin-left: 2px;
+  }
+  .applicant-heading {
+    width: 80vw;
   }
 }
 .work-steps {
