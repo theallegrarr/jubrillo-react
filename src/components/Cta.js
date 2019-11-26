@@ -1,9 +1,13 @@
 import React from 'react';
+import { 
+  //FaSearch, 
+  FaAsterisk, FaHandsHelping, FaConnectdevelop } from 'react-icons/fa';
 import ctaImage from '../assets/cta-image4.png';
 import '../css/index.css';
 import '../css/global.css';
 
 const Header = props => (
+  <>
   <div className='cta-container'>
     <div className='cta-text'>
       <h1>
@@ -32,6 +36,51 @@ const Header = props => (
 
     <img src={ctaImage} alt='cta'></img>
   </div>
+  <div className='features-div'>
+    <div className='ftr-head'>
+      <h3>Features</h3>
+    </div>
+
+    <div className='feature-cards'>
+      <div className='feature-card'>
+        <FaConnectdevelop style={{ 
+          'color': '#FF3366',
+          'height': '1.7em',
+          'width': '1.7em'  
+          }}/>
+        <h4>Decentralized</h4>
+        <p>
+          Simply put, your private data belongs to you and will not be shared with any third party
+        </p>
+      </div>
+      <div className='feature-card'>
+        <FaHandsHelping style={{ 
+          'height': '1.5em',
+          'width': '1.5em',
+          'color': '#FF3366' 
+          }}/>
+        <h4>Easy To Use</h4>
+        <p>
+          The Work Process is straight forward and we are here to guide you if you need help, 
+          we're just 1 click away
+        </p>
+      </div>
+      <div className='feature-card'>
+        <FaAsterisk style={{
+          'color': '#FF3366',
+          'height': '1.5em',
+          'width': '1.5em'  
+          }}/>
+        <h4>Zero Restrictions</h4>
+        <p>
+          By default, all accounts have all privileges, 
+          there is no limit to how many jobs you can post,
+          or how many applications you can make to multiple jobs
+        </p>
+      </div>
+    </div>
+  </div>
+  </>
 );
 
 export default Header;

@@ -109,13 +109,18 @@ img {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  width: 90%;
-  margin-right: 1%;
+  flex-flow: wrap;
+  width: 99%;
   font-size: 9pt;
   text-align: center;
   align-content: center;
   align-items: center;
   font-weight: 900;
+}
+@media (min-width: 800px) {
+  .main .navbar .links {
+    margin-right: 1%;
+  }
 }
 .main .navbar .links .link {
   font-family: 'Nunito', 'serif';
@@ -127,7 +132,6 @@ img {
   color: #546e7a;
   padding-top: 12px;
   height: 115%;
-  width: 19%;
   letter-spacing: 0.1em;
   white-space: nowrap;
   border-top: 3px solid #4d4d4d;
@@ -135,6 +139,11 @@ img {
   font-style: 'bold';
   text-transform: uppercase;
   transition: background-color 1s;
+}
+@media (min-width: 800px) {
+  .main .navbar .links .link {
+    width: 120px;
+  }
 }
 .main .navbar .links .link:hover {
   font-weight: 1200;
@@ -349,6 +358,8 @@ img {
   }
   .navbar .links .link {
     margin: 2px;
+    width: 100px;
+    padding: 0 2px 0 2px;
   }
   .dropdown {
     margin-top: 0;
@@ -530,6 +541,54 @@ img {
     margin-top: 2.7%;
     opacity: 0.7;
   }
+}
+.features-div {
+  display: flex;
+  flex-direction: column;
+  width: 99.1vw;
+  background-color: white;
+  padding-bottom: 100px;
+}
+.features-div .ftr-head {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 20% 0 20%;
+  align-self: center;
+  align-content: center;
+  align-items: center;
+}
+.features-div .ftr-head h3 {
+  text-align: center;
+  align-self: center;
+  border-bottom: 4px solid #FF3366;
+  font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
+}
+.features-div .feature-cards {
+  padding: 0 5vw 0 7vw;
+  display: flex;
+  flex-flow: wrap;
+  width: 99.1vw;
+}
+.features-div .feature-cards .feature-card {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0.9px 2px 7px #282c34;
+  padding: 40px;
+  min-width: 500px;
+  max-width: 500px;
+  margin: 10px;
+  border-radius: 10px;
+}
+.features-div .feature-cards .feature-card h4 {
+  font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
+  font-size: 14pt;
+  padding-top: 12px;
+  padding-bottom: 10px;
+  margin: 0;
+}
+.features-div .feature-cards .feature-card p {
+  font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
 }
 .profile-form {
   display: flex;
