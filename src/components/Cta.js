@@ -3,6 +3,7 @@ import {
   //FaSearch, 
   FaAsterisk, FaHandsHelping, FaConnectdevelop } from 'react-icons/fa';
 import ctaImage from '../assets/cta-image4.png';
+import ProductHunt from './ProductHunt';
 import '../css/index.css';
 import '../css/global.css';
 
@@ -33,9 +34,13 @@ const Header = props => (
         <button className='gs-button'>Get Started</button>
       </div>
     </div>
-
+    
     <img src={ctaImage} alt='cta'></img>
   </div>
+  <div className='ph-box'>
+      <p>Give us an upvote if you like our app</p>
+      <ProductHunt />
+    </div>
   <div className='features-div'>
     <div className='ftr-head'>
       <h3>Features</h3>
