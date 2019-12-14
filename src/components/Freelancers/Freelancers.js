@@ -7,9 +7,12 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/core/styles';
 import * as data from '../User/skillsData.json';
-import ErrorBar from '../errorBar/errorBar';
+import ErrorBar from '../errorBar/StatusBar';
 import uuid from 'uuid';
 import { NavLink } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+import SEO from 'react-seo-component';
+import navimage from '../../assets/logo.png';
 
 const fields = { text: 'Name', value: 'Code' };
 
@@ -62,8 +65,9 @@ export default function Freelancers(props) {
 
   
 
-  async function sortFreelancers(){
-    setErrorType('good')
+  async function sortFreelancers(e){
+    e.preventDefault();
+    setErrorType('loading')
     removeError('Refining the list of Freelancers')
     try {
       let sortedList=[];
@@ -91,7 +95,7 @@ export default function Freelancers(props) {
         setErrorType('good')
         removeError('List Updated')
       } else {
-        setErrorType('good')
+        setErrorType('bad')
         removeError('No Freelancers Matching Your Selection')
       }
     } catch(error) {
@@ -102,7 +106,7 @@ export default function Freelancers(props) {
   }
 
   async function resetList(){
-    setErrorType('good')
+    setErrorType('loading')
     removeError('Fetching default list')
     Profile.fetchList({
       "isFreelancer": true
@@ -128,6 +132,18 @@ export default function Freelancers(props) {
 
   return(
     <>
+      <Helmet>
+        <title>{`Jubrillo - All Freelancers`}</title>
+      </Helmet>
+      <SEO
+        title={'Jubrillo'}
+        description={'All Open Projects'}
+        image={navimage}
+        pathname={'www.jubrillo.work/projects'}
+        siteLanguage={'en'}
+        siteLocale={'en_gb'}
+        twitterUsername={'jubrillowork'}
+      />
       <div className="sidenav">
         <p>Select Skills: </p>
         <div className='control-section'>
@@ -170,7 +186,7 @@ export default function Freelancers(props) {
         <div className='sort-actions'>
           <button 
           className='sort-apply'
-          onClick={() => sortFreelancers()}>Apply</button>
+          onClick={(e) => sortFreelancers(e)}>Apply</button>
           <button 
           className='sort-apply reset'
           onClick={() => {

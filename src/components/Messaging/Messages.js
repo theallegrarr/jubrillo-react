@@ -7,7 +7,7 @@ import MessageSchema from '../../model/Message';
 import { FaLocationArrow as LoloSend } from 'react-icons/fa';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
-import ErrorBar from '../errorBar/errorBar';
+import ErrorBar from '../errorBar/StatusBar';
 import uuid from 'uuid';
 import { NavLink } from 'react-router-dom';
 
@@ -111,7 +111,7 @@ function MessageContainer ({
             removeError={removeError}
             otherProps={otherProps}
             />
-          : <p>Loading....</p>
+          : <p>Write a message....</p>
         }
       </div>
       <ClassicEditorFunction 
@@ -173,7 +173,7 @@ function ClassicEditorFunction({
 }){
   const addMessage = () => {
     removeError('Sending Message....');
-    setErrorType('good');
+    setErrorType('loading');
     const newMessage = new MessageSchema({
       body: typedMessage,
       from: person.username,

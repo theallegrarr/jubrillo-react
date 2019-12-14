@@ -1,21 +1,16 @@
 import React from 'react';
+import { message } from 'antd';
 
 export default function errorBar({ errorMessage, errorType, removeError }){
+  const key = 'same';
 
   return(
   <>
-    <div 
-      className="error-alert"
-      style={errorType==='good' ? 
-      {backgroundColor: 'green'}
+    {
+    errorType === 'good' ? 
+      message.success({ content: errorMessage, key, duration: 4 })
       :
-      {backgroundColor: 'red'}
-    }>
-      <span 
-      className="close-alert" 
-      onClick={() => removeError('')}>&times;</span>
-        {errorType === 'good' ?
-'✔️' : '❌' }{' '}{errorMessage}
-    </div>
+      message.warning({ content: errorMessage, key, duration: 4 })
+    }
   </>);
 }

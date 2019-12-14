@@ -3,7 +3,7 @@ import { Formik, Form, Field } from 'formik';
 import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import ForumSchema from '../../model/Forum';
-import ErrorBar from '../errorBar/errorBar';
+import ErrorBar from '../errorBar/StatusBar';
 
 export default function NewProjectForm(props) {
   const [topic, setTopic] = useState('');
@@ -14,7 +14,7 @@ export default function NewProjectForm(props) {
   const person=localData.userData;
 
   async function createPost () {
-    setErrorType('good');
+    setErrorType('loading');
     removeError('Adding New Post...');
     try {
       const allPosts = await ForumSchema.fetchList();

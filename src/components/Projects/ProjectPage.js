@@ -13,7 +13,7 @@ import Profile from '../../model/Profile';
 import Application from '../../model/addApplication';
 import ApplicationSchema from '../../model/Applications';
 import * as data from '../User/skillsData.json';
-import ErrorBar from '../errorBar/errorBar';
+import ErrorBar from '../errorBar/StatusBar';
 import uuid from 'uuid';
 import { NavLink } from 'react-router-dom';
 
@@ -33,7 +33,7 @@ export default function ProjectPage(props) {
   const person=localData.userData;
   
   const submitApplication = () => {
-    setErrorType('good')
+    setErrorType('loading')
     removeError('Sending Application')
     const data = {
       project_id: project.project_id,
@@ -329,7 +329,7 @@ function ApplicantsList({
   setErrorType
 }){
   function updateFreelancer(username) {
-    setErrorType('good')
+    setErrorType('loading')
     removeError('Attempting to Select Freelancer');
     Projects.fetchList({_id: project.project_id}).then(res => {
       if(res[0].attrs.step < 3){

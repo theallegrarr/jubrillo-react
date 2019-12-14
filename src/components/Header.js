@@ -274,7 +274,7 @@ export default class Header extends React.Component {
         </nav>
         <a 
         style={{display: "table-cell"}} 
-        href="https://discord.gg/ZAQbdk" 
+        href="https://discord.gg/5Kx8MFs" 
         target="_blank"
         rel="noopener noreferrer"
         className="error-alert">

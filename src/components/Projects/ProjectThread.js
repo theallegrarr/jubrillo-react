@@ -17,7 +17,7 @@ import VerifyTxn from '../../payments/initiateTxn';
 import Popup from './PaymentPopUp';
 import CustomMessages from './StepMessage';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import ErrorBar from '../errorBar/errorBar';
+import ErrorBar from '../errorBar/StatusBar';
 import Review from '../Projects/Review';
 import uuid from 'uuid';
 import { NavLink } from 'react-router-dom';
@@ -87,6 +87,7 @@ export default function ProjectThread (props) {
   useEffect(() => {
     const interval = setInterval(() => {
       updateAllInfo();
+      removeError('');
     }, 1000);
 
     return () => {
@@ -96,7 +97,7 @@ export default function ProjectThread (props) {
 
   const refreshPayment = () => {
     removeError('Checking Payment Status....');
-    setErrorType('good');
+    setErrorType('loading');
     if(form.transaction_id){
       VerifyTxn(project.project_id, form.transaction_id)
         .then(res => {
@@ -390,7 +391,7 @@ function LeftSideBar({
           setErrorType={setErrorType}
           removeError={removeError}
           />
-        : <p>Loading....</p>
+        : <p>Write a message....</p>
       }
     </div>
     <ClassicEditorFunction 
@@ -504,7 +505,7 @@ function HorizontalLinearStepper({
 function ClassicEditorFunction(props){
   const addMessage = () => {
     props.removeError('Sending Message....');
-    props.setErrorType('good');
+    props.setErrorType('loading');
     
     const newMessage = new Message({
       body: props.message,

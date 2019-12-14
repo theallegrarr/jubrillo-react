@@ -14,7 +14,7 @@ export default class Profile extends Model {
     },
     email: {
       type: String,
-      decrypted: true
+      decrypted: false
     },
     rating: {
       type: Number,

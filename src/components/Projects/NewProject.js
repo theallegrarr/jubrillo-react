@@ -7,7 +7,7 @@ import NewProject from '../../model/newProject';
 import Projects from '../../model/Project';
 import Profile from '../../model/Profile';
 import * as data from '../User/skillsData.json';
-import ErrorBar from '../errorBar/errorBar';
+import ErrorBar from '../errorBar/StatusBar';
 
 export default function NewProjectForm(props) {
   const [title, setTitle] = useState('');
@@ -29,7 +29,7 @@ export default function NewProjectForm(props) {
   }, [])
 
   const createProject = () => {
-    setErrorType('good');
+    setErrorType('loading');
     removeError('Creating new Project...')
     Projects.fetchList().then(res => {
       const data = {
@@ -57,7 +57,7 @@ export default function NewProjectForm(props) {
   }
 
   async function updateUserProjects(index){
-    setErrorType('good');
+    setErrorType('loading');
     removeError(`You'll be redirected in a few...`)
     try {
       const userInfo = await Profile.fetchList({ username: person.username })

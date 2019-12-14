@@ -56,7 +56,7 @@ export default function ProjectPage(props) {
   }
 
   async function sendComment(){
-    setErrorType(`good`)
+    setErrorType(`loading`)
     removeError(`Updating Comments, Please Wait.....`);
     
     try {

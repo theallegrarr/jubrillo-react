@@ -9,9 +9,12 @@ import { withStyles } from '@material-ui/core/styles';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
 import * as data from '../User/skillsData.json';
-import ErrorBar from '../errorBar/errorBar';
+import ErrorBar from '../errorBar/StatusBar';
 import uuid from 'uuid';
 import { NavLink } from 'react-router-dom';
+import SEO from 'react-seo-component';
+import navimage from '../../assets/logo.png';
+import { Helmet } from 'react-helmet';
 
 const fields = { text: 'Name', value: 'Code' };
 
@@ -67,7 +70,7 @@ export default function Project(props) {
   };
 
   async function sortProjects(){
-    setErrorType('good')
+    setErrorType('loading')
     removeError('Refining the Projects List')
     try {
       
@@ -83,7 +86,7 @@ export default function Project(props) {
         setErrorType('good')
         removeError('List Updated')
       } else {
-        setErrorType('good')
+        setErrorType('bad')
         removeError('No Projects Matching Your Selection')
       }
     } catch(error) {
@@ -94,7 +97,7 @@ export default function Project(props) {
   }
 
   async function resetList(){
-    setErrorType('good')
+    setErrorType('loading')
     removeError('Fetching default list')
     ProjectSchema.fetchList({
       sort: '-createdAt',
@@ -111,6 +114,18 @@ export default function Project(props) {
 
   return(
     <>
+      <SEO
+        title={'Jubrillo'}
+        description={'All Open Projects'}
+        image={navimage}
+        pathname={'www.jubrillo.work/projects'}
+        siteLanguage={'en'}
+        siteLocale={'en_gb'}
+        twitterUsername={'jubrillowork'}
+      />
+      <Helmet>
+        <title>{`Jubrillo - All Open Projects`}</title>
+      </Helmet>
       <div className="sidenav">
         <p>Required Skills: </p>
         <div className='control-section'>
