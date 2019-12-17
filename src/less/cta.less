@@ -37,16 +37,17 @@
             flex-direction: row;
             justify-content: space-between;
             width: 60%;
+            z-index: 5;
 
             .gs-button {
                 width: 45%;
                 border: 0;
-                height: 4rem;
+                height: 64px;
                 margin: 5rem 0 2.2rem;
                 color: rgba(255,255,255,0.8);
                 background: @logo-color;
                 font-size: 1.5rem;
-                border-radius: 3rem;
+                border-radius: 5px;
                 cursor: pointer;
                 overflow: hidden;
                 font-family: @primary-font, 'serif';
@@ -54,7 +55,7 @@
                 transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
                 
                 &:hover {
-                    background-color: @jubrillo-gray;
+                    background-color: #0E1C5D;
                     border: 1px solid @logo-color;
                 }
 
@@ -64,12 +65,12 @@
             }
             .faq-button {
                 width: 45%;
-                height: 4rem;
+                height: 64px;
                 margin: 5rem 0 2.2rem;
                 color: rgba(255,255,255,0.8);
-                background: @jubrillo-pink;
+                background: #DE536B;
                 font-size: 1.5rem;
-                border-radius: 3rem;
+                border-radius: 5px;
                 cursor: pointer;
                 overflow: hidden;
                 border: 0;
@@ -78,7 +79,7 @@
                 transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
                 
                 &:hover{
-                    background-color: @jubrillo-gray;
+                    background-color: #0E1C5D;
                     border: 1px solid @jubrillo-pink;
                 }
 
@@ -94,6 +95,7 @@
         width: 50%;
         margin-top: 2.7%;
         opacity: 0.7;
+        z-index: 5;
     }
 }
 }
@@ -195,6 +197,7 @@
             width: 50%;
             margin-top: 2.7%;
             opacity: 0.7;
+            z-index: 4;
         }
     }
     }
@@ -206,6 +209,7 @@
     width: 99.1vw;
     background-color: white;
     padding-bottom: 100px;
+    z-index: 5;
     
     .ftr-head {
         display: flex;
@@ -239,6 +243,7 @@
             max-width: 500px;
             margin: 10px;
             border-radius: 10px;
+            z-index: 5;
 
             h4 {
                 font-family: @secondary-font, 'serif';

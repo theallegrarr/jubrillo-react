@@ -132,9 +132,6 @@ export default function Freelancers(props) {
 
   return(
     <>
-      <Helmet>
-        <title>{`Jubrillo - All Freelancers`}</title>
-      </Helmet>
       <SEO
         title={'Jubrillo'}
         description={'All Open Projects'}
@@ -144,6 +141,9 @@ export default function Freelancers(props) {
         siteLocale={'en_gb'}
         twitterUsername={'jubrillowork'}
       />
+      <Helmet>
+        <title>{`Jubrillo - All Freelancers`}</title>
+      </Helmet>
       <div className="sidenav">
         <p>Select Skills: </p>
         <div className='control-section'>

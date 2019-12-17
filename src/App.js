@@ -23,6 +23,8 @@ import FAQ from '../src/components/FAQ/FAQ';
 import MyProjects from '../src/components/User/MyProjects';
 import Transactions from '../src/components/User/MyTransactions';
 import Footer from '../src/components/Footer';
+import Particles from 'react-particles-js';
+import particles from './components/particles.js';
 import './App.css';
 import '../src/css/index.css';
 import '../src/css/global.css';
@@ -49,6 +51,10 @@ function App() {
     <div>
       <div className='main container'>
         <Header className='navbar' />
+        <div id="particles-js"><Particles 
+        params={particles} 
+        className='particle-box'
+        /></div>
         
         <Route exact path='/' component={Cta} />
         

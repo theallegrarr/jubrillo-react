@@ -27,6 +27,7 @@
     "react-gsap": "^1.2.0",
     "react-helmet": "^5.2.1",
     "react-icons": "^3.7.0",
+    "react-particles-js": "^2.7.0",
     "react-router-dom": "^5.1.1",
     "react-scripts": "3.1.2",
     "react-seo-component": "^0.1.16",

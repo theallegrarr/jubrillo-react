@@ -212,16 +212,16 @@ export default class Header extends React.Component {
               (
               <>
               <div className="dropdown">
-                <button 
+                <div 
                 className="dropbtn"
                 style={this.state.color ?
                   {backgroundColor: 'green'}
                   :
-                  {backgroundColor: 'darkgray'}
+                  {backgroundColor: '#2646de'}
                 }>
                   <FaAlignJustify />
                   {this.state.user}
-                </button>
+                </div>
                 <div className="dropdown-content">
                   
                   <NavLink 
