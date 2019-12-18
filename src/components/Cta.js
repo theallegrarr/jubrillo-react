@@ -11,9 +11,10 @@ const Header = props => (
   <>
   <div className='cta-container'>
     <div className='cta-text'>
-      <h1>
-      The future of online work is decentralized
-      </h1>
+      <div><p className='head-1'>
+      The future of online work is 
+      </p>
+      <p className='head-2'>Decentralized</p></div>
       <p>
       Join the blockchain phase of freelancing, 
       jubrillo is designed to guarantee a fast, fair, secure, 

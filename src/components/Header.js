@@ -41,13 +41,25 @@ export default class Header extends React.Component {
       color: false,
       user: 'loading...',
       created: false,
-      messageExists: false
+      messageExists: false,
+      isTop: true
   	};
   }
   
   componentDidMount() {
     const localData=JSON.parse(localStorage.getItem('blockstack-session'));
     const localuser=localData.userData;
+
+    document.addEventListener('scroll', () => {
+      const isTop = window.scrollY < 100;
+      if (isTop !== this.state.isTop) {
+          this.setState({ 
+            ...this.state,
+            isTop
+          })
+      }
+    });
+
     if(localuser && this.state.user === 'loading...'){
       this.setState({
         ...this.state,
@@ -166,7 +178,11 @@ export default class Header extends React.Component {
 
     return(
       <div className='header-container'>
-        <nav className='navbar'>
+        <nav 
+        className='navbar'
+        style={{
+          'backgroundColor': this.state.isTop ? 'none' : '#0E1C5D'
+        }}>
           <NavLink key={'000'} to={'/'} className='navImg'>
             <img src={logo} alt='logo'></img>
           </NavLink>
@@ -281,7 +297,8 @@ export default class Header extends React.Component {
             {/* <img 
             src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHIIV-ZJOTXj5zVl9Dphh-Mf4s58HebQyybuxy9bqpqQGmlqqx&s`}
             alt='support' /> */}
-            Need Support? Click Here
+            <p>Need Help</p>
+            ?
         </a>
       </div>
     );}

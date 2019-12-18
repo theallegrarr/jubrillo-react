@@ -131,7 +131,7 @@ img {
     align-self: center;
     justify-items: center;
     justify-content: center;
-    color: #546e7a;
+    color: lightblue;
     padding-top: 12px;
     height: 100%;
     letter-spacing: 0.1em;
@@ -317,21 +317,24 @@ img {
   }
   .header-container .error-alert {
     position: fixed;
-    margin-left: 82vw;
+    margin-left: 90vw;
     margin-top: 80vh;
-    background-color: #00abb4;
-    padding: 15px;
+    background-color: #2646de;
+    padding: 10px;
     font-family: 'IBM Plex Mono', Arial, sans-serif;
     box-shadow: 0.5px 2px 7px #282c34;
     cursor: pointer;
     text-decoration: none;
     font-weight: 700;
-    opacity: 0.7;
-    transition: 0.5s opacity;
     z-index: 50;
+    border-radius: 90px;
+    font-size: 18pt;
+    min-width: 60px;
+    text-justify: center;
+    text-align: center;
   }
-  .header-container .error-alert img {
-    width: 20px;
+  .header-container .error-alert p {
+    display: none;
   }
   .header-container .error-alert:active {
     box-shadow: none;
@@ -396,6 +399,9 @@ img {
     width: 96%;
     font-family: 'Nunito' 'serif';
     padding: 4%;
+    padding-bottom: 1%;
+    padding-left: 5vw;
+    padding-right: 5vw;
     margin-bottom: 0;
     min-height: 90vh;
   }
@@ -405,11 +411,23 @@ img {
     justify-content: space-evenly;
     width: 48%;
   }
-  .cta-container .cta-text h1 {
-    font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
-    text-transform: uppercase;
-    color: #00abb4;
-    font-weight: 700;
+  .cta-container .cta-text .head-1,
+  .cta-container .cta-text .head-2 {
+    font-family: Muli;
+    font-size: 48px;
+    line-height: 75px;
+    color: white;
+    margin-bottom: 0;
+    padding: 0;
+    text-transform: capitalize;
+  }
+  .cta-container .cta-text .head-2 {
+    font-weight: 1000;
+    font-family: Muli;
+    font-style: bold;
+    font-weight: 900;
+    font-size: 64px;
+    line-height: 75px;
   }
   .cta-container .cta-text p {
     font-family: 'Nunito', 'serif';
@@ -631,6 +649,10 @@ img {
   width: 400px;
   align-self: center;
   margin-bottom: 10px;
+  font-family: Muli;
+  font-weight: 900;
+  margin-top: 0;
+  z-index: 5;
 }
 .ph-box p {
   margin-right: 8px;

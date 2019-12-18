@@ -65,7 +65,7 @@
                     align-self: center;
                     justify-items: center;
                     justify-content: center;
-                    color: @primary-color-dark;
+                    color: lightblue;
                     padding-top: 12px;
                     height: 100%;
                     //width: 120px;
@@ -287,21 +287,24 @@
 .header-container {
     .error-alert {
         position: fixed;
-        margin-left: 82vw;
+        margin-left: 90vw;
         margin-top: 80vh;
-        background-color: @logo-color;
-        padding: 15px;
+        background-color: lighten(#0E1C5D,30);
+        padding: 10px;
         font-family: @secondary-font;
         box-shadow: 0.5px 2px 7px #282c34;
         cursor: pointer;
         text-decoration: none;
         font-weight: 700;
-        opacity: 0.7;
-        transition: 0.5s opacity;
         z-index: 50;
-        
-        img {
-            width: 20px;
+        border-radius: 90px;
+        font-size: 18pt;
+        min-width: 60px;
+        text-justify: center;
+        text-align: center;
+
+        p {
+            display: none;
         }
 
         &:active {
