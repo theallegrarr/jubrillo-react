@@ -2,13 +2,28 @@ import React from 'react';
 import { 
   //FaSearch, 
   FaAsterisk, FaHandsHelping, FaConnectdevelop } from 'react-icons/fa';
+import { Helmet } from 'react-helmet';
+import SEO from 'react-seo-component';
 import ctaImage from '../assets/cta-image4.png';
 import ProductHunt from './ProductHunt';
 import '../css/index.css';
 import '../css/global.css';
+import navimage from '../assets/logo.png';
 
 const Header = props => (
   <>
+  <SEO
+    title={'Jubrillo'}
+    description={'Work & Hire'}
+    image={navimage}
+    pathname={'www.jubrillo.work'}
+    siteLanguage={'en'}
+    siteLocale={'en_gb'}
+    twitterUsername={'jubrillowork'}
+  />
+  <Helmet>
+    <title>{`Jubrillo - Work & Hire`}</title>
+  </Helmet>
   <div className='cta-container'>
     <div className='cta-text'>
       <div><p className='head-1'>
