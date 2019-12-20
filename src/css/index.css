@@ -81,12 +81,15 @@ img {
     position: fixed;
     border-top: 1px solid #0E1C5D;
     margin-top: 0;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 5%;
+    padding-right: 4%;
     max-height: 75px;
+    min-height: 50px;
     min-width: 99.9vw;
     justify-self: center;
     z-index: 7;
+    background-color: #0E1C5D;
+    opacity: 0.9;
   }
   .main .navbar .navImg {
     display: flex;
@@ -590,6 +593,7 @@ img {
   width: 99.1vw;
   background-color: white;
   padding-bottom: 100px;
+  padding-top: 50px;
   z-index: 5;
 }
 .features-div .ftr-head {
@@ -602,37 +606,50 @@ img {
   align-items: center;
 }
 .features-div .ftr-head h3 {
-  text-align: center;
-  align-self: center;
-  border-bottom: 4px solid #FF3366;
-  font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
+  font-family: Muli;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 24px;
 }
 .features-div .feature-cards {
   padding: 0 5vw 0 7vw;
   display: flex;
   flex-flow: wrap;
   width: 99.1vw;
+  margin-top: 20px;
 }
 .features-div .feature-cards .feature-card {
   display: flex;
   flex-direction: column;
-  box-shadow: 0.9px 2px 7px #282c34;
+  background: #FFFFFF;
+  box-shadow: 0px 20px 80px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
   padding: 40px;
+  padding-bottom: 15px;
   min-width: 500px;
   max-width: 500px;
   margin: 10px;
-  border-radius: 10px;
   z-index: 5;
 }
 .features-div .feature-cards .feature-card h4 {
-  font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
-  font-size: 14pt;
+  font-family: Muli;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 24px;
   padding-top: 12px;
   padding-bottom: 10px;
   margin: 0;
 }
 .features-div .feature-cards .feature-card p {
   font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
+  font-weight: 700;
+  color: #707078;
+  margin-top: 10px;
+}
+.features-div .feature-cards .feature-card .dec-icon {
+  align-self: flex-start;
 }
 .ph-box {
   display: flex;
@@ -930,9 +947,10 @@ img {
   }
 }
 .freelancers-container {
-  background-color: white;
   min-height: 90vh;
   margin-top: 55px;
+  z-index: 5;
+  padding-left: 1vw;
 }
 .freelancers-container .freelancers-list {
   display: flex;
@@ -941,17 +959,21 @@ img {
   padding-top: 10px;
 }
 .freelancers-container .freelancers-list .freelancer-card {
-  box-shadow: 0.9px 2px 7px #282c34;
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
-  border-radius: 20px;
+  background: #FFFFFF;
+  box-shadow: 0px 20px 80px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  font-family: Muli;
   padding: 1%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin: 5px;
   cursor: pointer;
   transition: 2s background-color;
-  max-width: 45%;
-  overflow: hidden;
+  max-width: 350px;
+  align-items: center;
+  text-justify: center;
+  z-index: 6;
+  opacity: 0.9;
 }
 .freelancers-container .freelancers-list .freelancer-card:hover {
   background-color: #cdcdcd;
@@ -964,10 +986,22 @@ img {
   margin-bottom: 1px;
   margin-top: 1px;
 }
+.freelancers-container .freelancers-list .freelancer-card a {
+  font-family: Muli;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 24px;
+  color: black;
+  margin-top: 24px;
+  margin-bottom: 5px;
+}
 .freelancers-container .freelancers-list .freelancer-card img {
-  width: 150px;
-  margin-right: 15px;
-  border: 2px solid #FF3366;
+  border: 2px solid #FFFFFF;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.15);
+  width: 110px;
+  height: 110px;
   border-radius: 100px;
   display: flex;
   flex-direction: column;
@@ -975,20 +1009,24 @@ img {
   align-items: center;
   align-self: center;
 }
+.freelancers-container .freelancers-list .freelancer-card .ratings {
+  margin-bottom: 12px;
+}
 .sidenav {
-  height: 100%;
-  width: 325px;
-  position: fixed;
-  z-index: 0;
-  top: 55px;
-  left: 0;
+  position: absolute;
+  width: 330px;
+  height: 420px;
+  z-index: 6;
+  top: 65px;
+  left: 10px;
   overflow-x: hidden;
-  padding-top: 80px;
-  background-color: #00abb4;
+  padding-top: 50px;
+  background-color: #FFFFFF;
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
+  border-radius: 5px;
   padding-left: 20px;
   padding-right: 10px;
-  box-shadow: 0.9px 2px 7px #282c34;
-  max-width: 17%;
+  margin-left: 12px;
 }
 .sidenav .control-styles {
   border-bottom: none;
@@ -999,8 +1037,7 @@ img {
   padding: 1px;
   border: 0;
   outline: none;
-  background-color: #00abb4;
-  border-bottom: 1px solid #4d4d4d;
+  border-bottom: 1px solid #949494;
   color: #546E7A;
   transition: 0.5s border-bottom;
 }
@@ -1015,26 +1052,38 @@ img {
   border-bottom: 2px solid #FF3366;
 }
 .sidenav p {
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
-  font-weight: 700;
+  font-family: Muli;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 24px;
+  color: #010540;
+  margin-bottom: 1px;
+}
+.sidenav .p-min-rating {
+  margin-top: 30px;
 }
 .sidenav .sort-apply {
+  margin-top: 20px;
   border: none;
-  background-color: #FF3366;
+  background-color: #00ABB4;
   width: 45%;
+  height: 54px;
   color: white;
-  padding: 4%;
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
-  font-weight: 700;
+  padding: 15px 5px;
+  font-family: Muli;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  text-transform: uppercase;
   cursor: pointer;
-  box-shadow: 0.9px 2px 7px #282c34;
-  transition: 1s box-shadow;
+  border-radius: 5px;
 }
 .sidenav .sort-apply:hover {
   box-shadow: none;
 }
 .sidenav .sort-apply.reset {
-  background-color: #999917;
+  background-color: #707078;
 }
 .sidenav .sort-actions {
   display: flex;
@@ -1194,6 +1243,7 @@ img {
   margin-top: 30px;
   min-height: 90vh;
   margin-top: 55px;
+  z-index: 7;
 }
 .projects-list .project-card {
   display: flex;

@@ -143,12 +143,12 @@ export default function Project(props) {
             />
           </div>
         </div>
-        <p>Min. Budget: </p>
+        <p className='p-min-rating'>Min. Budget: </p>
         <input 
         type='text' 
         className='completed-input'
         placeholder='Enter a number'
-        value={budget}
+        value={budget>0 ? budget : ''}
         onChange={(e) => {
           setBudget(e.target.value);
         }}

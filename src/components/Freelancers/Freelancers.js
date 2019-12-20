@@ -171,7 +171,7 @@ export default function Freelancers(props) {
           setCompleted(e.target.value);
         }}
         ></input> */}
-        <p>Min Rating: </p>
+        <p className='p-min-rating'>Min Rating: </p>
         <StyledRating
               name="customized-color"
               value={rateSort}
@@ -240,24 +240,23 @@ const FreelancersList = (props) => {
             <img 
             src={freelancer.attrs.image ? freelancer.attrs.image : `https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png`} 
             alt='headshot'/>
-            <div className='other-fdetails'>
-            <NavLink 
-            className='name-link'
-            key={uuid}
-            to={`/freelancers/${freelancer.attrs.username}`}>
-            {freelancer.attrs.name ? freelancer.attrs.name : freelancer.attrs.username}
-            </NavLink>
-            <div className='ratings' >
-              <StyledRating
-              name="customized-color"
-              value={freelancer.attrs.rating}
-              // getLabelText={getLabelText}
-              precision={0.5}
-              icon={<StarBorderIcon fontSize="inherit" />}
-              readOnly
-            /></div>
+              <NavLink 
+                className='name-link'
+                key={uuid}
+                to={`/freelancers/${freelancer.attrs.username}`}>
+                {freelancer.attrs.name ? freelancer.attrs.name : freelancer.attrs.username}
+              </NavLink>
+              <div className='ratings' >
+                <StyledRating
+                name="customized-color"
+                value={freelancer.attrs.rating}
+                // getLabelText={getLabelText}
+                precision={0.5}
+                icon={<StarBorderIcon fontSize="inherit" />}
+                readOnly
+              /></div>
             <div className='control-pane'>
-            <div className='control-section'>
+              <div className='control-section'>
                 <div id='multidefault' className="control-styles">
                   <MultiSelectComponent 
                   id="customelement" 
@@ -268,8 +267,7 @@ const FreelancersList = (props) => {
                   readonly={true}
                   />
                 </div>
-            </div>
-          </div>
+              </div>
             </div>
           </div>
           ))

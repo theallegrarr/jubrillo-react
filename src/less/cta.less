@@ -224,6 +224,7 @@
     width: 99.1vw;
     background-color: white;
     padding-bottom: 100px;
+    padding-top: 50px;
     z-index: 5;
     
     .ftr-head {
@@ -236,10 +237,11 @@
         align-items: center;
 
         h3 {
-            text-align: center;
-            align-self: center;
-            border-bottom: 4px solid @jubrillo-pink;
-            font-family: @secondary-font, 'serif';
+            font-family: Muli;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 40px;
+            line-height: 24px;
         }
     }
 
@@ -248,29 +250,43 @@
         display: flex;
         flex-flow: wrap;
         width: 99.1vw;
+        margin-top: 20px;
 
         .feature-card {
             display: flex;
             flex-direction: column;
-            box-shadow: 0.9px 2px 7px #282c34;
+            background: #FFFFFF;
+            box-shadow: 0px 20px 80px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
             padding: 40px;
+            padding-bottom: 15px;
             min-width: 500px;
             max-width: 500px;
             margin: 10px;
-            border-radius: 10px;
             z-index: 5;
 
             h4 {
-                font-family: @secondary-font, 'serif';
-                font-size: 14pt;
+                font-family: Muli;
+                font-style: normal;
+                font-weight: 900;
+                font-size: 24px;
+                line-height: 24px;
                 padding-top: 12px;
                 padding-bottom: 10px;
                 margin: 0;
                 //text-align: center;
                 //align-self: center;
             }
+
             p {
                 font-family: @secondary-font, 'serif';
+                font-weight: 700;
+                color: #707078;
+                margin-top: 10px;
+            }
+
+            .dec-icon {
+                align-self: flex-start;
             }
         }
     }

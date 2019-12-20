@@ -9,6 +9,10 @@ import ProductHunt from './ProductHunt';
 import '../css/index.css';
 import '../css/global.css';
 import navimage from '../assets/logo.png';
+import wavy from '../assets/Frame.svg';
+import decentralized from '../assets/decentralized 1.svg';
+import access from '../assets/access 1.svg';
+import vector from '../assets/Vector.svg';
 
 const Header = props => (
   <>
@@ -61,25 +65,28 @@ const Header = props => (
     <div className='ftr-head'>
       <h3>Features</h3>
     </div>
+    <img src={wavy} alt='wavy-alt' className='wavy' />
 
     <div className='feature-cards'>
       <div className='feature-card'>
-        <FaConnectdevelop style={{ 
+        {/* <FaConnectdevelop style={{ 
           'color': '#FF3366',
           'height': '1.7em',
           'width': '1.7em'  
-          }}/>
+          }}/> */}
+        <img src={decentralized} alt='dec-alt' className='dec-icon' />
         <h4>Decentralized</h4>
         <p>
           Simply put, your private data belongs to you and will not be shared with any third party
         </p>
       </div>
       <div className='feature-card'>
-        <FaHandsHelping style={{ 
+        {/* <FaHandsHelping style={{ 
           'height': '1.5em',
           'width': '1.5em',
           'color': '#FF3366' 
-          }}/>
+          }}/> */}
+        <img src={vector} alt='dec-alt' className='dec-icon' />
         <h4>Easy To Use</h4>
         <p>
           The Work Process is straight forward and we are here to guide you if you need help, 
@@ -87,11 +94,7 @@ const Header = props => (
         </p>
       </div>
       <div className='feature-card'>
-        <FaAsterisk style={{
-          'color': '#FF3366',
-          'height': '1.5em',
-          'width': '1.5em'  
-          }}/>
+      <img src={access} alt='dec-alt' className='dec-icon' />
         <h4>Zero Restrictions</h4>
         <p>
           By default, all accounts have all privileges, 
