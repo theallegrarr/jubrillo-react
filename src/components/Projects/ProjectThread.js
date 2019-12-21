@@ -55,7 +55,7 @@ function getStepContent(step) {
     case 0:
       return 'Select a Freelancer';
     case 1:
-      return 'Select a Freelancer to Start Thread';
+      return 'Discuss terms and specifications';
     case 2:
       return 'Fund Job Based on Agreement';
     case 3:

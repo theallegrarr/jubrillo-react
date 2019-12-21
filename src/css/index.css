@@ -1375,10 +1375,10 @@ img {
   display: flex;
   flex-direction: row;
   background-color: white;
-  padding-top: 60px;
+  padding-top: 50px;
   padding-left: 30px;
   padding-right: 50px;
-  min-height: 90vh;
+  min-height: 100vh;
   border-bottom: 30px solid white;
 }
 .project-container .project-view-page {
@@ -1596,17 +1596,33 @@ img {
   }
 }
 .work-steps {
-  background-color: #00abb4;
-  padding: 1%;
-  box-shadow: 0.5px 2px 7px #282c34;
+  background: #FFFFFF;
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 10px;
 }
 .work-steps .next-button {
-  background-color: #FF3366;
-  box-shadow: 0.5px 2px 7px #282c34;
+  width: 126px;
+  height: 44px;
+  background-color: #DE536B;
+  border-radius: 5px;
+}
+.work-steps p {
+  font-family: Muli;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: left;
+  text-justify: left;
+  align-items: left;
+  text-align: center;
+  color: #000000;
+  width: 100%;
 }
 .work-steps span,
 .work-steps text {
-  font-size: 12pt;
+  font-size: 10pt;
 }
 .work-steps .makeStyles-root-1 {
   width: 100%;
@@ -1614,7 +1630,7 @@ img {
 .messages-thread {
   display: flex;
   flex-direction: column-reverse;
-  max-height: 400px;
+  max-height: 300px;
   min-height: 300px;
   overflow-y: scroll;
   border: 1px solid gray;
@@ -1624,7 +1640,7 @@ img {
 .chat-thread {
   display: flex;
   flex-direction: column-reverse;
-  box-shadow: 0.5px 2px 7px #282c34;
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
 }
 .send-message {
   display: flex;
@@ -1636,14 +1652,18 @@ img {
 .send-message button {
   padding: 1.5%;
   border: none;
-  background-color: #FF3366;
   color: white;
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
-  font-size: 12pt;
+  font-family: Muli;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 18px;
+  text-transform: uppercase;
   width: 130px;
   align-self: flex-end;
   cursor: pointer;
-  box-shadow: 0.5px 2px 7px #282c34;
+  background: #00ABB4;
+  border-radius: 6px;
 }
 .send-message button:active {
   box-shadow: none;
@@ -1655,8 +1675,8 @@ img {
   background-color: lightgray;
   margin: 8px;
   margin-left: 20px;
-  box-shadow: 0.5px 2px 7px #282c34;
-  border-radius: 10px;
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
+  border-radius: 5px;
   padding: 12px;
 }
 .message-box:hover {
@@ -1696,7 +1716,7 @@ img {
   justify-content: space-between;
   padding: 4%;
   width: 100%;
-  height: 230px;
+  height: 200px;
   left: 1040px;
   top: 190px;
   background: #F1F8FF;
@@ -1727,14 +1747,16 @@ img {
 .project-view-page .App,
 .project-view-page .work-steps,
 .project-view-page .messages-thread {
-  box-shadow: 0.5px 2px 7px #282c34;
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
+  border-radius: 5px;
+  border: none;
 }
 .makeStyles-root-1 {
   width: 100%;
 }
 .makeStyles-root-1 .stepper {
-  box-shadow: 0.5px 2px 7px #282c34;
-  border-radius: 10px;
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
+  border-radius: 5px;
 }
 .employer-info .det-head {
   font-family: Muli;
@@ -2450,6 +2472,7 @@ img {
   background-color: white;
   padding: 50px;
   min-height: 90vh;
+  z-index: 5;
 }
 .my-projects-container h4 {
   font-family: 'IBM Plex Mono', Arial, sans-serif;
