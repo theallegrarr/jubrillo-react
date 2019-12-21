@@ -194,7 +194,7 @@ export default function Project(props) {
           role='img'
           description='lightning'
           aria-labelledby=''>➕{' '}</span>
-            Create Project
+            New Project
           </button>
         
       </div>

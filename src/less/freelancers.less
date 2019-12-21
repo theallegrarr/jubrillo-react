@@ -19,7 +19,9 @@
       display: flex;
       //flex-flow: wrap;
       flex-direction: column;
-      margin: 5px;
+      margin-left: 5px;
+      margin-right: 5px;
+      margin-bottom: 5px;
       cursor: pointer;
       transition: 2s background-color;
       max-width: 350px;
@@ -27,6 +29,7 @@
       text-justify: center;
       z-index: 6;
       opacity: 0.9;
+      padding-top: 20px;
 
       &:hover {
         background-color: lighten(@jubrillo-gray,50);
@@ -72,8 +75,8 @@
 
 ///////
 .sidenav {
-  position: absolute;
-  width: 330px;
+  position: fixed;
+  width: 300px;
   height: 420px;
   z-index: 6;
   top: 65px;
@@ -137,7 +140,7 @@
     margin-top: 20px;
     border: none;
     background-color: #00ABB4;
-    width: 45%;
+    width: 47%;
     height: 54px;
     color: white;
     padding: 15px 5px;

@@ -16,6 +16,7 @@ import * as data from '../User/skillsData.json';
 import ErrorBar from '../errorBar/StatusBar';
 import uuid from 'uuid';
 import { NavLink } from 'react-router-dom';
+import businessman from '../../assets/007-businessman.svg';
 
 const fields = { text: 'Name', value: 'Code' };
 
@@ -203,18 +204,21 @@ export default function ProjectPage(props) {
                   </>}
                 </div>
             </div>
-            <div className='employer-info'>
-          <p>Employer: {employer.username}</p>
+            <div className='employer-info'>     
+              <h1>
+                <img src={businessman} alt='bman' />{' '}Employer 
+              </h1>
+          <p className='emp-link'>{employer.username}</p>
           <div className='rating-emp'>
-            <p>Rating:</p>
+            <h3>Rating:</h3>
             <StyledRating2 
               value={employer.rating} 
               readOnly 
               />
           </div>
-          <p>Jobs Done: {employer.jobsDone}</p>
-          <p>Jobs Created: {employer.jobsCreated}</p>
-          <p>Employer Account was Created: {timeAgo.format(Date.now() - (Date.now()-employer.createdAt))}</p>
+          <h3>Jobs Done: {' '}<p>{employer.jobsDone}</p></h3>
+          <h3>Jobs Created: {' '}<p>{employer.jobsCreated}</p></h3>
+          <h3>Account Created: {' '}<p>{timeAgo.format(Date.now() - (Date.now()-employer.createdAt))}</p></h3>
           {(person.username !== employer.username &&
            project.selected_freelancer !== person.username) && 
            canApply &&

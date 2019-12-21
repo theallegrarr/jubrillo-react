@@ -1,10 +1,11 @@
 .form-container {
-  margin-top: 40px;
+  margin-top: 55px;
   padding: 4%;
   padding-right: 3%;
   padding-bottom: 0;
   background-color: white;
   min-height: 90vh;
+  z-index: 6;
 
   h2 {
     font-family: @secondary-font;
@@ -20,42 +21,47 @@
   flex-direction: column;
   margin-top: 1%;
   justify-self: center;
-  
+  z-index: 6;
+
   .buttons{
     display: flex;
     flex-direction: row;
-    margin-top: 1%;
+    margin-top: 0;
     width: 100%;
     justify-content: flex-end;
+
+    button {
+      cursor: pointer;
+    }
     
     .submit {
-      background-color: @jubrillo-green;
+      background-color: #00ABB4;
       color: white;
       border: none;
       font-weight: 700;
       padding: 1%;
       font-family: @primary-font, 'serif';
       font-size: 12pt;
-      border-radius: 10px;
-      box-shadow: 0.9px 2px 7px #282c34;
-      min-width: 20%;
+      border-radius: 5px;
+      box-shadow: 0px 20px 80px rgba(0, 0, 0, 0.1);
+      width: 250px;
     }
     .cancel {
-      background-color: @jubrillo-pink;
+      background-color: gray;
       color: white;
       border: none;
       font-weight: 700;
       padding: 1%;
-      font-family: @secondary-font;
+      font-family: Muli;
       font-size: 12pt;
-      border-radius: 10px;
-      box-shadow: 0.9px 2px 7px #282c34;
-      min-width: 20%;
+      border-radius: 5px;
+      box-shadow: 0px 20px 80px rgba(0, 0, 0, 0.1);
+      width: 250px;
     }
   }
 
   .control-styles {
-    margin-bottom: 2%;
+    margin-bottom: 3%;
   }
 
   .profile-input {

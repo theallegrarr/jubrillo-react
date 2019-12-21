@@ -1,8 +1,7 @@
 .projects-list {
   margin-left: 355px;
-  margin-top: 30px;
   min-height: 90vh;
-  margin-top: 55px;
+  margin-top: 45px;
   z-index: 7;
 
   .project-card {
@@ -12,6 +11,9 @@
     width: 100%;
     max-width: 97%;
     padding: 5px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 12px;
     // box-shadow: 0.9px 2px 7px #282c34;
   }
 
@@ -22,7 +24,7 @@
     white-space: wrap;
     text-overflow: ellipsis;
     margin: 0;
-    font-family: @secondary-font;
+    font-family: Muli;
     font-size: 10pt;
     font-weight: 700;
     margin-bottom: 10px;
@@ -43,16 +45,18 @@
     .budget-amount {
       margin-left: 10px;
       font-size: 10pt;
+      font-weight: 900;
       background-color: lighten(@primary-color,20);
       padding: 5px;
       border-radius: 4px;
-      box-shadow: 0.5px 2px 7px #282c34;
+      font-family: Muli;
+      //box-shadow: 0.5px 2px 7px #282c34;
     }
   }
 
   h2, span, div {
     margin: 0;
-    font-family: @secondary-font;
+    font-family: Muli;
   }
 
   a {
@@ -68,19 +72,19 @@
 
 .add-project-button {
   margin-left: 355px;
-  margin-top: 80px;
-  align-self: right;
-  justify-self: right;
+  margin-top: 40px;
   border: none;
-  background-color: @jubrillo-pink;
+  background-color: #00ABB4;
   width: 200px;
   color: white;
   padding: 1%;
-  font-family: @secondary-font;
+  font-family: Muli;
   font-weight: 700;
+  font-size: 12pt;
   cursor: pointer;
-  box-shadow: 0.9px 2px 7px #282c34;
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
   transition: 1s box-shadow;
+  border-radius: 5px;
 
   &:hover {
     box-shadow: none;
@@ -91,14 +95,14 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  justify-self: flex-end;
   display: flex;
-  margin-bottom: 2%;
+  margin-bottom: 1%;
   width: 100%;
   max-width: 77%;
   padding: 10px;
   padding-right: 30px;
   margin-left: 355px;
-  border-bottom: 0.3px solid lighten(black,60);
 }
 
 .time-ago {

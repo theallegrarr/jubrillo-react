@@ -21,6 +21,9 @@ import ErrorBar from '../errorBar/StatusBar';
 import Review from '../Projects/Review';
 import uuid from 'uuid';
 import { NavLink } from 'react-router-dom';
+import businessman from '../../assets/007-businessman.svg';
+import freelancer from '../../assets/006-freelance.svg';
+import infoIcon from '../../assets/info-icon.svg';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -260,13 +263,12 @@ function RightSideBar ({
       ><span 
         role='img'
         description='money'
-        aria-labelledby=''>💸{' '}</span>Job Balance: {
-        project.balance ? project.balance : 0
-        }</p>
+        aria-labelledby=''>💸{' '}</span>Job Balance</p>
+<p className='btc-bal'>₿{' '}{project.balance ? project.balance : 0}</p>
         { project.username === person.username &&
         <div className='fund-buttons'>
           <button 
-          style={{ 'backgroundColor': 'green'}}
+          style={{ 'backgroundColor': '#00ABB4'}}
           onClick={() => {
             refreshPayment()
           }}>
@@ -292,57 +294,41 @@ function RightSideBar ({
       setSent={setSent}
       setReceived={setReceived}
     />}
+    <h4 className='det-head'><img src={businessman} alt='bman' />{' '}Employer</h4>
     <NavLink
     to={`/freelancers/${employer.username}`}
     key={'00011123'}>
-      <p className='employer-name'><span 
-        role='img'
-        description='money'
-        aria-labelledby=''
-        className='employer-name'>🏢{' '}</span>
-          Employer: {employer.username}</p></NavLink>
-    <p><span 
-        role='img'
-        description='money'
-        aria-labelledby=''>⌛ {' '}</span>Jobs Created: {employer.jobsCreated}</p>
-    <p><span 
-        role='img'
-        description='money'
-        aria-labelledby=''>⏲️{' '}</span>
-        Employer Account was Created: {timeAgo.format(Date.now() - (Date.now()-employer.createdAt))}
-        </p>
+      <p className='employer-name'>
+          {employer.username}
+      </p>
+    </NavLink>
+    <p className='deti-head'>Jobs Created: {employer.jobsCreated}</p>
+    <p className='deti-head'>Account Created: {timeAgo.format(Date.now() - (Date.now()-employer.createdAt))}</p>
   {/* </div>
   <div className='employer-info'> */}
+    <h4 className='det-head' style={{ borderTop: '1px solid #E9E9E9', paddingTop: '10px' }}>
+      <img src={freelancer} alt='bman' />{' '}Freelancer</h4>
     <NavLink
     to={`/freelancers/${applicant.username}`}
     key={'00011124'}>
       <p
        className='employer-name'
-      ><span 
-        role='img'
-        description='money'
-        aria-labelledby=''>🛠️{' '}</span>Freelancer: {applicant.username}</p></NavLink>
-    <p><span 
-        role='img'
-        description='money'
-        aria-labelledby=''>⌛ {' '}</span>Jobs Done: {
+      >{applicant.username}</p></NavLink>
+    <p className='deti-head'>Jobs Done: {
         applicant.jobsCompleted ?
         applicant.jobsCompleted.length : 0}</p>
-    <p><span 
-        role='img'
-        description='money'
-        aria-labelledby=''>⏲️{' '}</span>Freelancer Account was Created: {timeAgo.format(Date.now() - (Date.now()-applicant.createdAt))}</p>
+    <p className='deti-head'>Account Created: {timeAgo.format(Date.now() - (Date.now()-applicant.createdAt))}</p>
     <div 
     className="alert"
     style={project.step === 4 ? 
       {backgroundColor: 'green'}
       :
-      {backgroundColor: 'red'}
+      {backgroundColor: '#010540'}
     }>
     <span 
         role='img'
         description='money'
-        aria-labelledby=''>ℹ️{'   '}
+        aria-labelledby=''><img src={infoIcon} alt='info' />{' '}
         {employer.username === person.username ? 
         CustomMessages(project.step, 'employer') :
         CustomMessages(project.step, 'freelancer')
