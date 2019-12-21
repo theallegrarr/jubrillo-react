@@ -21,11 +21,11 @@ export default function stepMessage(step, role){
   }
   if(step===3 && role ==='employer'){
     return(`Please make sure the Job Balance shows the amount you funded, 
-    if it isn't and you have made payment, contact our support, but if it does wait for freelancer to deliver job.
+    if it isn't and you have made payment, contact us, but if it does wait for freelancer to deliver job.
     DO NOT MOVE TO NEXT STEP IF THE JOB IS NOT COMPLETED`);
   }
   if(step===4 && role ==='employer'){
-    return(`Congratulations! The job is complete, you have 12 hours to open a dispute if this is a mistake, contact our support`);
+    return(`Congratulations! The job is complete, you have 12 hours to open a dispute if this is a mistake, contact us`);
   }
 
 }
