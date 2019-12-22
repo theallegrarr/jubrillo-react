@@ -194,7 +194,7 @@ export default function ProjectPage(props) {
                     role='img'
                     description='lightning'
                     aria-labelledby=''
-                    >📑{' '}</span>Applications({applications.length})</h2>
+                  >📑{' '}</span>Applications{' '}({applications.length})</h2>
                   <ApplicantsList 
                   applications={applications} 
                   otherProps={props}

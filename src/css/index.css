@@ -1249,19 +1249,18 @@ img {
 .projects-list {
   margin-left: 355px;
   min-height: 90vh;
-  margin-top: 45px;
+  margin-top: 15px;
   z-index: 7;
 }
 .projects-list .project-card {
   display: flex;
   flex-direction: column;
-  margin-bottom: 2%;
+  margin-bottom: 0.5%;
   width: 100%;
   max-width: 97%;
-  padding: 5px;
   background-color: white;
-  border-radius: 10px;
-  padding: 12px;
+  border-radius: 5px;
+  padding: 20px 25px 15px 25px;
 }
 .projects-list .text-span {
   display: block;
@@ -1429,8 +1428,11 @@ img {
 .project-container h4,
 .project-container p,
 .project-container .p-text {
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-family: Muli;
   font-weight: 900;
+}
+.project-container .p-text {
+  margin-top: 20px;
 }
 .project-container h3 {
   display: flex;
@@ -1495,9 +1497,12 @@ img {
 }
 .project-container .applicant-heading {
   background-color: #00abb4;
-  padding: 20px;
+  padding: 15px;
   width: 100%;
-  box-shadow: 0.5px 2px 7px #282c34;
+  border-radius: 5px;
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
+  font-family: Muli;
+  color: white;
 }
 .project-container .applicants-list {
   display: flex;
@@ -1509,9 +1514,10 @@ img {
   flex-direction: row;
   width: 100%;
   background-color: #00abb4;
-  box-shadow: 0.5px 2px 7px #282c34;
   padding: 20px;
   margin: 5px;
+  background-color: #F9FCFF;
+  border-radius: 5px;
 }
 .project-container .periphery-applicant span {
   padding-top: 40px;
@@ -1522,16 +1528,21 @@ img {
   flex-direction: column;
   justify-content: space-between;
   width: 90%;
-  background-color: #00abb4;
   min-height: 100px;
   max-height: 200px;
 }
 .project-container .applicant-card a,
-.project-container .applicant-card h3,
 .project-container .applicant-card h4,
 .project-container .applicant-card p {
   margin: 5px;
   font-size: 12pt;
+}
+.project-container .applicant-card h3 {
+  font-size: 15pt;
+  margin: 5px;
+  font-family: Muli;
+  font-weight: bold;
+  color: #00ABB4;
 }
 .project-container .buttons-stack {
   display: flex;
@@ -1540,6 +1551,9 @@ img {
   width: 45%;
   height: 90%;
   max-width: 350px;
+}
+.project-container button {
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
 }
 .project-container .hire-applicant {
   border: none;
@@ -1672,21 +1686,19 @@ img {
   display: flex;
   flex-direction: column-reverse;
   padding: 5px;
-  background-color: lightgray;
+  max-width: 80%;
+  background-color: #F9F9F9;
   margin: 8px;
   margin-left: 20px;
-  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
-  border-radius: 5px;
-  padding: 12px;
+  padding: 19px;
 }
 .message-box:hover {
-  background-color: gray;
+  background-color: lightgray;
 }
 .message-box .msg-details {
   display: flex;
   flex-direction: row;
   margin-bottom: 1px;
-  border-top: 1px dashed black;
   margin-top: 10px;
   padding-top: 7px;
   width: 100%;
@@ -1694,7 +1706,9 @@ img {
 .message-box .msg-details .msg-time {
   font-size: 8pt;
   font-style: italic;
-  background-color: #00abb4;
+  color: white;
+  background-color: #00ABB4;
+  font-family: Muli;
   padding-right: 6px;
   padding-left: 6px;
   border-radius: 5px;
@@ -1757,6 +1771,9 @@ img {
 .makeStyles-root-1 .stepper {
   box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
   border-radius: 5px;
+}
+.employer-info {
+  min-width: 300px;
 }
 .employer-info .det-head {
   font-family: Muli;
@@ -1855,6 +1872,9 @@ img {
     min-width: 95%;
   }
 }
+.MuiStepIcon-root.MuiStepIcon-active {
+  font-size: 21pt;
+}
 /* The Modal (background) */
 .modal {
   display: block;
@@ -1892,7 +1912,8 @@ img {
   min-width: 500px;
   width: 30%;
   /* Could be more or less, depending on screen size */
-  box-shadow: 0.5px 2px 7px #282c34;
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
+  border-radius: 5px;
 }
 .modal-content .valueH1 {
   text-align: center;
@@ -1923,13 +1944,14 @@ img {
   text-align: center;
   font-size: 12pt;
   border-radius: 3px;
-  border: 0.5px solid #00abb4;
-  background-color: #00abb4;
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  border: 0.5px solid #00ABB4;
+  background-color: #00ABB4;
+  font-family: Muli;
   font-weight: 700;
   padding: 4px;
-  box-shadow: 0.5px 2px 7px #282c34;
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
   cursor: pointer;
+  color: white;
 }
 .modal-content .columns .btc-addr:active {
   box-shadow: none;
@@ -1940,7 +1962,7 @@ img {
   font-size: 12pt;
   border-radius: 3px;
   border: none;
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-family: Muli;
   background-color: lightgray;
   padding: 5px;
   font-weight: 700;
@@ -1959,14 +1981,14 @@ img {
 }
 .modal-content button {
   border: none;
-  background-color: #FF3366;
+  background-color: #DE536B;
   color: white;
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
-  padding: 2%;
-  box-shadow: 0.5px 2px 7px #282c34;
+  font-family: Muli;
+  padding: 1%;
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
   cursor: pointer;
   width: 49%;
-  border-radius: 10px;
+  border-radius: 5px;
   font-weight: 700;
 }
 .modal-content button:active {
@@ -1984,6 +2006,21 @@ img {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+.wallet-place {
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 12pt;
+  align-items: center;
+  width: 100%;
+}
+.wallet-place input {
+  width: 92%;
+}
+.wallet-place .fa-copy {
+  width: 8%;
+  height: 100%;
+  padding: 5px;
 }
 .chat-container {
   padding-left: 355px;

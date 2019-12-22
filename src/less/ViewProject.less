@@ -59,10 +59,13 @@
   }
 
   h2, h4, p, .p-text {
-    font-family: @secondary-font;
+    font-family: Muli;
     font-weight: 900;
   }
 
+  .p-text {
+    margin-top: 20px;
+  }
 
   h3 {
     display: flex;
@@ -137,9 +140,12 @@
 
   .applicant-heading {
     background-color: @logo-color;
-    padding: 20px;
+    padding: 15px;
     width: 100%;
-    box-shadow: 0.5px 2px 7px #282c34;
+    border-radius: 5px;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
+    font-family: Muli;
+    color: white;
   }
 
   .applicants-list {
@@ -153,9 +159,11 @@
     flex-direction: row;
     width: 100%;
     background-color: @logo-color;
-    box-shadow: 0.5px 2px 7px #282c34;
+    // box-shadow: 0.5px 2px 7px #282c34;
     padding: 20px;
     margin: 5px;
+    background-color: #F9FCFF;
+    border-radius: 5px;
 
     span {
       padding-top: 40px;
@@ -169,13 +177,20 @@
     flex-direction: column;
     justify-content: space-between;
     width: 90%;
-    background-color: @logo-color;
     min-height: 100px;
     max-height: 200px;
 
-    a, h3, h4, p {
+    a, h4, p {
       margin: 5px;
       font-size: 12pt;
+    }
+
+    h3 {
+      font-size: 15pt;
+      margin: 5px;
+      font-family: Muli;
+      font-weight: bold;
+      color: #00ABB4;
     }
   }
   .buttons-stack {
@@ -185,6 +200,10 @@
     width: 45%;
     height: 90%;
     max-width: 350px;
+  }
+
+  button {
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
   }
 
   .hire-applicant {

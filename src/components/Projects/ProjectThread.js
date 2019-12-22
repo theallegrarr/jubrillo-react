@@ -572,10 +572,13 @@ function Messages({ messages, person, project }){
     <>
     {
     messages.map(msg => (
+      <>
+      
       <div key={msg._id} 
       className='message-box'
       style={{
         'marginLeft': msg.attrs.from===person.username ? '0': '20%',
+        'borderRadius': msg.attrs.from===person.username ? '16px 16px 16px 0px' : '16px 16px 0 16px',
         'marginRight': msg.attrs.from===person.username ? '20%': '0',
         'textAlign': msg.attrs.from===person.username ? 'left': 'right',
       }}>
@@ -583,16 +586,17 @@ function Messages({ messages, person, project }){
         className='msg-details'
         style={{
           'textAlign': msg.attrs.from===person.username ? 'left': 'right',
-          'justifyContent': msg.attrs.from===person.username ? 'flexStart': 'flexEnd',
+          'justifyContent': msg.attrs.from===person.username ? 'flex-start': 'flex-end',
           'alignSelf': msg.attrs.from===person.username ? 'flex-start': 'flex-end'
         }}
         >
-          <p className='msg-from'>from: 
+          <p className='msg-from'>from:{' '}
           {msg.attrs.from===person.username ? 'You' : msg.attrs.from}</p>
           <p className='msg-time'>{timeAgo.format(Date.now() - (Date.now()-msg.attrs.createdAt))}</p>
         </div>
         <div className='p-text'><MyComponent data={msg.attrs.body}/></div>
-      </div>))
+      </div>
+      </>))
     }
     <div id="anchor"></div>
   </>);

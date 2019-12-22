@@ -27,7 +27,8 @@
   border: 1px solid #888;
   min-width: 500px;
   width: 30%; /* Could be more or less, depending on screen size */
-  box-shadow: 0.5px 2px 7px #282c34;
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
+  border-radius: 5px;
 
   .valueH1 {
     text-align: center;
@@ -62,13 +63,14 @@
       text-align: center;
       font-size: 12pt;
       border-radius: 3px;
-      border: 0.5px solid @logo-color;
-      background-color: @logo-color;
-      font-family: @secondary-font;
+      border: 0.5px solid #00ABB4;
+      background-color: #00ABB4;
+      font-family: Muli;
       font-weight: 700;
       padding: 4px;
-      box-shadow: 0.5px 2px 7px #282c34;
+      box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
       cursor: pointer;
+      color: white;
 
       &:active {
         box-shadow: none;
@@ -81,7 +83,7 @@
       font-size: 12pt;
       border-radius: 3px;
       border: none;
-      font-family: @secondary-font;
+      font-family: Muli;
       background-color: lightgray;
       padding: 5px;
       font-weight: 700;
@@ -104,14 +106,14 @@
 
   button {
     border: none;
-    background-color: @jubrillo-pink;
+    background-color: #DE536B;
     color: white;
-    font-family: @secondary-font;
-    padding: 2%;
-    box-shadow: 0.5px 2px 7px #282c34;
+    font-family: Muli;
+    padding: 1%;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
     cursor: pointer;
     width: 49%;
-    border-radius: 10px;
+    border-radius: 5px;
     font-weight: 700;
 
     &:active {
@@ -133,4 +135,23 @@
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+.wallet-place {
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 12pt;
+  align-items: center;
+  width: 100%;
+
+  input {
+    width: 92%;
+  }
+
+  .fa-copy {
+    width: 8%;
+    height: 100%;
+    //min-height: 40px;
+    padding: 5px;
+  }
 }

@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import { FaCopy } from 'react-icons/fa';
 import icon from '../../assets/logo.png';
 import bc from '../../assets/barcode.png';
 import axios from 'axios';
@@ -56,6 +57,8 @@ export default function PopUp ({ person, project, form, setForm, setPopDisp }) {
             <img className='bcode' src={bc} alt='barcode'></img>
   <h1 className='valueH1'>₿: {amount ? amount : 0}</h1>
             <p>{`Address(Click to Copy)`}</p>
+            <div className='wallet-place'>
+              <FaCopy className='fa-copy' />
             <input
               value={wallet}
               className='btc-addr'
@@ -66,8 +69,7 @@ export default function PopUp ({ person, project, form, setForm, setPopDisp }) {
                 e.target.focus();
                 setErrorType('good')
                 removeError('Copied to Clipboard!');
-              }}
-            ></input>
+              }}></input></div>
             <input
               value={usdValue ? usdValue : ''}
               className='btc-inputs'
@@ -86,7 +88,7 @@ export default function PopUp ({ person, project, form, setForm, setPopDisp }) {
             ></input>
             <div className='fund-buttons'>
               <button 
-              style={{ 'backgroundColor': 'green'}}
+              style={{ 'backgroundColor': '#00ABB4'}}
               onClick={() => {
                 submit();
               }}>
