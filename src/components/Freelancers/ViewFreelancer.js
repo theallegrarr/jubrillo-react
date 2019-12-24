@@ -171,7 +171,7 @@ function ProfileDetails(skills, summary, completed, created){
       </div>
       <div className="profile-row">
         <h3>Summary: </h3> 
-        <div className='summary-view'>
+        <div className='summary-text'>
           <MyComponent/>
         </div>
         </div>

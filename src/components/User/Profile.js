@@ -191,6 +191,7 @@ function ProfileForm(email, setEmail, setSummary, skills, setSkills, freelancer,
   //const [picked, setPicks] = useState({});
   
   return (
+    <div style={{ backgroundColor: 'white' }}>
     <Formik 
       initialValues={{ email: '', summary: '' }}
       //onSubmit={}
@@ -253,9 +254,10 @@ function ProfileForm(email, setEmail, setSummary, skills, setSkills, freelancer,
             }}>DONE</button>
           </div>
         </Form>
+        
       )}
     />
-  );
+  </div>);
 }
 
 function ClassicEditorFunction(props){
@@ -326,7 +328,7 @@ function ProfileDetails(
       </div>
       <div className="profile-row">
         <h3>Summary: </h3> 
-        <div className='summary-view'>
+        <div className='summary-text'>
           <MyComponent/>
         </div>
         </div>

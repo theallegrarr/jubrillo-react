@@ -758,6 +758,9 @@ img {
   margin-right: 8px;
 }
 @media (min-width: 1000px) {
+  .footer {
+    margin-top: 5vh;
+  }
   .profile-form {
     display: flex;
     flex-direction: column;
@@ -800,7 +803,7 @@ img {
     min-width: 180px;
     box-shadow: 0.9px 2px 7px #282c34;
     position: absolute;
-    left: 40%;
+    left: 45%;
     top: 10px;
   }
   .profile-form .profile-info {
@@ -901,7 +904,7 @@ img {
     border-radius: 5px;
   }
   .profile-form .buttons .msg-button:hover {
-    background-color: #449d48;
+    background-color: #00939b;
   }
   .profile-form .buttons .hire-button:hover {
     background-color: #00939b;
@@ -985,36 +988,41 @@ img {
   .profile-form .profile-show .profile-row {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    justify-items: flex-start;
+    justify-content: flex-start;
     width: 100%;
     max-width: 100%;
     margin-top: 10px;
     padding: 5px;
     text-align: center;
     text-justify: center;
+    flex-flow: wrap;
   }
   .profile-form .profile-show .profile-row h3 {
     width: 20%;
     font-size: 16pt;
-    font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
+    font-family: Muli;
   }
   .profile-form .profile-show .profile-row h2 {
     width: 80%;
     font-size: 16pt;
     text-align: left;
-    font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
+    font-family: Muli;
   }
   .profile-form .profile-show .profile-row .summary-view {
     display: flex;
     align-self: center;
-    width: 80%;
-    font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
+    width: 100%;
+    font-family: Muli;
+  }
+  .profile-form .profile-show .profile-row .summary-text {
+    display: block;
+    color: black;
+    font-family: Muli;
   }
   .profile-out-row {
     display: flex;
     flex-direction: row;
-    padding: 2%;
+    width: 100%;
   }
   .profile-out-row .user-stats {
     display: flex;
@@ -1029,11 +1037,14 @@ img {
   }
 }
 @media (max-width: 1000px) {
+  .footer {
+    margin-top: 15vh;
+  }
   .profile-form {
     display: flex;
     flex-direction: column;
     font-family: Muli;
-    min-height: 90vh;
+    min-height: 110vh;
     z-index: 6;
     position: absolute;
     width: 90vw;
@@ -1071,7 +1082,7 @@ img {
     min-width: 180px;
     box-shadow: 0.9px 2px 7px #282c34;
     position: absolute;
-    left: 45%;
+    left: 40%;
     top: 10px;
   }
   .profile-form .profile-info {
@@ -1173,7 +1184,7 @@ img {
     justify-self: center;
   }
   .profile-form .buttons .msg-button:hover {
-    background-color: #449d48;
+    background-color: #00939b;
   }
   .profile-form .buttons .hire-button:hover {
     background-color: #00939b;
@@ -1188,6 +1199,7 @@ img {
     padding: 1%;
     margin-top: 1%;
     justify-self: center;
+    margin-bottom: 200px;
   }
   .profile-form .edit-profile .buttons {
     display: flex;
@@ -1264,6 +1276,7 @@ img {
     padding: 5px;
     text-align: center;
     text-justify: center;
+    flex-flow: wrap;
   }
   .profile-form .profile-show .profile-row h3 {
     width: 20%;
@@ -1279,13 +1292,12 @@ img {
   .profile-form .profile-show .profile-row .summary-view {
     display: flex;
     align-self: center;
-    width: 80%;
+    width: 100%;
     font-family: Muli;
   }
   .profile-out-row {
     display: flex;
     flex-direction: row;
-    padding: 2%;
   }
   .profile-out-row .user-stats {
     display: flex;
@@ -1297,6 +1309,11 @@ img {
     min-width: 20vw;
     font-size: 16pt;
     font-family: Muli;
+  }
+}
+@media (min-width: 1000px) {
+  .profile-form .profile-show {
+    width: 100vw;
   }
 }
 @media (min-width: 1000px) {
