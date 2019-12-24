@@ -11,6 +11,9 @@ import RepliesSchema from '../../model/ForumReplies';
 import ErrorBar from '../errorBar/errorBar';
 import uuid from 'uuid';
 import { NavLink } from 'react-router-dom';
+import SEO from 'react-seo-component';
+import navimage from '../../assets/logo.png';
+import { Helmet } from 'react-helmet';
 
 export default function ProjectPage(props) {
   const [post, setPost] = useState({});
@@ -87,6 +90,15 @@ export default function ProjectPage(props) {
     <div 
     key='0000367363'
     className='view-post-container'>
+      <SEO
+        title={'Jubrillo'}
+        description={'Forum'}
+        image={navimage}
+        pathname={`jubrillo.work/forum/${props.match.params.post_index}/view`}
+        siteLanguage={'en'}
+        siteLocale={'en_gb'}
+        twitterUsername={'jubrillowork'}
+      />
       {errorMessage && 
       <ErrorBar 
       errorMessage={errorMessage}
@@ -95,7 +107,12 @@ export default function ProjectPage(props) {
       />}
       {
         post.topic ? 
-          <Post post={post} />
+          <>
+            <Helmet>
+              <title>{post.topic}</title>
+            </Helmet>
+            <Post post={post} />
+          </>
           :
           <CircularProgress className={classes.progress} />
       }

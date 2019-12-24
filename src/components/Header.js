@@ -4,7 +4,11 @@ import '../css/index.css';
 import '../css/global.css';
 import { 
   //FaSearch, 
-  FaAlignJustify, FaIdCard, FaListAlt, FaSignOutAlt, FaBriefcase, FaRegMoneyBillAlt } from 'react-icons/fa';
+  FaAlignJustify, 
+  FaUser, FaIdCard, 
+  FaListAlt, FaSignOutAlt, 
+  FaBriefcase, FaRegMoneyBillAlt,
+  FaExclamationCircle } from 'react-icons/fa';
 import logo from '../assets/logo.png';
 import {
   UserSession,
@@ -15,6 +19,7 @@ import { User, configure } from 'radiks';
 // import createUser from '../model/createUser';
 import MessageSchema from '../model/Message';
 import LastCheck from '../model/LastCheck';
+import NavLinks from './nav/NavLinks';
 const appConfig = new AppConfig(['store_write', 'publish_data'])
 const userSession = new UserSession({ appConfig: appConfig })
 const avatarFallbackImage = 'https://s3.amazonaws.com/onename/avatar-placeholder.png';
@@ -235,7 +240,7 @@ export default class Header extends React.Component {
                   :
                   {backgroundColor: '#2646de'}
                 }>
-                  <FaAlignJustify />
+                  <FaUser />
                   {this.state.user}
                 </div>
                 <div className="dropdown-content">
@@ -251,11 +256,11 @@ export default class Header extends React.Component {
                     className='drop-link'
                     key={'0043'}
                     style={this.state.color ?
-                      {backgroundColor: 'green'}
+                      {backgroundColor: '#DE536B'}
                       :
-                      {backgroundColor: 'darkgray'}}
+                      {backgroundColor: '#2646de'}}
                   >
-                    <FaIdCard />Notifications
+                    <FaExclamationCircle />Notifications
                   </NavLink>
 
                   <NavLink 
@@ -286,6 +291,14 @@ export default class Header extends React.Component {
               )              
           }
 
+          </div>
+          <div>
+            <NavLinks 
+            userSession={userSession} 
+            color={this.state.color}
+            user={this.state.user}
+            handleSignIn={this.handleSignIn}
+            handleSignOut={this.handleSignOut}/>
           </div>
         </nav>
         <a 

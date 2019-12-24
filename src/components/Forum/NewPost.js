@@ -4,6 +4,9 @@ import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import ForumSchema from '../../model/Forum';
 import ErrorBar from '../errorBar/StatusBar';
+import SEO from 'react-seo-component';
+import navimage from '../../assets/logo.png';
+import { Helmet } from 'react-helmet';
 
 export default function NewProjectForm(props) {
   const [topic, setTopic] = useState('');
@@ -67,6 +70,19 @@ function PostForm({
   //const [picked, setPicks] = useState({});
   
   return (
+    <>
+      <SEO
+        title={'Jubrillo'}
+        description={'New Forum Post'}
+        image={navimage}
+        pathname={'jubrillo.work/forum/new'}
+        siteLanguage={'en'}
+        siteLocale={'en_gb'}
+        twitterUsername={'jubrillowork'}
+      />
+      <Helmet>
+        <title>{'New Forum Post'}</title>
+      </Helmet>
     <Formik 
       initialValues={{ email: '', summary: '' }}
       //onSubmit={}
@@ -108,6 +124,7 @@ function PostForm({
         </Form>
       )}
     />
+    </>
   );
 }
 

@@ -19,7 +19,9 @@ import CustomMessages from './StepMessage';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import ErrorBar from '../errorBar/StatusBar';
 import Review from '../Projects/Review';
-import uuid from 'uuid';
+import SEO from 'react-seo-component';
+import navimage from '../../assets/logo.png';
+import { Helmet } from 'react-helmet';
 import { NavLink } from 'react-router-dom';
 import businessman from '../../assets/007-businessman.svg';
 import freelancer from '../../assets/006-freelance.svg';
@@ -195,6 +197,15 @@ export default function ProjectThread (props) {
 
   return(
     <div className='project-container'>
+      <SEO
+        title={'Jubrillo'}
+        description={'Project'}
+        image={navimage}
+        pathname={`www.jubrillo.work/projects/${props.match.params.project_index}/thread`}
+        siteLanguage={'en'}
+        siteLocale={'en_gb'}
+        twitterUsername={'jubrillowork'}
+      />
      {errorMessage && 
      <ErrorBar 
      errorMessage={errorMessage}
@@ -203,6 +214,9 @@ export default function ProjectThread (props) {
      />}
      {project.title ?  
       <>
+        <Helmet>
+          <title>{project.title}</title>
+        </Helmet>
         {
           popDisp && <Popup 
             project={project}
@@ -267,13 +281,13 @@ function RightSideBar ({
 <p className='btc-bal'>₿{' '}{project.balance ? project.balance : 0}</p>
         { project.username === person.username &&
         <div className='fund-buttons'>
-          <button 
+          {project.step<4 && (<button 
           style={{ 'backgroundColor': '#00ABB4'}}
           onClick={() => {
             refreshPayment()
           }}>
             Refresh Balance
-          </button>
+          </button>)}
           {project.step<4 && 
           (<button 
             onClick={() => {

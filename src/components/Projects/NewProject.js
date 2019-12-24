@@ -3,6 +3,9 @@ import { Formik, Form, Field } from 'formik';
 import { MultiSelectComponent } from '@syncfusion/ej2-react-dropdowns';
 import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import SEO from 'react-seo-component';
+import navimage from '../../assets/logo.png';
+import { Helmet } from 'react-helmet';
 import NewProject from '../../model/newProject';
 import Projects from '../../model/Project';
 import Profile from '../../model/Profile';
@@ -71,6 +74,18 @@ export default function NewProjectForm(props) {
 
   return(
   <div className='form-container'>
+    <SEO
+        title={'Jubrillo'}
+        description={'New Project'}
+        image={navimage}
+        pathname={'jubrillo.work/newproject'}
+        siteLanguage={'en'}
+        siteLocale={'en_gb'}
+        twitterUsername={'jubrillowork'}
+      />
+      <Helmet>
+        <title>{'New Project'}</title>
+      </Helmet>
     {errorMessage && 
      <ErrorBar 
      errorMessage={errorMessage}

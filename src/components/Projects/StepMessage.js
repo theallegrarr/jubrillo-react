@@ -8,7 +8,7 @@ export default function stepMessage(step, role){
   if(step===3 && role ==='freelancer'){
     return(`Make sure the Job is funded then proceed to deliver the agreed work`);
   }
-  if(step===4 && role ==='freelancer'){
+  if((step===4||step===5) && role ==='freelancer'){
     return(`Congratulations! The job is complete, you will receive payment in 24 hours in your BTC wallet`);
   }
 
@@ -24,7 +24,7 @@ export default function stepMessage(step, role){
     if it isn't and you have made payment, contact us, but if it does wait for freelancer to deliver job.
     DO NOT MOVE TO NEXT STEP IF THE JOB IS NOT COMPLETED`);
   }
-  if(step===4 && role ==='employer'){
+  if((step===4||step===5) && role ==='employer'){
     return(`Congratulations! The job is complete, you have 12 hours to open a dispute if this is a mistake, contact us`);
   }
 

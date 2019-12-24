@@ -1,4 +1,4 @@
-@media (min-width: 800px) {
+@media (min-width: 1000px) {
 .cta-container {
     margin-top: 0.5%;
     display: flex;
@@ -13,6 +13,7 @@
     padding-right: 5vw;
     margin-bottom: 0;
     min-height: 90vh;
+    max-width: 99vw;
 
     .cta-text {
         display: flex;
@@ -115,7 +116,7 @@
 }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
     .cta-container {
         margin-top: 0.5%;
         display: flex;
@@ -123,23 +124,38 @@
         justify-content: space-between;
         align-self: center;
         width: 96%;
-        font-family: @primary-font 'serif';
-        padding: 4%;
+        font-family: Muli;
+        padding: 2%;
         margin-bottom: 0;
         min-height: 90vh;
-    
+        max-width: 99vw;
+        background: none;
+        z-index: 5;
+
         .cta-text {
             display: flex;
             flex-direction: column;
             justify-content: space-evenly;
-            width: 100%;
-            padding-top: 180px;
+            width: 99vw;
+            background-color: none;
     
-            h1 {
-                font-family: @secondary-font, 'serif';
-                text-transform: uppercase;
-                color: @logo-color;
-                font-weight: 700;
+            .head-1, .head-2 {
+                font-family: Muli;
+                font-size: 48px;
+                line-height: 75px;
+                color: white;
+                margin-bottom: 0;
+                padding: 0;
+                text-transform: capitalize;
+            }
+    
+            .head-2 {
+                font-weight: 1000;
+                font-family: Muli;
+                font-style: bold;
+                font-weight: 900;
+                font-size: 64px;
+                line-height: 75px;
             }
     
             p {
@@ -148,23 +164,25 @@
                 color: aliceblue;
                 font-weight: 500;
                 font-size: 13pt;
+                background-color: none;
             }
     
             .cta-buttons {
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
-                width: 60%;
+                width: 90vw;
+                z-index: 5;
     
                 .gs-button {
                     width: 45%;
                     border: 0;
-                    height: 4rem;
+                    height: 64px;
                     margin: 5rem 0 2.2rem;
                     color: rgba(255,255,255,0.8);
                     background: @logo-color;
                     font-size: 1.5rem;
-                    border-radius: 3rem;
+                    border-radius: 5px;
                     cursor: pointer;
                     overflow: hidden;
                     font-family: @primary-font, 'serif';
@@ -172,7 +190,7 @@
                     transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
                     
                     &:hover {
-                        background-color: @jubrillo-gray;
+                        background-color: #0E1C5D;
                         border: 1px solid @logo-color;
                     }
     
@@ -182,12 +200,12 @@
                 }
                 .faq-button {
                     width: 45%;
-                    height: 4rem;
+                    height: 64px;
                     margin: 5rem 0 2.2rem;
                     color: rgba(255,255,255,0.8);
-                    background: @jubrillo-pink;
+                    background: #DE536B;
                     font-size: 1.5rem;
-                    border-radius: 3rem;
+                    border-radius: 5px;
                     cursor: pointer;
                     overflow: hidden;
                     border: 0;
@@ -196,7 +214,7 @@
                     transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
                     
                     &:hover{
-                        background-color: @jubrillo-gray;
+                        background-color: #0E1C5D;
                         border: 1px solid @jubrillo-pink;
                     }
     
@@ -209,10 +227,6 @@
     
         img {
             display: none;
-            width: 50%;
-            margin-top: 2.7%;
-            opacity: 0.7;
-            z-index: 4;
         }
     }
     }
@@ -222,6 +236,7 @@
     display: flex;
     flex-direction: column;
     width: 99.1vw;
+    max-width: 99vw;
     background-color: white;
     padding-bottom: 100px;
     padding-top: 50px;
@@ -249,7 +264,7 @@
         padding: 0 5vw 0 7vw;
         display: flex;
         flex-flow: wrap;
-        width: 99.1vw;
+        max-width: 99.1vw;
         margin-top: 20px;
 
         .feature-card {
@@ -260,7 +275,7 @@
             border-radius: 5px;
             padding: 40px;
             padding-bottom: 15px;
-            min-width: 500px;
+            min-width: 200px;
             max-width: 500px;
             margin: 10px;
             z-index: 5;
@@ -299,12 +314,17 @@
     text-align: center;
     text-justify: center;
     justify-content: space-between;
+    justify-self: center;
+    align-self: center;
+    margin-left: 3vw;
     padding: 5px;
     background-color: white;
     max-height: 90px;
     box-shadow: 0.9px 2px 7px #282c34;
     border-radius: 6px;
+    min-width: 200px;
     width: 400px;
+    max-width: 90vw;
     align-self: center;
     margin-bottom: 10px;
     font-family: Muli;

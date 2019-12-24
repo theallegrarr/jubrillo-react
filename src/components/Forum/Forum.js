@@ -6,6 +6,9 @@ import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
 import uuid from 'uuid';
 import { NavLink } from 'react-router-dom';
+import SEO from 'react-seo-component';
+import navimage from '../../assets/logo.png';
+import { Helmet } from 'react-helmet';
 //import ReplySchema from '../../model/ForumReplies';
 
 export default function Forum(props) {
@@ -39,6 +42,18 @@ export default function Forum(props) {
 
   return(
     <div className='forum-container'>
+      <SEO
+        title={'Jubrillo'}
+        description={'Forum'}
+        image={navimage}
+        pathname={'jubrillo.work/forum'}
+        siteLanguage={'en'}
+        siteLocale={'en_gb'}
+        twitterUsername={'jubrillowork'}
+      />
+      <Helmet>
+        <title>{'Forum'}</title>
+      </Helmet>
       <h4>Forum</h4>
       <div className='add-post-container'>
         

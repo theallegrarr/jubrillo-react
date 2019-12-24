@@ -16,6 +16,9 @@ import * as data from '../User/skillsData.json';
 import ErrorBar from '../errorBar/StatusBar';
 import uuid from 'uuid';
 import { NavLink } from 'react-router-dom';
+import SEO from 'react-seo-component';
+import navimage from '../../assets/logo.png';
+import { Helmet } from 'react-helmet';
 import businessman from '../../assets/007-businessman.svg';
 
 const fields = { text: 'Name', value: 'Code' };
@@ -154,6 +157,16 @@ export default function ProjectPage(props) {
 
   return(
     <div>
+      <SEO
+        title={'Jubrillo'}
+        description={'Project'}
+        image={navimage}
+        pathname={`www.jubrillo.work/projects/${props.match.params.project_index}/thread`}
+        siteLanguage={'en'}
+        siteLocale={'en_gb'}
+        twitterUsername={'jubrillowork'}
+      />
+      
     <div className='project-container'>
     {errorMessage && 
       <ErrorBar 
@@ -164,6 +177,9 @@ export default function ProjectPage(props) {
       {
         project.title ? 
           <>
+            <Helmet>
+              <title>{project.title}</title>
+            </Helmet>
             <div className='project-view-page'>
               <h2><span 
                 role='img'

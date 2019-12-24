@@ -1,10 +1,25 @@
 import React from 'react';
+import SEO from 'react-seo-component';
+import navimage from '../../assets/logo.png';
+import { Helmet } from 'react-helmet';
 
 export default function FAQ(props){
 
 
   return (
     <div className="faq-container">
+      <SEO
+        title={'Jubrillo'}
+        description={'FAQ'}
+        image={navimage}
+        pathname={'jubrillo.work/faq'}
+        siteLanguage={'en'}
+        siteLocale={'en_gb'}
+        twitterUsername={'jubrillowork'}
+      />
+      <Helmet>
+        <title>{'FAQ'}</title>
+      </Helmet>
       <h2>Frequently Asked Questions</h2>
         <ul>
         {
