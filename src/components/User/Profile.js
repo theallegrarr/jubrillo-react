@@ -129,23 +129,35 @@ export default function UserProfile(props) {
     {!person && (<CircularProgress className={classes.progress} />)}
     {person && (
     <>
-    <div className='profile-info'>
+      <div className='img-box'>
       { person.image ? 
         <img src={person.image["0"].contentUrl} alt='profile'/> : 
         <img src={`https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png`} alt='profile'/>
       }
+      </div>
+    
+    <div className='profile-info'>
+      <div className='profile-stats'>
+        <div className='stat-block'>
+          <p className='c-num'>{completed}</p>
+          <p className='j-num'>Jobs Done</p>
+        </div>
+        <div className='stat-block'>
+          <p className='c-num'>{created}</p>
+          <p className='j-num'>Jobs Created</p>
+        </div>
+      </div>
         <div className='profile-others'>
           <h2 className='name'>{person.name}</h2>
           <h3 className='username'>{props.userDetails.username}</h3>
-          <div className='ratings' ><p>Ratings:   <br/><StyledRating
+          <div className='ratings' ><StyledRating
             name="customized-color"
             value={5}
             // getLabelText={getLabelText}
             precision={0.5}
             icon={<StarBorderIcon fontSize="inherit" />}
             readOnly
-          /></p></div>
-          
+          /></div>
         </div>
         <div className='buttons'>
           <button className='edit-button' onClick={() => setEdit(true)}>
@@ -286,10 +298,7 @@ function ProfileDetails(
   
   return(
     <div className='profile-out-row'>
-      <div className='user-stats'>
-      <h3>Completed Jobs: {completed}</h3>
-      <h3>Created Jobs: {created}</h3>
-      </div>
+      
     <div className="profile-show">
       <div className="profile-row">
         <h3>Email: </h3> 

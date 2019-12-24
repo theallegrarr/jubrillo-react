@@ -757,276 +757,546 @@ img {
 .ph-box p {
   margin-right: 8px;
 }
-.profile-form {
-  display: flex;
-  flex-direction: column;
-  margin-top: 30px;
-  background-color: white;
-  font-family: 'Nunito', 'serif';
-  min-height: 90vh;
-}
-.profile-form .profile-info {
-  display: flex;
-  flex-direction: row;
-  justify-items: space-between;
-  justify-content: space-between;
-  margin-bottom: 2%;
-  background-color: #4d4d4d;
-  width: 100%;
-  padding: 2%;
-  box-shadow: 0.9px 4px 9px #282c34;
-}
-.profile-form .profile-info .profile-others {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  justify-items: space-evenly;
-  align-self: center;
-  justify-self: flex-start;
-  margin-left: 1%;
-  width: 70%;
-  align-content: space-between;
-  align-items: space-between;
-}
-.profile-form .profile-info .profile-others .name {
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
-  font-size: 35pt;
-  font-style: 'bold';
-}
-.profile-form .profile-info .profile-others .username {
-  color: #00abb4;
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
-  font-weight: 900;
-}
-.profile-form .profile-info .profile-others h3 {
-  margin: 0.1%;
-  font-size: 15pt;
-  font-family: 'Nunito', 'serif';
-}
-.profile-form .profile-info .profile-others h2 {
-  margin-top: 2%;
-  margin-bottom: 0;
-  font-size: 19pt;
-  font-family: 'Nunito', 'serif';
-}
-.profile-form .profile-info .profile-others .ratings {
-  display: flex;
-  flex-direction: row;
-  justify-items: space-between;
-  justify-content: space-between;
-  background-color: white;
-  border-radius: 10px;
-  padding-bottom: 0.1%;
-  padding-top: 1%;
-  padding-left: 2%;
-  padding-right: 3%;
-  box-shadow: 0.9px 2px 7px #282c34;
-  width: 34%;
-  margin-top: 2%;
-}
-.profile-form .profile-info .profile-others .ratings p {
-  display: flex;
-  flex-direction: row;
-  font-size: 19pt;
-  margin: 1%;
-  justify-items: space-between;
-  justify-content: space-between;
-  font-family: 'Nunito', 'serif';
-}
-.profile-form .profile-info img {
-  display: flex;
-  justify-content: center;
-  justify-self: center;
-  width: 12%;
-  align-self: center;
-  border: 2px solid #4d4d4d;
-  border-radius: 230px;
-  box-shadow: 0.9px 2px 7px #282c34;
-}
-.profile-form .buttons {
-  display: flex;
-  flex-direction: column;
-  justify-items: space-evenly;
-  justify-content: space-evenly;
-  justify-self: flex-end;
-  align-self: space-evenly;
-  width: 15%;
-}
-.profile-form .buttons .msg-button,
-.profile-form .buttons .edit-button,
-.profile-form .buttons .hire-button {
-  margin: 4%;
-  border-radius: 10px;
-  box-shadow: 0.9px 2px 7px #282c34;
-  font-family: 'Nunito', 'serif';
-  font-size: 12pt;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 18px;
-  cursor: pointer;
-  font-weight: 700;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  justify-items: space-between;
-  justify-self: center;
-  align-content: space-between;
-  align-items: space-between;
-  text-align: center;
-}
-.profile-form .buttons .msg-button {
-  background-color: #4CAF50;
-  /* Green */
-}
-.profile-form .buttons .msg-button:hover {
-  background-color: #449d48;
-}
-.profile-form .buttons .hire-button {
-  background-color: #4CAF50;
-  /* Green */
-}
-.profile-form .buttons .hire-button:hover {
-  background-color: #449d48;
-}
-.profile-form .buttons .edit-button {
-  background-color: #999917;
-  /* Green */
-}
-.profile-form .buttons .edit-button:hover {
-  background-color: #838314;
-}
-.profile-form .edit-profile {
-  width: 95%;
-  display: flex;
-  flex-direction: column;
-  padding: 1%;
-  margin-top: 1%;
-  justify-self: center;
-}
-.profile-form .edit-profile .buttons {
-  display: flex;
-  flex-direction: row;
-  margin-top: 1%;
-  width: 100%;
-  justify-content: flex-end;
-}
-.profile-form .edit-profile .buttons .submit {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  font-weight: 700;
-  padding: 1%;
-  font-family: 'Nunito', 'serif';
-  font-size: 12pt;
-  border-radius: 10px;
-  box-shadow: 0.9px 2px 7px #282c34;
-  min-width: 20%;
-}
-.profile-form .edit-profile .buttons .cancel {
-  background-color: #FF3366;
-  color: white;
-  border: none;
-  font-weight: 700;
-  padding: 1%;
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
-  font-size: 12pt;
-  border-radius: 10px;
-  box-shadow: 0.9px 2px 7px #282c34;
-  min-width: 20%;
-}
-.profile-form .edit-profile .control-styles {
-  margin-bottom: 2%;
-}
-.profile-form .edit-profile .profile-input {
-  border-left: none;
-  border-right: none;
-  border-top: none;
-  border-bottom: 1px solid #9a9a9a;
-  height: 6%;
-  transition: border 1s;
-  margin-bottom: 1%;
-}
-.profile-form .edit-profile .profile-input::placeholder {
-  color: #c5c5c5;
-}
-.profile-form .edit-profile .profile-input:focus {
-  border-left: none;
-  border-right: none;
-  border-top: none;
-  border-bottom: 2px solid #FF3366;
-}
-.profile-form .edit-profile .switch-button {
-  margin-bottom: 30px;
-  font-size: 16pt;
-}
-.profile-form .profile-show {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-self: center;
-}
-.profile-form .profile-show .profile-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  justify-items: flex-start;
-  background: white;
-  box-shadow: 0.9px 2px 7px #282c34;
-  width: 1200px;
-  max-width: 80%;
-  margin-top: 10px;
-  padding: 5px;
-  text-align: center;
-  text-justify: center;
-}
-.profile-form .profile-show .profile-row h3 {
-  width: 20%;
-  font-size: 16pt;
-  font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
-}
-.profile-form .profile-show .profile-row h2 {
-  width: 80%;
-  font-size: 16pt;
-  text-align: left;
-  font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
-}
-.profile-form .profile-show .profile-row .summary-view {
-  display: flex;
-  align-self: center;
-  width: 80%;
-  font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
-}
-.profile-out-row {
-  display: flex;
-  flex-direction: row;
-  padding: 2%;
-}
-.profile-out-row .user-stats {
-  display: flex;
-  flex-direction: column;
-  margin-right: 10px;
-  padding: 20px;
-}
-.profile-out-row .user-stats h3 {
-  min-width: 20vw;
-  font-size: 16pt;
-  font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
-}
-@media (max-width: 800px) {
+@media (min-width: 1000px) {
   .profile-form {
-    padding-top: 190px;
+    display: flex;
+    flex-direction: column;
+    font-family: Muli;
+    min-height: 90vh;
+    z-index: 6;
+    position: absolute;
+    width: 90vw;
+    left: 5vw;
+    top: 95px;
+    border-radius: 5px;
+  }
+  .profile-form .profile-stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 25%;
+    padding: 40px;
+  }
+  .profile-form .profile-stats .stat-block .c-num {
+    text-align: center;
+    font-size: 24pt;
+    font-weight: 900;
+    margin: 0;
+    padding: 0;
+  }
+  .profile-form .profile-stats .stat-block .j-num {
+    text-align: center;
+    font-weight: 900;
+    color: gray;
+  }
+  .profile-form .img-box img {
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    align-self: center;
+    border: 2px solid white;
+    border-radius: 230px;
+    max-width: 180px;
+    min-width: 180px;
+    box-shadow: 0.9px 2px 7px #282c34;
+    position: absolute;
+    left: 40%;
+    top: 10px;
+  }
+  .profile-form .profile-info {
+    display: flex;
+    flex-direction: row;
+    justify-items: space-between;
+    justify-content: space-between;
+    margin-bottom: 2%;
+    background: none;
+    background-color: none;
+    width: 100%;
+    padding: 2%;
+    margin-top: 150px;
+    background-color: white;
+    border-radius: 5px;
+  }
+  .profile-form .profile-info .profile-others {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    justify-items: space-evenly;
+    align-self: center;
+    justify-self: flex-start;
+    text-align: center;
+    margin-left: 1%;
+    width: 50%;
+    align-content: space-between;
+    align-items: space-between;
+  }
+  .profile-form .profile-info .profile-others .name {
+    font-family: Muli;
+    font-size: 35pt;
+    font-style: 'bold';
+    font-weight: 900;
+  }
+  .profile-form .profile-info .profile-others .username {
+    color: #00abb4;
+    font-family: 'IBM Plex Mono', Arial, sans-serif;
+    font-weight: 900;
+  }
+  .profile-form .profile-info .profile-others h3 {
+    margin: 0.1%;
+    font-size: 15pt;
+    font-family: 'Nunito', 'serif';
+  }
+  .profile-form .profile-info .profile-others h2 {
+    margin-top: 2%;
+    margin-bottom: 0;
+    font-size: 19pt;
+    font-family: 'Nunito', 'serif';
+  }
+  .profile-form .profile-info .profile-others .ratings {
+    display: flex;
+    flex-direction: row;
+    justify-items: space-between;
+    justify-content: space-between;
+    align-self: center;
+    border-radius: 10px;
+    padding-bottom: 0.1%;
+    padding-top: 1%;
+    padding-left: 2%;
+    padding-right: 3%;
+    width: 34%;
+    margin-top: 2%;
+  }
+  .profile-form .profile-info .profile-others .ratings p {
+    display: flex;
+    flex-direction: row;
+    font-size: 19pt;
+    margin: 1%;
+    justify-items: space-between;
+    justify-content: space-between;
+    font-family: 'Nunito', 'serif';
+  }
+  .profile-form .buttons {
+    display: flex;
+    flex-direction: column;
+    justify-items: space-evenly;
+    justify-content: space-evenly;
+    justify-self: flex-end;
+    align-self: space-evenly;
+    width: 25%;
+  }
+  .profile-form .buttons .msg-button,
+  .profile-form .buttons .edit-button,
+  .profile-form .buttons .hire-button {
+    border: none;
+    background-color: #00ABB4;
+    width: 200px;
+    color: white;
+    padding: 15px;
+    font-family: Muli;
+    font-weight: 700;
+    font-size: 12pt;
+    cursor: pointer;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
+    transition: 1s box-shadow;
+    border-radius: 5px;
+  }
+  .profile-form .buttons .msg-button:hover {
+    background-color: #449d48;
+  }
+  .profile-form .buttons .hire-button:hover {
+    background-color: #00939b;
+  }
+  .profile-form .buttons .edit-button:hover {
+    background-color: #00939b;
+  }
+  .profile-form .edit-profile {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+    margin-top: 1%;
+    justify-self: center;
+  }
+  .profile-form .edit-profile .buttons {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1%;
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .profile-form .edit-profile .buttons .submit {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    font-weight: 700;
+    padding: 1%;
+    font-family: 'Nunito', 'serif';
+    font-size: 12pt;
+    border-radius: 10px;
+    box-shadow: 0.9px 2px 7px #282c34;
+    min-width: 20%;
+  }
+  .profile-form .edit-profile .buttons .cancel {
+    background-color: #FF3366;
+    color: white;
+    border: none;
+    font-weight: 700;
+    padding: 1%;
+    font-family: 'IBM Plex Mono', Arial, sans-serif;
+    font-size: 12pt;
+    border-radius: 10px;
+    box-shadow: 0.9px 2px 7px #282c34;
+    min-width: 20%;
+  }
+  .profile-form .edit-profile .control-styles {
+    margin-bottom: 2%;
+  }
+  .profile-form .edit-profile .profile-input {
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: 1px solid #9a9a9a;
+    height: 6%;
+    transition: border 1s;
+    margin-bottom: 1%;
+  }
+  .profile-form .edit-profile .profile-input::placeholder {
+    color: #c5c5c5;
+  }
+  .profile-form .edit-profile .profile-input:focus {
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: 2px solid #FF3366;
+  }
+  .profile-form .edit-profile .switch-button {
+    margin-bottom: 30px;
+    font-size: 16pt;
+  }
+  .profile-form .profile-show {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    background: white;
+    box-shadow: 0.9px 2px 7px #282c34;
+    border-radius: 5px;
+  }
+  .profile-form .profile-show .profile-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: flex-start;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 10px;
+    padding: 5px;
+    text-align: center;
+    text-justify: center;
+  }
+  .profile-form .profile-show .profile-row h3 {
+    width: 20%;
+    font-size: 16pt;
+    font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
+  }
+  .profile-form .profile-show .profile-row h2 {
+    width: 80%;
+    font-size: 16pt;
+    text-align: left;
+    font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
+  }
+  .profile-form .profile-show .profile-row .summary-view {
+    display: flex;
+    align-self: center;
+    width: 80%;
+    font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
+  }
+  .profile-out-row {
+    display: flex;
+    flex-direction: row;
+    padding: 2%;
+  }
+  .profile-out-row .user-stats {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    padding: 20px;
+  }
+  .profile-out-row .user-stats h3 {
+    min-width: 20vw;
+    font-size: 16pt;
+    font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
+  }
+}
+@media (max-width: 1000px) {
+  .profile-form {
+    display: flex;
+    flex-direction: column;
+    font-family: Muli;
+    min-height: 90vh;
+    z-index: 6;
+    position: absolute;
+    width: 90vw;
+    left: 5vw;
+    top: 95px;
+    border-radius: 5px;
+  }
+  .profile-form .profile-stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 40px;
+  }
+  .profile-form .profile-stats .stat-block .c-num {
+    text-align: center;
+    font-size: 24pt;
+    font-weight: 900;
+    margin: 0;
+    padding: 0;
+  }
+  .profile-form .profile-stats .stat-block .j-num {
+    text-align: center;
+    font-weight: 900;
+    color: gray;
+  }
+  .profile-form .img-box img {
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    align-self: center;
+    border: 2px solid white;
+    border-radius: 230px;
+    max-width: 180px;
+    min-width: 180px;
+    box-shadow: 0.9px 2px 7px #282c34;
+    position: absolute;
+    left: 45%;
+    top: 10px;
   }
   .profile-form .profile-info {
     display: flex;
     flex-direction: column;
+    justify-items: space-between;
+    justify-content: space-between;
+    margin-bottom: 2%;
+    background: none;
+    background-color: none;
+    width: 100%;
+    padding: 2%;
+    margin-top: 150px;
+    background-color: white;
+    border-radius: 5px;
   }
-  .profile-form .profile-info .ratings {
-    min-width: 60vw;
+  .profile-form .profile-info .profile-others {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    justify-items: space-evenly;
     align-self: center;
+    justify-self: flex-start;
+    text-align: center;
+    margin-left: 1%;
+    width: 100%;
+    align-content: space-between;
+    align-items: space-between;
+  }
+  .profile-form .profile-info .profile-others .name {
+    font-family: Muli;
+    font-size: 35pt;
+    font-style: 'bold';
+    font-weight: 900;
+  }
+  .profile-form .profile-info .profile-others .username {
+    color: #00abb4;
+    font-family: 'IBM Plex Mono', Arial, sans-serif;
+    font-weight: 900;
+  }
+  .profile-form .profile-info .profile-others h3 {
+    margin: 0.1%;
+    font-size: 15pt;
+    font-family: 'Nunito', 'serif';
+  }
+  .profile-form .profile-info .profile-others h2 {
+    margin-top: 2%;
+    margin-bottom: 0;
+    font-size: 19pt;
+    font-family: 'Nunito', 'serif';
+  }
+  .profile-form .profile-info .profile-others .ratings {
+    display: flex;
+    flex-direction: row;
+    justify-items: space-between;
+    justify-content: space-between;
+    align-self: center;
+    border-radius: 10px;
+    padding-bottom: 0.1%;
+    padding-top: 1%;
+    padding-left: 2%;
+    padding-right: 3%;
+    width: 34%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+  .profile-form .profile-info .profile-others .ratings p {
+    display: flex;
+    flex-direction: row;
+    font-size: 19pt;
+    margin: 1%;
+    justify-items: space-between;
+    justify-content: space-between;
+    font-family: 'Nunito', 'serif';
+  }
+  .profile-form .buttons {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+  }
+  .profile-form .buttons .msg-button,
+  .profile-form .buttons .edit-button,
+  .profile-form .buttons .hire-button {
+    border: none;
+    background-color: #00ABB4;
+    width: 200px;
+    color: white;
+    padding: 15px;
+    font-family: Muli;
+    font-weight: 700;
+    font-size: 12pt;
+    cursor: pointer;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
+    transition: 1s box-shadow;
+    border-radius: 5px;
     justify-self: center;
+  }
+  .profile-form .buttons .msg-button:hover {
+    background-color: #449d48;
+  }
+  .profile-form .buttons .hire-button:hover {
+    background-color: #00939b;
+  }
+  .profile-form .buttons .edit-button:hover {
+    background-color: #00939b;
+  }
+  .profile-form .edit-profile {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+    margin-top: 1%;
+    justify-self: center;
+  }
+  .profile-form .edit-profile .buttons {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1%;
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .profile-form .edit-profile .buttons .submit {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    font-weight: 700;
+    padding: 1%;
+    font-family: 'Nunito', 'serif';
+    font-size: 12pt;
+    border-radius: 10px;
+    box-shadow: 0.9px 2px 7px #282c34;
+    min-width: 20%;
+  }
+  .profile-form .edit-profile .buttons .cancel {
+    background-color: #FF3366;
+    color: white;
+    border: none;
+    font-weight: 700;
+    padding: 1%;
+    font-family: 'IBM Plex Mono', Arial, sans-serif;
+    font-size: 12pt;
+    border-radius: 10px;
+    box-shadow: 0.9px 2px 7px #282c34;
+    min-width: 20%;
+  }
+  .profile-form .edit-profile .control-styles {
+    margin-bottom: 2%;
+  }
+  .profile-form .edit-profile .profile-input {
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: 1px solid #9a9a9a;
+    height: 6%;
+    transition: border 1s;
+    margin-bottom: 1%;
+  }
+  .profile-form .edit-profile .profile-input::placeholder {
+    color: #c5c5c5;
+  }
+  .profile-form .edit-profile .profile-input:focus {
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: 2px solid #FF3366;
+  }
+  .profile-form .edit-profile .switch-button {
+    margin-bottom: 30px;
+    font-size: 16pt;
+  }
+  .profile-form .profile-show {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    background: white;
+    box-shadow: 0.9px 2px 7px #282c34;
+    border-radius: 5px;
+    width: 100%;
+  }
+  .profile-form .profile-show .profile-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-items: flex-start;
+    margin-top: 10px;
+    padding: 5px;
+    text-align: center;
+    text-justify: center;
+  }
+  .profile-form .profile-show .profile-row h3 {
+    width: 20%;
+    font-size: 16pt;
+    font-family: Muli;
+  }
+  .profile-form .profile-show .profile-row h2 {
+    width: 80%;
+    font-size: 16pt;
+    text-align: left;
+    font-family: Muli;
+  }
+  .profile-form .profile-show .profile-row .summary-view {
+    display: flex;
+    align-self: center;
+    width: 80%;
+    font-family: Muli;
+  }
+  .profile-out-row {
+    display: flex;
+    flex-direction: row;
+    padding: 2%;
+  }
+  .profile-out-row .user-stats {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    padding: 20px;
+  }
+  .profile-out-row .user-stats h3 {
+    min-width: 20vw;
+    font-size: 16pt;
+    font-family: Muli;
   }
 }
 @media (min-width: 1000px) {

@@ -79,20 +79,34 @@ function UserHeader({ person, otherProps }) {
     {!person.skills ? (<CircularProgress className={classes.progress} />) :
     
     <>
+    <div className='img-box'>
+      { person.image ? 
+        <img src={person.image} alt='profile'/> : 
+        <img src={`https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png`} alt='profile'/>
+      }
+      </div>
     <div className='profile-info'>
-      <img src={person.image ? person.image : `https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png`} alt='profile'/>
+      <div className='profile-stats'>
+        <div className='stat-block'>
+          <p className='c-num'>{person.completed}</p>
+          <p className='j-num'>Jobs Done</p>
+        </div>
+        <div className='stat-block'>
+          <p className='c-num'>{person.created}</p>
+          <p className='j-num'>Jobs Created</p>
+        </div>
+      </div>
         <div className='profile-others'>
           <h2 className='name'>{person.name}</h2>
           <h3 className='username'>{person.username}</h3>
-          <div className='ratings' ><p>Ratings:   <br/><StyledRating
+          <div className='ratings' ><StyledRating
             name="customized-color"
-            value={person.rating}
+            value={5}
             // getLabelText={getLabelText}
             precision={0.5}
             icon={<StarBorderIcon fontSize="inherit" />}
             readOnly
-          /></p></div>
-          
+          /></div>
         </div>
         <div className='buttons'>
           
@@ -133,10 +147,7 @@ function ProfileDetails(skills, summary, completed, created){
   
   return(
     <div className='profile-out-row'>
-      <div className='user-stats'>
-      <h3>Completed Jobs: {completed}</h3>
-      <h3>Created Jobs: {created}</h3>
-      </div>
+     
     <div className="profile-show">
       <div className="profile-row">
         <h3>Skills: </h3> 
