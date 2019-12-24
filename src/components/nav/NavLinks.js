@@ -24,8 +24,8 @@ export default function NavLinks({ userSession, color, user, handleSignIn, handl
             <>
             <div className="dropdown2">
               <div 
-              className="dropbtn"
-              onClick={() => setDisplay('dropdown-content2')}
+              className="dropbtn2"
+              onClick={() => setDisplay('dropdown-content2','dropbtn2')}
               style={color ?
                 {backgroundColor: 'green'}
                 :
@@ -80,8 +80,8 @@ export default function NavLinks({ userSession, color, user, handleSignIn, handl
         )}
         <div className='dropdown3'>
           <div 
-            className="dropbtn"
-            onClick={() => setDisplay('dropdown-content3')}
+            className="dropbtn3"
+            onClick={() => setDisplay('dropdown-content3','dropbtn3')}
             style={color ?
                 {backgroundColor: 'green'}
                 :
@@ -115,11 +115,14 @@ export default function NavLinks({ userSession, color, user, handleSignIn, handl
   );
 }
 
-function setDisplay(classname) {
+function setDisplay(classname, classname2) {
   const x = document.getElementsByClassName(classname)[0];
+  const y = document.getElementsByClassName(classname2)[0];
   if (x.style.display === "none") {
     x.style.display = "flex";
+    y.style.backgroundColor = "#DE536B";
   } else {
     x.style.display = "none";
+    y.style.backgroundColor = "rgb(38, 70, 222)";
   }
 }

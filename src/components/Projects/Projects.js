@@ -15,6 +15,7 @@ import { NavLink } from 'react-router-dom';
 import SEO from 'react-seo-component';
 import navimage from '../../assets/logo.png';
 import { Helmet } from 'react-helmet';
+import { FaAlignJustify } from 'react-icons/fa';
 
 const fields = { text: 'Name', value: 'Code' };
 
@@ -179,6 +180,7 @@ export default function Project(props) {
         </div>
       </div>
       <div key='314' className='freelancers-container'>
+      
       {errorMessage && 
       <ErrorBar 
       errorMessage={errorMessage}
@@ -186,7 +188,11 @@ export default function Project(props) {
       removeError={removeError}
       />}
       <div className='add-button-container'>
-        
+        <button 
+        className='sort-toggle2'
+        onClick={() => setDisplay('sidenav','sort-toggle2')}>
+          SORT
+        </button>
           <button 
           className='add-project-button'
           onClick={() => props.history.push('/newproject')}
@@ -297,4 +303,16 @@ function ProjectCard({ project }){
       </div>
     </div>
   );
+}
+
+function setDisplay(classname, classname2) {
+  const x = document.getElementsByClassName(classname)[0];
+  const y = document.getElementsByClassName(classname2)[0];
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    y.style.backgroundColor = "#DE536B";
+  } else {
+    x.style.display = "none";
+    y.style.backgroundColor = "#00ABB4";
+  }
 }

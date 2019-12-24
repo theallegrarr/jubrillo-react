@@ -1,7 +1,4 @@
 import React from 'react';
-import { 
-  //FaSearch, 
-  FaAsterisk, FaHandsHelping, FaConnectdevelop } from 'react-icons/fa';
 import { Helmet } from 'react-helmet';
 import SEO from 'react-seo-component';
 import ctaImage from '../assets/cta-image4.png';
@@ -45,13 +42,21 @@ const Header = props => (
       while preventing any form of intrusion and giving everyone full control of
       their data
       <br></br>
-      <br></br> To get started, click the button below and set up your blockstack
-      account if you do not already have one, but if you do, just sign in with 
-      blockstack
+      <br></br> To get started, click the Login/Register Button in the Nav bar
       </p>
       <div className='cta-buttons'>
-        <button className='faq-button'>FAQ</button>
-        <button className='gs-button'>Get Started</button>
+        <button 
+        className='faq-button'
+        onClick={() => props.history.push('/faq')}
+        >FAQ</button>
+        <button 
+          className='gs-button'
+          onClick={() => 
+            window.open(
+              'http://www.blockstack.org',
+              '_blank' // <- This is what makes it open in a new window.
+            )}>About BlockStack
+        </button>
       </div>
     </div>
     

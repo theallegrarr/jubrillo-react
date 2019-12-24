@@ -10,6 +10,7 @@ import * as data from '../User/skillsData.json';
 import ErrorBar from '../errorBar/StatusBar';
 import uuid from 'uuid';
 import { NavLink } from 'react-router-dom';
+import { FaAlignJustify } from 'react-icons/fa';
 import { Helmet } from 'react-helmet';
 import SEO from 'react-seo-component';
 import navimage from '../../assets/logo.png';
@@ -144,6 +145,7 @@ export default function Freelancers(props) {
       <Helmet>
         <title>{`Jubrillo - All Freelancers`}</title>
       </Helmet>
+      
       <div className="sidenav">
         <p>Select Skills: </p>
         <div className='control-section'>
@@ -197,6 +199,11 @@ export default function Freelancers(props) {
         </div>
       </div>
       <div className='freelancers-container'>
+      <button 
+      className='sort-toggle'
+      onClick={() => setDisplay('sidenav','sort-toggle')}>
+        SORT
+      </button>
       {errorMessage && 
       <ErrorBar 
       errorMessage={errorMessage}
@@ -274,4 +281,16 @@ const FreelancersList = (props) => {
       }
     </div>
   );
+}
+
+function setDisplay(classname, classname2) {
+  const x = document.getElementsByClassName(classname)[0];
+  const y = document.getElementsByClassName(classname2)[0];
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    y.style.backgroundColor = "#DE536B";
+  } else {
+    x.style.display = "none";
+    y.style.backgroundColor = "rgb(38, 70, 222)";
+  }
 }
