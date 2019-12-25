@@ -13,16 +13,17 @@ export default function NavLinks({ userSession, color, user, handleSignIn, handl
 
   return (
     <>
+      <div className="dropdown2">
         {
           !userSession.isUserSignedIn() ?
             <button 
-            className='signbutton2'
+            className='signbutton'
             onClick={ handleSignIn.bind(this) }
             > Log In/Regsiter </button> 
             : 
             (
             <>
-            <div className="dropdown2">
+            
               <div 
               className="dropbtn2"
               onClick={() => setDisplay('dropdown-content2','dropbtn2')}
@@ -75,9 +76,9 @@ export default function NavLinks({ userSession, color, user, handleSignIn, handl
                 onClick={ handleSignOut.bind(this) }
                 className='drop-link'><FaSignOutAlt />Sign Out</a>
               </div>
-            </div>
             </>
         )}
+        </div>
         <div className='dropdown3'>
           <div 
             className="dropbtn3"

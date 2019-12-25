@@ -292,7 +292,7 @@ export default class Header extends React.Component {
           }
 
           </div>
-          <div>
+          <div className='navlinks-ext'>
             <NavLinks 
             userSession={userSession} 
             color={this.state.color}
