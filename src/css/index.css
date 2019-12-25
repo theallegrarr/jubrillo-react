@@ -2622,31 +2622,41 @@ img {
   height: 100%;
   padding: 5px;
 }
+.header-container {
+  z-index: 90;
+}
 .chat-container {
   padding-left: 355px;
   padding-top: 30px;
   padding-right: 30px;
-  background-color: white;
   font-family: Muli;
   min-height: 90vh;
+  z-index: 7;
 }
 .chat-container h3,
 .chat-container h2 {
   margin-top: 80px;
   font-family: Muli;
+  color: #00ABB4;
+  font-weight: 900;
+  width: 100%;
+  background-color: white;
+  padding: 30px;
+  border-radius: 5px;
 }
 .chat-container .chat-page-thread {
   min-height: 100vh;
   height: 100vh;
 }
 .chat-container .messages-thread {
-  margin-top: 50px;
+  background-color: white;
 }
 .chat-container .message-box {
   font-weight: 600;
 }
 .sidenav {
   overflow: sroll;
+  z-index: 8;
 }
 .sidenav h4 {
   font-family: Muli;

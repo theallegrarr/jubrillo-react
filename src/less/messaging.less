@@ -1,14 +1,23 @@
+.header-container {
+  z-index: 90;
+}
 .chat-container {
   padding-left: 355px;
   padding-top: 30px;
   padding-right: 30px;
-  background-color: white;
   font-family: @secondary-font;
   min-height: 90vh;
+  z-index: 7;
 
   h3, h2 {
     margin-top: 80px;
     font-family: @secondary-font;
+    color: #00ABB4;
+    font-weight: 900;
+    width: 100%;
+    background-color: white;
+    padding: 30px;
+    border-radius: 5px;
   }
   .chat-page-thread {
     min-height: 100vh;
@@ -16,7 +25,7 @@
   }
 
   .messages-thread {
-    margin-top: 50px;
+    background-color: white;
   }
 
   .message-box {
@@ -26,6 +35,7 @@
 
 .sidenav {
   overflow: sroll;
+  z-index: 8;
   h4 {
     font-family: @secondary-font;
     margin-bottom: 20px;
