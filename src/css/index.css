@@ -193,7 +193,7 @@ img {
     color: #546E7A;
     font-weight: 400;
     font-size: 12pt;
-    font-family: 'Nunito', 'serif';
+    font-family: Muli, 'serif';
   }
   .main .navbar .search .searchTerm:focus {
     color: #546E7A;
@@ -264,7 +264,7 @@ img {
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     width: 280px;
     z-index: 1;
-    font-family: 'IBM Plex Mono', Arial, sans-serif;
+    font-family: Muli;
     letter-spacing: 0.1em;
     font-size: 9pt;
     border-radius: 0 0 12px 12px;
@@ -314,7 +314,7 @@ img {
   margin-top: 80vh;
   background-color: #2646de;
   padding: 10px;
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-family: Muli;
   box-shadow: 0.5px 2px 7px #282c34;
   cursor: pointer;
   text-decoration: none;
@@ -348,7 +348,7 @@ img {
     flex-direction: row;
     justify-content: space-between;
     padding: 15px;
-    z-index: 40;
+    z-index: 100;
     background-color: #0E1C5D;
     max-width: 90vw;
   }
@@ -357,7 +357,7 @@ img {
   }
   .navbar .navImg {
     width: 30vw;
-    z-index: 5;
+    z-index: 7;
   }
   .dropdown2,
   .dropdown3 {
@@ -368,7 +368,7 @@ img {
     letter-spacing: 0.1em;
     font-size: 9pt;
     margin-top: 0;
-    z-index: 6;
+    z-index: 7;
     cursor: pointer;
   }
   /* Dropdown Content (Hidden by Default) */
@@ -381,8 +381,8 @@ img {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     width: 200px;
-    z-index: 1;
-    font-family: 'IBM Plex Mono', Arial, sans-serif;
+    z-index: 7;
+    font-family: Muli;
     letter-spacing: 0.1em;
     font-size: 9pt;
     border-radius: 0;
@@ -473,7 +473,7 @@ img {
     justify-content: space-between;
     align-self: center;
     width: 96%;
-    font-family: 'Nunito' 'serif';
+    font-family: Muli 'serif';
     padding: 4%;
     padding-bottom: 1%;
     padding-left: 5vw;
@@ -507,7 +507,7 @@ img {
     line-height: 75px;
   }
   .cta-container .cta-text p {
-    font-family: 'Nunito', 'serif';
+    font-family: Muli, 'serif';
     color: aliceblue;
     font-weight: 500;
     font-size: 13pt;
@@ -530,7 +530,7 @@ img {
     border-radius: 5px;
     cursor: pointer;
     overflow: hidden;
-    font-family: 'Nunito', 'serif';
+    font-family: Muli, 'serif';
     font-weight: 900;
     transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
   }
@@ -552,7 +552,7 @@ img {
     cursor: pointer;
     overflow: hidden;
     border: 0;
-    font-family: 'Nunito', 'serif';
+    font-family: Muli, 'serif';
     font-weight: 900;
     transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
   }
@@ -613,7 +613,7 @@ img {
     line-height: 75px;
   }
   .cta-container .cta-text p {
-    font-family: 'Nunito', 'serif';
+    font-family: Muli, 'serif';
     color: aliceblue;
     font-weight: 500;
     font-size: 13pt;
@@ -637,7 +637,7 @@ img {
     border-radius: 5px;
     cursor: pointer;
     overflow: hidden;
-    font-family: 'Nunito', 'serif';
+    font-family: Muli, 'serif';
     font-weight: 900;
     transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
   }
@@ -659,7 +659,7 @@ img {
     cursor: pointer;
     overflow: hidden;
     border: 0;
-    font-family: 'Nunito', 'serif';
+    font-family: Muli, 'serif';
     font-weight: 900;
     transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
   }
@@ -731,7 +731,7 @@ img {
   margin: 0;
 }
 .features-div .feature-cards .feature-card p {
-  font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
+  font-family: Muli, 'serif';
   font-weight: 700;
   color: #707078;
   margin-top: 10px;
@@ -767,9 +767,6 @@ img {
   margin-right: 8px;
 }
 @media (min-width: 1000px) {
-  .footer {
-    margin-top: 5vh;
-  }
   .profile-form {
     display: flex;
     flex-direction: column;
@@ -850,19 +847,19 @@ img {
   }
   .profile-form .profile-info .profile-others .username {
     color: #00abb4;
-    font-family: 'IBM Plex Mono', Arial, sans-serif;
+    font-family: Muli;
     font-weight: 900;
   }
   .profile-form .profile-info .profile-others h3 {
     margin: 0.1%;
     font-size: 15pt;
-    font-family: 'Nunito', 'serif';
+    font-family: Muli, 'serif';
   }
   .profile-form .profile-info .profile-others h2 {
     margin-top: 2%;
     margin-bottom: 0;
     font-size: 19pt;
-    font-family: 'Nunito', 'serif';
+    font-family: Muli, 'serif';
   }
   .profile-form .profile-info .profile-others .ratings {
     display: flex;
@@ -885,7 +882,7 @@ img {
     margin: 1%;
     justify-items: space-between;
     justify-content: space-between;
-    font-family: 'Nunito', 'serif';
+    font-family: Muli, 'serif';
   }
   .profile-form .buttons {
     display: flex;
@@ -942,7 +939,7 @@ img {
     border: none;
     font-weight: 700;
     padding: 1%;
-    font-family: 'Nunito', 'serif';
+    font-family: Muli, 'serif';
     font-size: 12pt;
     border-radius: 10px;
     box-shadow: 0.9px 2px 7px #282c34;
@@ -954,7 +951,7 @@ img {
     border: none;
     font-weight: 700;
     padding: 1%;
-    font-family: 'IBM Plex Mono', Arial, sans-serif;
+    font-family: Muli;
     font-size: 12pt;
     border-radius: 10px;
     box-shadow: 0.9px 2px 7px #282c34;
@@ -1042,18 +1039,17 @@ img {
   .profile-out-row .user-stats h3 {
     min-width: 20vw;
     font-size: 16pt;
-    font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
+    font-family: Muli, 'serif';
   }
 }
 @media (max-width: 1000px) {
-  .footer {
-    margin-top: 15vh;
+  .main-container {
+    min-height: 1200px;
   }
   .profile-form {
     display: flex;
     flex-direction: column;
     font-family: Muli;
-    min-height: 110vh;
     z-index: 6;
     position: absolute;
     width: 90vw;
@@ -1129,19 +1125,19 @@ img {
   }
   .profile-form .profile-info .profile-others .username {
     color: #00abb4;
-    font-family: 'IBM Plex Mono', Arial, sans-serif;
+    font-family: Muli;
     font-weight: 900;
   }
   .profile-form .profile-info .profile-others h3 {
     margin: 0.1%;
     font-size: 15pt;
-    font-family: 'Nunito', 'serif';
+    font-family: Muli, 'serif';
   }
   .profile-form .profile-info .profile-others h2 {
     margin-top: 2%;
     margin-bottom: 0;
     font-size: 19pt;
-    font-family: 'Nunito', 'serif';
+    font-family: Muli, 'serif';
   }
   .profile-form .profile-info .profile-others .ratings {
     display: flex;
@@ -1165,7 +1161,7 @@ img {
     margin: 1%;
     justify-items: space-between;
     justify-content: space-between;
-    font-family: 'Nunito', 'serif';
+    font-family: Muli, 'serif';
   }
   .profile-form .buttons {
     display: flex;
@@ -1208,7 +1204,6 @@ img {
     padding: 1%;
     margin-top: 1%;
     justify-self: center;
-    margin-bottom: 200px;
   }
   .profile-form .edit-profile .buttons {
     display: flex;
@@ -1223,7 +1218,7 @@ img {
     border: none;
     font-weight: 700;
     padding: 1%;
-    font-family: 'Nunito', 'serif';
+    font-family: Muli, 'serif';
     font-size: 12pt;
     border-radius: 10px;
     box-shadow: 0.9px 2px 7px #282c34;
@@ -1235,7 +1230,7 @@ img {
     border: none;
     font-weight: 700;
     padding: 1%;
-    font-family: 'IBM Plex Mono', Arial, sans-serif;
+    font-family: Muli;
     font-size: 12pt;
     border-radius: 10px;
     box-shadow: 0.9px 2px 7px #282c34;
@@ -1371,7 +1366,7 @@ img {
   .freelancers-container .freelancers-list .freelancer-card h3,
   .freelancers-container .freelancers-list .freelancer-card h4,
   .freelancers-container .freelancers-list .freelancer-card p {
-    font-family: 'IBM Plex Mono', Arial, sans-serif;
+    font-family: Muli;
     margin-bottom: 1px;
     margin-top: 1px;
   }
@@ -1439,7 +1434,7 @@ img {
   color: #546E7A;
   font-weight: 400;
   font-size: 12pt;
-  font-family: 'Nunito', 'serif';
+  font-family: Muli, 'serif';
 }
 .sidenav .completed-input:focus {
   color: #546E7A;
@@ -1586,7 +1581,7 @@ img {
   .freelancers-container .freelancers-list .freelancer-card h3,
   .freelancers-container .freelancers-list .freelancer-card h4,
   .freelancers-container .freelancers-list .freelancer-card p {
-    font-family: 'IBM Plex Mono', Arial, sans-serif;
+    font-family: Muli;
     margin-bottom: 1px;
     margin-top: 1px;
   }
@@ -1650,7 +1645,7 @@ img {
   z-index: 5;
 }
 .form-container h2 {
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-family: Muli;
 }
 .form-container .App {
   min-height: 200px;
@@ -1679,7 +1674,7 @@ img {
   border: none;
   font-weight: 700;
   padding: 1%;
-  font-family: 'Nunito', 'serif';
+  font-family: Muli, 'serif';
   font-size: 12pt;
   border-radius: 5px;
   box-shadow: 0px 20px 80px rgba(0, 0, 0, 0.1);
@@ -1709,7 +1704,7 @@ img {
   border-bottom: 1px solid #4d4d4d;
   transition: 0.5s border-bottom;
   margin-bottom: 3%;
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-family: Muli;
   font-size: 14pt;
   color: black;
 }
@@ -1717,7 +1712,7 @@ img {
   color: #546E7A;
   font-weight: 400;
   font-size: 12pt;
-  font-family: 'Nunito', 'serif';
+  font-family: Muli, 'serif';
 }
 .edit-profile .profile-input:focus {
   color: #546E7A;
@@ -2068,7 +2063,7 @@ img {
   color: black;
   font-weight: 400;
   font-size: 12pt;
-  font-family: 'Nunito', 'serif';
+  font-family: Muli, 'serif';
 }
 .project-container .completed-input:focus {
   color: black;
@@ -2084,7 +2079,7 @@ img {
   width: 45%;
   color: white;
   padding: 4%;
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-family: Muli;
   font-weight: 700;
   cursor: pointer;
   box-shadow: 0.9px 2px 7px #282c34;
@@ -2632,13 +2627,13 @@ img {
   padding-top: 30px;
   padding-right: 30px;
   background-color: white;
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-family: Muli;
   min-height: 90vh;
 }
 .chat-container h3,
 .chat-container h2 {
   margin-top: 80px;
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-family: Muli;
 }
 .chat-container .chat-page-thread {
   min-height: 100vh;
@@ -2654,7 +2649,7 @@ img {
   overflow: sroll;
 }
 .sidenav h4 {
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-family: Muli;
   margin-bottom: 20px;
   padding-bottom: 0;
 }
@@ -2672,18 +2667,21 @@ img {
   }
 }
 .notifications-container {
-  background-color: white;
+  background: none;
   width: 100%;
   align-self: center;
   justify-self: center;
   padding: 10%;
-  padding-top: 50px;
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  padding-top: 100px;
+  font-family: Muli;
   font-weight: 600;
   min-height: 90vh;
+  z-index: 6;
 }
 .notifications-container h3 {
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-family: Muli;
+  color: #00ABB4;
+  font-weight: 900;
 }
 .notifications-container .not-list {
   display: flex;
@@ -2702,6 +2700,9 @@ img {
   box-shadow: 0.5px 2px 7px #282c34;
   padding: 10px;
   padding: 1%;
+  background: white;
+  border-radius: 5px;
+  margin-bottom: 5px;
 }
 .notifications-container .not-list .notif-item .time-ago {
   font-style: italic;
@@ -2725,16 +2726,20 @@ img {
   color: white;
   background-color: #00abb4;
   box-shadow: 0.5px 2px 7px #282c34;
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-family: Muli;
   font-weight: 600;
   cursor: pointer;
 }
 .paginate-buttons button:active {
   box-shadow: none;
 }
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
+  .notif-item {
+    width: 90vw;
+  }
   .notifications-container {
-    padding-top: 180px;
+    padding: 4vw;
+    padding-top: 80px;
   }
 }
 .forum-container {
@@ -2753,7 +2758,7 @@ img {
   margin-bottom: 0;
   margin-top: 50px;
   padding: 0;
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-family: Muli;
   font-weight: 900;
 }
 .forum-container h1,
@@ -2763,7 +2768,7 @@ img {
 .forum-container h5,
 .forum-container a,
 .forum-container p {
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-family: Muli;
 }
 .forum-container .add-post-button {
   margin-top: 0;
@@ -2774,7 +2779,7 @@ img {
   width: 200px;
   color: white;
   padding: 1%;
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-family: Muli;
   font-weight: 700;
   cursor: pointer;
   box-shadow: 0.9px 2px 7px #282c34;
@@ -2808,7 +2813,7 @@ img {
   width: 100%;
   max-width: 95%;
   padding: 10px;
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-family: Muli;
   font-weight: 600;
 }
 .forum-container .forum-topic .line-1 {
@@ -2863,7 +2868,7 @@ img {
   border-bottom: 1px dashed gray;
 }
 .view-post-container .post-body {
-  font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
+  font-family: Muli, 'serif';
   font-weight: 600;
 }
 .view-post-container h1,
@@ -2884,7 +2889,7 @@ img {
 .view-post-container .reply-button {
   margin-top: 10px;
   padding: 10px;
-  font-family: 'IBM Plex Mono', Arial, sans-serif, 'serif';
+  font-family: Muli, 'serif';
   font-weight: 600;
   font-size: 11pt;
   box-shadow: 0.9px 2px 7px #282c34;
@@ -2912,7 +2917,7 @@ img {
 .faq-container {
   background-color: white;
   padding: 80px;
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-family: Muli;
 }
 .faq-container .transition,
 .faq-container p,
@@ -2924,7 +2929,7 @@ img {
 .faq-container h1,
 .faq-container ul li {
   animation: flipdown 0.5s ease both;
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-family: Muli;
   font-weight: 600;
 }
 .faq-container .no-select,
@@ -2936,7 +2941,7 @@ img {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-family: Muli;
   font-weight: 600;
 }
 .faq-container html {
@@ -2974,7 +2979,7 @@ img {
 .faq-container h2,
 .faq-container h3 {
   color: #00abb4;
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-family: Muli;
   font-weight: 700;
 }
 .faq-container h3 {
@@ -3125,7 +3130,7 @@ img {
   z-index: 5;
 }
 .my-projects-container h4 {
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-family: Muli;
   font-weight: 700;
 }
 .my-projects-container .mp-switch {
@@ -3135,7 +3140,7 @@ img {
   padding-left: 50px;
   margin-left: 0;
   background-color: white;
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-family: Muli;
   font-weight: 900;
   font-size: 12pt;
   cursor: pointer;
@@ -3153,7 +3158,7 @@ img {
 }
 .my-projects-container a {
   text-decoration: none;
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-family: Muli;
   font-weight: 900;
   padding: 10px;
   font-size: 12pt;
@@ -3178,7 +3183,7 @@ footer {
   z-index: 20;
   max-height: 100%;
   position: absolute;
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-family: Muli;
 }
 .footer-distributed {
   background-color: #292c2f;
@@ -3199,7 +3204,7 @@ footer {
   width: 32%;
 }
 .footer-distributed h3 {
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-family: Muli;
   color: #ffffff;
   margin: 0;
 }
@@ -3286,7 +3291,7 @@ footer {
   cursor: pointer;
   background-color: #33383b;
   border-radius: 2px;
-  font-family: 'IBM Plex Mono', Arial, sans-serif;
+  font-family: Muli;
   font-size: 20px;
   color: #ffffff;
   text-align: center;
