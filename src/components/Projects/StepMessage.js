@@ -13,7 +13,7 @@ export default function stepMessage(step, role){
   }
 
   if(step===1 && role ==='employer'){
-    return(`Please Discuss the terms and specifications of this job with your Freelancer`);
+    return(`Please Discuss the terms and specifications of this job with your Freelancer, Be sure before moving to next step, you will be unable to move back after this step`);
   }
   if(step===2 && role ==='employer'){
     return(`To Fund this job open the 'Add Funds' form enter the amount, 

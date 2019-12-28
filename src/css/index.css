@@ -1328,6 +1328,27 @@ img {
   font-family: Muli;
   font-weight: 400;
 }
+.msg-button,
+.edit-button,
+.hire-button {
+  border: none;
+  background-color: #00ABB4;
+  width: 200px;
+  color: white;
+  padding: 15px;
+  font-family: Muli;
+  font-weight: 700;
+  font-size: 12pt;
+  cursor: pointer;
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
+  transition: 1s box-shadow;
+  border-radius: 5px;
+}
+.msg-button:hover,
+.edit-button:hover,
+.hire-button:hover {
+  background-color: #00939b;
+}
 @media (min-width: 1000px) {
   .freelancers-container {
     min-height: 90vh;
@@ -2061,7 +2082,6 @@ img {
   padding: 1px;
   border: 0;
   outline: none;
-  background-color: #00abb4;
   border-bottom: 1px solid #4d4d4d;
   color: black;
   transition: 0.5s border-bottom;

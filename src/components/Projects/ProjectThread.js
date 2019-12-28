@@ -478,7 +478,7 @@ function HorizontalLinearStepper({
             <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
             }
             <div>
-              {activeStep>1 && activeStep<4 && <Button
+              {activeStep>0 && activeStep<2 && <Button
                 disabled={activeStep === 0}
                 onClick={handleBack}
                 className={classes.backButton}

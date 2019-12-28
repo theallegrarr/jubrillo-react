@@ -151,7 +151,7 @@ function SendReview({ person, project }) {
       />
 
       <button 
-      className='sort-apply'
+      className='edit-button'
       style={{'marginLeft': '20px'}}
       onClick={() => submitReview()}>
         <span 

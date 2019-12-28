@@ -127,7 +127,10 @@ export default function ProjectPage(props) {
         reply={reply} 
         setReply={setReply} />
         <button 
-        className='reply-button'
+        className='edit-button'
+        style={{
+          marginTop: '30px'
+        }}
         onClick={() => {
           sendComment()
         }}

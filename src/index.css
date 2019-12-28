@@ -75,3 +75,8 @@ code {
   width: 100%;
 }
 
+.MuiTypography-body1 {
+  font-size: 16pt;
+  font-family: Muli;
+  font-weight: 400;
+}

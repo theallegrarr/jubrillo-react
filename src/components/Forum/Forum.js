@@ -58,7 +58,7 @@ export default function Forum(props) {
       <div className='add-post-container'>
         
         <button 
-        className='add-post-button'
+        className='edit-button'
         onClick={() => props.history.push('/forum/new')}
         ><span 
         role='img'

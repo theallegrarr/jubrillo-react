@@ -352,7 +352,7 @@ function ApplicantsList({
     setErrorType('loading')
     removeError('Attempting to Select Freelancer');
     Projects.fetchList({_id: project.project_id}).then(res => {
-      if(res[0].attrs.step < 3){
+      if(res[0].attrs.step < 2){
       res[0].update({ selected_freelancer: username });
       res[0].save().then(result => {
          // console.log(result)
