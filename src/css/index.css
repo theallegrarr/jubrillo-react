@@ -771,7 +771,7 @@ img {
     display: flex;
     flex-direction: column;
     font-family: Muli;
-    min-height: 90vh;
+    min-height: 1100px;
     z-index: 6;
     position: absolute;
     width: 90vw;
@@ -1319,6 +1319,14 @@ img {
   .profile-form .profile-show {
     width: 100vw;
   }
+}
+.container {
+  min-height: 1100px;
+}
+.MuiTypography-body1 {
+  font-size: 16pt;
+  font-family: Muli;
+  font-weight: 400;
 }
 @media (min-width: 1000px) {
   .freelancers-container {

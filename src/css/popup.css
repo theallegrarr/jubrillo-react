@@ -1,0 +1,147 @@
+/* The Modal (background) */
+.modal {
+  display: block;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 100;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: #000000;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+.modal p {
+  text-align: center;
+  text-justify: center;
+  margin-bottom: 0;
+  padding: 0;
+}
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  min-width: 500px;
+  width: 30%;
+  /* Could be more or less, depending on screen size */
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
+  border-radius: 5px;
+}
+.modal-content .valueH1 {
+  text-align: center;
+}
+.modal-content .columns {
+  display: flex;
+  flex-direction: column;
+}
+.modal-content .columns h4 {
+  font-size: 13pt;
+  border-bottom: 1px dashed gray;
+  text-align: center;
+  width: 100%;
+}
+.modal-content .columns .bcode {
+  align-self: center;
+}
+.modal-content .columns .pay-header-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-bottom: 1px dashed gray;
+}
+.modal-content .columns .btc-addr {
+  margin-top: 5px;
+  text-align: center;
+  font-size: 12pt;
+  border-radius: 3px;
+  border: 0.5px solid #00ABB4;
+  background-color: #00ABB4;
+  font-family: Muli;
+  font-weight: 700;
+  padding: 4px;
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
+  cursor: pointer;
+  color: white;
+}
+.modal-content .columns .btc-addr:active {
+  box-shadow: none;
+}
+.modal-content .columns .btc-inputs {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 12pt;
+  border-radius: 3px;
+  border: none;
+  font-family: Muli;
+  background-color: lightgray;
+  padding: 5px;
+  font-weight: 700;
+}
+.modal-content .columns img {
+  display: flex;
+  flex-direction: row;
+  justify-self: flex-start;
+  width: 120px;
+}
+.modal-content .fund-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+.modal-content button {
+  border: none;
+  background-color: #DE536B;
+  color: white;
+  font-family: Muli;
+  padding: 1%;
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
+  cursor: pointer;
+  width: 49%;
+  border-radius: 5px;
+  font-weight: 700;
+}
+.modal-content button:active {
+  box-shadow: none;
+}
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.wallet-place {
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 12pt;
+  align-items: center;
+  width: 100%;
+}
+.wallet-place input {
+  width: 92%;
+}
+.wallet-place .fa-copy {
+  width: 8%;
+  height: 100%;
+  padding: 5px;
+}

@@ -248,8 +248,14 @@ function ProfileForm(email, setEmail, setSummary, skills, setSkills, freelancer,
             <ClassicEditorFunction setValue={setSummary} summary={summary} />
           </div>
           <div className='buttons'>
-            <button className='submit' onClick={uploadForm}>SAVE</button>
-            <button className='cancel' onClick={() => {
+            <button className='edit-button' onClick={uploadForm}>SAVE</button>
+            <button 
+            className='edit-button'
+            style={{
+              backgroundColor: 'gray',
+              marginLeft: '5px'
+            }} 
+            onClick={() => {
               setEdit(false)
             }}>DONE</button>
           </div>

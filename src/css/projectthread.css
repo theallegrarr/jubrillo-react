@@ -1,0 +1,266 @@
+.work-steps {
+  background: #FFFFFF;
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+.work-steps .next-button {
+  width: 126px;
+  height: 44px;
+  background-color: #DE536B;
+  border-radius: 5px;
+}
+.work-steps p {
+  font-family: Muli;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: left;
+  text-justify: left;
+  align-items: left;
+  text-align: center;
+  color: #000000;
+  width: 100%;
+}
+.work-steps span,
+.work-steps text {
+  font-size: 10pt;
+}
+.work-steps .makeStyles-root-1 {
+  width: 100%;
+}
+.messages-thread {
+  display: flex;
+  flex-direction: column-reverse;
+  max-height: 300px;
+  min-height: 300px;
+  overflow-y: scroll;
+  border: 1px solid gray;
+  bottom: 0;
+  padding: 3%;
+}
+.chat-thread {
+  display: flex;
+  flex-direction: column-reverse;
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
+}
+.send-message {
+  display: flex;
+  text-align: center;
+  width: 100%;
+  margin-top: 1%;
+  justify-content: flex-end;
+}
+.send-message button {
+  padding: 1.5%;
+  border: none;
+  color: white;
+  font-family: Muli;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 18px;
+  text-transform: uppercase;
+  width: 130px;
+  align-self: flex-end;
+  cursor: pointer;
+  background: #00ABB4;
+  border-radius: 6px;
+}
+.send-message button:active {
+  box-shadow: none;
+}
+.message-box {
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 5px;
+  max-width: 80%;
+  background-color: #F9F9F9;
+  margin: 8px;
+  margin-left: 20px;
+  padding: 19px;
+}
+.message-box:hover {
+  background-color: lightgray;
+}
+.message-box .msg-details {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1px;
+  margin-top: 10px;
+  padding-top: 7px;
+  width: 100%;
+}
+.message-box .msg-details .msg-time {
+  font-size: 8pt;
+  font-style: italic;
+  color: white;
+  background-color: #00ABB4;
+  font-family: Muli;
+  padding-right: 6px;
+  padding-left: 6px;
+  border-radius: 5px;
+}
+.message-box .msg-from {
+  font-size: 9pt;
+}
+.message-box .msg-from,
+.message-box .msg-time,
+.message-box .p-text,
+.message-box p {
+  margin: 1px;
+  margin-right: 10px;
+  padding: 0;
+}
+.fund-opts {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2%;
+  width: 100%;
+  height: 170px;
+  left: 1040px;
+  top: 190px;
+  background: #F1F8FF;
+  border-radius: 5px;
+}
+.fund-opts .fund-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+.fund-opts button {
+  border: none;
+  color: white;
+  font-family: Muli;
+  font-size: 13px;
+  padding: 10px;
+  background-color: #DE536B;
+  cursor: pointer;
+  width: 48%;
+  height: 44px;
+  border-radius: 5px;
+  font-weight: 700;
+}
+.fund-opts button:active {
+  box-shadow: none;
+}
+.project-view-page .App,
+.project-view-page .work-steps,
+.project-view-page .messages-thread {
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
+  border-radius: 5px;
+  border: none;
+}
+.makeStyles-root-1 {
+  width: 100%;
+}
+.makeStyles-root-1 .stepper {
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
+  border-radius: 5px;
+}
+.employer-info {
+  min-width: 300px;
+}
+.employer-info .det-head {
+  font-family: Muli;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 24px;
+  color: #010540;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+.employer-info .deti-head {
+  font-family: Muli;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #707078;
+}
+.employer-info a {
+  font-family: Muli;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  color: #00ABB4;
+}
+.employer-info .employer-name {
+  font-size: 15pt;
+}
+.employer-info .balance-name {
+  font-family: Muli;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 21px;
+  line-height: 28pt;
+  text-align: center;
+  color: #707078;
+}
+.employer-info .btc-bal {
+  font-family: Muli;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 14px;
+  text-align: center;
+  color: #010540;
+}
+.alert {
+  padding: 20px;
+  color: white;
+  margin-top: 15px;
+  font-size: 12pt;
+  box-shadow: 0px 20px 80px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  width: 400px;
+  max-width: 100%;
+}
+.error-alert {
+  display: block;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 10;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  padding: 20px;
+  background-color: #f44336;
+  /* Red */
+  color: white;
+  margin-bottom: 15px;
+  margin-top: 70px;
+  margin-left: 35%;
+  align-items: center;
+  font-size: 12pt;
+  padding: 10px;
+}
+/* The close button */
+.close-alert {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+/* When moving the mouse over the close button */
+.close-alert:hover {
+  color: black;
+}
+@media (max-width: 800px) {
+  .project-view-page {
+    min-width: 95%;
+  }
+}
+.MuiStepIcon-root.MuiStepIcon-active {
+  font-size: 21pt;
+}
