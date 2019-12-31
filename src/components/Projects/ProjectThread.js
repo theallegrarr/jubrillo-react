@@ -366,11 +366,18 @@ function LeftSideBar({
 
   return(
   <div className='project-view-page'>
+      
     <h2><span 
     role='img'
     description='lightning'
     aria-labelledby=''>💼{' '}</span>
     {project.title}</h2>
+    
+      <button 
+        className='sort-toggle'
+        onClick={() => setDisplay('employer-info','sort-toggle')}>
+        Manage
+      </button>
     <div className='work-steps'>
       <HorizontalLinearStepper 
       project={project}
@@ -618,4 +625,16 @@ function Messages({ messages, person, project }){
 
 function MyComponent({ data }) {
   return <div dangerouslySetInnerHTML={{__html: data}} />;
+}
+
+function setDisplay(classname, classname2) {
+  const x = document.getElementsByClassName(classname)[0];
+  const y = document.getElementsByClassName(classname2)[0];
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    y.style.backgroundColor = "#DE536B";
+  } else {
+    x.style.display = "none";
+    y.style.backgroundColor = "#00ABB4";
+  }
 }

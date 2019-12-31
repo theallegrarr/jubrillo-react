@@ -199,11 +199,7 @@ export default function Freelancers(props) {
         </div>
       </div>
       <div className='freelancers-container'>
-      <button 
-      className='sort-toggle'
-      onClick={() => setDisplay('sidenav','sort-toggle')}>
-        SORT
-      </button>
+      
       {errorMessage && 
       <ErrorBar 
       errorMessage={errorMessage}
@@ -239,6 +235,11 @@ const FreelancersList = (props) => {
 
   return (
     <div key="312" className='freelancers-list'>
+      <button 
+      className='sort-toggle'
+      onClick={() => setDisplay('sidenav','sort-toggle')}>
+        SORT
+      </button>
       {
         props.freelancers.map(freelancer => (
           <div 

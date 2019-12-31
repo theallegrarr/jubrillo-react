@@ -186,7 +186,11 @@ export default function ProjectPage(props) {
                 description='lightning'
       aria-labelledby=''>💼{' '}</span>
                 {project.title}</h2>
-            
+                <button 
+                  className='sort-toggle'
+                  onClick={() => setDisplay('employer-info','sort-toggle')}>
+                  Manage
+                </button>
               <div className='control-pane'>
                 <div className='control-section'>
                     <div id='multidefault' className="control-styles">
@@ -433,4 +437,16 @@ function ApplicantsList({
       ))
     }
   </div>);
+}
+
+function setDisplay(classname, classname2) {
+  const x = document.getElementsByClassName(classname)[0];
+  const y = document.getElementsByClassName(classname2)[0];
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    y.style.backgroundColor = "#DE536B";
+  } else {
+    x.style.display = "none";
+    y.style.backgroundColor = "#00ABB4";
+  }
 }

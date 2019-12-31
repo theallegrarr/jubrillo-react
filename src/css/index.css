@@ -64,10 +64,9 @@ img {
   height: auto;
 }
 .container {
-  width: 100%;
-  margin: auto;
+  width: 100vw;
 }
-@media (min-width: 1000px) {
+@media screen and (min-width: 1000px) {
   .dropdown2,
   .dropdown3 {
     display: none;
@@ -81,7 +80,7 @@ img {
     flex-direction: column;
     z-index: 2;
     background-color: #0E1C5D;
-    max-width: 100vw;
+    width: 100vw;
   }
   .main .navbar {
     display: flex;
@@ -158,7 +157,7 @@ img {
   .main .navbar .links .link:hover {
     font-weight: 1200;
     color: white;
-    border-top: 3px solid #00abb4;
+    border-top: 3px solid #00ABB4;
   }
   .main .navbar .links .link:active {
     font-size: 9pt;
@@ -166,7 +165,7 @@ img {
   .main .navbar .links .link:focus {
     font-weight: 1200;
     color: white;
-    border-top: 3px solid #00abb4;
+    border-top: 3px solid #00ABB4;
   }
   .main .navbar .search {
     float: left;
@@ -263,12 +262,12 @@ img {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     width: 280px;
+    margin-left: 3vw;
     z-index: 1;
     font-family: Muli;
     letter-spacing: 0.1em;
     font-size: 9pt;
     border-radius: 0 0 12px 12px;
-    margin-left: 3vw;
     z-index: 5;
   }
   /* Links inside the dropdown */
@@ -300,10 +299,10 @@ img {
   }
   /* Change the background color of the dropdown button when the dropdown content is shown */
   .dropdown:hover .dropbtn {
-    background-color: #00abb4;
+    background-color: #00ABB4;
   }
 }
-@media (min-width: 1000px) and (min-width: 800px) {
+@media screen and (min-width: 1000px) and (min-width: 800px) {
   .main .navbar .links .link {
     width: 120px;
   }
@@ -335,7 +334,7 @@ img {
 .header-container .error-alert:hover {
   opacity: 1;
 }
-@media (max-width: 1000px) {
+@media screen and (max-width: 1000px) {
   /* The container <div> - needed to position the dropdown content */
   .navlinks-ext {
     min-width: 200px;
@@ -376,19 +375,18 @@ img {
   .dropdown-content3 {
     display: none;
     position: fixed;
-    flex-direction: column;
     background-color: #2646de;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    width: 200px;
-    z-index: 7;
+    min-width: 100vw;
+    height: 300px;
     font-family: Muli;
     letter-spacing: 0.1em;
     font-size: 9pt;
-    border-radius: 0;
     z-index: 30;
-    margin-left: -50vw;
+    left: 0;
     margin-top: 28px;
+    box-sizing: border-box;
+    justify-content: space-between;
   }
   /* Links inside the dropdown */
   .drop-link {
@@ -422,6 +420,7 @@ img {
     padding-left: 15px;
     position: relative;
     margin-left: 30px;
+    cursor: pointer;
   }
   .header-container .error-alert {
     margin-left: 70vw;
@@ -432,7 +431,7 @@ img {
   flex-direction: column;
   z-index: 2;
   background-color: #0E1C5D;
-  max-width: 100vw;
+  width: 100vw;
   min-height: 100vh;
 }
 .signbutton {
@@ -447,8 +446,8 @@ img {
   transition: all 0.5s ease;
   -webkit-appearance: none;
   font-family: Muli;
-  min-width: 130px;
-  border-top: 7px solid #00abb4;
+  min-width: 100px;
+  border-top: 7px solid #00ABB4;
   background: #FF3366;
   border: none;
   cursor: pointer;
@@ -525,7 +524,7 @@ img {
     height: 64px;
     margin: 5rem 0 2.2rem;
     color: rgba(255, 255, 255, 0.8);
-    background: #00abb4;
+    background: #00ABB4;
     font-size: 1.5rem;
     border-radius: 5px;
     cursor: pointer;
@@ -536,7 +535,7 @@ img {
   }
   .cta-container .cta-text .cta-buttons .gs-button:hover {
     background-color: #0E1C5D;
-    border: 1px solid #00abb4;
+    border: 1px solid #00ABB4;
   }
   .cta-container .cta-text .cta-buttons .gs-button:active {
     font-size: 1.4rem;
@@ -578,20 +577,21 @@ img {
     flex-direction: row;
     justify-content: space-between;
     align-self: center;
-    width: 96%;
+    width: 100%;
     font-family: Muli;
     padding: 2%;
     margin-bottom: 0;
     min-height: 90vh;
-    max-width: 99vw;
+    max-width: 100%;
     background: none;
     z-index: 5;
+    overflow: hidden;
   }
   .cta-container .cta-text {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    width: 99vw;
+    width: 100%;
     background-color: none;
   }
   .cta-container .cta-text .head-1,
@@ -609,7 +609,7 @@ img {
     font-family: Muli;
     font-style: bold;
     font-weight: 900;
-    font-size: 64px;
+    font-size: 57px;
     line-height: 75px;
   }
   .cta-container .cta-text p {
@@ -632,7 +632,7 @@ img {
     height: 64px;
     margin: 5rem 0 2.2rem;
     color: rgba(255, 255, 255, 0.8);
-    background: #00abb4;
+    background: #00ABB4;
     font-size: 1.5rem;
     border-radius: 5px;
     cursor: pointer;
@@ -643,7 +643,7 @@ img {
   }
   .cta-container .cta-text .cta-buttons .gs-button:hover {
     background-color: #0E1C5D;
-    border: 1px solid #00abb4;
+    border: 1px solid #00ABB4;
   }
   .cta-container .cta-text .cta-buttons .gs-button:active {
     font-size: 1.4rem;
@@ -677,8 +677,8 @@ img {
 .features-div {
   display: flex;
   flex-direction: column;
-  width: 99.1vw;
-  max-width: 99vw;
+  width: 100%;
+  max-width: 100%;
   background-color: white;
   padding-bottom: 100px;
   padding-top: 50px;
@@ -846,7 +846,7 @@ img {
     font-weight: 900;
   }
   .profile-form .profile-info .profile-others .username {
-    color: #00abb4;
+    color: #00ABB4;
     font-family: Muli;
     font-weight: 900;
   }
@@ -1076,6 +1076,11 @@ img {
     font-weight: 900;
     color: gray;
   }
+  .profile-form .img-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
   .profile-form .img-box img {
     display: flex;
     justify-content: center;
@@ -1087,7 +1092,6 @@ img {
     min-width: 180px;
     box-shadow: 0.9px 2px 7px #282c34;
     position: absolute;
-    left: 40%;
     top: 10px;
   }
   .profile-form .profile-info {
@@ -1124,7 +1128,7 @@ img {
     font-weight: 900;
   }
   .profile-form .profile-info .profile-others .username {
-    color: #00abb4;
+    color: #00ABB4;
     font-family: Muli;
     font-weight: 900;
   }
@@ -1553,7 +1557,7 @@ img {
 @media (max-width: 1000px) {
   .freelancers-container {
     min-height: 90vh;
-    margin-top: 15px;
+    margin-top: 10px;
     z-index: 5;
     padding-left: 1vw;
     max-width: 99vw;
@@ -1561,11 +1565,11 @@ img {
   .freelancers-container .sort-toggle {
     background-color: #2646de;
     display: flex;
-    margin-top: 10px;
+    margin-left: 5px;
     border: none;
-    width: 200px;
+    width: 100px;
     color: white;
-    padding: 15px;
+    padding: 10px;
     font-family: Muli;
     font-weight: 700;
     font-size: 12pt;
@@ -1642,8 +1646,8 @@ img {
   }
   .sidenav {
     display: none;
-    margin-left: 200px;
-    margin-top: 30px;
+    margin-left: 9px;
+    margin-top: 70px;
   }
   .main {
     font-size: 28px;
@@ -1871,7 +1875,7 @@ img {
 }
 @media (max-width: 1000px) {
   .add-button-container {
-    padding: 20px;
+    padding: 10px;
     max-width: 90vw;
     align-self: right;
     justify-self: right;
@@ -1883,10 +1887,9 @@ img {
   }
   .sort-toggle2 {
     display: flex;
-    margin-top: 10px;
     border: none;
     background-color: #00ABB4;
-    width: 200px;
+    width: 80px;
     color: white;
     padding: 15px;
     font-family: Muli;
@@ -1906,7 +1909,6 @@ img {
     justify-self: flex-end;
     align-self: flex-end;
     align-items: flex-end;
-    margin-top: 10px;
     border: none;
     background-color: #00ABB4;
     width: 200px;
@@ -2006,7 +2008,7 @@ img {
   padding-top: 50px;
   padding-left: 30px;
   padding-right: 50px;
-  min-height: 100vh;
+  min-height: 1300px;
   border-bottom: 30px solid white;
 }
 .project-container .project-view-page {
@@ -2019,15 +2021,11 @@ img {
   z-index: 6;
 }
 .project-container .employer-info {
-  position: fixed;
-  margin-left: 71%;
   background-color: white;
   padding: 20px;
-  margin-top: 20px;
   box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
   border-radius: 12px;
   min-height: 600px;
-  width: 22vw;
   z-index: 6;
 }
 .project-container .employer-info h1 {
@@ -2124,7 +2122,7 @@ img {
   background-color: white;
 }
 .project-container .applicant-heading {
-  background-color: #00abb4;
+  background-color: #00ABB4;
   padding: 15px;
   width: 100%;
   border-radius: 5px;
@@ -2141,7 +2139,7 @@ img {
   display: flex;
   flex-direction: row;
   width: 100%;
-  background-color: #00abb4;
+  background-color: #00ABB4;
   padding: 20px;
   margin: 5px;
   background-color: #F9FCFF;
@@ -2235,6 +2233,18 @@ img {
   }
   .applicant-heading {
     width: 80vw;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .employer-info {
+    display: block;
+    margin-left: 71%;
+    margin-top: 20px;
+    width: 22vw;
+    position: absolute;
+  }
+  .project-view-page .sort-toggle {
+    display: none;
   }
 }
 .work-steps {
@@ -2503,6 +2513,25 @@ img {
 .MuiStepIcon-root.MuiStepIcon-active {
   font-size: 21pt;
 }
+@media screen and (max-width: 1000px) {
+  .employer-info {
+    display: none;
+    position: absolute;
+    margin-left: 10px;
+    left: 3vw;
+    margin-top: 130px;
+    width: 400px;
+  }
+  .project-view-page .sort-toggle {
+    background-color: #00ABB4;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+}
 /* The Modal (background) */
 .modal {
   display: block;
@@ -2747,7 +2776,7 @@ img {
   font-size: 9pt;
 }
 .notifications-container .not-list .notif-item .time-ago.from {
-  background-color: #00abb4;
+  background-color: #00ABB4;
   padding: 7px;
   box-shadow: 0.5px 2px 7px #282c34;
   border-radius: 12px;
@@ -2762,7 +2791,7 @@ img {
   padding: 20px;
   width: 150px;
   color: white;
-  background-color: #00abb4;
+  background-color: #00ABB4;
   box-shadow: 0.5px 2px 7px #282c34;
   font-family: Muli;
   font-weight: 600;
@@ -2862,7 +2891,7 @@ img {
 }
 .forum-container .forum-topic .line-1 p {
   font-size: 9pt;
-  background-color: #00abb4;
+  background-color: #00ABB4;
   padding: 3px;
   box-shadow: 0.9px 2px 7px #282c34;
   border-radius: 3px;
@@ -2890,7 +2919,7 @@ img {
   font-size: 10pt;
   padding: 5px;
   box-shadow: 0.9px 2px 7px #282c34;
-  background-color: #00abb4;
+  background-color: #00ABB4;
   border-radius: 5px;
   width: 200px;
   text-align: center;
@@ -2931,7 +2960,7 @@ img {
   font-weight: 600;
   font-size: 11pt;
   box-shadow: 0.9px 2px 7px #282c34;
-  background-color: #00abb4;
+  background-color: #00ABB4;
   border-radius: 5px;
   border: none;
   cursor: pointer;
@@ -2943,7 +2972,7 @@ img {
   cursor: pointer;
   padding: 10px;
   box-shadow: 0.9px 2px 7px #282c34;
-  background-color: #00abb4;
+  background-color: #00ABB4;
   margin-bottom: 20px;
 }
 .view-post-container .replies-head:active {
@@ -3016,7 +3045,7 @@ img {
 .faq-container h1,
 .faq-container h2,
 .faq-container h3 {
-  color: #00abb4;
+  color: #00ABB4;
   font-family: Muli;
   font-weight: 700;
 }
@@ -3211,7 +3240,7 @@ img {
   font-size: 10pt;
   padding: 5px;
   box-shadow: 0.9px 2px 7px #282c34;
-  background-color: #00abb4;
+  background-color: #00ABB4;
   border-radius: 5px;
   max-width: 400px;
   text-align: center;

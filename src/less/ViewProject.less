@@ -5,7 +5,7 @@
   padding-top: 50px;
   padding-left: 30px;
   padding-right: 50px;
-  min-height: 100vh;
+  min-height: 1300px;
   border-bottom: 30px solid white;
 
   .project-view-page {
@@ -19,15 +19,11 @@
   }
 
   .employer-info {
-    position: fixed;
-    margin-left: 71%;
     background-color: white;
     padding: 20px;
-    margin-top: 20px;
     box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.02);
     border-radius: 12px;
     min-height: 600px;
-    width: 22vw;
     z-index: 6;
 
     h1 {
@@ -258,5 +254,20 @@
 
   .applicant-heading {
     width: 80vw;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .employer-info {
+    display: block;
+    margin-left: 71%;
+    margin-top: 20px;
+    width: 22vw;
+    position: absolute;
+  }
+  .project-view-page {
+    .sort-toggle {
+      display: none;
+    }
   }
 }

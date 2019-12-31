@@ -19,14 +19,14 @@ export default function NavLinks({ userSession, color, user, handleSignIn, handl
             <button 
             className='signbutton'
             onClick={ handleSignIn.bind(this) }
-            > Log In/Regsiter </button> 
+            > Start </button> 
             : 
             (
             <>
             
               <div 
               className="dropbtn2"
-              onClick={() => setDisplay('dropdown-content2','dropbtn2')}
+              onClick={() => setDisplay('dropdown-content2','dropbtn2','dropdown-content3','dropbtn3')}
               style={color ?
                 {backgroundColor: 'green'}
                 :
@@ -82,7 +82,7 @@ export default function NavLinks({ userSession, color, user, handleSignIn, handl
         <div className='dropdown3'>
           <div 
             className="dropbtn3"
-            onClick={() => setDisplay('dropdown-content3','dropbtn3')}
+            onClick={() => setDisplay('dropdown-content3','dropbtn3','dropdown-content2','dropbtn2')}
             style={color ?
                 {backgroundColor: 'green'}
                 :
@@ -116,12 +116,17 @@ export default function NavLinks({ userSession, color, user, handleSignIn, handl
   );
 }
 
-function setDisplay(classname, classname2) {
+function setDisplay(classname, classname2, className3, className4) {
   const x = document.getElementsByClassName(classname)[0];
   const y = document.getElementsByClassName(classname2)[0];
+  const a = document.getElementsByClassName(className3)[0];
+  const b = document.getElementsByClassName(className4)[0];
+
   if (x.style.display === "none") {
-    x.style.display = "flex";
+    x.style.display = "block";
     y.style.backgroundColor = "#DE536B";
+    a.style.display = "none";
+    b.style.backgroundColor = "rgb(38, 70, 222)";
   } else {
     x.style.display = "none";
     y.style.backgroundColor = "rgb(38, 70, 222)";

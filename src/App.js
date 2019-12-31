@@ -5,6 +5,7 @@ import {
   AppConfig,
   Person
 } from 'blockstack';
+//import Header from '../src/components/Header';
 import Header from '../src/components/Header';
 import Cta from '../src/components/Cta';
 import Profile from '../src/components/User/Profile';
