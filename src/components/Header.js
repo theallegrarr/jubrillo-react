@@ -25,8 +25,8 @@ const userSession = new UserSession({ appConfig: appConfig })
 const avatarFallbackImage = 'https://s3.amazonaws.com/onename/avatar-placeholder.png';
 
 configure({
-  apiServer: 'http://localhost:1260',
-  //apiServer: 'https://jubrillo-node-alt.herokuapp.com',
+  //apiServer: 'http://localhost:1260',
+  apiServer: 'https://jubrillo-node-alt.herokuapp.com',
   userSession,
 });
 
