@@ -8,6 +8,7 @@ import Rating from '@material-ui/lab/Rating';
 import StarBorderIcon from '@material-ui/icons/Star';
 import Profile from '../../model/Profile';
 import * as data from '../User/skillsData.json';
+import pImage from '../../assets/avatar-1577909_960_720.webp';
 
 const fields = { text: 'Name', value: 'Code' };
 
@@ -82,7 +83,7 @@ function UserHeader({ person, otherProps }) {
     <div className='img-box'>
       { person.image ? 
         <img src={person.image} alt='profile'/> : 
-        <img src={`https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png`} alt='profile'/>
+        <img src={pImage} alt='profile'/>
       }
       </div>
     <div className='profile-info'>

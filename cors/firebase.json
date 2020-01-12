@@ -17,6 +17,10 @@
      "headers" : [ {
        "key" : "Access-Control-Allow-Origin",
        "value" : "*"
+     },
+     {
+       "key": "Cant-Be-Evil",
+       "value": "true"
      } ]
    } ]
   }

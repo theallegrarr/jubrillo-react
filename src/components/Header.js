@@ -25,8 +25,8 @@ const userSession = new UserSession({ appConfig: appConfig })
 const avatarFallbackImage = 'https://s3.amazonaws.com/onename/avatar-placeholder.png';
 
 configure({
-  //apiServer: 'http://localhost:1260',
-  apiServer: 'https://jubrillo-node-alt.herokuapp.com',
+  apiServer: 'http://localhost:1260',
+  //apiServer: 'https://jubrillo-node-alt.herokuapp.com',
   userSession,
 });
 
@@ -307,9 +307,7 @@ export default class Header extends React.Component {
         target="_blank"
         rel="noopener noreferrer"
         className="error-alert">
-            {/* <img 
-            src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHIIV-ZJOTXj5zVl9Dphh-Mf4s58HebQyybuxy9bqpqQGmlqqx&s`}
-            alt='support' /> */}
+            
             <p>Need Help</p>
             ?
         </a>

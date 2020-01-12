@@ -165,13 +165,11 @@ async function checkNotifications(
     })
     //console.log(allThreadMessages)
     if(allThreadMessages.length > 0) {
-    setLatests(allThreadMessages);
-    setErrorType(`good`)
-    removeError(`Notifications Fetch Complete!`)
+      setLatests(allThreadMessages);
     } else {
-    setLatests(allThreadMessages);
-    setErrorType(`good`)
-    removeError(`No More Notifications!`)
+      setLatests(allThreadMessages);
+      setErrorType(`good`)
+      removeError(`No More Notifications!`)
     }
   } catch (error) {
     console.log(error);

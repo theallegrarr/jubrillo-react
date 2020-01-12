@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import axios from 'axios';
 import {
   UserSession,
   AppConfig,
@@ -33,6 +34,16 @@ import '../src/css/global.css';
 const appConfig = new AppConfig(['store_write', 'publish_data'])
 const userSession = new UserSession({ appConfig: appConfig })
 
+axios.interceptors.response.use(
+  function(response) {
+    response.headers["cant-be-evil"] = "true";
+    return response;
+  },
+  function(error) {
+    return Promise.reject(error);
+  }
+);
+
 function App() {
   const [ user, setUser ] = useState({});
   
@@ -45,8 +56,6 @@ function App() {
     }
     
   }, [])
-
-  
 
   return (
     <div>

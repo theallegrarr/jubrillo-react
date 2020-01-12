@@ -14,6 +14,7 @@ import { FaAlignJustify } from 'react-icons/fa';
 import { Helmet } from 'react-helmet';
 import SEO from 'react-seo-component';
 import navimage from '../../assets/logo.png';
+import pImage from '../../assets/avatar-1577909_960_720.webp';
 
 const fields = { text: 'Name', value: 'Code' };
 
@@ -246,7 +247,7 @@ const FreelancersList = (props) => {
           key={freelancer.attrs._id} 
           className='freelancer-card'>
             <img 
-            src={freelancer.attrs.image ? freelancer.attrs.image : `https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png`} 
+            src={freelancer.attrs.image ? freelancer.attrs.image : pImage} 
             alt='headshot'/>
               <NavLink 
                 className='name-link'

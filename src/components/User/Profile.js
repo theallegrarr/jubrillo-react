@@ -18,6 +18,7 @@ import updateProfile from '../../model/updateProfile';
 import Profile from '../../model/Profile';
 import * as data from './skillsData.json';
 import ErrorBar from '../errorBar/errorBar';
+import pImage from '../../assets/avatar-1577909_960_720.webp';
 
 
 // Summary, ratings, skills, rate, Role, Image, Name, Location
@@ -132,7 +133,7 @@ export default function UserProfile(props) {
       <div className='img-box'>
       { person.image ? 
         <img src={person.image["0"].contentUrl} alt='profile'/> : 
-        <img src={`https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png`} alt='profile'/>
+        <img src={pImage} alt='profile'/>
       }
       </div>
     

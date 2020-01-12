@@ -1,15 +1,3 @@
-@font-face {
-  font-family: 'Hind';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Hind Light'), local('Hind-Light'), url(https://fonts.gstatic.com/s/hind/v10/5aU19_a8oxmIfMJaERySiA.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Hind';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Hind Regular'), local('Hind-Regular'), url(https://fonts.gstatic.com/s/hind/v10/5aU69_a8oxmIdGl4AQ.ttf) format('truetype');
-}
 .faq-container {
   margin: 0 auto;
   padding: 4rem;
@@ -28,7 +16,7 @@
 .faq-container body {
   margin: 0;
   padding: 0;
-  font-family: 'Hind', sans-serif;
+  font-family: 'Muli', sans-serif;
   background: #fff;
   color: #4d5974;
   display: -webkit-box;

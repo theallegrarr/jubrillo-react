@@ -4,6 +4,7 @@ import icon from '../../assets/logo.png';
 import bc from '../../assets/barcode.png';
 import axios from 'axios';
 import ErrorBar from '../errorBar/errorBar';
+import pImage from '../../assets/bitcoin.webp';
 
 const wallet = `1MUy689ex2dcX58WAdTkdA6u5hs2nnKzCv`;
 export default function PopUp ({ person, project, form, setForm, setPopDisp }) {
@@ -51,7 +52,7 @@ export default function PopUp ({ person, project, form, setForm, setPopDisp }) {
           <div className='columns'>
             <div className='pay-header-row'>
               <div><img src={icon} alt='logo'></img></div>
-              <img src={'https://cdn.pixabay.com/photo/2013/12/08/12/12/bitcoin-225080__340.png'} alt='logo'></img>
+              <img src={pImage} alt='logo'></img>
             </div>
 <h4>Fund Job #{project.project_index} - {project.title}</h4>
             <img className='bcode' src={bc} alt='barcode'></img>

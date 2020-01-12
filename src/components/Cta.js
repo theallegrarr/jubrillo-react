@@ -2,7 +2,6 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import SEO from 'react-seo-component';
 import ctaImage from '../assets/cta-image4.png';
-import ProductHunt from './ProductHunt';
 import '../css/index.css';
 import '../css/global.css';
 import navimage from '../assets/logo.png';
@@ -62,10 +61,10 @@ const Header = props => (
     
     <img src={ctaImage} alt='cta'></img>
   </div>
-  <div className='ph-box'>
+    {/* <div className='ph-box'>
       <p>Give us an upvote if you like our app</p>
       <ProductHunt />
-    </div>
+    </div> */}
   <div className='features-div'>
     <div className='ftr-head'>
       <h3>Features</h3>
